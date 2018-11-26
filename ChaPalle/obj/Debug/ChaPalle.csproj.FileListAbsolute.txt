@@ -2,7 +2,6 @@ C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPal
 C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\bin\Debug\ChaPalle.exe
 C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\bin\Debug\ChaPalle.pdb
 C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Debug\ChaPalle.csprojResolveAssemblyReference.cache
-C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Debug\ChaPalle.Form1.resources
 C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Debug\ChaPalle.Properties.Resources.resources
 C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Debug\ChaPalle.csproj.GenerateResource.Cache
 C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Debug\ChaPalle.exe
@@ -17,5 +16,14 @@ C:\Users\logti\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPa
 C:\Users\logti\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Debug\ChaPalle.Properties.Resources.resources
 C:\Users\logti\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Debug\ChaPalle.csproj.GenerateResource.Cache
 C:\Users\logti\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Debug\ChaPalle.UserForm.resources
-C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Debug\ChaPalle.UserForm.resources
 C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Debug\ChaPalle.SettingForm.resources
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\bin\Debug\Newtonsoft.Json.dll
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\bin\Debug\Newtonsoft.Json.xml
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Debug\ChaPalle.MainForm.resources
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Debug\ChaPalle.CharaInfoForm.resources
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Debug\ChaPalle.CharaBankImportForm.resources
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Debug\ChaPalle.MadnessTableForm.resources
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Debug\ChaPalle.CharaArchiveImportForm.resources
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\bin\Debug\HtmlAgilityPack.dll
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\bin\Debug\HtmlAgilityPack.xml

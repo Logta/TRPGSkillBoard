@@ -30,6 +30,7 @@
         {
             this.checkBoxTopMost = new System.Windows.Forms.CheckBox();
             this.buttonDecide = new System.Windows.Forms.Button();
+            this.checkBoxClipCheck = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // checkBoxTopMost
@@ -53,15 +54,27 @@
             this.buttonDecide.UseVisualStyleBackColor = true;
             this.buttonDecide.Click += new System.EventHandler(this.buttonDecide_Click);
             // 
+            // checkBoxClipCheck
+            // 
+            this.checkBoxClipCheck.AutoSize = true;
+            this.checkBoxClipCheck.Location = new System.Drawing.Point(13, 35);
+            this.checkBoxClipCheck.Name = "checkBoxClipCheck";
+            this.checkBoxClipCheck.Size = new System.Drawing.Size(232, 16);
+            this.checkBoxClipCheck.TabIndex = 18;
+            this.checkBoxClipCheck.Text = "クリップボードにコピーするとき確認を表示する";
+            this.checkBoxClipCheck.UseVisualStyleBackColor = true;
+            this.checkBoxClipCheck.CheckedChanged += new System.EventHandler(this.checkBoxClipCheck_CheckedChanged);
+            // 
             // SettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.checkBoxClipCheck);
             this.Controls.Add(this.buttonDecide);
             this.Controls.Add(this.checkBoxTopMost);
             this.Name = "SettingForm";
-            this.Text = "SettingForm";
+            this.Text = "設定";
             this.Load += new System.EventHandler(this.SettingForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -72,5 +85,6 @@
 
         private System.Windows.Forms.CheckBox checkBoxTopMost;
         private System.Windows.Forms.Button buttonDecide;
+        private System.Windows.Forms.CheckBox checkBoxClipCheck;
     }
 }

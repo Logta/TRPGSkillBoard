@@ -34,6 +34,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.8.10.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.8.10\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,6 +55,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CharaBankImportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CharaBankImportForm.Designer.cs">
+      <DependentUpon>CharaBankImportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CharaArchiveImportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CharaArchiveImportForm.Designer.cs">
+      <DependentUpon>CharaArchiveImportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MadnessTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MadnessTableForm.Designer.cs">
+      <DependentUpon>MadnessTableForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,12 +87,21 @@
     <Compile Include="SettingForm.Designer.cs">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForm.cs">
+    <Compile Include="CharaInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForm.Designer.cs">
-      <DependentUpon>UserForm.cs</DependentUpon>
+    <Compile Include="CharaInfoForm.Designer.cs">
+      <DependentUpon>CharaInfoForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CharaArchiveImportForm.resx">
+      <DependentUpon>CharaArchiveImportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CharaBankImportForm.resx">
+      <DependentUpon>CharaBankImportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MadnessTableForm.resx">
+      <DependentUpon>MadnessTableForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,9 +118,10 @@
     <EmbeddedResource Include="SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForm.resx">
-      <DependentUpon>UserForm.cs</DependentUpon>
+    <EmbeddedResource Include="CharaInfoForm.resx">
+      <DependentUpon>CharaInfoForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

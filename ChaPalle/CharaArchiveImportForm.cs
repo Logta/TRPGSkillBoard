@@ -10,17 +10,18 @@ using System.Windows.Forms;
 
 namespace ChaPalle
 {
-    public partial class UserForm : Form
+    public partial class CharaArchiveImportForm : Form
     {
-        dataset datas = new dataset();
-        public UserForm(dataset d)
+        public string m_URL = "";
+
+        public CharaArchiveImportForm()
         {
             InitializeComponent();
-            datas = d;
         }
 
-        private void buttonDecide_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            m_URL = textBox1.Text;
             this.Close();
         }
     }

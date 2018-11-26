@@ -15,6 +15,14 @@ C:\Users\logti\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPa
 C:\Users\logti\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.csproj.GenerateResource.Cache
 C:\Users\logti\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\bin\Release\ChaPalle.pdb
 C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.csprojResolveAssemblyReference.cache
-C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.UserForm.resources
 C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.SettingForm.resources
 C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.MainForm.resources
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\bin\Release\Newtonsoft.Json.dll
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\bin\Release\Newtonsoft.Json.xml
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.CharaInfoForm.resources
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.CharaBankImportForm.resources
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.MadnessTableForm.resources
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\bin\Release\HtmlAgilityPack.dll
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\bin\Release\HtmlAgilityPack.pdb
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\bin\Release\HtmlAgilityPack.xml
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.CharaArchiveImportForm.resources
