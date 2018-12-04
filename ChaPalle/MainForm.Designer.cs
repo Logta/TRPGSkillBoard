@@ -89,6 +89,17 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.buttonSANCheck = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.tabHistoryAblityRole = new System.Windows.Forms.TabPage();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.buttonAbilityRole = new System.Windows.Forms.Button();
+            this.listBoxValue = new System.Windows.Forms.ListBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.listBoxAbility = new System.Windows.Forms.ListBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.listViewHistory = new System.Windows.Forms.ListView();
+            this.SkillHistory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TimeHistory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TypeHistory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPageFight = new System.Windows.Forms.TabPage();
             this.buttonKick = new System.Windows.Forms.Button();
             this.buttonFist = new System.Windows.Forms.Button();
@@ -108,17 +119,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.textValueFight = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.tabHistoryAblityRole = new System.Windows.Forms.TabPage();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.buttonAbilityRole = new System.Windows.Forms.Button();
-            this.listBoxValue = new System.Windows.Forms.ListBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.listBoxAbility = new System.Windows.Forms.ListBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.listViewHistory = new System.Windows.Forms.ListView();
-            this.SkillHistory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.TimeHistory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.TypeHistory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.memo = new System.Windows.Forms.TabPage();
             this.buttonPicture = new System.Windows.Forms.Button();
             this.pictureBoxMemo = new System.Windows.Forms.PictureBox();
@@ -134,11 +134,11 @@
             this.tabPageSAN.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.tabPageFight.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             this.tabHistoryAblityRole.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.tabPageFight.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.memo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMemo)).BeginInit();
             this.SuspendLayout();
@@ -466,8 +466,8 @@
             // 
             this.tabCthu.Controls.Add(this.tabPageSkill);
             this.tabCthu.Controls.Add(this.tabPageSAN);
-            this.tabCthu.Controls.Add(this.tabPageFight);
             this.tabCthu.Controls.Add(this.tabHistoryAblityRole);
+            this.tabCthu.Controls.Add(this.tabPageFight);
             this.tabCthu.Controls.Add(this.memo);
             this.tabCthu.Location = new System.Drawing.Point(12, 56);
             this.tabCthu.Name = "tabCthu";
@@ -791,6 +791,147 @@
             this.label7.TabIndex = 4;
             this.label7.Text = "SANチェック文：";
             // 
+            // tabHistoryAblityRole
+            // 
+            this.tabHistoryAblityRole.Controls.Add(this.groupBox9);
+            this.tabHistoryAblityRole.Controls.Add(this.groupBox8);
+            this.tabHistoryAblityRole.Location = new System.Drawing.Point(4, 22);
+            this.tabHistoryAblityRole.Name = "tabHistoryAblityRole";
+            this.tabHistoryAblityRole.Padding = new System.Windows.Forms.Padding(3);
+            this.tabHistoryAblityRole.Size = new System.Drawing.Size(432, 296);
+            this.tabHistoryAblityRole.TabIndex = 3;
+            this.tabHistoryAblityRole.Text = "履歴と能力値ロール";
+            this.tabHistoryAblityRole.UseVisualStyleBackColor = true;
+            this.tabHistoryAblityRole.Click += new System.EventHandler(this.tabHistoryAblityRole_Click);
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.buttonAbilityRole);
+            this.groupBox9.Controls.Add(this.listBoxValue);
+            this.groupBox9.Controls.Add(this.label12);
+            this.groupBox9.Controls.Add(this.listBoxAbility);
+            this.groupBox9.Location = new System.Drawing.Point(260, 6);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(166, 275);
+            this.groupBox9.TabIndex = 1;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "能力値ロール";
+            // 
+            // buttonAbilityRole
+            // 
+            this.buttonAbilityRole.Location = new System.Drawing.Point(43, 161);
+            this.buttonAbilityRole.Name = "buttonAbilityRole";
+            this.buttonAbilityRole.Size = new System.Drawing.Size(91, 23);
+            this.buttonAbilityRole.TabIndex = 3;
+            this.buttonAbilityRole.Text = "能力値ロール";
+            this.buttonAbilityRole.UseVisualStyleBackColor = true;
+            this.buttonAbilityRole.Click += new System.EventHandler(this.buttonAbilityRole_Click);
+            // 
+            // listBoxValue
+            // 
+            this.listBoxValue.FormattingEnabled = true;
+            this.listBoxValue.ItemHeight = 12;
+            this.listBoxValue.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30"});
+            this.listBoxValue.Location = new System.Drawing.Point(118, 32);
+            this.listBoxValue.Name = "listBoxValue";
+            this.listBoxValue.Size = new System.Drawing.Size(42, 100);
+            this.listBoxValue.TabIndex = 2;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(80, 77);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(17, 12);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "×";
+            // 
+            // listBoxAbility
+            // 
+            this.listBoxAbility.FormattingEnabled = true;
+            this.listBoxAbility.ItemHeight = 12;
+            this.listBoxAbility.Items.AddRange(new object[] {
+            "STR",
+            "CON",
+            "POW",
+            "DEX",
+            "APP",
+            "SIZ",
+            "INT",
+            "EDU"});
+            this.listBoxAbility.Location = new System.Drawing.Point(16, 32);
+            this.listBoxAbility.Name = "listBoxAbility";
+            this.listBoxAbility.Size = new System.Drawing.Size(47, 100);
+            this.listBoxAbility.TabIndex = 0;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.listViewHistory);
+            this.groupBox8.Location = new System.Drawing.Point(6, 6);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(248, 275);
+            this.groupBox8.TabIndex = 0;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "履歴";
+            // 
+            // listViewHistory
+            // 
+            this.listViewHistory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.SkillHistory,
+            this.TimeHistory,
+            this.TypeHistory});
+            this.listViewHistory.Location = new System.Drawing.Point(7, 19);
+            this.listViewHistory.Name = "listViewHistory";
+            this.listViewHistory.Size = new System.Drawing.Size(235, 250);
+            this.listViewHistory.TabIndex = 0;
+            this.listViewHistory.UseCompatibleStateImageBehavior = false;
+            this.listViewHistory.View = System.Windows.Forms.View.Details;
+            this.listViewHistory.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewHistory_ColumnClick);
+            this.listViewHistory.DoubleClick += new System.EventHandler(this.listViewHistory_DoubleClick);
+            // 
+            // SkillHistory
+            // 
+            this.SkillHistory.Text = "技能";
+            // 
+            // TimeHistory
+            // 
+            this.TimeHistory.Text = "時間";
+            this.TimeHistory.Width = 107;
+            // 
+            // TypeHistory
+            // 
+            this.TypeHistory.Text = "ロール";
+            // 
             // tabPageFight
             // 
             this.tabPageFight.Controls.Add(this.buttonKick);
@@ -989,126 +1130,6 @@
             this.label11.TabIndex = 17;
             this.label11.Text = "値";
             // 
-            // tabHistoryAblityRole
-            // 
-            this.tabHistoryAblityRole.Controls.Add(this.groupBox9);
-            this.tabHistoryAblityRole.Controls.Add(this.groupBox8);
-            this.tabHistoryAblityRole.Location = new System.Drawing.Point(4, 22);
-            this.tabHistoryAblityRole.Name = "tabHistoryAblityRole";
-            this.tabHistoryAblityRole.Padding = new System.Windows.Forms.Padding(3);
-            this.tabHistoryAblityRole.Size = new System.Drawing.Size(432, 296);
-            this.tabHistoryAblityRole.TabIndex = 3;
-            this.tabHistoryAblityRole.Text = "履歴と能力値ロール";
-            this.tabHistoryAblityRole.UseVisualStyleBackColor = true;
-            this.tabHistoryAblityRole.Click += new System.EventHandler(this.tabHistoryAblityRole_Click);
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.buttonAbilityRole);
-            this.groupBox9.Controls.Add(this.listBoxValue);
-            this.groupBox9.Controls.Add(this.label12);
-            this.groupBox9.Controls.Add(this.listBoxAbility);
-            this.groupBox9.Location = new System.Drawing.Point(260, 6);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(166, 275);
-            this.groupBox9.TabIndex = 1;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "能力値ロール";
-            // 
-            // buttonAbilityRole
-            // 
-            this.buttonAbilityRole.Location = new System.Drawing.Point(43, 161);
-            this.buttonAbilityRole.Name = "buttonAbilityRole";
-            this.buttonAbilityRole.Size = new System.Drawing.Size(91, 23);
-            this.buttonAbilityRole.TabIndex = 3;
-            this.buttonAbilityRole.Text = "能力値ロール";
-            this.buttonAbilityRole.UseVisualStyleBackColor = true;
-            this.buttonAbilityRole.Click += new System.EventHandler(this.buttonAbilityRole_Click);
-            // 
-            // listBoxValue
-            // 
-            this.listBoxValue.FormattingEnabled = true;
-            this.listBoxValue.ItemHeight = 12;
-            this.listBoxValue.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
-            this.listBoxValue.Location = new System.Drawing.Point(118, 32);
-            this.listBoxValue.Name = "listBoxValue";
-            this.listBoxValue.Size = new System.Drawing.Size(34, 100);
-            this.listBoxValue.TabIndex = 2;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(80, 77);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(17, 12);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "×";
-            // 
-            // listBoxAbility
-            // 
-            this.listBoxAbility.FormattingEnabled = true;
-            this.listBoxAbility.ItemHeight = 12;
-            this.listBoxAbility.Items.AddRange(new object[] {
-            "STR",
-            "CON",
-            "POW",
-            "DEX",
-            "APP",
-            "SIZ",
-            "INT",
-            "EDU"});
-            this.listBoxAbility.Location = new System.Drawing.Point(16, 32);
-            this.listBoxAbility.Name = "listBoxAbility";
-            this.listBoxAbility.Size = new System.Drawing.Size(47, 100);
-            this.listBoxAbility.TabIndex = 0;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.listViewHistory);
-            this.groupBox8.Location = new System.Drawing.Point(6, 6);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(248, 275);
-            this.groupBox8.TabIndex = 0;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "履歴";
-            // 
-            // listViewHistory
-            // 
-            this.listViewHistory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.SkillHistory,
-            this.TimeHistory,
-            this.TypeHistory});
-            this.listViewHistory.Location = new System.Drawing.Point(7, 19);
-            this.listViewHistory.Name = "listViewHistory";
-            this.listViewHistory.Size = new System.Drawing.Size(235, 250);
-            this.listViewHistory.TabIndex = 0;
-            this.listViewHistory.UseCompatibleStateImageBehavior = false;
-            this.listViewHistory.View = System.Windows.Forms.View.Details;
-            this.listViewHistory.DoubleClick += new System.EventHandler(this.listViewHistory_DoubleClick);
-            // 
-            // SkillHistory
-            // 
-            this.SkillHistory.Text = "技能";
-            // 
-            // TimeHistory
-            // 
-            this.TimeHistory.Text = "時間";
-            this.TimeHistory.Width = 107;
-            // 
-            // TypeHistory
-            // 
-            this.TypeHistory.Text = "ロール";
-            // 
             // memo
             // 
             this.memo.Controls.Add(this.buttonPicture);
@@ -1191,14 +1212,14 @@
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.tabPageFight.ResumeLayout(false);
-            this.tabPageFight.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
             this.tabHistoryAblityRole.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             this.groupBox8.ResumeLayout(false);
+            this.tabPageFight.ResumeLayout(false);
+            this.tabPageFight.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.memo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMemo)).EndInit();
             this.ResumeLayout(false);

@@ -38,24 +38,28 @@ namespace ChaPalle
         [STAThread]
         static void Main()
         {
-            Dataset m_data = new Dataset();
+            CharaDataSet m_data = new CharaDataSet();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm(ref m_data));
         }
     }
 
-    public class Dataset
+    public enum ロール { 技能, 能力 };
+
+    public class CharaDataSet : CharacterData
     {
         public Dictionary<string, string> m_defaultSkillList = new Dictionary<string, string>();    //初期値技能のリスト
-        public Dictionary<string, string> m_uniqueSkillList = new Dictionary<string, string>();     //探索者固有（技能ポイントを割り振った）の技能のリスト
-        public Dictionary<string, string> m_fightSkillList = new Dictionary<string, string>();      //戦闘系技能のリスト
-                public Dictionary<string, string> m_abilityValueList = new Dictionary<string, string>()//探索者の能力値のリスト
-        { { "STR", ""}, { "CON", ""}, { "POW", ""}, { "DEX", ""}, { "APP", ""}, { "SIZ", ""}, { "INT", ""}, { "EDU", ""}, { "HP", ""}, { "MP", ""} };
-        public Dictionary<string, string> m_sarcherInfoList = new Dictionary<string, string>()      //探索者情報のリスト
-        { { "キャラクター名", ""}, { "HP", ""}, { "MP", ""}, { "SAN", ""},{ "ダメージボーナス", ""}};
 
-        public int m_useDiceBotFlg = 0;     //bcdiceかsidekickのどちらのダイスボットの入力をするかのフラグ
+        public CharaDataSet()
+        {
+            m_abilityValueList = new Dictionary<string, string>()//探索者の能力値のリスト
+                { { "STR", ""}, { "CON", ""}, { "POW", ""}, { "DEX", ""}, { "APP", ""}, { "SIZ", ""}, { "INT", ""}, { "EDU", ""}, { "HP", ""}, { "MP", ""} };
+            m_sarcherInfoList = new Dictionary<string, string>()      //探索者情報のリスト
+                { { "キャラクター名", ""}, { "HP", ""}, { "MP", ""}, { "SAN", ""},{ "ダメージボーナス", ""}};
+            m_uniqueSkillList = new Dictionary<string, string>();
+            m_fightSkillList = new Dictionary<string, string>();
+        }
 
         //キャラクター保管所からtxtファイル読込
         public void charaBankTxtFileRead()
@@ -288,6 +292,7 @@ namespace ChaPalle
                         dt = m_buff.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
                     }
                 }
+
                 m_sarcherInfoList["HP"] = dt[8];
                 m_sarcherInfoList["MP"] = dt[9];
                 m_sarcherInfoList["SAN"] = dt[10];
@@ -336,13 +341,194 @@ namespace ChaPalle
         }
     }
 
+    public class ListViewItemComparer : IComparer
+    {
+        /// <summary>
+        /// 比較する方法
+        /// </summary>
+        public enum ComparerMode
+        {
+            /// <summary>
+            /// 文字列として比較
+            /// </summary>
+            String,
+            /// <summary>
+            /// 数値（Int32型）として比較
+            /// </summary>
+            Integer,
+            /// <summary>
+            /// 日時（DataTime型）として比較
+            /// </summary>
+            DateTime
+        };
+
+        private int _column;
+        private SortOrder _order;
+        private ComparerMode _mode;
+        private ComparerMode[] _columnModes;
+
+        /// <summary>
+        /// 並び替えるListView列の番号
+        /// </summary>
+        public int Column
+        {
+            set
+            {
+                //現在と同じ列の時は、昇順降順を切り替える
+                if (_column == value)
+                {
+                    if (_order == SortOrder.Ascending)
+                    {
+                        _order = SortOrder.Descending;
+                    }
+                    else if (_order == SortOrder.Descending)
+                    {
+                        _order = SortOrder.Ascending;
+                    }
+                }
+                _column = value;
+            }
+            get
+            {
+                return _column;
+            }
+        }
+        /// <summary>
+        /// 昇順か降順か
+        /// </summary>
+        public SortOrder Order
+        {
+            set
+            {
+                _order = value;
+            }
+            get
+            {
+                return _order;
+            }
+        }
+        /// <summary>
+        /// 並び替えの方法
+        /// </summary>
+        public ComparerMode Mode
+        {
+            set
+            {
+                _mode = value;
+            }
+            get
+            {
+                return _mode;
+            }
+        }
+        /// <summary>
+        /// 列ごとの並び替えの方法
+        /// </summary>
+        public ComparerMode[] ColumnModes
+        {
+            set
+            {
+                _columnModes = value;
+            }
+        }
+
+        /// <summary>
+        /// ListViewItemComparerクラスのコンストラクタ
+        /// </summary>
+        /// <param name="col">並び替える列の番号</param>
+        /// <param name="ord">昇順か降順か</param>
+        /// <param name="cmod">並び替えの方法</param>
+        public ListViewItemComparer(
+            int col, SortOrder ord, ComparerMode cmod)
+        {
+            _column = col;
+            _order = ord;
+            _mode = cmod;
+        }
+        public ListViewItemComparer()
+        {
+            _column = 0;
+            _order = SortOrder.Ascending;
+            _mode = ComparerMode.String;
+        }
+
+        //xがyより小さいときはマイナスの数、大きいときはプラスの数、
+        //同じときは0を返す
+        public int Compare(object x, object y)
+        {
+            if (_order == SortOrder.None)
+            {
+                //並び替えない時
+                return 0;
+            }
+
+            int result = 0;
+            //ListViewItemの取得
+            ListViewItem itemx = (ListViewItem)x;
+            ListViewItem itemy = (ListViewItem)y;
+
+            //並べ替えの方法を決定
+            if (_columnModes != null && _columnModes.Length > _column)
+            {
+                _mode = _columnModes[_column];
+            }
+
+            //並び替えの方法別に、xとyを比較する
+            switch (_mode)
+            {
+                case ComparerMode.String:
+                    //文字列をとして比較
+                    result = string.Compare(itemx.SubItems[_column].Text,
+                        itemy.SubItems[_column].Text);
+                    break;
+                case ComparerMode.Integer:
+                    //Int32に変換して比較
+                    //.NET Framework 2.0からは、TryParseメソッドを使うこともできる
+                    result = int.Parse(itemx.SubItems[_column].Text).CompareTo(
+                        int.Parse(itemy.SubItems[_column].Text));
+                    break;
+                case ComparerMode.DateTime:
+                    //DateTimeに変換して比較
+                    //.NET Framework 2.0からは、TryParseメソッドを使うこともできる
+                    result = DateTime.Compare(
+                        DateTime.Parse(itemx.SubItems[_column].Text),
+                        DateTime.Parse(itemy.SubItems[_column].Text));
+                    break;
+            }
+
+            //降順の時は結果を+-逆にする
+            if (_order == SortOrder.Descending)
+            {
+                result = -result;
+            }
+
+            //結果を返す
+            return result;
+        }
+    }
+
+    //履歴保存のためのクラスの定義
+    public class SkillHistoryData
+    {
+        public List<string> m_skill = new List<string>();
+        public List<string> m_time = new List<string>();
+        public List<ロール> m_type = new List<ロール>();
+
+        public void Set(string sk, string ti, ロール ty)
+        {
+            this.m_skill.Add(sk);
+            this.m_time.Add(ti);
+            this.m_type.Add(ty);
+        }
+    }
+
     [JsonObject("character")]
     public class CharacterData
     {
         [JsonProperty("uniqueSkillList")]
-        public Dictionary<string, string> m_uniqueSkillList { get; set; }
+        public Dictionary<string, string> m_uniqueSkillList { get; set; }//探索者固有（技能ポイントを割り振った）の技能のリスト
         [JsonProperty("fightSkillList")]
-        public Dictionary<string, string> m_fightSkillList { get; set; }
+        public Dictionary<string, string> m_fightSkillList { get; set; }//戦闘系技能のリスト
         [JsonProperty("abilityValue")]
         public Dictionary<string, string> m_abilityValueList { get; set; }
         [JsonProperty("characterInfo")]

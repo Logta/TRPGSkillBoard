@@ -21,14 +21,15 @@ namespace ChaPalle
         Dictionary<string, string> m_uniqueSkillList = new Dictionary<string, string>();
         SkillHistoryData m_skillHistoryList = new SkillHistoryData();
         
-        Dataset m_data = new Dataset();
+        CharaDataSet m_data = new CharaDataSet();
         SettingData m_settingData = new SettingData();
-        enum ロール {技能, 能力 };
+
+        ListViewItemComparer listViewItemSorter = new ListViewItemComparer();
 
         // データセット作成
         DataSet dS = new DataSet("dS");
 
-        public MainForm(ref Dataset d)
+        public MainForm(ref CharaDataSet d)
         {
             InitializeComponent(); //フォームの初期化
 
@@ -41,6 +42,19 @@ namespace ChaPalle
 
             readCSV(System.AppDomain.CurrentDomain.BaseDirectory + "defaultSkill.csv", m_defaultSkillList);
             readCSV(System.AppDomain.CurrentDomain.BaseDirectory + "defaultSkill.csv", m_data.m_defaultSkillList);
+            listBoxAbility.SelectedIndex = 0;
+            listBoxValue.SelectedIndex = 4;
+            
+            //ListViewItemComparerの作成と設定
+            listViewItemSorter.ColumnModes =
+                new ListViewItemComparer.ComparerMode[]
+            {
+        ListViewItemComparer.ComparerMode.String,
+        ListViewItemComparer.ComparerMode.DateTime
+            };
+            //ListViewItemSorterを指定する
+            listViewHistory.ListViewItemSorter = listViewItemSorter;
+
             TopMost = m_settingData.m_checkTopMostFlg;
         }
 
@@ -88,6 +102,7 @@ namespace ChaPalle
         //キャラを押したときの制御
         private void userToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            m_data.m_sarcherInfoList["SAN"] = textSANValue.Text;
             CharaInfoForm u_form = new CharaInfoForm(m_data);
             TopMost = false;
             u_form.ShowDialog();
@@ -105,10 +120,10 @@ namespace ChaPalle
             m_data.m_abilityValueList["INT"] = u_form.m_int;
             m_data.m_abilityValueList["EDU"] = u_form.m_edu;
 
-            listView_refresh();
             textSANValue.Text = m_data.m_sarcherInfoList["SAN"]; //SAN情報の入力
             labelHPValue.Text = m_data.m_sarcherInfoList["HP"]; //HP情報の入力
 
+            listView_refresh();
             TopMost = m_settingData.m_checkTopMostFlg;
         }
 
@@ -116,10 +131,7 @@ namespace ChaPalle
         private void チャッパレ形式ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CharacterData m_cData = new CharacterData();
-            m_cData.m_abilityValueList = m_data.m_abilityValueList;
-            m_cData.m_fightSkillList = m_data.m_fightSkillList;
-            m_cData.m_sarcherInfoList = m_data.m_sarcherInfoList;
-            m_cData.m_uniqueSkillList = m_data.m_uniqueSkillList;
+            m_cData = m_data;
 
             JSONSave(m_cData);
         }
@@ -149,21 +161,6 @@ namespace ChaPalle
                     sw.Close();
                     stream.Close();
                 }
-            }
-        }
-
-        //履歴保存のためのクラスの定義
-        class SkillHistoryData
-        {
-            public List<string> m_skill = new List<string>();
-            public List<string> m_time = new List<string>();
-            public List<ロール> m_type = new List<ロール>();
-
-            public void Set(string sk, string ti, ロール ty)
-            {
-                this.m_skill.Add(sk);
-                this.m_time.Add(ti);
-                this.m_type.Add(ty);
             }
         }
 
@@ -373,9 +370,10 @@ namespace ChaPalle
                 : "/r 1d100<=" + value;
         }
 
-        //
+        //クリップボードに文字列を入力する際に用いる関数
         public void toSetClipBoard(string m_copy)
         {
+            if (m_copy == "") return;
             Clipboard.SetText(m_copy);
             if (m_settingData.m_checkMessageFlg)
                 MessageBox.Show("クリップボードにコピーしました", "成功", MessageBoxButtons.OK);
@@ -383,6 +381,7 @@ namespace ChaPalle
                 System.Media.SystemSounds.Asterisk.Play();
         }
 
+        //技能・能力ロールを行った履歴をリストに入力する関数
         private void toSetSkillHistory(string m_skill, ロール m_type)
         {
             DateTime dt = DateTime.Now;
@@ -400,6 +399,15 @@ namespace ChaPalle
         {
             string tValue = textResult.Text;
             toSetClipBoard(tValue);
+
+            //項目が１つも選択されていない場合
+            if (listView1.SelectedItems.Count == 0)
+                return;//処理を抜ける
+
+            ListViewItem itemx = new ListViewItem();
+            itemx = listView1.SelectedItems[0];
+            
+            toSetSkillHistory(itemx.Text, ロール.技能);
         }
 
         //「追加」を押したときの制御
@@ -421,14 +429,11 @@ namespace ChaPalle
         //「削除」を押したときの制御
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            //項目が１つも選択されていない場合
-            if (listView1.SelectedItems.Count == 0)
-                //処理を抜ける
-                return;
-
-            ListViewItem itemx = new ListViewItem();
+            if (listView1.SelectedItems.Count == 0) //項目が１つも選択されていない場合
+                return; //処理を抜ける
 
             //1番目に選択されれいるアイテムをitemxに格納
+            ListViewItem itemx = new ListViewItem();
             itemx = listView1.SelectedItems[0];
 
             //選択されているアイテムを取得、削除
@@ -442,12 +447,10 @@ namespace ChaPalle
 
             //項目が１つも選択されていない場合
             if (listView1.SelectedItems.Count == 0)
-                //処理を抜ける
-                return;
-
-            ListViewItem itemx = new ListViewItem();
+                return;//処理を抜ける
 
             //1番目に選択されれいるアイテムをitemxに格納
+            ListViewItem itemx = new ListViewItem();
             itemx = listView1.SelectedItems[0];
 
             //選択されているアイテムを取得する
@@ -484,23 +487,29 @@ namespace ChaPalle
             }
 
             //探索者固有(成長させた)技能をリストビューに入力
-            foreach (KeyValuePair<string, string> kvp in m_data.m_uniqueSkillList)
+            if (m_data.m_uniqueSkillList != null)
             {
-                string id = kvp.Key;
-                string name = kvp.Value;
+                foreach (KeyValuePair<string, string> kvp in m_data.m_uniqueSkillList)
+                {
+                    string id = kvp.Key;
+                    string name = kvp.Value;
 
-                string[] item1 = { id, name };
-                listView1.Items.Add(new ListViewItem(item1));
+                    string[] item1 = { id, name };
+                    listView1.Items.Add(new ListViewItem(item1));
+                }
             }
 
             //戦闘技能をリストビューに入力
-            foreach (KeyValuePair<string, string> kvp in m_data.m_fightSkillList)
+            if (m_data.m_fightSkillList != null)
             {
-                string id = kvp.Key;
-                string name = kvp.Value;
+                foreach (KeyValuePair<string, string> kvp in m_data.m_fightSkillList)
+                {
+                    string id = kvp.Key;
+                    string name = kvp.Value;
 
-                string[] item1 = { id, name };
-                listViewFight.Items.Add(new ListViewItem(item1));
+                    string[] item1 = { id, name };
+                    listViewFight.Items.Add(new ListViewItem(item1));
+                }
             }
 
             //使用した技能をリストビューに入力
@@ -523,7 +532,6 @@ namespace ChaPalle
         private void button1_Click(object sender, EventArgs e)
         {
             {
-                string line = "";
                 var al = new List<string>();
                 OpenFileDialog ofDialog = new OpenFileDialog();
                 
@@ -545,6 +553,7 @@ namespace ChaPalle
             try
             {
                 StreamReader reader = new StreamReader(filePath, Encoding.GetEncoding("Shift_JIS"));
+                //StreamReader reader = new StreamReader(filePath);
                 while (reader.Peek() >= 0)
                 {
                     string[] cols = reader.ReadLine().Split(',');
@@ -565,8 +574,7 @@ namespace ChaPalle
         {
             //項目が１つも選択されていない場合
             if (listView1.SelectedItems.Count == 0)
-                //処理を抜ける
-                return;
+                return;//処理を抜ける
 
             ListViewItem itemx = new ListViewItem();
 
@@ -574,7 +582,7 @@ namespace ChaPalle
             itemx = listView1.SelectedItems[0];
 
             //選択されているアイテムを取得する
-            string tValue = toGetBotDiceText(itemx.SubItems[1].Text);// +" " + itemx.Text; ;
+            string tValue = toGetBotDiceText(itemx.SubItems[1].Text);
             toSetClipBoard(tValue);
             toSetSkillHistory(itemx.Text, ロール.技能);
         }
@@ -582,31 +590,10 @@ namespace ChaPalle
         //「検索」を押したときの制御
         private void buttonSerch_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string tValue = toGetBotDiceText(m_data.m_uniqueSkillList[textSerch.Text]);// +" " + textSerch.Text;
-                toSetClipBoard(tValue);
-                textResult.Text = tValue;
-                toSetSkillHistory(textResult.Text, ロール.技能);
-            }
-            catch (KeyNotFoundException) {
-                try
-                {
-                    string tValue = toGetBotDiceText(m_data.m_defaultSkillList[textSerch.Text]);// +" " + textSerch.Text;
-                    toSetClipBoard(tValue);
-                    textResult.Text = tValue;
-                    toSetSkillHistory(textResult.Text, ロール.技能);
-                }
-                catch (KeyNotFoundException)
-                {
-                    MessageBox.Show("正しい技能名を入力してください。",
-                "エラー",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
-                }
-            }
+            toSearchSkillValue(textSerch.Text);
         }
 
+        //指定された文字列に合致する技能の技能値をクリップボードに貼り付ける関数
         private void toSearchSkillValue(string m_skillName)
         {
             try
@@ -616,21 +603,27 @@ namespace ChaPalle
                 textResult.Text = tValue;
                 toSetSkillHistory(m_skillName, ロール.技能);
             }
-            catch (KeyNotFoundException)
+            catch (Exception exception)
             {
-                try
+
+                if (exception is ArgumentNullException ||
+                    exception is NullReferenceException)
                 {
-                    string tValue = toGetBotDiceText(m_data.m_defaultSkillList[m_skillName]);// +" " + textSerch.Text;
-                    toSetClipBoard(tValue);
-                    textResult.Text = tValue;
-                    toSetSkillHistory(m_skillName, ロール.技能);
-                }
-                catch (KeyNotFoundException)
-                {
-                    MessageBox.Show("正しい技能名を入力してください。",
-                "エラー",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
+                    try
+                    {
+                        string tValue = toGetBotDiceText(m_data.m_defaultSkillList[m_skillName]);// +" " + textSerch.Text;
+                        toSetClipBoard(tValue);
+                        textResult.Text = tValue;
+                        toSetSkillHistory(m_skillName, ロール.技能);
+                    }
+                    catch (KeyNotFoundException)
+                    {
+                        MessageBox.Show("正しい技能名を入力してください。",
+                    "エラー",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                    }
+                    return;
                 }
             }
         }
@@ -735,7 +728,7 @@ namespace ChaPalle
             string setSanCheck = m_settingData.m_useDiceBotFlg == 0 ? comboBox1.Text+"d"+ comboBox2.Text
                 : "/r "+ comboBox1.Text + "d" + comboBox2.Text;
             label8.Text = setSanCheck;
-            toSetClipBoard(toGetBotDiceText(textSANValue.Text));
+            toSetClipBoard(setSanCheck);
         }
 
         //「SANチェック→+」を押したときの制御
@@ -747,14 +740,14 @@ namespace ChaPalle
         //「SANチェック→-」を押したときの制御
         private void buttonSANDown_Click(object sender, EventArgs e)
         {
-            int m_sanV; //現在SAN値
-            int m_sanDiff; //SAN変動値
+            int sanVaule; //現在SAN値
+            int sanDiff; //SAN変動値
 
-            if (int.TryParse(textSANValue.Text, out m_sanV) && int.TryParse(comboBoxSANValue.Text, out m_sanDiff)) {
-                textSANValue.Text = Convert.ToString(m_sanV - m_sanDiff);
+            if (int.TryParse(textSANValue.Text, out sanVaule) && int.TryParse(comboBoxSANValue.Text, out sanDiff)) {
+                textSANValue.Text = Convert.ToString(sanVaule - sanDiff);
 
                 //一時的発狂と不定の狂気の判定
-                if (m_sanDiff >= m_sanV / 5)
+                if (sanDiff >= sanVaule / 5)
                 {
                     MessageBox.Show("不定の狂気です。1d10をクリップボードにコピーしました",
                         "不定の狂気",
@@ -762,12 +755,12 @@ namespace ChaPalle
                     Clipboard.SetText(m_settingData.m_useDiceBotFlg == 0 ? "1d10"
                     : "/r 1d10");
                 }
-                else if (m_sanDiff >= 5)
+                else if (sanDiff >= 5)
                 {
-                    int idea;
-                    if (int.TryParse(m_data.m_abilityValueList["INT"], out idea))
+                    int ideaValue;
+                    if (int.TryParse(m_data.m_abilityValueList["INT"], out ideaValue))
                     {
-                        Clipboard.SetText(toGetBotDiceText(Convert.ToString(idea * 5)));
+                        Clipboard.SetText(toGetBotDiceText(Convert.ToString(ideaValue * 5)));
                         MessageBox.Show("一時的発狂です。アイデアロールをクリップボードにコピーしました",
                         "一時的発狂",
                         MessageBoxButtons.OK);
@@ -1002,6 +995,12 @@ namespace ChaPalle
 
         }
 
+        //
+        //
+        //====================================メモ==========================
+        //
+        //
+
         private void buttonPicture_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofDialog = new OpenFileDialog();
@@ -1024,6 +1023,14 @@ namespace ChaPalle
                 catch (Exception ee) { }
 
             }
+        }
+
+        private void listViewHistory_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            //クリックされた列を設定
+            listViewItemSorter.Column = e.Column;
+            //並び替える
+            listViewHistory.Sort();
         }
     }
 }

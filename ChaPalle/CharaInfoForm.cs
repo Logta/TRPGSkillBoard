@@ -26,8 +26,8 @@ namespace ChaPalle
         public string m_edu;
 
 
-        Dataset datas = new Dataset();
-        public CharaInfoForm(Dataset d)
+        CharaDataSet datas = new CharaDataSet();
+        public CharaInfoForm(CharaDataSet d)
         {
             InitializeComponent();
 
