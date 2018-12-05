@@ -83,7 +83,7 @@ namespace ChaPalle
                 readCSV(ofDialog.FileName, m_data.m_uniqueSkillList);
             }
 
-            listView_refresh();
+            refreshListView();
         }
 
         //設定を押したときの制御
@@ -123,7 +123,7 @@ namespace ChaPalle
             textSANValue.Text = m_data.m_sarcherInfoList["SAN"]; //SAN情報の入力
             labelHPValue.Text = m_data.m_sarcherInfoList["HP"]; //HP情報の入力
 
-            listView_refresh();
+            refreshListView();
             TopMost = m_settingData.m_checkTopMostFlg;
         }
 
@@ -187,7 +187,7 @@ namespace ChaPalle
                 textSANValue.Text = m_data.m_sarcherInfoList["SAN"]; //SAN情報の入力
                 labelHPValue.Text = m_data.m_sarcherInfoList["HP"]; //HP情報の入力
 
-                listView_refresh();
+                refreshListView();
             }
         }
 
@@ -299,7 +299,7 @@ namespace ChaPalle
                 m_data.m_uniqueSkillList = new Dictionary<string, string>();
                 m_data.charaBankTxtFileRead();
                 labelHPValue.Text = m_data.m_sarcherInfoList["HP"];
-                listView_refresh();
+                refreshListView();
             }
             else if (u_form.m_txtDataImportFlg == 1)
             {
@@ -307,7 +307,7 @@ namespace ChaPalle
                 m_data.m_uniqueSkillList = new Dictionary<string, string>();
                 m_data.charaBankTxtDataRead(u_form.m_txtData);
                 labelHPValue.Text = m_data.m_sarcherInfoList["HP"];
-                listView_refresh();
+                refreshListView();
             }
         }
 
@@ -323,7 +323,7 @@ namespace ChaPalle
             if (u_form.m_URL != "")
                 m_data.charaArchiveHTMLRead(u_form.m_URL);
 
-            listView_refresh();
+            refreshListView();
         }
 
         //「bcdice」をクリックしたときの制御
@@ -364,14 +364,14 @@ namespace ChaPalle
 
         //ダイスボット用の文字列を取得する関数
         //valueに判定値を、nameに技能など
-        private string toGetBotDiceText(string value, string name = "")
+        private string GetBotDiceText(string value, string name = "")
         {
             return m_settingData.m_useDiceBotFlg == 0 ? "1d100<=" + value + " " + name
                 : "/r 1d100<=" + value;
         }
 
         //クリップボードに文字列を入力する際に用いる関数
-        public void toSetClipBoard(string m_copy)
+        public void SetClipBoard(string m_copy)
         {
             if (m_copy == "") return;
             Clipboard.SetText(m_copy);
@@ -382,7 +382,7 @@ namespace ChaPalle
         }
 
         //技能・能力ロールを行った履歴をリストに入力する関数
-        private void toSetSkillHistory(string m_skill, ロール m_type)
+        private void SetSkillHistory(string m_skill, ロール m_type)
         {
             DateTime dt = DateTime.Now;
             m_skillHistoryList.Set(m_skill, dt.ToString("yyyy/MM/dd HH:mm:ss"), m_type);
@@ -398,7 +398,7 @@ namespace ChaPalle
         private void buttonClipboardCopy_Click(object sender, EventArgs e)
         {
             string tValue = textResult.Text;
-            toSetClipBoard(tValue);
+            SetClipBoard(tValue);
 
             //項目が１つも選択されていない場合
             if (listView1.SelectedItems.Count == 0)
@@ -407,7 +407,7 @@ namespace ChaPalle
             ListViewItem itemx = new ListViewItem();
             itemx = listView1.SelectedItems[0];
             
-            toSetSkillHistory(itemx.Text, ロール.技能);
+            SetSkillHistory(itemx.Text, ロール.技能);
         }
 
         //「追加」を押したときの制御
@@ -423,7 +423,7 @@ namespace ChaPalle
             }
             m_data.m_uniqueSkillList[tSkill] = tValue;
 
-            listView_refresh();
+            refreshListView();
         }
 
         //「削除」を押したときの制御
@@ -438,7 +438,7 @@ namespace ChaPalle
 
             //選択されているアイテムを取得、削除
             m_data.m_uniqueSkillList.Remove(itemx.Text);
-            listView_refresh();
+            refreshListView();
         }
 
         //listView1の選択が変化したときの制御
@@ -454,7 +454,7 @@ namespace ChaPalle
             itemx = listView1.SelectedItems[0];
 
             //選択されているアイテムを取得する
-            textResult.Text = toGetBotDiceText(itemx.SubItems[1].Text);// +" " + itemx.Text;
+            textResult.Text = GetBotDiceText(itemx.SubItems[1].Text);// +" " + itemx.Text;
 
             //技能と値のテキストボックスに技能名、技能値を入れる
             textSkill.Text = itemx.Text;
@@ -464,7 +464,7 @@ namespace ChaPalle
 
         //listviewに関係する配列（m_uniqueSkillListなど）が変更された際に
         //listviewの中身を変更、更新する関数
-        private void listView_refresh()
+        private void refreshListView()
         {
             listView1.Items.Clear();
             listViewFight.Items.Clear();
@@ -544,7 +544,7 @@ namespace ChaPalle
                     readCSV(ofDialog.FileName, m_data.m_uniqueSkillList); 
                 }
             }
-            listView_refresh();
+            refreshListView();
         }
 
         //csvファイルをlistview1に入力する
@@ -582,9 +582,9 @@ namespace ChaPalle
             itemx = listView1.SelectedItems[0];
 
             //選択されているアイテムを取得する
-            string tValue = toGetBotDiceText(itemx.SubItems[1].Text);
-            toSetClipBoard(tValue);
-            toSetSkillHistory(itemx.Text, ロール.技能);
+            string tValue = GetBotDiceText(itemx.SubItems[1].Text);
+            SetClipBoard(tValue);
+            SetSkillHistory(itemx.Text, ロール.技能);
         }
 
         //「検索」を押したときの制御
@@ -598,10 +598,10 @@ namespace ChaPalle
         {
             try
             {
-                string tValue = toGetBotDiceText(m_data.m_uniqueSkillList[m_skillName]);// +" " + textSerch.Text;
-                toSetClipBoard(tValue);
+                string tValue = GetBotDiceText(m_data.m_uniqueSkillList[m_skillName]);// +" " + textSerch.Text;
+                SetClipBoard(tValue);
                 textResult.Text = tValue;
-                toSetSkillHistory(m_skillName, ロール.技能);
+                SetSkillHistory(m_skillName, ロール.技能);
             }
             catch (Exception exception)
             {
@@ -611,10 +611,10 @@ namespace ChaPalle
                 {
                     try
                     {
-                        string tValue = toGetBotDiceText(m_data.m_defaultSkillList[m_skillName]);// +" " + textSerch.Text;
-                        toSetClipBoard(tValue);
+                        string tValue = GetBotDiceText(m_data.m_defaultSkillList[m_skillName]);// +" " + textSerch.Text;
+                        SetClipBoard(tValue);
                         textResult.Text = tValue;
-                        toSetSkillHistory(m_skillName, ロール.技能);
+                        SetSkillHistory(m_skillName, ロール.技能);
                     }
                     catch (KeyNotFoundException)
                     {
@@ -642,25 +642,25 @@ namespace ChaPalle
         //ユーザー指定の文をクリップボードにコピー
         private void buttonTempleteUserCopy_Click(object sender, EventArgs e)
         {
-            toSetClipBoard((textTempleteUser.Text));
+            SetClipBoard((textTempleteUser.Text));
         }
 
         //ダイス1つの文をクリップボードにコピー
         private void buttonTemplete1Copy_Click(object sender, EventArgs e)
         {
-            toSetClipBoard((buttonTemplete1Copy.Text));
+            SetClipBoard((buttonTemplete1Copy.Text));
         }
 
         //ダイス2つの文をクリップボードにコピー
         private void buttonTemplete2Copy_Click(object sender, EventArgs e)
         {
-            toSetClipBoard((buttonTemplete2Copy.Text));
+            SetClipBoard((buttonTemplete2Copy.Text));
         }
 
         //ダイス3つの文をクリップボードにコピー
         private void buttonTemplete3Copy_Click(object sender, EventArgs e)
         {
-            toSetClipBoard((buttonTemplete3Copy.Text));
+            SetClipBoard((buttonTemplete3Copy.Text));
         }
 
         //対抗ロール
@@ -671,7 +671,7 @@ namespace ChaPalle
             {
                 int value = 50 + (m_buff - int.Parse(textOppEnemy.Text)) * 5;
                 Convert.ToString(int.Parse(textSANValue.Text) + 1);
-                toSetClipBoard(toGetBotDiceText(buttonTemplete1Copy.Text));
+                SetClipBoard(GetBotDiceText(buttonTemplete1Copy.Text));
             }
             else
             {
@@ -679,7 +679,7 @@ namespace ChaPalle
                 {
                     int value = 50 + (int.Parse(m_data.m_abilityValueList[comboBoxOppChara.Text]) -
                         int.Parse(textOppEnemy.Text)) * 5;
-                    toSetClipBoard(toGetBotDiceText(Convert.ToString(value)));
+                    SetClipBoard(GetBotDiceText(Convert.ToString(value)));
                 }
                 catch (Exception ee)
                 {
@@ -717,9 +717,9 @@ namespace ChaPalle
         //「SANチェック→判定」を押したときの制御
         private void buttonSANCheck_Click(object sender, EventArgs e)
         {
-            string setSanCheck = "SANチェック文："+toGetBotDiceText(textSANValue.Text);
+            string setSanCheck = "SANチェック文："+GetBotDiceText(textSANValue.Text);
             label7.Text = setSanCheck;
-            toSetClipBoard(toGetBotDiceText(textSANValue.Text));
+            SetClipBoard(GetBotDiceText(textSANValue.Text));
         }
 
         //「SAN増減→判定」を押したときの制御
@@ -728,7 +728,7 @@ namespace ChaPalle
             string setSanCheck = m_settingData.m_useDiceBotFlg == 0 ? comboBox1.Text+"d"+ comboBox2.Text
                 : "/r "+ comboBox1.Text + "d" + comboBox2.Text;
             label8.Text = setSanCheck;
-            toSetClipBoard(setSanCheck);
+            SetClipBoard(setSanCheck);
         }
 
         //「SANチェック→+」を押したときの制御
@@ -760,7 +760,7 @@ namespace ChaPalle
                     int ideaValue;
                     if (int.TryParse(m_data.m_abilityValueList["INT"], out ideaValue))
                     {
-                        Clipboard.SetText(toGetBotDiceText(Convert.ToString(ideaValue * 5)));
+                        Clipboard.SetText(GetBotDiceText(Convert.ToString(ideaValue * 5)));
                         MessageBox.Show("一時的発狂です。アイデアロールをクリップボードにコピーしました",
                         "一時的発狂",
                         MessageBoxButtons.OK);
@@ -823,9 +823,9 @@ namespace ChaPalle
             itemx = listViewFight.SelectedItems[0];
 
             //選択されているアイテムを取得する
-            string tValue = toGetBotDiceText(itemx.SubItems[1].Text);
-            toSetClipBoard(tValue);
-            toSetSkillHistory(itemx.Text, ロール.技能);
+            string tValue = GetBotDiceText(itemx.SubItems[1].Text);
+            SetClipBoard(tValue);
+            SetSkillHistory(itemx.Text, ロール.技能);
         }
 
         string getSkillValue(string skillName)
@@ -833,8 +833,8 @@ namespace ChaPalle
 
             try
             {
-                toSetSkillHistory(skillName, ロール.技能);
-                return (toGetBotDiceText(m_data.m_fightSkillList[skillName]));
+                SetSkillHistory(skillName, ロール.技能);
+                return (GetBotDiceText(m_data.m_fightSkillList[skillName]));
             }
             catch (KeyNotFoundException)
             {
@@ -849,47 +849,50 @@ namespace ChaPalle
 
         private void buttonAvoid_Click(object sender, EventArgs e)
         {
-            getSkillValue("回避");
+            string avoidDiceRole = getSkillValue("回避");
+            SetClipBoard(avoidDiceRole);
         }
 
         private void buttonFist_Click(object sender, EventArgs e)
         {
-            getSkillValue("こぶし（パンチ）");
+            string fistDiceRole = getSkillValue("こぶし（パンチ）");
+            SetClipBoard(fistDiceRole);
         }
 
         private void buttonKick_Click(object sender, EventArgs e)
         {
-            getSkillValue("キック");
+            string kickDiceRole = getSkillValue("キック");
+            SetClipBoard(kickDiceRole);
         }
 
         private void buttonHPPlus_Click(object sender, EventArgs e)
         {
-            int m_hp; //現在HP
-            int m_hpDiff; //HP変動値
+            int hp; //現在HP
+            int hpDiff; //HP変動値
 
-            if (int.TryParse(labelHPValue.Text, out m_hp) && 
-                int.TryParse(comboBoxHPValue.Text, out m_hpDiff))
-                labelHPValue.Text = Convert.ToString(m_hp + m_hpDiff);
+            if (int.TryParse(labelHPValue.Text, out hp) && 
+                int.TryParse(comboBoxHPValue.Text, out hpDiff))
+                labelHPValue.Text = Convert.ToString(hp + hpDiff);
         }
 
         private void buttonHPMinus_Click(object sender, EventArgs e)
         {
-            float m_hp; //現在HP
-            int m_hpDiff; //HP変動値
+            float hp; //現在HP
+            int hpDiff; //HP変動値
 
-            if (float.TryParse(labelHPValue.Text, out m_hp) && 
-                int.TryParse(comboBoxHPValue.Text, out m_hpDiff))
+            if (float.TryParse(labelHPValue.Text, out hp) && 
+                int.TryParse(comboBoxHPValue.Text, out hpDiff))
             {
-                labelHPValue.Text = Convert.ToString(m_hp - m_hpDiff);
+                labelHPValue.Text = Convert.ToString(hp - hpDiff);
 
-                if(m_hp - m_hpDiff <= 2)
+                if(hp - hpDiff <= 2)
                     MessageBox.Show("気絶しました。","気絶",MessageBoxButtons.OK);
-                else if (m_hp / 2 <= m_hpDiff)
+                else if (hp / 2 <= hpDiff)
                 {
                     int m_con;
                     if (int.TryParse(m_data.m_abilityValueList["CON"], out m_con))
                     {
-                        Clipboard.SetText(toGetBotDiceText(Convert.ToString(m_con * 5)));
+                        Clipboard.SetText(GetBotDiceText(Convert.ToString(m_con * 5)));
                         MessageBox.Show("気絶ロールが発生しました。CON×5をクリップボードにコピーしました",
                         "気絶ロール",
                         MessageBoxButtons.OK);
@@ -916,7 +919,7 @@ namespace ChaPalle
             }
             m_data.m_fightSkillList[tSkill] = tValue;
 
-            listView_refresh();
+            refreshListView();
         }
         
         private void buttonDeleteFight_Click(object sender, EventArgs e)
@@ -934,7 +937,7 @@ namespace ChaPalle
 
             //選択されているアイテムを取得、削除
             m_data.m_fightSkillList.Remove(itemx.Text);
-            listView_refresh();
+            refreshListView();
         }
         
         //
@@ -950,16 +953,16 @@ namespace ChaPalle
 
             if(int.TryParse(m_data.m_abilityValueList[listBoxAbility.Text], out m_ability) && int.TryParse(listBoxValue.Text, out m_magni))
             {
-                toSetSkillHistory(listBoxAbility.Text + "×" + listBoxValue.Text, ロール.能力);
-                toSetClipBoard(toGetBotDiceText(Convert.ToString(m_ability * m_magni)));
+                SetSkillHistory(listBoxAbility.Text + "×" + listBoxValue.Text, ロール.能力);
+                SetClipBoard(GetBotDiceText(Convert.ToString(m_ability * m_magni)));
             }
 
-            listView_refresh();
+            refreshListView();
         }
 
         private void tabHistoryAblityRole_Click(object sender, EventArgs e)
         {
-            listView_refresh();
+            refreshListView();
         }
 
         private void listViewHistory_DoubleClick(object sender, EventArgs e)
@@ -986,12 +989,12 @@ namespace ChaPalle
                 string[] arr = itemx.SubItems[0].Text.Split(del, StringSplitOptions.RemoveEmptyEntries);
                 if (int.TryParse(m_data.m_abilityValueList[arr[0]], out m_ability))
                 {
-                    Clipboard.SetText(toGetBotDiceText(Convert.ToString(m_ability * int.Parse(arr[1]))));
-                    toSetSkillHistory(arr[0] + " × " + arr[1], ロール.能力);
+                    Clipboard.SetText(GetBotDiceText(Convert.ToString(m_ability * int.Parse(arr[1]))));
+                    SetSkillHistory(arr[0] + " × " + arr[1], ロール.能力);
                 }
             }
 
-            listView_refresh();
+            refreshListView();
 
         }
 
