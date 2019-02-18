@@ -31,18 +31,18 @@ namespace ChaPalle
         {
             InitializeComponent();
 
-            m_charaName = textCharaName.Text = d.m_sarcherInfoList["キャラクター名"];
-            m_hp = textHP.Text = d.m_sarcherInfoList["HP"];
-            m_mp = textMP.Text = d.m_sarcherInfoList["MP"];
-            m_san = textSAN.Text = d.m_sarcherInfoList["SAN"];
-            m_str = textSTR.Text = d.m_abilityValueList["STR"];
-            m_con = textCON.Text = d.m_abilityValueList["CON"];
-            m_pow = textPOW.Text = d.m_abilityValueList["POW"];
-            m_dex = textDEX.Text = d.m_abilityValueList["DEX"];
-            m_app = textAPP.Text = d.m_abilityValueList["APP"];
-            m_siz = textSIZ.Text = d.m_abilityValueList["SIZ"];
-            m_int = textINT.Text = d.m_abilityValueList["INT"];
-            m_edu = textEDU.Text = d.m_abilityValueList["EDU"];
+            m_charaName = textCharaName.Text = d.searcherInfoList["キャラクター名"];
+            m_hp = textHP.Text = d.searcherInfoList["HP"];
+            m_mp = textMP.Text = d.searcherInfoList["MP"];
+            m_san = textSAN.Text = d.searcherInfoList["SAN"];
+            m_str = textSTR.Text = d.abilityValueList["STR"];
+            m_con = textCON.Text = d.abilityValueList["CON"];
+            m_pow = textPOW.Text = d.abilityValueList["POW"];
+            m_dex = textDEX.Text = d.abilityValueList["DEX"];
+            m_app = textAPP.Text = d.abilityValueList["APP"];
+            m_siz = textSIZ.Text = d.abilityValueList["SIZ"];
+            m_int = textINT.Text = d.abilityValueList["INT"];
+            m_edu = textEDU.Text = d.abilityValueList["EDU"];
         }
 
         private void buttonDecide_Click(object sender, EventArgs e)

@@ -53,12 +53,20 @@ namespace ChaPalle
 
         public CharaDataSet()
         {
-            m_abilityValueList = new Dictionary<string, string>()//探索者の能力値のリスト
+            abilityValueList = new Dictionary<string, string>()//探索者の能力値のリスト
                 { { "STR", ""}, { "CON", ""}, { "POW", ""}, { "DEX", ""}, { "APP", ""}, { "SIZ", ""}, { "INT", ""}, { "EDU", ""}, { "HP", ""}, { "MP", ""} };
-            m_sarcherInfoList = new Dictionary<string, string>()      //探索者情報のリスト
+            searcherInfoList = new Dictionary<string, string>()      //探索者情報のリスト
                 { { "キャラクター名", ""}, { "HP", ""}, { "MP", ""}, { "SAN", ""},{ "ダメージボーナス", ""}};
-            m_uniqueSkillList = new Dictionary<string, string>();
-            m_fightSkillList = new Dictionary<string, string>();
+            uniqueSkillList = new Dictionary<string, string>();
+            fightSkillList = new Dictionary<string, string>();
+        }
+        
+        public void setCharacterData(CharacterData chara)
+        {
+            abilityValueList = chara.abilityValueList;
+            searcherInfoList = chara.searcherInfoList;
+            uniqueSkillList = chara.uniqueSkillList;
+            fightSkillList = chara.fightSkillList;
         }
 
         //キャラクター保管所からtxtファイル読込
@@ -149,16 +157,16 @@ namespace ChaPalle
 
                         if (arr[0] == "=合計=")
                         {
-                            m_abilityValueList["STR"] = arr[1];
-                            m_abilityValueList["CON"] = arr[2];
-                            m_abilityValueList["POW"] = arr[3];
-                            m_abilityValueList["DEX"] = arr[4];
-                            m_abilityValueList["APP"] = arr[5];
-                            m_abilityValueList["SIZ"] = arr[6];
-                            m_abilityValueList["INT"] = arr[7];
-                            m_abilityValueList["EDU"] = arr[8];
-                            m_abilityValueList["HP"] = arr[9];
-                            m_abilityValueList["MP"] = arr[10];
+                            abilityValueList["STR"] = arr[1];
+                            abilityValueList["CON"] = arr[2];
+                            abilityValueList["POW"] = arr[3];
+                            abilityValueList["DEX"] = arr[4];
+                            abilityValueList["APP"] = arr[5];
+                            abilityValueList["SIZ"] = arr[6];
+                            abilityValueList["INT"] = arr[7];
+                            abilityValueList["EDU"] = arr[8];
+                            abilityValueList["HP"] = arr[9];
+                            abilityValueList["MP"] = arr[10];
                         }
 
                         else
@@ -166,7 +174,7 @@ namespace ChaPalle
                             //探索者情報のインポート
                             try
                             {
-                                m_sarcherInfoList[arr[0]] = arr[1];
+                                searcherInfoList[arr[0]] = arr[1];
                             }
                             catch (Exception ee) { }
                         }
@@ -182,13 +190,13 @@ namespace ChaPalle
                             {
                                 if (m_defaultSkillList.ContainsKey(arr[i]))
                                 {
-                                    m_fightSkillList[arr[i]] = arr[i + 1];
+                                    fightSkillList[arr[i]] = arr[i + 1];
                                     if (m_defaultSkillList[arr[i]] != arr[i + 1])
-                                    { m_uniqueSkillList[arr[i]] = arr[i + 1]; }
+                                    { uniqueSkillList[arr[i]] = arr[i + 1]; }
                                 }
                                 else
                                 {
-                                    { m_uniqueSkillList[arr[i]] = arr[i + 1]; }
+                                    { uniqueSkillList[arr[i]] = arr[i + 1]; }
                                 }
                             }
                             catch (Exception ee) { }
@@ -208,11 +216,11 @@ namespace ChaPalle
                                 if (m_defaultSkillList.ContainsKey(arr[i]))
                                 {
                                     if (m_defaultSkillList[arr[i]] != arr[i + 1])
-                                    { m_uniqueSkillList[arr[i]] = arr[i + 1]; }
+                                    { uniqueSkillList[arr[i]] = arr[i + 1]; }
                                 }
                                 else
                                 {
-                                    { m_uniqueSkillList[arr[i]] = arr[i + 1]; }
+                                    { uniqueSkillList[arr[i]] = arr[i + 1]; }
 
                                 }
                             }
@@ -223,7 +231,7 @@ namespace ChaPalle
                     case "fight":
                         if (arr[0] == "ダメージボーナス")
                         {
-                            m_abilityValueList[arr[0]] = arr[1];
+                            abilityValueList[arr[0]] = arr[1];
                         }
                         break;
                 }
@@ -280,7 +288,7 @@ namespace ChaPalle
                 string m_buff = removeChars.Aggregate(name, (s, c) => s.Replace(c.ToString(), ""));
                 dt = m_buff.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 
-                m_sarcherInfoList["キャラクター名"] = dt[0];
+                searcherInfoList["キャラクター名"] = dt[0];
 
                 //キャラ能力値の取得
                 foreach (var row in doc.DocumentNode.SelectNodes("//tr[@id='status_total']"))
@@ -293,17 +301,17 @@ namespace ChaPalle
                     }
                 }
 
-                m_sarcherInfoList["HP"] = dt[8];
-                m_sarcherInfoList["MP"] = dt[9];
-                m_sarcherInfoList["SAN"] = dt[10];
-                m_abilityValueList["STR"] = dt[0];
-                m_abilityValueList["CON"] = dt[1];
-                m_abilityValueList["POW"] = dt[2];
-                m_abilityValueList["DEX"] = dt[3];
-                m_abilityValueList["APP"] = dt[4];
-                m_abilityValueList["SIZ"] = dt[5];
-                m_abilityValueList["INT"] = dt[6];
-                m_abilityValueList["EDU"] = dt[7];
+                searcherInfoList["HP"] = dt[8];
+                searcherInfoList["MP"] = dt[9];
+                searcherInfoList["SAN"] = dt[10];
+                abilityValueList["STR"] = dt[0];
+                abilityValueList["CON"] = dt[1];
+                abilityValueList["POW"] = dt[2];
+                abilityValueList["DEX"] = dt[3];
+                abilityValueList["APP"] = dt[4];
+                abilityValueList["SIZ"] = dt[5];
+                abilityValueList["INT"] = dt[6];
+                abilityValueList["EDU"] = dt[7];
 
                 //技能の取得
                 foreach (var row in doc.DocumentNode.SelectNodes("//div [@id='skill']//tr"))
@@ -322,13 +330,13 @@ namespace ChaPalle
                         if (m_defaultSkillList.ContainsKey(dt[1]))
                         {
                             if (dt[0] == "戦闘")
-                                m_fightSkillList[dt[1]] = dt[2];
+                                fightSkillList[dt[1]] = dt[2];
                             if (m_defaultSkillList[dt[1]] != dt[2])
-                                m_uniqueSkillList[dt[1]] = dt[2]; 
+                                uniqueSkillList[dt[1]] = dt[2]; 
                         }
                         else
                         {
-                            m_uniqueSkillList[dt[1]] = dt[2];
+                            uniqueSkillList[dt[1]] = dt[2];
                         }
                     }
                     catch (Exception ee) { }
@@ -510,15 +518,15 @@ namespace ChaPalle
     //履歴保存のためのクラスの定義
     public class SkillHistoryData
     {
-        public List<string> m_skill = new List<string>();
-        public List<string> m_time = new List<string>();
-        public List<ロール> m_type = new List<ロール>();
+        public List<string> skill = new List<string>();
+        public List<string> time = new List<string>();
+        public List<ロール> type = new List<ロール>();
 
         public void Set(string sk, string ti, ロール ty)
         {
-            this.m_skill.Add(sk);
-            this.m_time.Add(ti);
-            this.m_type.Add(ty);
+            this.skill.Add(sk);
+            this.time.Add(ti);
+            this.type.Add(ty);
         }
     }
 
@@ -526,24 +534,24 @@ namespace ChaPalle
     public class CharacterData
     {
         [JsonProperty("uniqueSkillList")]
-        public Dictionary<string, string> m_uniqueSkillList { get; set; }//探索者固有（技能ポイントを割り振った）の技能のリスト
+        public Dictionary<string, string> uniqueSkillList { get; set; }//探索者固有（技能ポイントを割り振った）の技能のリスト
         [JsonProperty("fightSkillList")]
-        public Dictionary<string, string> m_fightSkillList { get; set; }//戦闘系技能のリスト
+        public Dictionary<string, string> fightSkillList { get; set; }//戦闘系技能のリスト
         [JsonProperty("abilityValue")]
-        public Dictionary<string, string> m_abilityValueList { get; set; }
+        public Dictionary<string, string> abilityValueList { get; set; }
         [JsonProperty("characterInfo")]
-        public Dictionary<string, string> m_sarcherInfoList { get; set; }
+        public Dictionary<string, string> searcherInfoList { get; set; }
     }
 
     [JsonObject("setting")]
     public class SettingData
     {
         [JsonProperty("diceBotFlg")]
-        public int m_useDiceBotFlg { get; set; }
+        public int useDiceBotFlg { get; set; }
         [JsonProperty("topMostFlg")]
-        public bool m_checkTopMostFlg { get; set; }
+        public bool checkTopMostFlg { get; set; }
         [JsonProperty("clipboardMessageFlg")]
-        public bool m_checkMessageFlg { get; set; }
+        public bool checkMessageFlg { get; set; }
 
     }
 

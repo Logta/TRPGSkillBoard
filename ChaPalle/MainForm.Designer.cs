@@ -124,6 +124,8 @@
             this.pictureBoxMemo = new System.Windows.Forms.PictureBox();
             this.richTextBox1Memo = new System.Windows.Forms.RichTextBox();
             this.labelCharaName = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.ClipboardLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -361,14 +363,15 @@
             // チャッパレ形式ToolStripMenuItem
             // 
             this.チャッパレ形式ToolStripMenuItem.Name = "チャッパレ形式ToolStripMenuItem";
-            this.チャッパレ形式ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.チャッパレ形式ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.チャッパレ形式ToolStripMenuItem.Text = "チャッパレ形式";
             this.チャッパレ形式ToolStripMenuItem.Click += new System.EventHandler(this.チャッパレ形式ToolStripMenuItem_Click);
             // 
             // cSVToolStripMenuItem
             // 
+            this.cSVToolStripMenuItem.Enabled = false;
             this.cSVToolStripMenuItem.Name = "cSVToolStripMenuItem";
-            this.cSVToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.cSVToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cSVToolStripMenuItem.Text = "CSV";
             this.cSVToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -384,14 +387,15 @@
             // チャッパレ形式ToolStripMenuItem1
             // 
             this.チャッパレ形式ToolStripMenuItem1.Name = "チャッパレ形式ToolStripMenuItem1";
-            this.チャッパレ形式ToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
+            this.チャッパレ形式ToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.チャッパレ形式ToolStripMenuItem1.Text = "チャッパレ形式";
             this.チャッパレ形式ToolStripMenuItem1.Click += new System.EventHandler(this.チャッパレ形式ToolStripMenuItem1_Click);
             // 
             // cSVToolStripMenuItem1
             // 
+            this.cSVToolStripMenuItem1.Enabled = false;
             this.cSVToolStripMenuItem1.Name = "cSVToolStripMenuItem1";
-            this.cSVToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
+            this.cSVToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.cSVToolStripMenuItem1.Text = "CSV";
             this.cSVToolStripMenuItem1.Click += new System.EventHandler(this.cSVImportToolStripMenuItem_Click);
             // 
@@ -1179,11 +1183,31 @@
             this.labelCharaName.TabIndex = 17;
             this.labelCharaName.Text = "キャラ名：";
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(166, 385);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(71, 12);
+            this.label13.TabIndex = 18;
+            this.label13.Text = "クリップボード：";
+            // 
+            // ClipboardLabel
+            // 
+            this.ClipboardLabel.AutoSize = true;
+            this.ClipboardLabel.Location = new System.Drawing.Point(236, 385);
+            this.ClipboardLabel.Name = "ClipboardLabel";
+            this.ClipboardLabel.Size = new System.Drawing.Size(23, 12);
+            this.ClipboardLabel.TabIndex = 19;
+            this.ClipboardLabel.Text = "---";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 390);
+            this.ClientSize = new System.Drawing.Size(464, 406);
+            this.Controls.Add(this.ClipboardLabel);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.labelCharaName);
             this.Controls.Add(this.tabCthu);
             this.Controls.Add(this.label5);
@@ -1325,6 +1349,8 @@
         private System.Windows.Forms.RichTextBox richTextBox1Memo;
         private System.Windows.Forms.Button buttonPicture;
         private System.Windows.Forms.PictureBox pictureBoxMemo;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label ClipboardLabel;
     }
 }
 

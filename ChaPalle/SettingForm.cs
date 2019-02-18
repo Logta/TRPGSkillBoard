@@ -17,8 +17,8 @@ namespace ChaPalle
         public SettingForm(ref SettingData m_settingData)
         {
             InitializeComponent();
-            checkBoxTopMost.Checked = m_settingData.m_checkTopMostFlg;
-            checkBoxClipCheck.Checked = m_settingData.m_checkMessageFlg;
+            checkBoxTopMost.Checked = m_settingData.checkTopMostFlg;
+            checkBoxClipCheck.Checked = m_settingData.checkMessageFlg;
         }
 
         private void SettingForm_Load(object sender, EventArgs e)
@@ -28,12 +28,12 @@ namespace ChaPalle
 
         private void checkBoxTopMost_CheckedChanged(object sender, EventArgs e)
         {
-            m_sD.m_checkTopMostFlg = checkBoxTopMost.Checked;
+            m_sD.checkTopMostFlg = checkBoxTopMost.Checked;
         }
 
         private void checkBoxClipCheck_CheckedChanged(object sender, EventArgs e)
         {
-            m_sD.m_checkMessageFlg = checkBoxClipCheck.Checked;
+            m_sD.checkMessageFlg = checkBoxClipCheck.Checked;
         }
 
         private void buttonDecide_Click(object sender, EventArgs e)
