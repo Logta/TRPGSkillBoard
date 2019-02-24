@@ -14,7 +14,6 @@ C:\Users\logti\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPa
 C:\Users\logti\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.Properties.Resources.resources
 C:\Users\logti\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.csproj.GenerateResource.Cache
 C:\Users\logti\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\bin\Release\ChaPalle.pdb
-C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.csprojResolveAssemblyReference.cache
 C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.SettingForm.resources
 C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.MainForm.resources
 C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\bin\Release\Newtonsoft.Json.dll
@@ -68,3 +67,16 @@ E:\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Rele
 E:\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.csproj.CopyComplete
 E:\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.exe
 E:\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.pdb
+E:\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.FightControl.resources
+E:\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.SkillControl.resources
+E:\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.SANControl.resources
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.FormSplash.resources
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.FightControl.resources
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.SkillControl.resources
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.SANControl.resources
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.csprojAssemblyReference.cache
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.HistoryAbilityControl.resources
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.csproj.CoreCompileInputs.cache
+C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.csproj.CopyComplete
+E:\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.HistoryAbilityControl.resources
+E:\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.FormSplash.resources

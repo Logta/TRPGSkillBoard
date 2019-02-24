@@ -30,10 +30,10 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.listBox2 = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -43,38 +43,29 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Location = new System.Drawing.Point(14, 15);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(418, 181);
+            this.tabControl1.Size = new System.Drawing.Size(488, 226);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.listBox1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(410, 155);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage1.Size = new System.Drawing.Size(480, 198);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "一時的狂気";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.listBox2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(410, 155);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "不定の狂気";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
+            this.listBox1.ItemHeight = 15;
             this.listBox1.Items.AddRange(new object[] {
             "1   : 気絶あるいは金切り声の発作",
             "2   : パニック状態で逃げだす",
@@ -86,25 +77,28 @@
             "8   : 反響動作あるいは反響言語",
             "9   : 奇妙なもの、異様なものを食べたがる",
             "10 : 昏迷(幼児退行や健忘症)あるいは緊張症"});
-            this.listBox1.Location = new System.Drawing.Point(1, 3);
+            this.listBox1.Location = new System.Drawing.Point(1, 4);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(403, 148);
+            this.listBox1.Size = new System.Drawing.Size(469, 184);
             this.listBox1.TabIndex = 0;
             // 
-            // button1
+            // tabPage2
             // 
-            this.button1.Location = new System.Drawing.Point(192, 195);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "閉じる";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.tabPage2.Controls.Add(this.listBox2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage2.Size = new System.Drawing.Size(480, 200);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "不定の狂気";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 12;
+            this.listBox2.ItemHeight = 15;
             this.listBox2.Items.AddRange(new object[] {
             "1   : 健忘症(親しいもの、知的な技能)あるいは昏迷/緊張症",
             "2   : 激しい恐怖症(逃げ出すことはできるが、恐怖の対象はどこへ行っても現れる)",
@@ -116,18 +110,32 @@
             "8   : 短期的の心因反応(支離滅裂、妄想、常軌を逸した振る舞い、幻覚など)",
             "9   : 一時的偏執症",
             "10 : 強迫観念に憑りつかれた行動(手を洗い続ける、祈る、特定のリズムで歩くなど)"});
-            this.listBox2.Location = new System.Drawing.Point(1, 3);
+            this.listBox2.Location = new System.Drawing.Point(1, 4);
+            this.listBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(403, 148);
+            this.listBox2.Size = new System.Drawing.Size(469, 184);
             this.listBox2.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(224, 244);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(87, 29);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "閉じる";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MadnessTableForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(432, 226);
+            this.ClientSize = new System.Drawing.Size(504, 282);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControl1);
+            this.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MadnessTableForm";
             this.Text = "狂気表";
             this.tabControl1.ResumeLayout(false);

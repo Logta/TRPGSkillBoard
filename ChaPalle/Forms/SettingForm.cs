@@ -12,13 +12,13 @@ namespace ChaPalle
 {
     public partial class SettingForm : Form
     {
-        public SettingData m_sD = new SettingData();
+        public PalletMaster iOData = new PalletMaster();
 
-        public SettingForm(ref SettingData m_settingData)
+        public SettingForm(PalletMaster IOData)
         {
             InitializeComponent();
-            checkBoxTopMost.Checked = m_settingData.checkTopMostFlg;
-            checkBoxClipCheck.Checked = m_settingData.checkMessageFlg;
+            checkBoxTopMost.Checked = IOData.Setting.checkTopMostFlg;
+            checkBoxClipCheck.Checked = IOData.Setting.checkMessageFlg;
         }
 
         private void SettingForm_Load(object sender, EventArgs e)
@@ -28,12 +28,12 @@ namespace ChaPalle
 
         private void checkBoxTopMost_CheckedChanged(object sender, EventArgs e)
         {
-            m_sD.checkTopMostFlg = checkBoxTopMost.Checked;
+            iOData.Setting.checkTopMostFlg = checkBoxTopMost.Checked;
         }
 
         private void checkBoxClipCheck_CheckedChanged(object sender, EventArgs e)
         {
-            m_sD.checkMessageFlg = checkBoxClipCheck.Checked;
+            iOData.Setting.checkMessageFlg = checkBoxClipCheck.Checked;
         }
 
         private void buttonDecide_Click(object sender, EventArgs e)

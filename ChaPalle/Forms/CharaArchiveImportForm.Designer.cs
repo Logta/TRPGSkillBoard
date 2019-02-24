@@ -35,9 +35,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(147, 41);
+            this.button1.Location = new System.Drawing.Point(171, 51);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(87, 29);
             this.button1.TabIndex = 0;
             this.button1.Text = "読取";
             this.button1.UseVisualStyleBackColor = true;
@@ -46,28 +47,31 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 3);
+            this.label1.Location = new System.Drawing.Point(15, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(235, 12);
+            this.label1.Size = new System.Drawing.Size(239, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "以下のテキストボックスにURLを書き込んでください";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(13, 19);
+            this.textBox1.Location = new System.Drawing.Point(15, 24);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(383, 19);
+            this.textBox1.Size = new System.Drawing.Size(446, 23);
             this.textBox1.TabIndex = 2;
             this.textBox1.Text = "http://chara.revinx.net/coc_view/53785";
             // 
             // CharaArchiveImportForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(408, 76);
+            this.ClientSize = new System.Drawing.Size(476, 95);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
+            this.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "CharaArchiveImportForm";
             this.Text = "キャラクターアーカイブインポート";
             this.ResumeLayout(false);

@@ -55,54 +55,96 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CharaBankImportForm.cs">
+    <Compile Include="HistoryAbilityControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HistoryAbilityControl.Designer.cs">
+      <DependentUpon>HistoryAbilityControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SplashForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CharaBankImportForm.Designer.cs">
+    <Compile Include="Forms\SplashForm.Designer.cs">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CharaBankImportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CharaBankImportForm.Designer.cs">
       <DependentUpon>CharaBankImportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CharaArchiveImportForm.cs">
+    <Compile Include="Forms\CharaArchiveImportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CharaArchiveImportForm.Designer.cs">
+    <Compile Include="Forms\CharaArchiveImportForm.Designer.cs">
       <DependentUpon>CharaArchiveImportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MadnessTableForm.cs">
+    <Compile Include="FightControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FightControl.Designer.cs">
+      <DependentUpon>FightControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PalletMaster.cs" />
+    <Compile Include="IOHelper.cs" />
+    <Compile Include="Forms\MadnessTableForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MadnessTableForm.Designer.cs">
+    <Compile Include="Forms\MadnessTableForm.Designer.cs">
       <DependentUpon>MadnessTableForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Proccess.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SettingForm.cs">
+    <Compile Include="SkillControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SkillControl.Designer.cs">
+      <DependentUpon>SkillControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SettingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SettingForm.Designer.cs">
+    <Compile Include="Forms\SettingForm.Designer.cs">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CharaInfoForm.cs">
+    <Compile Include="Forms\InfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CharaInfoForm.Designer.cs">
-      <DependentUpon>CharaInfoForm.cs</DependentUpon>
+    <Compile Include="Forms\InfoForm.Designer.cs">
+      <DependentUpon>InfoForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CharaArchiveImportForm.resx">
+    <Compile Include="SANControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SANControl.Designer.cs">
+      <DependentUpon>SANControl.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="HistoryAbilityControl.resx">
+      <DependentUpon>HistoryAbilityControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SplashForm.resx">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CharaArchiveImportForm.resx">
       <DependentUpon>CharaArchiveImportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CharaBankImportForm.resx">
+    <EmbeddedResource Include="Forms\CharaBankImportForm.resx">
       <DependentUpon>CharaBankImportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MadnessTableForm.resx">
+    <EmbeddedResource Include="FightControl.resx">
+      <DependentUpon>FightControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MadnessTableForm.resx">
       <DependentUpon>MadnessTableForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -115,11 +157,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SettingForm.resx">
+    <EmbeddedResource Include="SkillControl.resx">
+      <DependentUpon>SkillControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CharaInfoForm.resx">
-      <DependentUpon>CharaInfoForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\InfoForm.resx">
+      <DependentUpon>InfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SANControl.resx">
+      <DependentUpon>SANControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -134,6 +182,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\壁紙.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon_129330_512.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\colorPallet.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

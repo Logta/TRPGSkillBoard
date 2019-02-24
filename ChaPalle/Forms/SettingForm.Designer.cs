@@ -36,9 +36,10 @@
             // checkBoxTopMost
             // 
             this.checkBoxTopMost.AutoSize = true;
-            this.checkBoxTopMost.Location = new System.Drawing.Point(13, 13);
+            this.checkBoxTopMost.Location = new System.Drawing.Point(15, 16);
+            this.checkBoxTopMost.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBoxTopMost.Name = "checkBoxTopMost";
-            this.checkBoxTopMost.Size = new System.Drawing.Size(167, 16);
+            this.checkBoxTopMost.Size = new System.Drawing.Size(169, 19);
             this.checkBoxTopMost.TabIndex = 0;
             this.checkBoxTopMost.Text = "アプリを常に最前面に表示する";
             this.checkBoxTopMost.UseVisualStyleBackColor = true;
@@ -46,9 +47,10 @@
             // 
             // buttonDecide
             // 
-            this.buttonDecide.Location = new System.Drawing.Point(105, 226);
+            this.buttonDecide.Location = new System.Drawing.Point(122, 282);
+            this.buttonDecide.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonDecide.Name = "buttonDecide";
-            this.buttonDecide.Size = new System.Drawing.Size(75, 23);
+            this.buttonDecide.Size = new System.Drawing.Size(87, 29);
             this.buttonDecide.TabIndex = 17;
             this.buttonDecide.Text = "決定";
             this.buttonDecide.UseVisualStyleBackColor = true;
@@ -57,9 +59,10 @@
             // checkBoxClipCheck
             // 
             this.checkBoxClipCheck.AutoSize = true;
-            this.checkBoxClipCheck.Location = new System.Drawing.Point(13, 35);
+            this.checkBoxClipCheck.Location = new System.Drawing.Point(15, 44);
+            this.checkBoxClipCheck.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBoxClipCheck.Name = "checkBoxClipCheck";
-            this.checkBoxClipCheck.Size = new System.Drawing.Size(232, 16);
+            this.checkBoxClipCheck.Size = new System.Drawing.Size(233, 19);
             this.checkBoxClipCheck.TabIndex = 18;
             this.checkBoxClipCheck.Text = "クリップボードにコピーするとき確認を表示する";
             this.checkBoxClipCheck.UseVisualStyleBackColor = true;
@@ -67,12 +70,14 @@
             // 
             // SettingForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(331, 326);
             this.Controls.Add(this.checkBoxClipCheck);
             this.Controls.Add(this.buttonDecide);
             this.Controls.Add(this.checkBoxTopMost);
+            this.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SettingForm";
             this.Text = "設定";
             this.Load += new System.EventHandler(this.SettingForm_Load);
