@@ -80,3 +80,11 @@ C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPal
 C:\Users\user\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.csproj.CopyComplete
 E:\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.HistoryAbilityControl.resources
 E:\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.FormSplash.resources
+E:\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\bin\Release\MetroFramework.Design.dll
+E:\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\bin\Release\MetroFramework.dll
+E:\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\bin\Release\MetroFramework.Fonts.dll
+E:\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.MemoControl.resources
+E:\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle._1InputForm.resources
+E:\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.memoTabControl.resources
+E:\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.InfoMemoForm.resources
+E:\Dropbox\趣味\boardGame\プログラム\ChatPalle\ChaPalle\ChaPalle\obj\Release\ChaPalle.MinimumForm.resources

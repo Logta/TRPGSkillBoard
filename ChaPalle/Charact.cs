@@ -1,56 +1,14 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
-using System.Collections;
 
-using Newtonsoft.Json;
-using System.Net;
-using System.Threading;
-
-/// <summary>
-/// string 型の拡張メソッドを管理するクラス
-/// </summary>
-public static partial class StringExtensions
+namespace PalletMaster
 {
-    /// <summary>
-    /// 文字列が指定されたいずれかの文字列と等しいかどうかを返します
-    /// </summary>
-    public static bool IsAny(this string self, params string[] values)
-    {
-        return values.Any(c => c == self);
-    }
-}
-namespace ChaPalle
-{
-    static class Program
-    {
-        /// <summary>
-        /// アプリケーションのメイン エントリ ポイントです。
-        /// </summary>
-        [STAThread]
-        static void Main()
-        {
-            Searcher searcher = new Searcher();
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
-            FormSplash fs = new FormSplash();
-            fs.Show();
-            fs.Refresh();
-            Thread.Sleep(3000);//時間のかかる処理
-            fs.Close();
-
-            Application.Run(new MainForm(searcher));
-        }
-    }
-
     public enum ロール { 技能, 能力 };
 
     public class Searcher : Character
@@ -62,24 +20,25 @@ namespace ChaPalle
             DefaultSkillList = new Dictionary<string, string>();
 
             abilityValueList = new Dictionary<string, string>()//探索者の能力値のリスト
-                { { "STR", ""}, { "CON", ""}, { "POW", ""}, { "DEX", ""}, { "APP", ""}, { "SIZ", ""}, { "INT", ""}, { "EDU", ""}, { "HP", ""}, { "MP", ""} };
+            { { "STR", ""}, { "CON", ""}, { "POW", ""}, { "DEX", ""}, { "APP", ""}, { "SIZ", ""}, { "INT", ""}, { "EDU", ""}, { "HP", ""}, { "MP", ""} };
             searcherInfoList = new Dictionary<string, string>()      //探索者情報のリスト
-                { { "キャラクター名", ""}, { "HP", ""}, { "MP", ""}, { "SAN", ""},{ "ダメージボーナス", ""}};
+            { { "キャラクター名", ""}, { "HP", ""}, { "MP", ""}, { "SAN", ""},{ "ダメージボーナス", ""}};
             uniqueSkillList = new Dictionary<string, string>();
             fightSkillList = new Dictionary<string, string>();
         }
-        
+
         public void SetDefaultSkills(Dictionary<string, string> defaultSkills)
         {
             DefaultSkillList = defaultSkills;
         }
-        
+
         public void SetSearcher(Character chara)
         {
             abilityValueList = chara.abilityValueList;
             searcherInfoList = chara.searcherInfoList;
             uniqueSkillList = chara.uniqueSkillList;
             fightSkillList = chara.fightSkillList;
+            backgroundString = chara.backgroundString;
         }
 
     }
@@ -112,6 +71,8 @@ namespace ChaPalle
         public Dictionary<string, string> abilityValueList { get; set; }
         [JsonProperty("characterInfo")]
         public Dictionary<string, string> searcherInfoList { get; set; }
+        [JsonProperty("characterBackground")]
+        public string backgroundString { get; set; }
     }
 
     [JsonObject("setting")]
@@ -123,6 +84,32 @@ namespace ChaPalle
         public bool checkTopMostFlg { get; set; }
         [JsonProperty("clipboardMessageFlg")]
         public bool checkMessageFlg { get; set; }
+        [JsonProperty("webhookURL")]
+        public string webhookURL { get; set; }
+        [JsonProperty("userName")]
+        public string userName { get; set; }
+        [JsonProperty("useWebhookFlg")]
+        public bool useWebhookFlg { get; set; }
+        [JsonProperty("bcdiceAPIURL")]
+        public string bcdiceAPIURL { get; set; }
+        [JsonProperty("useBCDiceAPIFlg")]
+        public bool useBCDiceAPIFlg { get; set; }
+    }
+
+    [JsonObject("fightDamage")]
+    public class FightDamage
+    {
+        [JsonProperty("fightSkillDamage")]
+        public Dictionary<string, string> fightSkillDamage { get; set; }
+    }
+
+    [JsonObject("memo")]
+    public class Memo
+    {
+        [JsonProperty("memoString")]
+        public List<string> memoList { get; set; }
+        [JsonProperty("tabString")]
+        public List<string> tabList { get; set; }
     }
 
     public class ListViewItemComparer : IComparer
@@ -232,7 +219,7 @@ namespace ChaPalle
         public ListViewItemComparer()
         {
             _column = 0;
-            _order = SortOrder.Ascending;
+            _order = System.Windows.Forms.SortOrder.Ascending;
             _mode = ComparerMode.String;
         }
 

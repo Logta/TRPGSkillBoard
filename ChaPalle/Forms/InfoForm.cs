@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ChaPalle
+namespace PalletMaster
 {
     public partial class CharaInfoForm : Form
     {
@@ -50,6 +50,15 @@ namespace ChaPalle
             Searcher.abilityValueList["EDU"] = textEDU.Text;
 
             this.Close();
+        }
+
+        private void charaMemoButton_Click(object sender, EventArgs e)
+        {
+            var u_form = new InfoMemoForm(Searcher.backgroundString);
+            TopMost = false;
+            u_form.ShowDialog();
+
+            Searcher.backgroundString = u_form.infoMemo;
         }
     }
 }

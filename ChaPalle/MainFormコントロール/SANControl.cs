@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ChaPalle
+namespace PalletMaster
 {
     public partial class SANControl : UserControl
     {
@@ -30,7 +30,7 @@ namespace ChaPalle
         {
             string setSanCheck = "SANチェック文：" + PalletMaster.GetBotDiceText(textSANValue.Text);
             label7.Text = setSanCheck;
-            PalletMaster.SetClipBoard(PalletMaster.GetBotDiceText(textSANValue.Text));
+            PalletMaster.SetTextRole(PalletMaster.GetBotDiceText(textSANValue.Text, "SANチェック"));
         }
 
         //「SAN増減→判定」を押したときの制御
@@ -39,7 +39,7 @@ namespace ChaPalle
             string setSanCheck = PalletMaster.Setting.useDiceBotFlg == 0 ? comboBox1.Text + "d" + comboBox2.Text
                 : "/r " + comboBox1.Text + "d" + comboBox2.Text;
             label8.Text = setSanCheck;
-            PalletMaster.SetClipBoard(setSanCheck);
+            PalletMaster.SetTextRole(setSanCheck);
         }
 
         //「SANチェック→+」を押したときの制御
@@ -65,7 +65,7 @@ namespace ChaPalle
                         "不定の狂気",
                         MessageBoxButtons.OK);
 
-                    var m_setText = PalletMaster.Setting.useDiceBotFlg == 0 ? "1d10" : "/r 1d10";
+                    var m_setText = PalletMaster.Setting.useDiceBotFlg == 0 ? "1d10 不定の狂気" : "/r 1d10";
 
                     Clipboard.SetText(m_setText);
                 }

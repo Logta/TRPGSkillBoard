@@ -1,4 +1,4 @@
-﻿namespace ChaPalle
+﻿namespace PalletMaster
 {
     partial class SANControl
     {
@@ -122,7 +122,7 @@
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Location = new System.Drawing.Point(29, 137);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(374, 100);
+            this.groupBox4.Size = new System.Drawing.Size(457, 100);
             this.groupBox4.TabIndex = 28;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "SAN増減";
@@ -197,7 +197,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 85);
+            this.label8.Location = new System.Drawing.Point(9, 73);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(29, 12);
             this.label8.TabIndex = 5;
@@ -209,7 +209,7 @@
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Location = new System.Drawing.Point(29, 48);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(374, 83);
+            this.groupBox3.Size = new System.Drawing.Size(457, 83);
             this.groupBox3.TabIndex = 27;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "SANチェック";
@@ -235,8 +235,7 @@
             // 
             // SANControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.buttonMadnessTable);
             this.Controls.Add(this.comboBoxSANValue);
             this.Controls.Add(this.buttonSANDown);
@@ -246,7 +245,7 @@
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Name = "SANControl";
-            this.Size = new System.Drawing.Size(432, 296);
+            this.Size = new System.Drawing.Size(489, 335);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);

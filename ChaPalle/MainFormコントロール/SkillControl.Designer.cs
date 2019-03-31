@@ -1,4 +1,4 @@
-﻿namespace ChaPalle
+﻿namespace PalletMaster
 {
     partial class SkillControl
     {
@@ -34,9 +34,6 @@
             this.comboBoxOppChara = new System.Windows.Forms.ComboBox();
             this.buttonOppCheck = new System.Windows.Forms.Button();
             this.textOppEnemy = new System.Windows.Forms.TextBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.textResult = new System.Windows.Forms.TextBox();
-            this.buttonClipboardCopy = new System.Windows.Forms.Button();
             this.listViewSkill = new System.Windows.Forms.ListView();
             this.skill = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.value = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -56,10 +53,19 @@
             this.textSerch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonClipboardCopy = new System.Windows.Forms.Button();
+            this.textResult = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.correctionSetButton = new System.Windows.Forms.CheckBox();
+            this.correctionComboBox = new System.Windows.Forms.ComboBox();
+            this.correctionValueComboBox = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox6.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox6
@@ -69,9 +75,9 @@
             this.groupBox6.Controls.Add(this.comboBoxOppChara);
             this.groupBox6.Controls.Add(this.buttonOppCheck);
             this.groupBox6.Controls.Add(this.textOppEnemy);
-            this.groupBox6.Location = new System.Drawing.Point(218, 171);
+            this.groupBox6.Location = new System.Drawing.Point(250, 96);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(200, 42);
+            this.groupBox6.Size = new System.Drawing.Size(248, 58);
             this.groupBox6.TabIndex = 29;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "対抗ロール";
@@ -79,7 +85,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(58, 21);
+            this.label4.Location = new System.Drawing.Point(93, 25);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 12);
             this.label4.TabIndex = 19;
@@ -88,7 +94,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 21);
+            this.label3.Location = new System.Drawing.Point(12, 25);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(17, 12);
             this.label3.TabIndex = 18;
@@ -115,15 +121,15 @@
             "SIZ",
             "INT",
             "EDU"});
-            this.comboBoxOppChara.Location = new System.Drawing.Point(89, 17);
+            this.comboBoxOppChara.Location = new System.Drawing.Point(128, 18);
             this.comboBoxOppChara.Name = "comboBoxOppChara";
-            this.comboBoxOppChara.Size = new System.Drawing.Size(48, 20);
+            this.comboBoxOppChara.Size = new System.Drawing.Size(56, 20);
             this.comboBoxOppChara.TabIndex = 15;
             this.comboBoxOppChara.Text = "STR";
             // 
             // buttonOppCheck
             // 
-            this.buttonOppCheck.Location = new System.Drawing.Point(142, 16);
+            this.buttonOppCheck.Location = new System.Drawing.Point(190, 18);
             this.buttonOppCheck.Name = "buttonOppCheck";
             this.buttonOppCheck.Size = new System.Drawing.Size(52, 23);
             this.buttonOppCheck.TabIndex = 14;
@@ -133,48 +139,20 @@
             // 
             // textOppEnemy
             // 
-            this.textOppEnemy.Location = new System.Drawing.Point(23, 17);
+            this.textOppEnemy.Location = new System.Drawing.Point(35, 19);
             this.textOppEnemy.Name = "textOppEnemy";
-            this.textOppEnemy.Size = new System.Drawing.Size(31, 19);
+            this.textOppEnemy.Size = new System.Drawing.Size(52, 19);
             this.textOppEnemy.TabIndex = 13;
             this.textOppEnemy.Text = "10";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.textResult);
-            this.groupBox5.Controls.Add(this.buttonClipboardCopy);
-            this.groupBox5.Location = new System.Drawing.Point(218, 219);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(200, 69);
-            this.groupBox5.TabIndex = 28;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "結果";
-            // 
-            // textResult
-            // 
-            this.textResult.Location = new System.Drawing.Point(9, 18);
-            this.textResult.Name = "textResult";
-            this.textResult.Size = new System.Drawing.Size(171, 19);
-            this.textResult.TabIndex = 7;
-            // 
-            // buttonClipboardCopy
-            // 
-            this.buttonClipboardCopy.Location = new System.Drawing.Point(66, 40);
-            this.buttonClipboardCopy.Name = "buttonClipboardCopy";
-            this.buttonClipboardCopy.Size = new System.Drawing.Size(114, 23);
-            this.buttonClipboardCopy.TabIndex = 9;
-            this.buttonClipboardCopy.Text = "クリップボードにコピー";
-            this.buttonClipboardCopy.UseVisualStyleBackColor = true;
-            this.buttonClipboardCopy.Click += new System.EventHandler(this.buttonClipboardCopy_Click);
             // 
             // listViewSkill
             // 
             this.listViewSkill.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.skill,
             this.value});
-            this.listViewSkill.Location = new System.Drawing.Point(14, 39);
+            this.listViewSkill.Location = new System.Drawing.Point(3, 39);
             this.listViewSkill.Name = "listViewSkill";
-            this.listViewSkill.Size = new System.Drawing.Size(198, 202);
+            this.listViewSkill.Size = new System.Drawing.Size(241, 299);
             this.listViewSkill.TabIndex = 23;
             this.listViewSkill.UseCompatibleStateImageBehavior = false;
             this.listViewSkill.View = System.Windows.Forms.View.Details;
@@ -184,11 +162,12 @@
             // skill
             // 
             this.skill.Text = "技能";
-            this.skill.Width = 120;
+            this.skill.Width = 136;
             // 
             // value
             // 
             this.value.Text = "値";
+            this.value.Width = 85;
             // 
             // buttonCSV
             // 
@@ -233,16 +212,16 @@
             this.groupBox2.Controls.Add(this.buttonTemplete1Copy);
             this.groupBox2.Controls.Add(this.buttonTempleteUserCopy);
             this.groupBox2.Controls.Add(this.textTempleteUser);
-            this.groupBox2.Location = new System.Drawing.Point(218, 96);
+            this.groupBox2.Location = new System.Drawing.Point(250, 222);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 70);
+            this.groupBox2.Size = new System.Drawing.Size(248, 70);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "定型文";
             // 
             // buttonTemplete3Copy
             // 
-            this.buttonTemplete3Copy.Location = new System.Drawing.Point(143, 43);
+            this.buttonTemplete3Copy.Location = new System.Drawing.Point(190, 44);
             this.buttonTemplete3Copy.Name = "buttonTemplete3Copy";
             this.buttonTemplete3Copy.Size = new System.Drawing.Size(52, 23);
             this.buttonTemplete3Copy.TabIndex = 16;
@@ -252,7 +231,7 @@
             // 
             // buttonTemplete2Copy
             // 
-            this.buttonTemplete2Copy.Location = new System.Drawing.Point(85, 43);
+            this.buttonTemplete2Copy.Location = new System.Drawing.Point(132, 44);
             this.buttonTemplete2Copy.Name = "buttonTemplete2Copy";
             this.buttonTemplete2Copy.Size = new System.Drawing.Size(52, 23);
             this.buttonTemplete2Copy.TabIndex = 15;
@@ -262,7 +241,7 @@
             // 
             // buttonTemplete1Copy
             // 
-            this.buttonTemplete1Copy.Location = new System.Drawing.Point(27, 43);
+            this.buttonTemplete1Copy.Location = new System.Drawing.Point(74, 44);
             this.buttonTemplete1Copy.Name = "buttonTemplete1Copy";
             this.buttonTemplete1Copy.Size = new System.Drawing.Size(52, 23);
             this.buttonTemplete1Copy.TabIndex = 14;
@@ -272,7 +251,7 @@
             // 
             // buttonTempleteUserCopy
             // 
-            this.buttonTempleteUserCopy.Location = new System.Drawing.Point(143, 14);
+            this.buttonTempleteUserCopy.Location = new System.Drawing.Point(190, 15);
             this.buttonTempleteUserCopy.Name = "buttonTempleteUserCopy";
             this.buttonTempleteUserCopy.Size = new System.Drawing.Size(52, 23);
             this.buttonTempleteUserCopy.TabIndex = 12;
@@ -284,7 +263,7 @@
             // 
             this.textTempleteUser.Location = new System.Drawing.Point(6, 18);
             this.textTempleteUser.Name = "textTempleteUser";
-            this.textTempleteUser.Size = new System.Drawing.Size(131, 19);
+            this.textTempleteUser.Size = new System.Drawing.Size(178, 19);
             this.textTempleteUser.TabIndex = 13;
             // 
             // textValue
@@ -298,16 +277,16 @@
             // 
             this.groupBox1.Controls.Add(this.buttonSerch);
             this.groupBox1.Controls.Add(this.textSerch);
-            this.groupBox1.Location = new System.Drawing.Point(218, 39);
+            this.groupBox1.Location = new System.Drawing.Point(250, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 51);
+            this.groupBox1.Size = new System.Drawing.Size(248, 51);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "検索";
             // 
             // buttonSerch
             // 
-            this.buttonSerch.Location = new System.Drawing.Point(143, 14);
+            this.buttonSerch.Location = new System.Drawing.Point(190, 16);
             this.buttonSerch.Name = "buttonSerch";
             this.buttonSerch.Size = new System.Drawing.Size(52, 23);
             this.buttonSerch.TabIndex = 11;
@@ -319,7 +298,7 @@
             // 
             this.textSerch.Location = new System.Drawing.Point(10, 18);
             this.textSerch.Name = "textSerch";
-            this.textSerch.Size = new System.Drawing.Size(127, 19);
+            this.textSerch.Size = new System.Drawing.Size(174, 19);
             this.textSerch.TabIndex = 11;
             this.textSerch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textSerch_KeyPress);
             // 
@@ -334,7 +313,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(137, 251);
+            this.buttonDelete.Location = new System.Drawing.Point(169, 344);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 23);
             this.buttonDelete.TabIndex = 24;
@@ -342,10 +321,120 @@
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
+            // buttonClipboardCopy
+            // 
+            this.buttonClipboardCopy.Location = new System.Drawing.Point(128, 42);
+            this.buttonClipboardCopy.Name = "buttonClipboardCopy";
+            this.buttonClipboardCopy.Size = new System.Drawing.Size(114, 23);
+            this.buttonClipboardCopy.TabIndex = 9;
+            this.buttonClipboardCopy.Text = "Webhookに送信";
+            this.buttonClipboardCopy.UseVisualStyleBackColor = true;
+            this.buttonClipboardCopy.Click += new System.EventHandler(this.buttonClipboardCopy_Click);
+            // 
+            // textResult
+            // 
+            this.textResult.Location = new System.Drawing.Point(9, 18);
+            this.textResult.Name = "textResult";
+            this.textResult.Size = new System.Drawing.Size(233, 19);
+            this.textResult.TabIndex = 7;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.textResult);
+            this.groupBox5.Controls.Add(this.buttonClipboardCopy);
+            this.groupBox5.Location = new System.Drawing.Point(250, 298);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(248, 69);
+            this.groupBox5.TabIndex = 28;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "結果";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.correctionSetButton);
+            this.groupBox3.Controls.Add(this.correctionComboBox);
+            this.groupBox3.Controls.Add(this.correctionValueComboBox);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Location = new System.Drawing.Point(250, 160);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(248, 56);
+            this.groupBox3.TabIndex = 30;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "補正";
+            // 
+            // correctionSetButton
+            // 
+            this.correctionSetButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.correctionSetButton.AutoSize = true;
+            this.correctionSetButton.Location = new System.Drawing.Point(190, 21);
+            this.correctionSetButton.Name = "correctionSetButton";
+            this.correctionSetButton.Size = new System.Drawing.Size(39, 22);
+            this.correctionSetButton.TabIndex = 21;
+            this.correctionSetButton.Text = "設定";
+            this.correctionSetButton.UseVisualStyleBackColor = true;
+            this.correctionSetButton.Click += new System.EventHandler(this.correctionSetButton_Click);
+            // 
+            // correctionComboBox
+            // 
+            this.correctionComboBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "STR",
+            "CON",
+            "POW",
+            "DEX",
+            "APP",
+            "SIZ",
+            "INT",
+            "EDU"});
+            this.correctionComboBox.FormattingEnabled = true;
+            this.correctionComboBox.Items.AddRange(new object[] {
+            "+",
+            "-"});
+            this.correctionComboBox.Location = new System.Drawing.Point(132, 22);
+            this.correctionComboBox.Name = "correctionComboBox";
+            this.correctionComboBox.Size = new System.Drawing.Size(35, 20);
+            this.correctionComboBox.TabIndex = 20;
+            this.correctionComboBox.Text = "-";
+            // 
+            // correctionValueComboBox
+            // 
+            this.correctionValueComboBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "STR",
+            "CON",
+            "POW",
+            "DEX",
+            "APP",
+            "SIZ",
+            "INT",
+            "EDU"});
+            this.correctionValueComboBox.FormattingEnabled = true;
+            this.correctionValueComboBox.Items.AddRange(new object[] {
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60",
+            "70"});
+            this.correctionValueComboBox.Location = new System.Drawing.Point(61, 22);
+            this.correctionValueComboBox.Name = "correctionValueComboBox";
+            this.correctionValueComboBox.Size = new System.Drawing.Size(56, 20);
+            this.correctionValueComboBox.TabIndex = 20;
+            this.correctionValueComboBox.Text = "0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 26);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 12);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "補正値";
+            // 
             // SkillControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.listViewSkill);
@@ -359,15 +448,17 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonDelete);
             this.Name = "SkillControl";
-            this.Size = new System.Drawing.Size(432, 296);
+            this.Size = new System.Drawing.Size(525, 372);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -381,9 +472,6 @@
         private System.Windows.Forms.ComboBox comboBoxOppChara;
         private System.Windows.Forms.Button buttonOppCheck;
         private System.Windows.Forms.TextBox textOppEnemy;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox textResult;
-        private System.Windows.Forms.Button buttonClipboardCopy;
         private System.Windows.Forms.ListView listViewSkill;
         private System.Windows.Forms.ColumnHeader skill;
         private System.Windows.Forms.ColumnHeader value;
@@ -403,5 +491,13 @@
         private System.Windows.Forms.TextBox textSerch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Button buttonClipboardCopy;
+        private System.Windows.Forms.TextBox textResult;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox correctionValueComboBox;
+        private System.Windows.Forms.ComboBox correctionComboBox;
+        private System.Windows.Forms.CheckBox correctionSetButton;
     }
 }

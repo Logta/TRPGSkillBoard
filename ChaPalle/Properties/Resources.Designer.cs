@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ChaPalle.Properties {
+namespace PalletMaster.Properties {
     using System;
     
     

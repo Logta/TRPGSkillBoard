@@ -1,4 +1,4 @@
-﻿namespace ChaPalle
+﻿namespace PalletMaster
 {
     partial class MadnessTableForm
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MadnessTableForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -53,11 +54,11 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.listBox1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage1.Size = new System.Drawing.Size(480, 198);
+            this.tabPage1.Size = new System.Drawing.Size(480, 200);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "一時的狂気";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -65,7 +66,7 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
+            this.listBox1.ItemHeight = 12;
             this.listBox1.Items.AddRange(new object[] {
             "1   : 気絶あるいは金切り声の発作",
             "2   : パニック状態で逃げだす",
@@ -98,7 +99,7 @@
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 15;
+            this.listBox2.ItemHeight = 12;
             this.listBox2.Items.AddRange(new object[] {
             "1   : 健忘症(親しいもの、知的な技能)あるいは昏迷/緊張症",
             "2   : 激しい恐怖症(逃げ出すことはできるが、恐怖の対象はどこへ行っても現れる)",
@@ -129,12 +130,12 @@
             // 
             // MadnessTableForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(504, 282);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControl1);
-            this.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Font = new System.Drawing.Font("UD デジタル 教科書体 N-B", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MadnessTableForm";
             this.Text = "狂気表";

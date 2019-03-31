@@ -8,17 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Net.Http;
+using Newtonsoft.Json;
 
-namespace ChaPalle
+namespace PalletMaster
 {
     public partial class SkillControl : UserControl
     {
         PalletMaster PalletMaster = new PalletMaster();
         Proccess Proccesser = new Proccess();
 
+        bool correctionFlg = false;
+
         public SkillControl()
         {
             InitializeComponent();
+            correctionComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            correctionSetButton.Checked = correctionFlg;
         }
 
         public void SetPalletMaster(PalletMaster palletMaster)
@@ -29,18 +35,39 @@ namespace ChaPalle
         //「クリップボードにコピー」を押したときの制御
         private void buttonClipboardCopy_Click(object sender, EventArgs e)
         {
-            string tValue = textResult.Text;
-            PalletMaster.SetClipBoard(tValue);
+            //BCDice-APIにGET通信してダイスを振る
+            var result = new Proccess().SendGetBCDice_API(textResult.Text, 
+                PalletMaster.Setting.bcdiceAPIURL);
 
-            //項目が１つも選択されていない場合
-            if (listViewSkill.SelectedItems.Count == 0)
-                return;//処理を抜ける
+            var url = PalletMaster.Setting.webhookURL;
+            {
+                var hc = new HttpClient();
+                var json = JsonConvert.SerializeObject(new
+                {
+                    content = textResult.Text.Length == 0 ?
+                            DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") :
+                            textResult.Text,
+                });
 
-            ListViewItem itemx = new ListViewItem();
-            itemx = listViewSkill.SelectedItems[0];
-
-            PalletMaster.SetSkillHistory(itemx.Text, ロール.技能);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var res = hc.PostAsync(url, content).Result;
+                Console.WriteLine("投稿しました");
+            }
         }
+
+        //{
+        //    string tValue = textResult.Text;
+        //    PalletMaster.SetClipBoard(tValue);
+
+        //    //項目が１つも選択されていない場合
+        //    if (listViewSkill.SelectedItems.Count == 0)
+        //        return;//処理を抜ける
+
+        //    ListViewItem itemx = new ListViewItem();
+        //    itemx = listViewSkill.SelectedItems[0];
+
+        //    PalletMaster.SetSkillHistory(itemx.Text, ロール.技能);
+        //}
 
         //「追加」を押したときの制御
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -88,7 +115,7 @@ namespace ChaPalle
             itemx = listViewSkill.SelectedItems[0];
 
             //選択されているアイテムを取得する
-            textResult.Text = PalletMaster.GetBotDiceText(itemx.SubItems[1].Text);// +" " + itemx.Text;
+            textResult.Text = PalletMaster.GetBotDiceText(correctValue(itemx.SubItems[1].Text), itemx.Text);// +" " + itemx.Text;
 
             //技能と値のテキストボックスに技能名、技能値を入れる
             textSkill.Text = itemx.Text;
@@ -120,9 +147,12 @@ namespace ChaPalle
         {
             var value = toSearchSkillValue(textSerch.Text);
             if (value is null) return;
-            
-            PalletMaster.SetClipBoard(PalletMaster.GetBotDiceText(value));
-            textResult.Text = PalletMaster.GetBotDiceText(value);
+
+            value = correctValue(value);
+
+            PalletMaster.SetTextRole(value);
+
+            textResult.Text = PalletMaster.GetBotDiceText(value, textSerch.Text);
             PalletMaster.SetSkillHistory(textSerch.Text, ロール.技能);
         }
 
@@ -185,8 +215,11 @@ namespace ChaPalle
                 var value = toSearchSkillValue(textSerch.Text);
                 if (value is null) return;
 
-                PalletMaster.SetClipBoard(PalletMaster.GetBotDiceText(value));
-                textResult.Text = PalletMaster.GetBotDiceText(value);
+                value = correctValue(value);
+
+                PalletMaster.SetTextRole(value);
+
+                textResult.Text = PalletMaster.GetBotDiceText(value, textSerch.Text);
                 PalletMaster.SetSkillHistory(textSerch.Text, ロール.技能);
             }
         }
@@ -194,25 +227,25 @@ namespace ChaPalle
         //ユーザー指定の文をクリップボードにコピー
         private void buttonTempleteUserCopy_Click(object sender, EventArgs e)
         {
-            PalletMaster.SetClipBoard((textTempleteUser.Text));
+            PalletMaster.SetTextRole((textTempleteUser.Text));
         }
 
         //ダイス1つの文をクリップボードにコピー
         private void buttonTemplete1Copy_Click(object sender, EventArgs e)
         {
-            PalletMaster.SetClipBoard((buttonTemplete1Copy.Text));
+            PalletMaster.SetTextRole((buttonTemplete1Copy.Text));
         }
 
         //ダイス2つの文をクリップボードにコピー
         private void buttonTemplete2Copy_Click(object sender, EventArgs e)
         {
-            PalletMaster.SetClipBoard((buttonTemplete2Copy.Text));
+            PalletMaster.SetTextRole((buttonTemplete2Copy.Text));
         }
 
         //ダイス3つの文をクリップボードにコピー
         private void buttonTemplete3Copy_Click(object sender, EventArgs e)
         {
-            PalletMaster.SetClipBoard((buttonTemplete3Copy.Text));
+            PalletMaster.SetTextRole((buttonTemplete3Copy.Text));
         }
 
         //対抗ロール
@@ -221,17 +254,18 @@ namespace ChaPalle
             int m_buff;
             if (int.TryParse(comboBoxOppChara.Text, out m_buff))
             {
-                int value = 50 + (m_buff - int.Parse(textOppEnemy.Text)) * 5;
-                Convert.ToString(int.Parse(PalletMaster.Searcher.searcherInfoList["SAN"]) + 1);
-                PalletMaster.SetClipBoard(PalletMaster.GetBotDiceText(buttonTemplete1Copy.Text));
+                var value = 50 + (m_buff - int.Parse(textOppEnemy.Text)) * 5;
+                value = correctValue(value);
+                PalletMaster.SetTextRole(PalletMaster.GetBotDiceText(Convert.ToString(value), "対抗ロール"));
             }
             else
             {
                 try
                 {
-                    int value = 50 + (int.Parse(PalletMaster.Searcher.abilityValueList[comboBoxOppChara.Text]) -
+                    var value = 50 + (int.Parse(PalletMaster.Searcher.abilityValueList[comboBoxOppChara.Text]) -
                         int.Parse(textOppEnemy.Text)) * 5;
-                    PalletMaster.SetClipBoard(PalletMaster.GetBotDiceText(Convert.ToString(value)));
+                    value = correctValue(value);
+                    PalletMaster.SetTextRole(PalletMaster.GetBotDiceText(Convert.ToString(value), "対抗ロール"));
                 }
                 catch (Exception ee)
                 {
@@ -260,8 +294,8 @@ namespace ChaPalle
             itemx = listViewSkill.SelectedItems[0];
 
             //選択されているアイテムを取得する
-            string tValue = PalletMaster.GetBotDiceText(itemx.SubItems[1].Text);
-            PalletMaster.SetClipBoard(tValue);
+            var tValue = PalletMaster.GetBotDiceText(correctValue(itemx.SubItems[1].Text), itemx.Text);
+            PalletMaster.SetTextRole(tValue);
             PalletMaster.SetSkillHistory(itemx.Text, ロール.技能);
         }
 
@@ -279,6 +313,57 @@ namespace ChaPalle
                 buttonTemplete2Copy.Text = "/r 2d";
                 buttonTemplete3Copy.Text = "/r 3d";
             }
+        }
+
+        private void correctionSetButton_Click(object sender, EventArgs e)
+        {
+            correctionSetButton.Checked = correctionFlg = !correctionFlg;
+        }
+
+        private string correctValue(string value)
+        {
+            var tempValue = 0;
+
+            if (correctionFlg)
+            {
+                int tempCorrect, tempCorrectLabel;
+                if (int.TryParse(value, out tempCorrect) && int.TryParse(correctionValueComboBox.Text, out tempCorrectLabel))
+                {
+                    if (correctionComboBox.Text == "+")
+                        tempValue = tempCorrect + tempCorrectLabel;
+                    else
+                        tempValue = tempCorrect - tempCorrectLabel;
+                }
+            }
+            else
+                return value;
+
+            if (tempValue <= 0) return "0";
+            else if (tempValue >= 100) return "100";
+            else return tempValue.ToString();
+        }
+
+        private int correctValue(int value)
+        {
+            var tempValue = 0;
+
+            if (correctionFlg)
+            {
+                int tempCorrectLabel;
+                if (int.TryParse(correctionValueComboBox.Text, out tempCorrectLabel))
+                {
+                    if (correctionComboBox.Text == "+")
+                        tempValue = value + tempCorrectLabel;
+                    else
+                        tempValue = value - tempCorrectLabel;
+                }
+            }
+            else
+                return value;
+
+            if (tempValue <= 0) return 0;
+            else if (tempValue >= 100) return 100;
+            else return tempValue;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ChaPalle
+namespace PalletMaster
 {
     class IOHelper
     {
@@ -216,11 +217,16 @@ namespace ChaPalle
 
             return searcher;
         }
-
+        
+        //キャラクターアーカイブスからキャラクターデータを読込
         public Searcher charaArchiveHTMLRead(string m_URL)
         {
             var searcher = new Searcher();
+            var Proccesser = new Proccess();
             var wc = new WebClient();
+
+            var defaultSkillList = Proccesser.ReadCSV(System.AppDomain.CurrentDomain.BaseDirectory + "defaultSkill.csv");
+            searcher.SetDefaultSkills(defaultSkillList);
 
             try
             {
@@ -301,6 +307,90 @@ namespace ChaPalle
             }
 
             return searcher;
+        }
+
+        //セッティングデータを保存
+        public void toSaveSetting(Setting m_sData)
+        {
+            //ファイルに書き込む
+            System.IO.StreamWriter sw = new System.IO.StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "setting.json");
+            string json = JsonConvert.SerializeObject(m_sData);//, Formatting.Indented);
+            sw.Write(json);
+            //閉じる
+            sw.Close();
+        }
+
+        //セッティングデータを読込
+        public Setting toLoadSetting()
+        {
+            try
+            {
+                string json = System.IO.File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "setting.json");
+                return JsonConvert.DeserializeObject<Setting>(json);
+            }
+            catch (Exception e)
+            {
+                Setting m_sData = new Setting();
+
+                m_sData.checkMessageFlg = true;
+                m_sData.checkTopMostFlg = true;
+                m_sData.useDiceBotFlg = 0;
+
+                return m_sData;
+            }
+        }
+
+        public FightDamage ReadFightDamageJson()
+        {
+            string json = System.IO.File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "fightSkill.json");
+            return JsonConvert.DeserializeObject<FightDamage>(json);
+        }
+
+        //セッティングデータを保存
+        public void SaveMemo(Memo memo)
+        {
+            //SaveFileDialogクラスのインスタンスを作成
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "pmmファイル(*.pmm)|*.pmm|すべてのファイル(*.*)|*.*";
+            //ダイアログを表示する
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.Stream stream;
+                stream = sfd.OpenFile();
+                if (stream != null)
+                {
+                    //ファイルに書き込む
+                    System.IO.StreamWriter sw = new System.IO.StreamWriter(stream, Encoding.GetEncoding("Shift_JIS"));
+                    string json = JsonConvert.SerializeObject(memo);//, Formatting.Indented);
+                    sw.Write(json);
+                    //閉じる
+                    sw.Close();
+                }
+                stream.Close();
+            }
+        }
+
+        //メモデータを読込
+        public Memo LoadMemo()
+        {
+            var al = new List<string>();
+            OpenFileDialog ofDialog = new OpenFileDialog();
+
+            // デフォルトのフォルダを指定する
+            ofDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            //ダイアログのタイトルを指定する
+            ofDialog.Title = "PMMファイル読み込み";
+            ofDialog.Filter = "pmmファイル(*.pmm)|*.pmm|すべてのファイル(*.*)|*.*";
+
+            //ダイアログを表示する
+            if (ofDialog.ShowDialog() == DialogResult.OK)
+            {
+                string json = System.IO.File.ReadAllText(ofDialog.FileName, Encoding.GetEncoding("Shift_JIS"));
+                return JsonConvert.DeserializeObject<Memo>(json);
+            }
+
+            return null;            
         }
     }
 }

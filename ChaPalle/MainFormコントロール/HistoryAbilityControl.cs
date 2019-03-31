@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ChaPalle
+namespace PalletMaster
 {
     public partial class HistoryAbilityControl : UserControl
     {
@@ -52,14 +52,9 @@ namespace ChaPalle
             if (int.TryParse(PalletMaster.Searcher.abilityValueList[listBoxAbility.Text], out m_ability) && int.TryParse(listBoxValue.Text, out m_magni))
             {
                 PalletMaster.SetSkillHistory(listBoxAbility.Text + "×" + listBoxValue.Text, ロール.能力);
-                PalletMaster.SetClipBoard(PalletMaster.GetBotDiceText(Convert.ToString(m_ability * m_magni)));
+                PalletMaster.SetTextRole(PalletMaster.GetBotDiceText(Convert.ToString(m_ability * m_magni)));
             }
 
-            PalletMaster.RefreshListView();
-        }
-
-        private void tabHistoryAblityRole_Click(object sender, EventArgs e)
-        {
             PalletMaster.RefreshListView();
         }
 
@@ -78,7 +73,8 @@ namespace ChaPalle
             //選択されているアイテムを取得する
             if (itemx.SubItems[2].Text == "技能")
             {
-                PalletMaster.SetClipboardSearchSkillValue(itemx.SubItems[0].Text);
+                var skillName = itemx.SubItems[0].Text;
+                PalletMaster.SetClipboardSearchSkillValue(skillName);
             }
             else
             {
@@ -106,7 +102,7 @@ namespace ChaPalle
             listBoxValue.SelectedIndex = v;
         }
 
-                private void listViewHistory_ColumnClick(object sender, ColumnClickEventArgs e)
+        private void listViewHistory_ColumnClick(object sender, ColumnClickEventArgs e)
         {
             //クリックされた列を設定
             listViewItemSorter.Column = e.Column;
@@ -122,7 +118,7 @@ namespace ChaPalle
             foreach (var item in PalletMaster.ActionHistorys)
             {
                 string id = item.Skill;
-                string name = item.Skill;
+                string name = item.Time;
                 string type = item.Type == ロール.技能 ? "技能" : "能力";
 
                 string[] setItem = { id, name, type };

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ChaPalle
+namespace PalletMaster
 {
     public partial class MadnessTableForm : Form
     {

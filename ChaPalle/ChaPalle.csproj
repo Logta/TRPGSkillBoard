@@ -33,10 +33,22 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\colorPallet.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack, Version=1.8.10.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.8.10\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -55,10 +67,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HistoryAbilityControl.cs">
+    <Compile Include="Charact.cs" />
+    <Compile Include="Forms\1InputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\1InputForm.Designer.cs">
+      <DependentUpon>1InputForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSファイル\InfoMemoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CSファイル\InfoMemoForm.Designer.cs">
+      <DependentUpon>InfoMemoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFormコントロール\HistoryAbilityControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="HistoryAbilityControl.Designer.cs">
+    <Compile Include="MainFormコントロール\HistoryAbilityControl.Designer.cs">
       <DependentUpon>HistoryAbilityControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SplashForm.cs">
@@ -79,14 +104,14 @@
     <Compile Include="Forms\CharaArchiveImportForm.Designer.cs">
       <DependentUpon>CharaArchiveImportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FightControl.cs">
+    <Compile Include="MainFormコントロール\FightControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FightControl.Designer.cs">
+    <Compile Include="MainFormコントロール\FightControl.Designer.cs">
       <DependentUpon>FightControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="PalletMaster.cs" />
-    <Compile Include="IOHelper.cs" />
+    <Compile Include="CSファイル\PalletMaster.cs" />
+    <Compile Include="CSファイル\IOHelper.cs" />
     <Compile Include="Forms\MadnessTableForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,13 +124,31 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Proccess.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SkillControl.cs">
+    <Compile Include="CSファイル\Proccess.cs" />
+    <Compile Include="CSファイル\Program.cs" />
+    <Compile Include="MainFormコントロール\MemoControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SkillControl.Designer.cs">
+    <Compile Include="MainFormコントロール\MemoControl.Designer.cs">
+      <DependentUpon>MemoControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFormコントロール\memoTabControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainFormコントロール\memoTabControl.Designer.cs">
+      <DependentUpon>memoTabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSファイル\MinimumForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CSファイル\MinimumForm.Designer.cs">
+      <DependentUpon>MinimumForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MainFormコントロール\SkillControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainFormコントロール\SkillControl.Designer.cs">
       <DependentUpon>SkillControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SettingForm.cs">
@@ -120,13 +163,19 @@
     <Compile Include="Forms\InfoForm.Designer.cs">
       <DependentUpon>InfoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SANControl.cs">
+    <Compile Include="MainFormコントロール\SANControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SANControl.Designer.cs">
+    <Compile Include="MainFormコントロール\SANControl.Designer.cs">
       <DependentUpon>SANControl.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="HistoryAbilityControl.resx">
+    <EmbeddedResource Include="Forms\1InputForm.resx">
+      <DependentUpon>1InputForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSファイル\InfoMemoForm.resx">
+      <DependentUpon>InfoMemoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFormコントロール\HistoryAbilityControl.resx">
       <DependentUpon>HistoryAbilityControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SplashForm.resx">
@@ -138,7 +187,7 @@
     <EmbeddedResource Include="Forms\CharaBankImportForm.resx">
       <DependentUpon>CharaBankImportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FightControl.resx">
+    <EmbeddedResource Include="MainFormコントロール\FightControl.resx">
       <DependentUpon>FightControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MadnessTableForm.resx">
@@ -146,6 +195,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFormコントロール\MemoControl.resx">
+      <DependentUpon>MemoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFormコントロール\memoTabControl.resx">
+      <DependentUpon>memoTabControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSファイル\MinimumForm.resx">
+      <DependentUpon>MinimumForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -157,7 +215,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SkillControl.resx">
+    <EmbeddedResource Include="MainFormコントロール\SkillControl.resx">
       <DependentUpon>SkillControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SettingForm.resx">
@@ -166,7 +224,7 @@
     <EmbeddedResource Include="Forms\InfoForm.resx">
       <DependentUpon>InfoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SANControl.resx">
+    <EmbeddedResource Include="MainFormコントロール\SANControl.resx">
       <DependentUpon>SANControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -191,6 +249,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\colorPallet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\-palette_90705.ico" />
+    <Content Include="Resources\colorPallet.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

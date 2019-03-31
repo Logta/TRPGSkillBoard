@@ -8,16 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ChaPalle
+namespace PalletMaster
 {
     public partial class FightControl : UserControl
     {
         PalletMaster PalletMaster = new PalletMaster();
         Proccess Proccesser = new Proccess();
+        FightDamage FightDamage = new FightDamage();
+
+        string attackSkill = "";
 
         public FightControl()
         {
             InitializeComponent();
+
+            FightDamage = new IOHelper().ReadFightDamageJson();
         }
 
         public void SetPalletMaster(PalletMaster palletMaster)
@@ -67,8 +72,9 @@ namespace ChaPalle
             itemx = listViewFight.SelectedItems[0];
 
             //選択されているアイテムを取得する
-            string tValue = PalletMaster.GetBotDiceText(itemx.SubItems[1].Text);
-            PalletMaster.SetClipBoard(tValue);
+            attackSkill = attackLabel.Text = itemx.Text;
+            string tValue = PalletMaster.GetBotDiceText(itemx.SubItems[1].Text, itemx.Text);
+            PalletMaster.SetTextRole(tValue);
             PalletMaster.SetSkillHistory(itemx.Text, ロール.技能);
         }
 
@@ -78,7 +84,7 @@ namespace ChaPalle
             try
             {
                 PalletMaster.SetSkillHistory(skillName, ロール.技能);
-                return (PalletMaster.GetBotDiceText(PalletMaster.Searcher.fightSkillList[skillName]));
+                return (PalletMaster.GetBotDiceText(PalletMaster.Searcher.fightSkillList[skillName], skillName));
             }
             catch (KeyNotFoundException)
             {
@@ -94,19 +100,21 @@ namespace ChaPalle
         private void buttonAvoid_Click(object sender, EventArgs e)
         {
             string avoidDiceRole = getSkillValue("回避");
-            PalletMaster.SetClipBoard(avoidDiceRole);
+            PalletMaster.SetTextRole(avoidDiceRole);
         }
 
         private void buttonFist_Click(object sender, EventArgs e)
         {
+            attackSkill = attackLabel.Text = "こぶし（パンチ）";
             string fistDiceRole = getSkillValue("こぶし（パンチ）");
-            PalletMaster.SetClipBoard(fistDiceRole);
+            PalletMaster.SetTextRole(fistDiceRole);
         }
 
         private void buttonKick_Click(object sender, EventArgs e)
         {
+            attackSkill = attackLabel.Text = "キック";
             string kickDiceRole = getSkillValue("キック");
-            PalletMaster.SetClipBoard(kickDiceRole);
+            PalletMaster.SetTextRole(kickDiceRole);
         }
 
         private void buttonHPPlus_Click(object sender, EventArgs e)
@@ -136,7 +144,7 @@ namespace ChaPalle
                     int m_con;
                     if (int.TryParse(PalletMaster.Searcher.abilityValueList["CON"], out m_con))
                     {
-                        Clipboard.SetText(PalletMaster.GetBotDiceText(Convert.ToString(m_con * 5)));
+                        Clipboard.SetText(PalletMaster.GetBotDiceText(Convert.ToString(m_con * 5), "気絶ロール"));
                         MessageBox.Show("気絶ロールが発生しました。CON×5をクリップボードにコピーしました",
                         "気絶ロール",
                         MessageBoxButtons.OK);
@@ -147,6 +155,11 @@ namespace ChaPalle
                         MessageBoxButtons.OK);
                 }
             }
+        }
+
+        internal void SetFightDamageBonusText(string v)
+        {
+            damageBonusTextBox.Text = v;
         }
 
         private void buttonAddFight_Click(object sender, EventArgs e)
@@ -187,6 +200,16 @@ namespace ChaPalle
         public void RefreshSkillList()
         {
             Proccesser.RefreshSkillList(listViewFight, PalletMaster.Searcher.fightSkillList);
+        }
+
+        private void attack_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var damageText = FightDamage.fightSkillDamage[attackSkill] + damageBonusTextBox.Text;
+                PalletMaster.SetClipBoard(damageText);
+            }
+            catch(Exception ee) { }
         }
     }
 }

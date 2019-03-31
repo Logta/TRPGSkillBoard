@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ChaPalle
+namespace PalletMaster
 {
     public class PalletMaster
     {
@@ -43,7 +43,7 @@ namespace ChaPalle
         }
 
         //能力値を設定する
-        private void AbilityDataSet()
+        public void AbilityDataSet()
         {
             int buff_1;
             int buff_2;
@@ -72,16 +72,15 @@ namespace ChaPalle
             {
                 case int n when n < 12: return "-1D6";
                 case int n when n < 16: return "-1D4";
-                case int n when n < 24: return "0";
-                case int n when n < 32: return "1D4";
-                case int n when n < 40: return "1D6";
-                case int n when n < 56: return "2D6";
-                case int n when n < 72: return "3D6";
+                case int n when n < 24: return "";
+                case int n when n < 32: return "+1D4";
+                case int n when n < 40: return "+1D6";
+                case int n when n < 56: return "+2D6";
+                case int n when n < 72: return "+3D6";
                 default: return null;
             }
         }
-
-
+        
         //技能・能力ロールを行った履歴をリストに入力する
         public void SetSkillHistory(string m_skill, ロール m_type)
         {
@@ -116,12 +115,12 @@ namespace ChaPalle
             var value = toSearchSkillValue(text);
             if (value is null) return;
 
-            SetClipBoard(GetBotDiceText(value));
+            SetTextRole(value);
             SetSkillHistory(text, ロール.技能);
         }
 
         //指定された文字列に合致する技能の技能値をクリップボードに貼り付ける関数
-        private string toSearchSkillValue(string skillName)
+        public string toSearchSkillValue(string skillName)
         {
 
             ////LINQ文とラムダ式を活用した処理
@@ -140,6 +139,15 @@ namespace ChaPalle
                     return null;
                 }
             }
+        }
+
+        internal void SetTextRole(string text)
+        {
+            if (Setting.useWebhookFlg)
+                new Proccess().SendPostWebhookAsync(text + " " + Setting.userName,
+                    Setting.webhookURL, Setting.userName);
+            else
+                SetClipBoard(text);
         }
     }
 }

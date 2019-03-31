@@ -11,10 +11,11 @@ using System.IO;
 using System.Collections;
 using Newtonsoft.Json;
 using System.Net;
+using MetroFramework.Forms;
 
-namespace ChaPalle
+namespace PalletMaster
 {
-    public partial class MainForm : Form
+    public partial class MainForm : MetroForm
     {       
         PalletMaster PalletMaster { get; set; }
         Proccess Proccesser = new Proccess();
@@ -28,6 +29,7 @@ namespace ChaPalle
         SANControl sanControl = new SANControl();
         FightControl fightControl = new FightControl();
         HistoryAbilityControl historyAbilityControl = new HistoryAbilityControl();
+        MemoControl memoControl = new MemoControl();
 
 
         public MainForm(Searcher d)
@@ -36,7 +38,7 @@ namespace ChaPalle
             PalletMaster = new PalletMaster();
 
             //設定の読込と初期設定
-            PalletMaster.Setting = toLoadSetting();
+            PalletMaster.Setting = IOHelper.toLoadSetting();
             if (PalletMaster.Setting.useDiceBotFlg == 0)
                 toChangeBCDice();
             else
@@ -67,9 +69,13 @@ namespace ChaPalle
             fightControl.SetPalletMaster(PalletMaster);
             setTab(fightControl, tabPageFight);
 
-            //FightControlを技能タブに割り当てる
+            //HistoryAbibilityControlを技能タブに割り当てる
             historyAbilityControl.SetPalletMaster(PalletMaster);
             setTab(historyAbilityControl, tabHistoryAblityRole);
+
+            //MemoControlを技能タブに割り当てる
+            memoControl.SetMainForm(PalletMaster);
+            setTab(memoControl, tabPageMemo);
         }
 
         private void setTab(UserControl userControl,TabPage tabPage)
@@ -112,10 +118,12 @@ namespace ChaPalle
             SettingForm u_form = new SettingForm(PalletMaster);
             TopMost = false;
             u_form.ShowDialog();
-
-            PalletMaster.Setting = u_form.iOData.Setting;
-            TopMost = PalletMaster.Setting.checkTopMostFlg;
-            toSaveSetting(PalletMaster.Setting);
+            if (u_form.OK)
+            {
+                PalletMaster.Setting = u_form.iOData.Setting;
+                TopMost = PalletMaster.Setting.checkTopMostFlg;
+                IOHelper.toSaveSetting(PalletMaster.Setting);
+            }
         }
         
         //キャラを押したときの制御
@@ -127,9 +135,11 @@ namespace ChaPalle
             u_form.ShowDialog();
 
             PalletMaster.Searcher = u_form.Searcher;
+            PalletMaster.AbilityDataSet();
 
             sanControl.SetSanText(PalletMaster.Searcher.searcherInfoList["SAN"]); //SAN情報の入力
             fightControl.SetFightText(PalletMaster.Searcher.searcherInfoList["HP"]); //HP情報の入力
+            fightControl.SetFightDamageBonusText(PalletMaster.Searcher.searcherInfoList["ダメージボーナス"]); //HP情報の入力
 
             PalletMaster.RefreshListView();
             TopMost = PalletMaster.Setting.checkTopMostFlg;
@@ -188,12 +198,18 @@ namespace ChaPalle
             {
                 PalletMaster.Searcher = new Searcher();
                 PalletMaster.Searcher.SetSearcher(m_d.d);
-                
+
+                PalletMaster.AbilityDataSet();
+
                 sanControl.SetSanText(PalletMaster.Searcher.searcherInfoList["SAN"]); //SAN情報の入力
                 fightControl.SetFightText(PalletMaster.Searcher.searcherInfoList["HP"]); //HP情報の入力
-                                
+                fightControl.SetFightDamageBonusText(PalletMaster.Searcher.searcherInfoList["ダメージボーナス"]); //HP情報の入力
+
                 PalletMaster.RefreshListView();
             }
+
+            var defaultSkillList = Proccesser.ReadCSV(System.AppDomain.CurrentDomain.BaseDirectory + "defaultSkill.csv");
+            PalletMaster.Searcher.SetDefaultSkills(defaultSkillList);
         }
 
         //チャッパレ形式読み取り関数
@@ -234,38 +250,7 @@ namespace ChaPalle
             m_d.f = false;
             return m_d;
         }
-
-        //セッティングデータを保存
-        public void toSaveSetting(Setting m_sData)
-        {
-            //ファイルに書き込む
-            System.IO.StreamWriter sw = new System.IO.StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "setting.json");
-            string json = JsonConvert.SerializeObject(m_sData);//, Formatting.Indented);
-            sw.Write(json);
-            //閉じる
-            sw.Close();
-        }
-
-        //セッティングデータを読込
-        public Setting toLoadSetting()
-        {
-            try
-            {
-                string json = System.IO.File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "setting.json");
-                return JsonConvert.DeserializeObject<Setting>(json);
-            }
-            catch (Exception e)
-            {
-                Setting m_sData = new Setting();
-
-                m_sData.checkMessageFlg = true;
-                m_sData.checkTopMostFlg = true;
-                m_sData.useDiceBotFlg = 0;
-
-                return m_sData;
-            }
-        }
-
+                
         //「CSV」を読込したときの制御
         private void toCreateCSV()
         {
@@ -306,7 +291,12 @@ namespace ChaPalle
                 PalletMaster.Searcher.fightSkillList = new Dictionary<string, string>();
                 PalletMaster.Searcher.uniqueSkillList = new Dictionary<string, string>();
                 PalletMaster.Searcher = IOHelper.charaBankTxtFileRead();
-                fightControl.SetFightText(PalletMaster.Searcher.searcherInfoList["HP"]);
+                PalletMaster.AbilityDataSet();
+
+                sanControl.SetSanText(PalletMaster.Searcher.searcherInfoList["SAN"]); //SAN情報の入力
+                fightControl.SetFightText(PalletMaster.Searcher.searcherInfoList["HP"]); //HP情報の入力
+                fightControl.SetFightDamageBonusText(PalletMaster.Searcher.searcherInfoList["ダメージボーナス"]); //HP情報の入力
+
                 PalletMaster.RefreshListView();
             }
             else if (u_form.m_txtDataImportFlg == 1)
@@ -314,7 +304,12 @@ namespace ChaPalle
                 PalletMaster.Searcher.fightSkillList = new Dictionary<string, string>();
                 PalletMaster.Searcher.uniqueSkillList = new Dictionary<string, string>();
                 PalletMaster.Searcher = IOHelper.charaBankTxtDataRead(u_form.m_txtData);
-                fightControl.SetFightText(PalletMaster.Searcher.searcherInfoList["HP"]);
+                PalletMaster.AbilityDataSet();
+
+                sanControl.SetSanText(PalletMaster.Searcher.searcherInfoList["SAN"]); //SAN情報の入力
+                fightControl.SetFightText(PalletMaster.Searcher.searcherInfoList["HP"]); //HP情報の入力
+                fightControl.SetFightDamageBonusText(PalletMaster.Searcher.searcherInfoList["ダメージボーナス"]); //HP情報の入力
+
                 PalletMaster.RefreshListView();
             }
         }
@@ -330,6 +325,12 @@ namespace ChaPalle
 
             if (u_form.m_URL != "")
                 PalletMaster.Searcher = IOHelper.charaArchiveHTMLRead(u_form.m_URL);
+
+            PalletMaster.AbilityDataSet();
+
+            sanControl.SetSanText(PalletMaster.Searcher.searcherInfoList["SAN"]); //SAN情報の入力
+            fightControl.SetFightText(PalletMaster.Searcher.searcherInfoList["HP"]); //HP情報の入力
+            fightControl.SetFightDamageBonusText(PalletMaster.Searcher.searcherInfoList["ダメージボーナス"]); //HP情報の入力
 
             PalletMaster.RefreshListView();
         }
@@ -347,7 +348,7 @@ namespace ChaPalle
             buttonSideKick.Enabled = true;
             skillControl.SetButtonTempletesText("BCDice");
 
-            toSaveSetting(PalletMaster.Setting);
+            IOHelper.toSaveSetting(PalletMaster.Setting);
         }
 
         //「sidekick」をクリックしたときの制御
@@ -363,7 +364,7 @@ namespace ChaPalle
             buttonSideKick.Enabled = false;
             skillControl.SetButtonTempletesText("Sidekick");
 
-            toSaveSetting(PalletMaster.Setting);
+            IOHelper.toSaveSetting(PalletMaster.Setting);
         }
 
         //クリップボードに文字列を入力する際に用いる関数
@@ -380,28 +381,43 @@ namespace ChaPalle
                 System.Media.SystemSounds.Asterisk.Play();
         }
 
+        //下の位置にあるクリップボードにコピーした文字列を確認するラベルに値を代入
         public void SetClipboardText(string clip)
         {
             ClipboardLabel.Text = clip;
         }
 
-        //
-        //
-        //====================================メモ==========================
-        //
-        //
-
-
+        // リスト関連 更新
         public void RefreshList()
         {
             skillControl.RefreshSkillList();
             fightControl.RefreshSkillList();
             historyAbilityControl.RefreshSkillList();
-            
-            var m_buff = 0;
-            if (int.TryParse(PalletMaster.Searcher.searcherInfoList["SAN"], out m_buff))
-                sanControl.SetSanText(Convert.ToString(m_buff));
+
+            if (sanControl.GetSanText() == "")
+            {
+                var tempSAN = 0;
+                if (int.TryParse(PalletMaster.Searcher.searcherInfoList["SAN"], out tempSAN))
+                    sanControl.SetSanText(Convert.ToString(tempSAN));
+            }
+
             labelCharaName.Text = "キャラ名：" + PalletMaster.Searcher.searcherInfoList["キャラクター名"];
+        }
+
+        private void tabCthu_Click(object sender, EventArgs e)
+        {
+            PalletMaster.RefreshListView();
+        }
+
+        private void 縮小版ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MinimumForm u_form = new MinimumForm(PalletMaster);
+            TopMost = false;
+            Visible = false;
+            u_form.ShowDialog();
+
+            TopMost = PalletMaster.Setting.checkTopMostFlg;
+            Visible = true;
         }
     }
 }
