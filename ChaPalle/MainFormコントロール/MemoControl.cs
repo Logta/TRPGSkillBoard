@@ -18,8 +18,8 @@ namespace PalletMaster
         public MemoControl()
         {
             InitializeComponent();
-            memo.memoList = new List<string>();
-            memo.tabList = new List<string>();
+            memo.memos = new List<string>();
+            memo.tabs = new List<string>();
 
             // タブコントロールにタブページを追加
             var tabPage = new System.Windows.Forms.TabPage("メモ");
@@ -45,13 +45,13 @@ namespace PalletMaster
             if (memo is null) return;
 
             memoTabControl.TabPages.Clear();
-            for (var i = 0; i < memo.memoList.Count; i++)
+            for (var i = 0; i < memo.memos.Count; i++)
             {
-                var tabPage = new System.Windows.Forms.TabPage(memo.tabList[i]);
+                var tabPage = new System.Windows.Forms.TabPage(memo.tabs[i]);
                 memoTabControl.Controls.Add(tabPage);
 
                 var tabContents = new memoTabControl();
-                tabContents.SetRichTextBox(memo.memoList[i]);
+                tabContents.SetRichTextBox(memo.memos[i]);
 
                 tabPage.Controls.Add(tabContents);
                 tabContents.Dock = System.Windows.Forms.DockStyle.Fill;// タブページのサイズに合わせて広げたい場合はこの設定
@@ -62,14 +62,14 @@ namespace PalletMaster
         {
             if (memoTabControl.TabPages.Count == 0) return;
 
-            memo.memoList = new List<string>();
-            memo.tabList = new List<string>();
+            memo.memos = new List<string>();
+            memo.tabs = new List<string>();
             
             foreach (TabPage i in memoTabControl.TabPages)
             {
-                memo.tabList.Add(i.Text);
+                memo.tabs.Add(i.Text);
                 foreach(memoTabControl j in i.Controls)
-                    memo.memoList.Add(j.GetRichTextBox());
+                    memo.memos.Add(j.GetRichTextBox());
             }
 
             new IOHelper().SaveMemo(memo);

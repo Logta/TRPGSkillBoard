@@ -33,6 +33,7 @@
             this.buttonDecide = new System.Windows.Forms.Button();
             this.checkBoxClipCheck = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.charaNameToUserNameCheckBox = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.webhookNoRadioButton = new System.Windows.Forms.RadioButton();
             this.webhookYesRadioButton = new System.Windows.Forms.RadioButton();
@@ -62,7 +63,7 @@
             // 
             // buttonDecide
             // 
-            this.buttonDecide.Location = new System.Drawing.Point(121, 306);
+            this.buttonDecide.Location = new System.Drawing.Point(120, 315);
             this.buttonDecide.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonDecide.Name = "buttonDecide";
             this.buttonDecide.Size = new System.Drawing.Size(87, 29);
@@ -84,6 +85,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.charaNameToUserNameCheckBox);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.webhookNoRadioButton);
             this.groupBox1.Controls.Add(this.webhookYesRadioButton);
@@ -93,15 +95,28 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(13, 71);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(306, 130);
+            this.groupBox1.Size = new System.Drawing.Size(306, 139);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Webhook通信";
             // 
+            // charaNameToUserNameCheckBox
+            // 
+            this.charaNameToUserNameCheckBox.AutoSize = true;
+            this.charaNameToUserNameCheckBox.Checked = true;
+            this.charaNameToUserNameCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.charaNameToUserNameCheckBox.Location = new System.Drawing.Point(59, 94);
+            this.charaNameToUserNameCheckBox.Name = "charaNameToUserNameCheckBox";
+            this.charaNameToUserNameCheckBox.Size = new System.Drawing.Size(240, 16);
+            this.charaNameToUserNameCheckBox.TabIndex = 7;
+            this.charaNameToUserNameCheckBox.Text = "ユーザー名にキャラクター名を使用する";
+            this.charaNameToUserNameCheckBox.UseVisualStyleBackColor = true;
+            this.charaNameToUserNameCheckBox.CheckedChanged += new System.EventHandler(this.charaNameToUserNameCheckBox_CheckedChanged);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 99);
+            this.label3.Location = new System.Drawing.Point(10, 114);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 12);
             this.label3.TabIndex = 6;
@@ -111,7 +126,7 @@
             // 
             this.webhookNoRadioButton.AutoSize = true;
             this.webhookNoRadioButton.Checked = true;
-            this.webhookNoRadioButton.Location = new System.Drawing.Point(215, 99);
+            this.webhookNoRadioButton.Location = new System.Drawing.Point(215, 114);
             this.webhookNoRadioButton.Name = "webhookNoRadioButton";
             this.webhookNoRadioButton.Size = new System.Drawing.Size(83, 16);
             this.webhookNoRadioButton.TabIndex = 5;
@@ -122,7 +137,7 @@
             // webhookYesRadioButton
             // 
             this.webhookYesRadioButton.AutoSize = true;
-            this.webhookYesRadioButton.Location = new System.Drawing.Point(141, 99);
+            this.webhookYesRadioButton.Location = new System.Drawing.Point(141, 114);
             this.webhookYesRadioButton.Name = "webhookYesRadioButton";
             this.webhookYesRadioButton.Size = new System.Drawing.Size(71, 16);
             this.webhookYesRadioButton.TabIndex = 4;
@@ -169,7 +184,7 @@
             this.groupBox2.Controls.Add(this.radioButton2);
             this.groupBox2.Controls.Add(this.bcdiceAPITextBox);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(12, 207);
+            this.groupBox2.Location = new System.Drawing.Point(13, 216);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(306, 92);
             this.groupBox2.TabIndex = 20;
@@ -218,7 +233,7 @@
             // SettingForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(331, 347);
+            this.ClientSize = new System.Drawing.Size(331, 349);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.checkBoxClipCheck);
@@ -227,6 +242,8 @@
             this.Font = new System.Drawing.Font("UD デジタル 教科書体 N-B", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximumSize = new System.Drawing.Size(347, 388);
+            this.MinimumSize = new System.Drawing.Size(347, 388);
             this.Name = "SettingForm";
             this.Text = "設定";
             this.groupBox1.ResumeLayout(false);
@@ -256,5 +273,6 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.TextBox bcdiceAPITextBox;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox charaNameToUserNameCheckBox;
     }
 }

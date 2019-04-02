@@ -329,7 +329,7 @@
             this.buttonClipboardCopy.TabIndex = 9;
             this.buttonClipboardCopy.Text = "Webhookに送信";
             this.buttonClipboardCopy.UseVisualStyleBackColor = true;
-            this.buttonClipboardCopy.Click += new System.EventHandler(this.buttonClipboardCopy_Click);
+            this.buttonClipboardCopy.Click += new System.EventHandler(this.buttonClipboardCopy_ClickAsync);
             // 
             // textResult
             // 

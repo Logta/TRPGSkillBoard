@@ -19,12 +19,12 @@ namespace PalletMaster
         {
             DefaultSkillList = new Dictionary<string, string>();
 
-            abilityValueList = new Dictionary<string, string>()//探索者の能力値のリスト
+            abilityValues = new Dictionary<string, string>()//探索者の能力値のリスト
             { { "STR", ""}, { "CON", ""}, { "POW", ""}, { "DEX", ""}, { "APP", ""}, { "SIZ", ""}, { "INT", ""}, { "EDU", ""}, { "HP", ""}, { "MP", ""} };
-            searcherInfoList = new Dictionary<string, string>()      //探索者情報のリスト
+            searcherInfos = new Dictionary<string, string>()      //探索者情報のリスト
             { { "キャラクター名", ""}, { "HP", ""}, { "MP", ""}, { "SAN", ""},{ "ダメージボーナス", ""}};
-            uniqueSkillList = new Dictionary<string, string>();
-            fightSkillList = new Dictionary<string, string>();
+            uniqueSkills = new Dictionary<string, string>();
+            fightSkills = new Dictionary<string, string>();
         }
 
         public void SetDefaultSkills(Dictionary<string, string> defaultSkills)
@@ -34,10 +34,10 @@ namespace PalletMaster
 
         public void SetSearcher(Character chara)
         {
-            abilityValueList = chara.abilityValueList;
-            searcherInfoList = chara.searcherInfoList;
-            uniqueSkillList = chara.uniqueSkillList;
-            fightSkillList = chara.fightSkillList;
+            abilityValues = chara.abilityValues;
+            searcherInfos = chara.searcherInfos;
+            uniqueSkills = chara.uniqueSkills;
+            fightSkills = chara.fightSkills;
             backgroundString = chara.backgroundString;
         }
 
@@ -64,13 +64,13 @@ namespace PalletMaster
     public class Character
     {
         [JsonProperty("uniqueSkillList")]
-        public Dictionary<string, string> uniqueSkillList { get; set; }//探索者固有（技能ポイントを割り振った）の技能のリスト
+        public Dictionary<string, string> uniqueSkills { get; set; }//探索者固有（技能ポイントを割り振った）の技能のリスト
         [JsonProperty("fightSkillList")]
-        public Dictionary<string, string> fightSkillList { get; set; }//戦闘系技能のリスト
+        public Dictionary<string, string> fightSkills { get; set; }//戦闘系技能のリスト
         [JsonProperty("abilityValue")]
-        public Dictionary<string, string> abilityValueList { get; set; }
+        public Dictionary<string, string> abilityValues { get; set; }
         [JsonProperty("characterInfo")]
-        public Dictionary<string, string> searcherInfoList { get; set; }
+        public Dictionary<string, string> searcherInfos { get; set; }
         [JsonProperty("characterBackground")]
         public string backgroundString { get; set; }
     }
@@ -94,6 +94,8 @@ namespace PalletMaster
         public string bcdiceAPIURL { get; set; }
         [JsonProperty("useBCDiceAPIFlg")]
         public bool useBCDiceAPIFlg { get; set; }
+        [JsonProperty("charaNameToUserNameFlg")]
+        public bool charaNameToUserNameFlg { get; set; }
     }
 
     [JsonObject("fightDamage")]
@@ -107,9 +109,9 @@ namespace PalletMaster
     public class Memo
     {
         [JsonProperty("memoString")]
-        public List<string> memoList { get; set; }
+        public List<string> memos { get; set; }
         [JsonProperty("tabString")]
-        public List<string> tabList { get; set; }
+        public List<string> tabs { get; set; }
     }
 
     public class ListViewItemComparer : IComparer

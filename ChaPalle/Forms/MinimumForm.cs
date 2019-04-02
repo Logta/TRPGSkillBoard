@@ -20,7 +20,7 @@ namespace PalletMaster
             InitializeComponent();
 
             TopMost = true;
-            new Proccess().RefreshSkillList(listViewSkill, PalletMaster.Searcher.uniqueSkillList);
+            new Proccess().RefreshSkillList(listViewSkill, PalletMaster.Searcher.uniqueSkills);
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace PalletMaster
             var value = PalletMaster.toSearchSkillValue(textSerch.Text);
             if (value is null) return;
 
-            PalletMaster.SetTextRole(value);
+            PalletMaster.SetTextRole(value, textSerch.Text);
 
             PalletMaster.SetSkillHistory(textSerch.Text, ロール.技能);
         }
@@ -50,8 +50,8 @@ namespace PalletMaster
             itemx = listViewSkill.SelectedItems[0];
 
             //選択されているアイテムを取得する
-            var tValue = PalletMaster.GetBotDiceText(itemx.SubItems[1].Text, itemx.Text);
-            PalletMaster.SetTextRole(tValue);
+            var tValue = PalletMaster.GetDiceText(itemx.SubItems[1].Text, itemx.Text);
+            PalletMaster.SetTextRole(tValue, itemx.Text);
             PalletMaster.SetSkillHistory(itemx.Text, ロール.技能);
         }
 
@@ -63,7 +63,7 @@ namespace PalletMaster
                 var value = PalletMaster.toSearchSkillValue(textSerch.Text);
                 if (value is null) return;
                
-                PalletMaster.SetTextRole(value);
+                PalletMaster.SetTextRole(value, textSerch.Text);
                 
                 PalletMaster.SetSkillHistory(textSerch.Text, ロール.技能);
             }

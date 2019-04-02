@@ -44,7 +44,7 @@ namespace PalletMaster
             FormSplash fs = new FormSplash();
             fs.Show();
             fs.Refresh();
-            Thread.Sleep(1500);//時間のかかる処理
+            Thread.Sleep(500);//時間のかかる処理
             fs.Close();
 
             Application.Run(new MainForm(searcher));

@@ -107,16 +107,16 @@ namespace PalletMaster
 
                         if (arr[0] == "=合計=")
                         {
-                            searcher.abilityValueList["STR"] = arr[1];
-                            searcher.abilityValueList["CON"] = arr[2];
-                            searcher.abilityValueList["POW"] = arr[3];
-                            searcher.abilityValueList["DEX"] = arr[4];
-                            searcher.abilityValueList["APP"] = arr[5];
-                            searcher.abilityValueList["SIZ"] = arr[6];
-                            searcher.abilityValueList["INT"] = arr[7];
-                            searcher.abilityValueList["EDU"] = arr[8];
-                            searcher.abilityValueList["HP"] = arr[9];
-                            searcher.abilityValueList["MP"] = arr[10];
+                            searcher.abilityValues["STR"] = arr[1];
+                            searcher.abilityValues["CON"] = arr[2];
+                            searcher.abilityValues["POW"] = arr[3];
+                            searcher.abilityValues["DEX"] = arr[4];
+                            searcher.abilityValues["APP"] = arr[5];
+                            searcher.abilityValues["SIZ"] = arr[6];
+                            searcher.abilityValues["INT"] = arr[7];
+                            searcher.abilityValues["EDU"] = arr[8];
+                            searcher.abilityValues["HP"] = arr[9];
+                            searcher.abilityValues["MP"] = arr[10];
                         }
 
                         else
@@ -124,7 +124,7 @@ namespace PalletMaster
                             //探索者情報のインポート
                             try
                             {
-                                searcher.searcherInfoList[arr[0]] = arr[1];
+                                searcher.searcherInfos[arr[0]] = arr[1];
                             }
                             catch (Exception ee) { }
                         }
@@ -140,13 +140,13 @@ namespace PalletMaster
                             {
                                 if (searcher.DefaultSkillList.ContainsKey(arr[i]))
                                 {
-                                    searcher.fightSkillList[arr[i]] = arr[i + 1];
+                                    searcher.fightSkills[arr[i]] = arr[i + 1];
                                     if (searcher.DefaultSkillList[arr[i]] != arr[i + 1])
-                                    { searcher.uniqueSkillList[arr[i]] = arr[i + 1]; }
+                                    { searcher.uniqueSkills[arr[i]] = arr[i + 1]; }
                                 }
                                 else
                                 {
-                                    { searcher.uniqueSkillList[arr[i]] = arr[i + 1]; }
+                                    { searcher.uniqueSkills[arr[i]] = arr[i + 1]; }
                                 }
                             }
                             catch (Exception ee) { }
@@ -166,11 +166,11 @@ namespace PalletMaster
                                 if (searcher.DefaultSkillList.ContainsKey(arr[i]))
                                 {
                                     if (searcher.DefaultSkillList[arr[i]] != arr[i + 1])
-                                    { searcher.uniqueSkillList[arr[i]] = arr[i + 1]; }
+                                    { searcher.uniqueSkills[arr[i]] = arr[i + 1]; }
                                 }
                                 else
                                 {
-                                    { searcher.uniqueSkillList[arr[i]] = arr[i + 1]; }
+                                    { searcher.uniqueSkills[arr[i]] = arr[i + 1]; }
 
                                 }
                             }
@@ -181,7 +181,7 @@ namespace PalletMaster
                     case "fight":
                         if (arr[0] == "ダメージボーナス")
                         {
-                            searcher.abilityValueList[arr[0]] = arr[1];
+                            searcher.abilityValues[arr[0]] = arr[1];
                         }
                         break;
                 }
@@ -247,7 +247,7 @@ namespace PalletMaster
                 string m_buff = removeChars.Aggregate(name, (s, c) => s.Replace(c.ToString(), ""));
                 dt = m_buff.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 
-                searcher.searcherInfoList["キャラクター名"] = dt[0];
+                searcher.searcherInfos["キャラクター名"] = dt[0];
 
                 //キャラ能力値の取得
                 foreach (var row in doc.DocumentNode.SelectNodes("//tr[@id='status_total']"))
@@ -260,17 +260,17 @@ namespace PalletMaster
                     }
                 }
 
-                searcher.searcherInfoList["HP"] = dt[8];
-                searcher.searcherInfoList["MP"] = dt[9];
-                searcher.searcherInfoList["SAN"] = dt[10];
-                searcher.abilityValueList["STR"] = dt[0];
-                searcher.abilityValueList["CON"] = dt[1];
-                searcher.abilityValueList["POW"] = dt[2];
-                searcher.abilityValueList["DEX"] = dt[3];
-                searcher.abilityValueList["APP"] = dt[4];
-                searcher.abilityValueList["SIZ"] = dt[5];
-                searcher.abilityValueList["INT"] = dt[6];
-                searcher.abilityValueList["EDU"] = dt[7];
+                searcher.searcherInfos["HP"] = dt[8];
+                searcher.searcherInfos["MP"] = dt[9];
+                searcher.searcherInfos["SAN"] = dt[10];
+                searcher.abilityValues["STR"] = dt[0];
+                searcher.abilityValues["CON"] = dt[1];
+                searcher.abilityValues["POW"] = dt[2];
+                searcher.abilityValues["DEX"] = dt[3];
+                searcher.abilityValues["APP"] = dt[4];
+                searcher.abilityValues["SIZ"] = dt[5];
+                searcher.abilityValues["INT"] = dt[6];
+                searcher.abilityValues["EDU"] = dt[7];
 
                 //技能の取得
                 foreach (var row in doc.DocumentNode.SelectNodes("//div [@id='skill']//tr"))
@@ -289,13 +289,13 @@ namespace PalletMaster
                         if (searcher.DefaultSkillList.ContainsKey(dt[1]))
                         {
                             if (dt[0] == "戦闘")
-                                searcher.fightSkillList[dt[1]] = dt[2];
+                                searcher.fightSkills[dt[1]] = dt[2];
                             if (searcher.DefaultSkillList[dt[1]] != dt[2])
-                                searcher.uniqueSkillList[dt[1]] = dt[2];
+                                searcher.uniqueSkills[dt[1]] = dt[2];
                         }
                         else
                         {
-                            searcher.uniqueSkillList[dt[1]] = dt[2];
+                            searcher.uniqueSkills[dt[1]] = dt[2];
                         }
                     }
                     catch (Exception ee) { }

@@ -68,22 +68,31 @@ namespace PalletMaster
         //bcdice_apiにGET通信でアクセスする
         public GetBCDice_API SendGetBCDice_API(string text, string url)
         {
-
             if (text == "") return null;
+
             var result = new GetBCDice_API();
-            WebRequest req = WebRequest.Create(url + "/v1/diceroll?system=Cthulhu&command=" + text);
+            var json = getWebAPI(url + "/v1/diceroll?system=Cthulhu&command=" + text);
+            result = JsonConvert.DeserializeObject <GetBCDice_API> (json);
+
+            return result;
+        }
+
+        private string getWebAPI(string text)
+        {
+            WebRequest req = WebRequest.Create(text);
             WebResponse rsp = req.GetResponse();
             Stream stm = rsp.GetResponseStream();
+            var json = "";
+
             if (stm != null)
             {
                 StreamReader reader = new StreamReader(stm, System.Text.Encoding.GetEncoding("UTF-8"));
-                var json = reader.ReadToEnd();
-                result = JsonConvert.DeserializeObject <GetBCDice_API> (json);
+                json = reader.ReadToEnd();
                 stm.Close();
             }
             rsp.Close();
 
-            return result;
+            return json;
         }
 
         //discordのwebhookにテキストをPOST送信で送付する
@@ -126,8 +135,14 @@ namespace PalletMaster
 
             [JsonProperty("dices")]
             public List<Dictionary<string, int>> dices { get; private set; }
+            
+        }
 
-
+        internal void SendPostWebhookBCDiceAPI(string text, string webhookURL, string bcdiceURL, string userName, string skill)
+        {
+            var result = SendGetBCDice_API(text, bcdiceURL);
+            var sendWebhookText = userName + result.result;
+            SendPostWebhookAsync(sendWebhookText + " " + skill, webhookURL, userName);
         }
     }
 }

@@ -48,22 +48,22 @@ namespace PalletMaster
             int buff_1;
             int buff_2;
 
-            if (int.TryParse(Searcher.abilityValueList["INT"], out buff_1)) //能力値が入力されていなければ無視する
-                Searcher.uniqueSkillList["アイデア"] = Convert.ToString(buff_1 * 5);
-            if (int.TryParse(Searcher.abilityValueList["POW"], out buff_1))
-                Searcher.uniqueSkillList["幸運"] = Convert.ToString(buff_1 * 5);
-            if (int.TryParse(Searcher.abilityValueList["EDU"], out buff_1))
-                Searcher.uniqueSkillList["知識"] = Convert.ToString(buff_1 * 5);
-            if (int.TryParse(Searcher.abilityValueList["DEX"], out buff_1) 
-                && !Searcher.fightSkillList.ContainsKey("回避"))
+            if (int.TryParse(Searcher.abilityValues["INT"], out buff_1)) //能力値が入力されていなければ無視する
+                Searcher.uniqueSkills["アイデア"] = Convert.ToString(buff_1 * 5);
+            if (int.TryParse(Searcher.abilityValues["POW"], out buff_1))
+                Searcher.uniqueSkills["幸運"] = Convert.ToString(buff_1 * 5);
+            if (int.TryParse(Searcher.abilityValues["EDU"], out buff_1))
+                Searcher.uniqueSkills["知識"] = Convert.ToString(buff_1 * 5);
+            if (int.TryParse(Searcher.abilityValues["DEX"], out buff_1) 
+                && !Searcher.fightSkills.ContainsKey("回避"))
             {
-                Searcher.fightSkillList["回避"] = Convert.ToString(buff_1 * 2);
-                Searcher.uniqueSkillList["回避"] = Convert.ToString(buff_1 * 2);
+                Searcher.fightSkills["回避"] = Convert.ToString(buff_1 * 2);
+                Searcher.uniqueSkills["回避"] = Convert.ToString(buff_1 * 2);
             }
 
-            if(int.TryParse(Searcher.abilityValueList["STR"], out buff_1) &&
-               int.TryParse(Searcher.abilityValueList["SIZ"], out buff_2))
-                Searcher.searcherInfoList["ダメージボーナス"] = GetBonusDamege(buff_1 + buff_2);
+            if(int.TryParse(Searcher.abilityValues["STR"], out buff_1) &&
+               int.TryParse(Searcher.abilityValues["SIZ"], out buff_2))
+                Searcher.searcherInfos["ダメージボーナス"] = GetBonusDamege(buff_1 + buff_2);
         }
 
         private string GetBonusDamege(int strPlusSiz)
@@ -88,13 +88,24 @@ namespace PalletMaster
             ActionHistorys.Add(
                 new ActionHistory().Set(m_skill, dt.ToString("yyyy/MM/dd HH:mm:ss"), m_type));
         }
-        
-        //ダイスボット用の文字列を取得する
-        //valueに判定値を、nameに技能など
+
+        public string GetBCDiceAPIText(string value)
+        {
+            return "CCB<=" + value;
+        }
+
         public string GetBotDiceText(string value, string name = "")
         {
             return Setting.useDiceBotFlg == 0 ? "1d100<=" + value + " " + name
                 : "/r 1d100<=" + value;
+        }
+
+        //ダイスボット用の文字列を取得する
+        //valueに判定値を、nameに技能など
+        public string GetDiceText(string value, string name = "")
+        {
+            return Setting.useBCDiceAPIFlg ? GetBCDiceAPIText(value) :
+                GetBotDiceText(value, name);
         }
 
         //listviewに関係する配列（m_uniqueSkillListなど）が変更された際に
@@ -115,7 +126,7 @@ namespace PalletMaster
             var value = toSearchSkillValue(text);
             if (value is null) return;
 
-            SetTextRole(value);
+            SetTextRole(GetDiceText(value, text), text);
             SetSkillHistory(text, ロール.技能);
         }
 
@@ -124,7 +135,7 @@ namespace PalletMaster
         {
 
             ////LINQ文とラムダ式を活用した処理
-            var skillDict = Searcher.uniqueSkillList.Where(s => s.Key == skillName).ToDictionary(s => s.Key, s => s.Value);
+            var skillDict = Searcher.uniqueSkills.Where(s => s.Key == skillName).ToDictionary(s => s.Key, s => s.Value);
 
             if (skillDict.Count != 0) return skillDict[skillName];
             else
@@ -141,9 +152,12 @@ namespace PalletMaster
             }
         }
 
-        internal void SetTextRole(string text)
+        internal void SetTextRole(string text, string skill)
         {
-            if (Setting.useWebhookFlg)
+            if (Setting.useBCDiceAPIFlg)
+                new Proccess().SendPostWebhookBCDiceAPI(text,
+                    Setting.webhookURL, Setting.bcdiceAPIURL, Setting.userName, skill);
+            else if (Setting.useWebhookFlg)
                 new Proccess().SendPostWebhookAsync(text + " " + Setting.userName,
                     Setting.webhookURL, Setting.userName);
             else

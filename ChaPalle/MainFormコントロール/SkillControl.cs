@@ -33,41 +33,35 @@ namespace PalletMaster
         }
 
         //「クリップボードにコピー」を押したときの制御
-        private void buttonClipboardCopy_Click(object sender, EventArgs e)
+        private void buttonClipboardCopy_ClickAsync(object sender, EventArgs e)
+        {
+            bcDiceAccess(PalletMaster.Setting.webhookURL);
+        }
+
+        private async Task bcDiceAccess(string url)
         {
             //BCDice-APIにGET通信してダイスを振る
-            var result = new Proccess().SendGetBCDice_API(textResult.Text, 
+            var result = new Proccess().SendGetBCDice_API(textResult.Text,
                 PalletMaster.Setting.bcdiceAPIURL);
 
-            var url = PalletMaster.Setting.webhookURL;
-            {
-                var hc = new HttpClient();
+            using(var hc = new HttpClient()) { 
+                
                 var json = JsonConvert.SerializeObject(new
                 {
+                    username = PalletMaster.Setting.userName,
                     content = textResult.Text.Length == 0 ?
                             DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") :
                             textResult.Text,
                 });
 
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-                var res = hc.PostAsync(url, content).Result;
-                Console.WriteLine("投稿しました");
+                //var content = new StringContent(json, Encoding.UTF8, "application/json");
+                //var res = hc.PostAsync(url, content).Result;
+                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, url);
+                request.Content = new System.Net.Http.StringContent(json, Encoding.UTF8, "application/json");
+                var res = await hc.SendAsync(request);
+
             }
         }
-
-        //{
-        //    string tValue = textResult.Text;
-        //    PalletMaster.SetClipBoard(tValue);
-
-        //    //項目が１つも選択されていない場合
-        //    if (listViewSkill.SelectedItems.Count == 0)
-        //        return;//処理を抜ける
-
-        //    ListViewItem itemx = new ListViewItem();
-        //    itemx = listViewSkill.SelectedItems[0];
-
-        //    PalletMaster.SetSkillHistory(itemx.Text, ロール.技能);
-        //}
 
         //「追加」を押したときの制御
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -82,7 +76,7 @@ namespace PalletMaster
                 MessageBoxIcon.Error);
                 return;
             }
-            PalletMaster.Searcher.uniqueSkillList[tSkill] = tValue;
+            PalletMaster.Searcher.uniqueSkills[tSkill] = tValue;
 
             PalletMaster.RefreshListView();
         }
@@ -98,7 +92,7 @@ namespace PalletMaster
             itemx = listViewSkill.SelectedItems[0];
 
             //選択されているアイテムを取得、削除
-            PalletMaster.Searcher.uniqueSkillList.Remove(itemx.Text);
+            PalletMaster.Searcher.uniqueSkills.Remove(itemx.Text);
             PalletMaster.RefreshListView();
         }
 
@@ -115,7 +109,7 @@ namespace PalletMaster
             itemx = listViewSkill.SelectedItems[0];
 
             //選択されているアイテムを取得する
-            textResult.Text = PalletMaster.GetBotDiceText(correctValue(itemx.SubItems[1].Text), itemx.Text);// +" " + itemx.Text;
+            textResult.Text = PalletMaster.GetDiceText(correctValue(itemx.SubItems[1].Text), itemx.Text);// +" " + itemx.Text;
 
             //技能と値のテキストボックスに技能名、技能値を入れる
             textSkill.Text = itemx.Text;
@@ -136,7 +130,7 @@ namespace PalletMaster
                 //ダイアログを表示する
                 if (ofDialog.ShowDialog() == DialogResult.OK)
                 {
-                    PalletMaster.Searcher.uniqueSkillList = Proccesser.ReadCSV(ofDialog.FileName);
+                    PalletMaster.Searcher.uniqueSkills = Proccesser.ReadCSV(ofDialog.FileName);
                 }
             }
             PalletMaster.RefreshListView();
@@ -150,9 +144,9 @@ namespace PalletMaster
 
             value = correctValue(value);
 
-            PalletMaster.SetTextRole(value);
+            PalletMaster.SetTextRole(value, textSerch.Text);
 
-            textResult.Text = PalletMaster.GetBotDiceText(value, textSerch.Text);
+            textResult.Text = PalletMaster.GetDiceText(value, textSerch.Text);
             PalletMaster.SetSkillHistory(textSerch.Text, ロール.技能);
         }
 
@@ -160,7 +154,7 @@ namespace PalletMaster
         private string toSearchSkillValue(string skillName)
         {
             ////LINQ文とラムダ式を活用した処理
-            var skillDict = PalletMaster.Searcher.uniqueSkillList.Where(s => s.Key == skillName).ToDictionary(s => s.Key, s => s.Value);
+            var skillDict = PalletMaster.Searcher.uniqueSkills.Where(s => s.Key == skillName).ToDictionary(s => s.Key, s => s.Value);
 
             if (skillDict.Count != 0) return skillDict[skillName];
             else
@@ -217,9 +211,9 @@ namespace PalletMaster
 
                 value = correctValue(value);
 
-                PalletMaster.SetTextRole(value);
+                PalletMaster.SetTextRole(value, textSerch.Text);
 
-                textResult.Text = PalletMaster.GetBotDiceText(value, textSerch.Text);
+                textResult.Text = PalletMaster.GetDiceText(value, textSerch.Text);
                 PalletMaster.SetSkillHistory(textSerch.Text, ロール.技能);
             }
         }
@@ -227,25 +221,25 @@ namespace PalletMaster
         //ユーザー指定の文をクリップボードにコピー
         private void buttonTempleteUserCopy_Click(object sender, EventArgs e)
         {
-            PalletMaster.SetTextRole((textTempleteUser.Text));
+            PalletMaster.SetClipBoard((textTempleteUser.Text));
         }
 
         //ダイス1つの文をクリップボードにコピー
         private void buttonTemplete1Copy_Click(object sender, EventArgs e)
         {
-            PalletMaster.SetTextRole((buttonTemplete1Copy.Text));
+            PalletMaster.SetClipBoard((buttonTemplete1Copy.Text));
         }
 
         //ダイス2つの文をクリップボードにコピー
         private void buttonTemplete2Copy_Click(object sender, EventArgs e)
         {
-            PalletMaster.SetTextRole((buttonTemplete2Copy.Text));
+            PalletMaster.SetClipBoard((buttonTemplete2Copy.Text));
         }
 
         //ダイス3つの文をクリップボードにコピー
         private void buttonTemplete3Copy_Click(object sender, EventArgs e)
         {
-            PalletMaster.SetTextRole((buttonTemplete3Copy.Text));
+            PalletMaster.SetClipBoard((buttonTemplete3Copy.Text));
         }
 
         //対抗ロール
@@ -256,16 +250,16 @@ namespace PalletMaster
             {
                 var value = 50 + (m_buff - int.Parse(textOppEnemy.Text)) * 5;
                 value = correctValue(value);
-                PalletMaster.SetTextRole(PalletMaster.GetBotDiceText(Convert.ToString(value), "対抗ロール"));
+                PalletMaster.SetTextRole(PalletMaster.GetDiceText(Convert.ToString(value), "対抗ロール"), "対抗ロール");
             }
             else
             {
                 try
                 {
-                    var value = 50 + (int.Parse(PalletMaster.Searcher.abilityValueList[comboBoxOppChara.Text]) -
+                    var value = 50 + (int.Parse(PalletMaster.Searcher.abilityValues[comboBoxOppChara.Text]) -
                         int.Parse(textOppEnemy.Text)) * 5;
                     value = correctValue(value);
-                    PalletMaster.SetTextRole(PalletMaster.GetBotDiceText(Convert.ToString(value), "対抗ロール"));
+                    PalletMaster.SetTextRole(PalletMaster.GetDiceText(Convert.ToString(value), "対抗ロール"), "対抗ロール");
                 }
                 catch (Exception ee)
                 {
@@ -278,7 +272,7 @@ namespace PalletMaster
         }
 
         public void RefreshSkillList(){
-            Proccesser.RefreshSkillList(listViewSkill, PalletMaster.Searcher.uniqueSkillList);
+            Proccesser.RefreshSkillList(listViewSkill, PalletMaster.Searcher.uniqueSkills);
         }
 
         //「listview1」がダブルクリックされた時の動作
@@ -294,8 +288,8 @@ namespace PalletMaster
             itemx = listViewSkill.SelectedItems[0];
 
             //選択されているアイテムを取得する
-            var tValue = PalletMaster.GetBotDiceText(correctValue(itemx.SubItems[1].Text), itemx.Text);
-            PalletMaster.SetTextRole(tValue);
+            var tValue = PalletMaster.GetDiceText(correctValue(itemx.SubItems[1].Text), itemx.Text);
+            PalletMaster.SetTextRole(tValue, itemx.Text);
             PalletMaster.SetSkillHistory(itemx.Text, ロール.技能);
         }
 

@@ -162,6 +162,7 @@
             this.listViewHistory.TabIndex = 0;
             this.listViewHistory.UseCompatibleStateImageBehavior = false;
             this.listViewHistory.View = System.Windows.Forms.View.Details;
+            this.listViewHistory.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewHistory_ColumnClick_1);
             this.listViewHistory.DoubleClick += new System.EventHandler(this.listViewHistory_DoubleClick);
             // 
             // SkillHistory

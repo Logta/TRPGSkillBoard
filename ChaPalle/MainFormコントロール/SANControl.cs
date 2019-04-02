@@ -28,9 +28,9 @@ namespace PalletMaster
         //「SANチェック→判定」を押したときの制御
         private void buttonSANCheck_Click(object sender, EventArgs e)
         {
-            string setSanCheck = "SANチェック文：" + PalletMaster.GetBotDiceText(textSANValue.Text);
+            string setSanCheck = "SANチェック文：" + PalletMaster.GetDiceText(textSANValue.Text);
             label7.Text = setSanCheck;
-            PalletMaster.SetTextRole(PalletMaster.GetBotDiceText(textSANValue.Text, "SANチェック"));
+            PalletMaster.SetTextRole(PalletMaster.GetDiceText(textSANValue.Text, "SANチェック"), "SANチェック");
         }
 
         //「SAN増減→判定」を押したときの制御
@@ -39,7 +39,7 @@ namespace PalletMaster
             string setSanCheck = PalletMaster.Setting.useDiceBotFlg == 0 ? comboBox1.Text + "d" + comboBox2.Text
                 : "/r " + comboBox1.Text + "d" + comboBox2.Text;
             label8.Text = setSanCheck;
-            PalletMaster.SetTextRole(setSanCheck);
+            PalletMaster.SetTextRole(setSanCheck, "SAN増減数");
         }
 
         //「SANチェック→+」を押したときの制御
@@ -72,9 +72,9 @@ namespace PalletMaster
                 else if (sanDiff >= 5)
                 {
                     int ideaValue;
-                    if (int.TryParse(PalletMaster.Searcher.abilityValueList["INT"], out ideaValue))
+                    if (int.TryParse(PalletMaster.Searcher.abilityValues["INT"], out ideaValue))
                     {
-                        var m_setText = PalletMaster.GetBotDiceText(Convert.ToString(ideaValue * 5));
+                        var m_setText = PalletMaster.GetDiceText(Convert.ToString(ideaValue * 5));
 
                         Clipboard.SetText(m_setText);
 

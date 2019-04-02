@@ -18,36 +18,36 @@ namespace PalletMaster
         {
             InitializeComponent();
 
-            textCharaName.Text = d.searcherInfoList["キャラクター名"];
-            textHP.Text = d.searcherInfoList["HP"];
-            textMP.Text = d.searcherInfoList["MP"];
-            textSAN.Text = d.searcherInfoList["SAN"];
-            textSTR.Text = d.abilityValueList["STR"];
-            textCON.Text = d.abilityValueList["CON"];
-            textPOW.Text = d.abilityValueList["POW"];
-            textDEX.Text = d.abilityValueList["DEX"];
-            textAPP.Text = d.abilityValueList["APP"];
-            textSIZ.Text = d.abilityValueList["SIZ"];
-            textINT.Text = d.abilityValueList["INT"];
-            textEDU.Text = d.abilityValueList["EDU"];
+            textCharaName.Text = d.searcherInfos["キャラクター名"];
+            textHP.Text = d.searcherInfos["HP"];
+            textMP.Text = d.searcherInfos["MP"];
+            textSAN.Text = d.searcherInfos["SAN"];
+            textSTR.Text = d.abilityValues["STR"];
+            textCON.Text = d.abilityValues["CON"];
+            textPOW.Text = d.abilityValues["POW"];
+            textDEX.Text = d.abilityValues["DEX"];
+            textAPP.Text = d.abilityValues["APP"];
+            textSIZ.Text = d.abilityValues["SIZ"];
+            textINT.Text = d.abilityValues["INT"];
+            textEDU.Text = d.abilityValues["EDU"];
 
             Searcher = d;
         }
 
         private void buttonDecide_Click(object sender, EventArgs e)
         {
-            Searcher.searcherInfoList["キャラクター名"] = textCharaName.Text;
-            Searcher.searcherInfoList["HP"] = textHP.Text;
-            Searcher.searcherInfoList["MP"] = textMP.Text;
-            Searcher.searcherInfoList["SAN"] = textSAN.Text;
-            Searcher.abilityValueList["STR"] = textSTR.Text;
-            Searcher.abilityValueList["CON"] = textCON.Text;
-            Searcher.abilityValueList["POW"] = textPOW.Text;
-            Searcher.abilityValueList["DEX"] = textDEX.Text;
-            Searcher.abilityValueList["APP"] = textAPP.Text;
-            Searcher.abilityValueList["SIZ"] = textSIZ.Text;
-            Searcher.abilityValueList["INT"] = textINT.Text;
-            Searcher.abilityValueList["EDU"] = textEDU.Text;
+            Searcher.searcherInfos["キャラクター名"] = textCharaName.Text;
+            Searcher.searcherInfos["HP"] = textHP.Text;
+            Searcher.searcherInfos["MP"] = textMP.Text;
+            Searcher.searcherInfos["SAN"] = textSAN.Text;
+            Searcher.abilityValues["STR"] = textSTR.Text;
+            Searcher.abilityValues["CON"] = textCON.Text;
+            Searcher.abilityValues["POW"] = textPOW.Text;
+            Searcher.abilityValues["DEX"] = textDEX.Text;
+            Searcher.abilityValues["APP"] = textAPP.Text;
+            Searcher.abilityValues["SIZ"] = textSIZ.Text;
+            Searcher.abilityValues["INT"] = textINT.Text;
+            Searcher.abilityValues["EDU"] = textEDU.Text;
 
             this.Close();
         }

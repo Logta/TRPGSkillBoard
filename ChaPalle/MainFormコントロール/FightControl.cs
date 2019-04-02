@@ -32,7 +32,7 @@ namespace PalletMaster
 
         internal void SetFightText(string v)
         {
-            labelHPValue.Text = PalletMaster.Searcher.searcherInfoList["HP"];
+            labelHPValue.Text = PalletMaster.Searcher.searcherInfos["HP"];
         }
 
         //
@@ -73,8 +73,8 @@ namespace PalletMaster
 
             //選択されているアイテムを取得する
             attackSkill = attackLabel.Text = itemx.Text;
-            string tValue = PalletMaster.GetBotDiceText(itemx.SubItems[1].Text, itemx.Text);
-            PalletMaster.SetTextRole(tValue);
+            string tValue = PalletMaster.GetDiceText(itemx.SubItems[1].Text, itemx.Text);
+            PalletMaster.SetTextRole(tValue, attackSkill);
             PalletMaster.SetSkillHistory(itemx.Text, ロール.技能);
         }
 
@@ -84,7 +84,7 @@ namespace PalletMaster
             try
             {
                 PalletMaster.SetSkillHistory(skillName, ロール.技能);
-                return (PalletMaster.GetBotDiceText(PalletMaster.Searcher.fightSkillList[skillName], skillName));
+                return (PalletMaster.GetDiceText(PalletMaster.Searcher.fightSkills[skillName], skillName));
             }
             catch (KeyNotFoundException)
             {
@@ -100,21 +100,21 @@ namespace PalletMaster
         private void buttonAvoid_Click(object sender, EventArgs e)
         {
             string avoidDiceRole = getSkillValue("回避");
-            PalletMaster.SetTextRole(avoidDiceRole);
+            PalletMaster.SetTextRole(avoidDiceRole, "回避");
         }
 
         private void buttonFist_Click(object sender, EventArgs e)
         {
             attackSkill = attackLabel.Text = "こぶし（パンチ）";
             string fistDiceRole = getSkillValue("こぶし（パンチ）");
-            PalletMaster.SetTextRole(fistDiceRole);
+            PalletMaster.SetTextRole(fistDiceRole, "こぶし（パンチ）");
         }
 
         private void buttonKick_Click(object sender, EventArgs e)
         {
             attackSkill = attackLabel.Text = "キック";
             string kickDiceRole = getSkillValue("キック");
-            PalletMaster.SetTextRole(kickDiceRole);
+            PalletMaster.SetTextRole(kickDiceRole, "キック");
         }
 
         private void buttonHPPlus_Click(object sender, EventArgs e)
@@ -142,9 +142,9 @@ namespace PalletMaster
                 else if (hp / 2 <= hpDiff)
                 {
                     int m_con;
-                    if (int.TryParse(PalletMaster.Searcher.abilityValueList["CON"], out m_con))
+                    if (int.TryParse(PalletMaster.Searcher.abilityValues["CON"], out m_con))
                     {
-                        Clipboard.SetText(PalletMaster.GetBotDiceText(Convert.ToString(m_con * 5), "気絶ロール"));
+                        Clipboard.SetText(PalletMaster.GetDiceText(Convert.ToString(m_con * 5), "気絶ロール"));
                         MessageBox.Show("気絶ロールが発生しました。CON×5をクリップボードにコピーしました",
                         "気絶ロール",
                         MessageBoxButtons.OK);
@@ -174,7 +174,7 @@ namespace PalletMaster
                 MessageBoxIcon.Error);
                 return;
             }
-            PalletMaster.Searcher.fightSkillList[tSkill] = tValue;
+            PalletMaster.Searcher.fightSkills[tSkill] = tValue;
 
             PalletMaster.RefreshListView();
         }
@@ -193,13 +193,13 @@ namespace PalletMaster
             itemx = listViewFight.SelectedItems[0];
 
             //選択されているアイテムを取得、削除
-            PalletMaster.Searcher.fightSkillList.Remove(itemx.Text);
+            PalletMaster.Searcher.fightSkills.Remove(itemx.Text);
             PalletMaster.RefreshListView();
         }
 
         public void RefreshSkillList()
         {
-            Proccesser.RefreshSkillList(listViewFight, PalletMaster.Searcher.fightSkillList);
+            Proccesser.RefreshSkillList(listViewFight, PalletMaster.Searcher.fightSkills);
         }
 
         private void attack_Click(object sender, EventArgs e)

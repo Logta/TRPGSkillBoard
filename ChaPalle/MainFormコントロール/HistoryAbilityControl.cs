@@ -49,10 +49,10 @@ namespace PalletMaster
             int m_ability;
             int m_magni;
 
-            if (int.TryParse(PalletMaster.Searcher.abilityValueList[listBoxAbility.Text], out m_ability) && int.TryParse(listBoxValue.Text, out m_magni))
+            if (int.TryParse(PalletMaster.Searcher.abilityValues[listBoxAbility.Text], out m_ability) && int.TryParse(listBoxValue.Text, out m_magni))
             {
                 PalletMaster.SetSkillHistory(listBoxAbility.Text + "×" + listBoxValue.Text, ロール.能力);
-                PalletMaster.SetTextRole(PalletMaster.GetBotDiceText(Convert.ToString(m_ability * m_magni)));
+                PalletMaster.SetTextRole(PalletMaster.GetDiceText(Convert.ToString(m_ability * m_magni)), listBoxAbility.Text + "×" + listBoxValue.Text);
             }
 
             PalletMaster.RefreshListView();
@@ -81,9 +81,9 @@ namespace PalletMaster
                 int m_ability;
                 char[] del = { '×' };
                 string[] arr = itemx.SubItems[0].Text.Split(del, StringSplitOptions.RemoveEmptyEntries);
-                if (int.TryParse(PalletMaster.Searcher.abilityValueList[arr[0]], out m_ability))
+                if (int.TryParse(PalletMaster.Searcher.abilityValues[arr[0]], out m_ability))
                 {
-                    Clipboard.SetText(PalletMaster.GetBotDiceText(Convert.ToString(m_ability * int.Parse(arr[1]))));
+                    Clipboard.SetText(PalletMaster.GetDiceText(Convert.ToString(m_ability * int.Parse(arr[1]))));
                     PalletMaster.SetSkillHistory(arr[0] + " × " + arr[1], ロール.能力);
                 }
             }
@@ -102,14 +102,6 @@ namespace PalletMaster
             listBoxValue.SelectedIndex = v;
         }
 
-        private void listViewHistory_ColumnClick(object sender, ColumnClickEventArgs e)
-        {
-            //クリックされた列を設定
-            listViewItemSorter.Column = e.Column;
-            //並び替える
-            listViewHistory.Sort();
-        }
-
         internal void RefreshSkillList()
         {
             listViewHistory.Items.Clear();
@@ -124,6 +116,14 @@ namespace PalletMaster
                 string[] setItem = { id, name, type };
                 listViewHistory.Items.Add(new ListViewItem(setItem));
             }
+        }
+
+        private void listViewHistory_ColumnClick_1(object sender, ColumnClickEventArgs e)
+        {
+            //クリックされた列を設定
+            listViewItemSorter.Column = e.Column;
+            //並び替える
+            listViewHistory.Sort();
         }
     }
 }

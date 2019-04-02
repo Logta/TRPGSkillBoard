@@ -312,7 +312,7 @@
             // CharaInfoForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(331, 326);
+            this.ClientSize = new System.Drawing.Size(331, 294);
             this.Controls.Add(this.charaMemoButton);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.textSAN);
@@ -342,6 +342,8 @@
             this.Font = new System.Drawing.Font("UD デジタル 教科書体 N-B", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximumSize = new System.Drawing.Size(347, 333);
+            this.MinimumSize = new System.Drawing.Size(347, 333);
             this.Name = "CharaInfoForm";
             this.Text = "ユーザー情報入力フォーム";
             this.ResumeLayout(false);

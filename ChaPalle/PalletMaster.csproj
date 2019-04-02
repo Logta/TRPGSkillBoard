@@ -67,17 +67,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Charact.cs" />
+    <Compile Include="CSファイル\Charact.cs" />
     <Compile Include="Forms\1InputForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\1InputForm.Designer.cs">
       <DependentUpon>1InputForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CSファイル\InfoMemoForm.cs">
+    <Compile Include="Forms\InfoMemoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CSファイル\InfoMemoForm.Designer.cs">
+    <Compile Include="Forms\InfoMemoForm.Designer.cs">
       <DependentUpon>InfoMemoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainFormコントロール\HistoryAbilityControl.cs">
@@ -138,10 +138,10 @@
     <Compile Include="MainFormコントロール\memoTabControl.Designer.cs">
       <DependentUpon>memoTabControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="CSファイル\MinimumForm.cs">
+    <Compile Include="Forms\MinimumForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CSファイル\MinimumForm.Designer.cs">
+    <Compile Include="Forms\MinimumForm.Designer.cs">
       <DependentUpon>MinimumForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -172,7 +172,7 @@
     <EmbeddedResource Include="Forms\1InputForm.resx">
       <DependentUpon>1InputForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CSファイル\InfoMemoForm.resx">
+    <EmbeddedResource Include="Forms\InfoMemoForm.resx">
       <DependentUpon>InfoMemoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainFormコントロール\HistoryAbilityControl.resx">
@@ -202,7 +202,7 @@
     <EmbeddedResource Include="MainFormコントロール\memoTabControl.resx">
       <DependentUpon>memoTabControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CSファイル\MinimumForm.resx">
+    <EmbeddedResource Include="Forms\MinimumForm.resx">
       <DependentUpon>MinimumForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

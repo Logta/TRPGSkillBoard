@@ -64,7 +64,7 @@
             this.info.Name = "info";
             this.info.Size = new System.Drawing.Size(175, 20);
             this.info.TabIndex = 2;
-            this.info.Text = "Create Logta _ver1.4";
+            this.info.Text = "Create Logta _ver1.5";
             // 
             // FormSplash
             // 
