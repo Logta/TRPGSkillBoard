@@ -61,6 +61,7 @@
             this.correctionComboBox = new System.Windows.Forms.ComboBox();
             this.correctionValueComboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.diceNumberComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox6.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -207,6 +208,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.diceNumberComboBox);
             this.groupBox2.Controls.Add(this.buttonTemplete3Copy);
             this.groupBox2.Controls.Add(this.buttonTemplete2Copy);
             this.groupBox2.Controls.Add(this.buttonTemplete1Copy);
@@ -225,13 +227,13 @@
             this.buttonTemplete3Copy.Name = "buttonTemplete3Copy";
             this.buttonTemplete3Copy.Size = new System.Drawing.Size(52, 23);
             this.buttonTemplete3Copy.TabIndex = 16;
-            this.buttonTemplete3Copy.Text = "3d";
+            this.buttonTemplete3Copy.Text = "d";
             this.buttonTemplete3Copy.UseVisualStyleBackColor = true;
             this.buttonTemplete3Copy.Click += new System.EventHandler(this.buttonTemplete3Copy_Click);
             // 
             // buttonTemplete2Copy
             // 
-            this.buttonTemplete2Copy.Location = new System.Drawing.Point(132, 44);
+            this.buttonTemplete2Copy.Location = new System.Drawing.Point(70, 44);
             this.buttonTemplete2Copy.Name = "buttonTemplete2Copy";
             this.buttonTemplete2Copy.Size = new System.Drawing.Size(52, 23);
             this.buttonTemplete2Copy.TabIndex = 15;
@@ -241,7 +243,7 @@
             // 
             // buttonTemplete1Copy
             // 
-            this.buttonTemplete1Copy.Location = new System.Drawing.Point(74, 44);
+            this.buttonTemplete1Copy.Location = new System.Drawing.Point(12, 44);
             this.buttonTemplete1Copy.Name = "buttonTemplete1Copy";
             this.buttonTemplete1Copy.Size = new System.Drawing.Size(52, 23);
             this.buttonTemplete1Copy.TabIndex = 14;
@@ -431,6 +433,33 @@
             this.label6.TabIndex = 18;
             this.label6.Text = "補正値";
             // 
+            // diceNumberComboBox
+            // 
+            this.diceNumberComboBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "STR",
+            "CON",
+            "POW",
+            "DEX",
+            "APP",
+            "SIZ",
+            "INT",
+            "EDU"});
+            this.diceNumberComboBox.FormattingEnabled = true;
+            this.diceNumberComboBox.Items.AddRange(new object[] {
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "15",
+            "20"});
+            this.diceNumberComboBox.Location = new System.Drawing.Point(128, 46);
+            this.diceNumberComboBox.Name = "diceNumberComboBox";
+            this.diceNumberComboBox.Size = new System.Drawing.Size(56, 20);
+            this.diceNumberComboBox.TabIndex = 22;
+            this.diceNumberComboBox.Text = "5";
+            // 
             // SkillControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -499,5 +528,6 @@
         private System.Windows.Forms.ComboBox correctionValueComboBox;
         private System.Windows.Forms.ComboBox correctionComboBox;
         private System.Windows.Forms.CheckBox correctionSetButton;
+        private System.Windows.Forms.ComboBox diceNumberComboBox;
     }
 }

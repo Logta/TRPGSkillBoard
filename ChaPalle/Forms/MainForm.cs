@@ -39,6 +39,8 @@ namespace PalletMaster
 
             //設定の読込と初期設定
             PalletMaster.Setting = IOHelper.toLoadSetting();
+            skillControl.SetButtonTempleteUserCopyName(PalletMaster.Setting.useBCDiceAPIFlg ?
+                "ダイス" : "コピー");
             if (PalletMaster.Setting.useDiceBotFlg == 0)
                 toChangeBCDice();
             else
@@ -123,6 +125,9 @@ namespace PalletMaster
                 PalletMaster.Setting = u_form.iOData.Setting;
                 TopMost = PalletMaster.Setting.checkTopMostFlg;
                 IOHelper.toSaveSetting(PalletMaster.Setting);
+
+                skillControl.SetButtonTempleteUserCopyName(u_form.iOData.Setting.useBCDiceAPIFlg ?
+                    "ダイス" : "コピー");
             }
         }
         

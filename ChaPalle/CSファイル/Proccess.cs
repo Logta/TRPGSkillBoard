@@ -141,6 +141,8 @@ namespace PalletMaster
         internal void SendPostWebhookBCDiceAPI(string text, string webhookURL, string bcdiceURL, string userName, string skill)
         {
             var result = SendGetBCDice_API(text, bcdiceURL);
+            if (!result.ok) return;
+
             var sendWebhookText = userName + result.result;
             SendPostWebhookAsync(sendWebhookText + " " + skill, webhookURL, userName);
         }

@@ -54,14 +54,14 @@ namespace PalletMaster
                 Searcher.uniqueSkills["幸運"] = Convert.ToString(buff_1 * 5);
             if (int.TryParse(Searcher.abilityValues["EDU"], out buff_1))
                 Searcher.uniqueSkills["知識"] = Convert.ToString(buff_1 * 5);
-            if (int.TryParse(Searcher.abilityValues["DEX"], out buff_1) 
+            if (int.TryParse(Searcher.abilityValues["DEX"], out buff_1)
                 && !Searcher.fightSkills.ContainsKey("回避"))
             {
                 Searcher.fightSkills["回避"] = Convert.ToString(buff_1 * 2);
                 Searcher.uniqueSkills["回避"] = Convert.ToString(buff_1 * 2);
             }
 
-            if(int.TryParse(Searcher.abilityValues["STR"], out buff_1) &&
+            if (int.TryParse(Searcher.abilityValues["STR"], out buff_1) &&
                int.TryParse(Searcher.abilityValues["SIZ"], out buff_2))
                 Searcher.searcherInfos["ダメージボーナス"] = GetBonusDamege(buff_1 + buff_2);
         }
@@ -80,7 +80,7 @@ namespace PalletMaster
                 default: return null;
             }
         }
-        
+
         //技能・能力ロールを行った履歴をリストに入力する
         public void SetSkillHistory(string m_skill, ロール m_type)
         {
@@ -89,7 +89,7 @@ namespace PalletMaster
                 new ActionHistory().Set(m_skill, dt.ToString("yyyy/MM/dd HH:mm:ss"), m_type));
         }
 
-        public string GetBCDiceAPIText(string value)
+        public string GetBCDiceAPISkillText(string value)
         {
             return "CCB<=" + value;
         }
@@ -104,7 +104,7 @@ namespace PalletMaster
         //valueに判定値を、nameに技能など
         public string GetDiceText(string value, string name = "")
         {
-            return Setting.useBCDiceAPIFlg ? GetBCDiceAPIText(value) :
+            return Setting.useBCDiceAPIFlg ? GetBCDiceAPISkillText(value) :
                 GetBotDiceText(value, name);
         }
 

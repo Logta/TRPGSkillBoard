@@ -305,7 +305,7 @@
             this.charaMemoButton.Name = "charaMemoButton";
             this.charaMemoButton.Size = new System.Drawing.Size(108, 24);
             this.charaMemoButton.TabIndex = 39;
-            this.charaMemoButton.Text = "キャラメモ入力";
+            this.charaMemoButton.Text = "キャラ背景入力";
             this.charaMemoButton.UseVisualStyleBackColor = true;
             this.charaMemoButton.Click += new System.EventHandler(this.charaMemoButton_Click);
             // 

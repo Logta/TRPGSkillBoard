@@ -32,6 +32,11 @@ namespace PalletMaster
             PalletMaster = palletMaster;
         }
 
+        public void SetButtonTempleteUserCopyName(string name)
+        {
+            buttonTempleteUserCopy.Text = name;
+        }
+
         //「クリップボードにコピー」を押したときの制御
         private void buttonClipboardCopy_ClickAsync(object sender, EventArgs e)
         {
@@ -169,34 +174,6 @@ namespace PalletMaster
                     return null;
                 }
             }
-
-            ////例外処理で無理やり行った処理
-            //try
-            //{
-            //    string tValue = PalletMaster.GetBotDiceText(PalletMaster.Searcher.uniqueSkillList[m_skillName]);// +" " + textSerch.Text;
-            //    PalletMaster.SetClipBoard(tValue);
-            //    textResult.Text = tValue;
-            //    PalletMaster.SetSkillHistory(m_skillName, ロール.技能);
-            //}
-            //catch (Exception exception)
-            //{
-            //        try
-            //        {
-            //            string tValue = PalletMaster.GetBotDiceText(PalletMaster.Searcher.DefaultSkillList[m_skillName]);// +" " + textSerch.Text;
-            //            PalletMaster.SetClipBoard(tValue);
-            //            textResult.Text = tValue;
-            //            PalletMaster.SetSkillHistory(m_skillName, ロール.技能);
-            //        }
-            //        catch (KeyNotFoundException)
-            //        {
-            //            MessageBox.Show("正しい技能名を入力してください。",
-            //        "エラー",
-            //        MessageBoxButtons.OK,
-            //        MessageBoxIcon.Error);
-            //        }
-            //        return;
-            //    
-            //}
         }
 
         //「検索」のテキストボードで[Enter]を押したときの制御
@@ -221,25 +198,41 @@ namespace PalletMaster
         //ユーザー指定の文をクリップボードにコピー
         private void buttonTempleteUserCopy_Click(object sender, EventArgs e)
         {
-            PalletMaster.SetClipBoard((textTempleteUser.Text));
+            if (PalletMaster.Setting.useBCDiceAPIFlg)
+            {
+                new Proccess().SendPostWebhookBCDiceAPI(textTempleteUser.Text,
+                     PalletMaster.Setting.webhookURL, PalletMaster.Setting.bcdiceAPIURL,
+                     PalletMaster.Setting.userName, "定型");
+            }
+            else
+            {
+                PalletMaster.SetClipBoard(textTempleteUser.Text);
+            }
         }
 
         //ダイス1つの文をクリップボードにコピー
         private void buttonTemplete1Copy_Click(object sender, EventArgs e)
         {
-            PalletMaster.SetClipBoard((buttonTemplete1Copy.Text));
+            textTempleteUser.Text = buttonTemplete1Copy.Text;
         }
 
         //ダイス2つの文をクリップボードにコピー
         private void buttonTemplete2Copy_Click(object sender, EventArgs e)
         {
-            PalletMaster.SetClipBoard((buttonTemplete2Copy.Text));
+            textTempleteUser.Text = buttonTemplete2Copy.Text;
         }
 
         //ダイス3つの文をクリップボードにコピー
         private void buttonTemplete3Copy_Click(object sender, EventArgs e)
         {
-            PalletMaster.SetClipBoard((buttonTemplete3Copy.Text));
+            if (int.TryParse(diceNumberComboBox.Text, out var count))
+            {
+                if (buttonTemplete3Copy.Text == "/r d")
+                    textTempleteUser.Text = "/r " + diceNumberComboBox.Text +"d";
+                else
+                textTempleteUser.Text = diceNumberComboBox.Text +
+                    buttonTemplete3Copy.Text;
+            }
         }
 
         //対抗ロール
@@ -299,13 +292,13 @@ namespace PalletMaster
             {
                 buttonTemplete1Copy.Text = "1d";
                 buttonTemplete2Copy.Text = "2d";
-                buttonTemplete3Copy.Text = "3d";
+                buttonTemplete3Copy.Text = "d";
             }
             else if (v == "Sidekick")
             {
                 buttonTemplete1Copy.Text = "/r 1d";
                 buttonTemplete2Copy.Text = "/r 2d";
-                buttonTemplete3Copy.Text = "/r 3d";
+                buttonTemplete3Copy.Text = "/r d";
             }
         }
 
