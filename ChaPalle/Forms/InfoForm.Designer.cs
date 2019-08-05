@@ -139,7 +139,7 @@
             // textSTR
             // 
             this.textSTR.Font = new System.Drawing.Font("UD デジタル 教科書体 N-B", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textSTR.Location = new System.Drawing.Point(17, 161);
+            this.textSTR.Location = new System.Drawing.Point(15, 148);
             this.textSTR.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textSTR.Name = "textSTR";
             this.textSTR.Size = new System.Drawing.Size(34, 20);
@@ -158,7 +158,7 @@
             // textCON
             // 
             this.textCON.Font = new System.Drawing.Font("UD デジタル 教科書体 N-B", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textCON.Location = new System.Drawing.Point(73, 161);
+            this.textCON.Location = new System.Drawing.Point(71, 148);
             this.textCON.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textCON.Name = "textCON";
             this.textCON.Size = new System.Drawing.Size(34, 20);
@@ -177,7 +177,7 @@
             // textPOW
             // 
             this.textPOW.Font = new System.Drawing.Font("UD デジタル 教科書体 N-B", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textPOW.Location = new System.Drawing.Point(132, 161);
+            this.textPOW.Location = new System.Drawing.Point(130, 148);
             this.textPOW.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textPOW.Name = "textPOW";
             this.textPOW.Size = new System.Drawing.Size(34, 20);
@@ -196,7 +196,7 @@
             // textDEX
             // 
             this.textDEX.Font = new System.Drawing.Font("UD デジタル 教科書体 N-B", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textDEX.Location = new System.Drawing.Point(185, 161);
+            this.textDEX.Location = new System.Drawing.Point(183, 148);
             this.textDEX.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textDEX.Name = "textDEX";
             this.textDEX.Size = new System.Drawing.Size(34, 20);
@@ -206,7 +206,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("UD デジタル 教科書体 N-B", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label8.Location = new System.Drawing.Point(183, 200);
+            this.label8.Location = new System.Drawing.Point(183, 172);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(28, 13);
             this.label8.TabIndex = 36;
@@ -215,7 +215,7 @@
             // textEDU
             // 
             this.textEDU.Font = new System.Drawing.Font("UD デジタル 教科書体 N-B", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textEDU.Location = new System.Drawing.Point(185, 230);
+            this.textEDU.Location = new System.Drawing.Point(183, 189);
             this.textEDU.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textEDU.Name = "textEDU";
             this.textEDU.Size = new System.Drawing.Size(34, 20);
@@ -225,7 +225,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("UD デジタル 教科書体 N-B", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label9.Location = new System.Drawing.Point(129, 200);
+            this.label9.Location = new System.Drawing.Point(129, 172);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(28, 13);
             this.label9.TabIndex = 34;
@@ -234,7 +234,7 @@
             // textINT
             // 
             this.textINT.Font = new System.Drawing.Font("UD デジタル 教科書体 N-B", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textINT.Location = new System.Drawing.Point(132, 230);
+            this.textINT.Location = new System.Drawing.Point(130, 189);
             this.textINT.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textINT.Name = "textINT";
             this.textINT.Size = new System.Drawing.Size(34, 20);
@@ -244,7 +244,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("UD デジタル 教科書体 N-B", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label10.Location = new System.Drawing.Point(71, 200);
+            this.label10.Location = new System.Drawing.Point(71, 172);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(28, 13);
             this.label10.TabIndex = 32;
@@ -253,7 +253,7 @@
             // textSIZ
             // 
             this.textSIZ.Font = new System.Drawing.Font("UD デジタル 教科書体 N-B", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textSIZ.Location = new System.Drawing.Point(73, 230);
+            this.textSIZ.Location = new System.Drawing.Point(71, 189);
             this.textSIZ.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textSIZ.Name = "textSIZ";
             this.textSIZ.Size = new System.Drawing.Size(34, 20);
@@ -263,7 +263,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("UD デジタル 教科書体 N-B", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label11.Location = new System.Drawing.Point(15, 200);
+            this.label11.Location = new System.Drawing.Point(15, 172);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(28, 13);
             this.label11.TabIndex = 30;
@@ -272,7 +272,7 @@
             // textAPP
             // 
             this.textAPP.Font = new System.Drawing.Font("UD デジタル 教科書体 N-B", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textAPP.Location = new System.Drawing.Point(17, 230);
+            this.textAPP.Location = new System.Drawing.Point(15, 189);
             this.textAPP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textAPP.Name = "textAPP";
             this.textAPP.Size = new System.Drawing.Size(34, 20);
@@ -300,7 +300,7 @@
             // charaMemoButton
             // 
             this.charaMemoButton.Font = new System.Drawing.Font("UD デジタル 教科書体 N-B", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.charaMemoButton.Location = new System.Drawing.Point(222, 229);
+            this.charaMemoButton.Location = new System.Drawing.Point(103, 226);
             this.charaMemoButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.charaMemoButton.Name = "charaMemoButton";
             this.charaMemoButton.Size = new System.Drawing.Size(108, 24);

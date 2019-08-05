@@ -54,6 +54,8 @@
             this.labelCharaName = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.ClipboardLabel = new System.Windows.Forms.Label();
+            this.キャラクター編集ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.キャラクター作成ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabCthu.SuspendLayout();
             this.SuspendLayout();
@@ -125,10 +127,12 @@
             // 
             // userToolStripMenuItem
             // 
+            this.userToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.キャラクター編集ToolStripMenuItem,
+            this.キャラクター作成ToolStripMenuItem});
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
             this.userToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.userToolStripMenuItem.Text = "キャラ";
-            this.userToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
             // 
             // textImportToolStripMenuItem
             // 
@@ -296,6 +300,20 @@
             this.ClipboardLabel.TabIndex = 19;
             this.ClipboardLabel.Text = "---";
             // 
+            // キャラクター編集ToolStripMenuItem
+            // 
+            this.キャラクター編集ToolStripMenuItem.Name = "キャラクター編集ToolStripMenuItem";
+            this.キャラクター編集ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.キャラクター編集ToolStripMenuItem.Text = "キャラクター編集";
+            this.キャラクター編集ToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
+            // 
+            // キャラクター作成ToolStripMenuItem
+            // 
+            this.キャラクター作成ToolStripMenuItem.Name = "キャラクター作成ToolStripMenuItem";
+            this.キャラクター作成ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.キャラクター作成ToolStripMenuItem.Text = "キャラクター作成";
+            this.キャラクター作成ToolStripMenuItem.Click += new System.EventHandler(this.キャラクター作成ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -351,6 +369,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label ClipboardLabel;
         private System.Windows.Forms.ToolStripMenuItem 縮小版ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem キャラクター編集ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem キャラクター作成ToolStripMenuItem;
     }
 }
 

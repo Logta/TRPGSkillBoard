@@ -207,7 +207,11 @@ namespace PalletMaster
             try
             {
                 var damageText = FightDamage.fightSkillDamage[attackSkill] + damageBonusTextBox.Text;
+                //PalletMaster.SetTextRole(damageText, "攻撃 : " + attackSkill);
                 PalletMaster.SetClipBoard(damageText);
+                MessageBox.Show("攻撃値：" + Proccess.TotalDice(damageText).Sum(), "攻撃値",
+                MessageBoxButtons.OK);
+                
             }
             catch(Exception ee) { }
         }

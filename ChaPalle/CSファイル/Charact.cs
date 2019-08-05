@@ -96,6 +96,10 @@ namespace PalletMaster
         public bool useBCDiceAPIFlg { get; set; }
         [JsonProperty("charaNameToUserNameFlg")]
         public bool charaNameToUserNameFlg { get; set; }
+        [JsonProperty("font")]
+        public string font { get; set; }
+        [JsonProperty("fontSize")]
+        public int fontSize { get; set; }
     }
 
     [JsonObject("fightDamage")]

@@ -66,7 +66,33 @@ namespace PalletMaster
                 Searcher.searcherInfos["ダメージボーナス"] = GetBonusDamege(buff_1 + buff_2);
         }
 
-        private string GetBonusDamege(int strPlusSiz)
+        //能力値を設定する
+        public static Searcher AbilityDataSet(Searcher searcher)
+        {
+            int buff_1;
+            int buff_2;
+
+            if (int.TryParse(searcher.abilityValues["INT"], out buff_1)) //能力値が入力されていなければ無視する
+                searcher.uniqueSkills["アイデア"] = Convert.ToString(buff_1 * 5);
+            if (int.TryParse(searcher.abilityValues["POW"], out buff_1))
+                searcher.uniqueSkills["幸運"] = Convert.ToString(buff_1 * 5);
+            if (int.TryParse(searcher.abilityValues["EDU"], out buff_1))
+                searcher.uniqueSkills["知識"] = Convert.ToString(buff_1 * 5);
+            if (int.TryParse(searcher.abilityValues["DEX"], out buff_1)
+                && !searcher.fightSkills.ContainsKey("回避"))
+            {
+                searcher.fightSkills["回避"] = Convert.ToString(buff_1 * 2);
+                searcher.uniqueSkills["回避"] = Convert.ToString(buff_1 * 2);
+            }
+
+            if (int.TryParse(searcher.abilityValues["STR"], out buff_1) &&
+               int.TryParse(searcher.abilityValues["SIZ"], out buff_2))
+                searcher.searcherInfos["ダメージボーナス"] = GetBonusDamege(buff_1 + buff_2);
+
+            return searcher;
+        }
+
+        private static string GetBonusDamege(int strPlusSiz)
         {
             switch (strPlusSiz)
             {

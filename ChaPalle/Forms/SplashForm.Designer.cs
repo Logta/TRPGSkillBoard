@@ -38,7 +38,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::PalletMaster.Properties.Resources.colorPallet;
+            this.pictureBox1.Image = global::ChaPalle.Properties.Resources.colorPallet1;
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
             this.pictureBox1.Location = new System.Drawing.Point(300, 46);
             this.pictureBox1.Name = "pictureBox1";
@@ -64,7 +64,7 @@
             this.info.Name = "info";
             this.info.Size = new System.Drawing.Size(175, 20);
             this.info.TabIndex = 2;
-            this.info.Text = "Create Logta _ver1.5";
+            this.info.Text = "Create Logta _ver2.1";
             // 
             // FormSplash
             // 

@@ -149,7 +149,7 @@ namespace PalletMaster
 
             value = correctValue(value);
 
-            PalletMaster.SetTextRole(value, textSerch.Text);
+            PalletMaster.SetTextRole(PalletMaster.GetDiceText(value, textSerch.Text), textSerch.Text);
 
             textResult.Text = PalletMaster.GetDiceText(value, textSerch.Text);
             PalletMaster.SetSkillHistory(textSerch.Text, ロール.技能);
@@ -188,7 +188,7 @@ namespace PalletMaster
 
                 value = correctValue(value);
 
-                PalletMaster.SetTextRole(value, textSerch.Text);
+                PalletMaster.SetTextRole(PalletMaster.GetDiceText(value, textSerch.Text), textSerch.Text);
 
                 textResult.Text = PalletMaster.GetDiceText(value, textSerch.Text);
                 PalletMaster.SetSkillHistory(textSerch.Text, ロール.技能);

@@ -78,6 +78,19 @@ namespace PalletMaster
             //MemoControlを技能タブに割り当てる
             memoControl.SetMainForm(PalletMaster);
             setTab(memoControl, tabPageMemo);
+
+            formFontChange(PalletMaster.Setting.font, PalletMaster.Setting.fontSize);
+        }
+
+        private void formFontChange(string fontName, int fontSize)
+        {
+            this.Font = new Font(fontName, fontSize);
+            skillControl.Font = new Font(fontName, fontSize);
+            sanControl.Font = new Font(fontName, fontSize);
+            fightControl.Font = new Font(fontName, fontSize);
+            historyAbilityControl.Font = new Font(fontName, fontSize);
+            memoControl.Font = new Font(fontName, fontSize);
+            menuStrip1.Font = new Font(fontName, fontSize);
         }
 
         private void setTab(UserControl userControl,TabPage tabPage)
@@ -128,6 +141,8 @@ namespace PalletMaster
 
                 skillControl.SetButtonTempleteUserCopyName(u_form.iOData.Setting.useBCDiceAPIFlg ?
                     "ダイス" : "コピー");
+                formFontChange(PalletMaster.Setting.font, PalletMaster.Setting.fontSize);
+
             }
         }
         
@@ -136,6 +151,7 @@ namespace PalletMaster
         {
             PalletMaster.Searcher.searcherInfos["SAN"] = sanControl.GetSanText();
             CharaInfoForm u_form = new CharaInfoForm(PalletMaster.Searcher);
+            u_form.Font = new Font(PalletMaster.Setting.font, PalletMaster.Setting.fontSize);
             TopMost = false;
             u_form.ShowDialog();
 
@@ -243,14 +259,24 @@ namespace PalletMaster
                     m_d.f = true;
                     return m_d;
                 }
-                catch(Exception e) {
-                    MessageBox.Show("読み込み時エラーが発生しました。",
-                    "エラー",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                    m_d.d = new Character();
-                    m_d.f = false;
-                    return m_d;
+                catch { 
+                    try
+                    {
+                        string json = System.IO.File.ReadAllText(ofDialog.FileName, Encoding.GetEncoding("UTF-8"));
+                        m_d.d = JsonConvert.DeserializeObject<Character>(json);
+                        m_d.f = true;
+                        return m_d;
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("読み込み時エラーが発生しました。",
+                        "エラー",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                        m_d.d = new Character();
+                        m_d.f = false;
+                        return m_d;
+                    }
                 }
             }
 
@@ -420,10 +446,24 @@ namespace PalletMaster
         private void 縮小版ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MinimumForm u_form = new MinimumForm(PalletMaster);
+            u_form.Font = new Font(PalletMaster.Setting.font, PalletMaster.Setting.fontSize);
             TopMost = false;
             Visible = false;
             u_form.ShowDialog();
 
+            TopMost = PalletMaster.Setting.checkTopMostFlg;
+            Visible = true;
+        }
+
+        private void キャラクター作成ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CharacterMakingForm u_form = new CharacterMakingForm(PalletMaster);
+            u_form.Font = new Font(PalletMaster.Setting.font, PalletMaster.Setting.fontSize);
+            TopMost = false;
+            Visible = false;
+            if (u_form.setSkillSet) u_form.ShowDialog();
+
+            RefreshList();
             TopMost = PalletMaster.Setting.checkTopMostFlg;
             Visible = true;
         }

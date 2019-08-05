@@ -32,3 +32,40 @@ E:\Dropbox\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaste
 E:\Dropbox\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.csproj.CopyComplete
 E:\Dropbox\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\ChaPalle.exe
 E:\Dropbox\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\ChaPalle.pdb
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\ChaPalle.exe.config
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\ChaPalle.exe
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\ChaPalle.pdb
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\HtmlAgilityPack.dll
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\MetroFramework.Design.dll
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\MetroFramework.dll
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\MetroFramework.Fonts.dll
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\Newtonsoft.Json.dll
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\HtmlAgilityPack.pdb
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\HtmlAgilityPack.xml
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\Newtonsoft.Json.xml
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.csprojAssemblyReference.cache
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster._1InputForm.resources
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.InfoMemoForm.resources
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.HistoryAbilityControl.resources
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.FormSplash.resources
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.CharaArchiveImportForm.resources
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.CharaBankImportForm.resources
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.FightControl.resources
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.MadnessTableForm.resources
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.MainForm.resources
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.MemoControl.resources
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.memoTabControl.resources
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.MinimumForm.resources
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\ChaPalle.Properties.Resources.resources
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.SkillControl.resources
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.SettingForm.resources
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.CharaInfoForm.resources
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.SANControl.resources
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.csproj.GenerateResource.cache
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.csproj.CoreCompileInputs.cache
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.csproj.CopyComplete
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\ChaPalle.exe
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\ChaPalle.pdb
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\MathNet.Numerics.dll
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\MathNet.Numerics.xml
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.CharacterMakingForm.resources

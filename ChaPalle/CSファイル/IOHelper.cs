@@ -23,7 +23,7 @@ namespace PalletMaster
             var ofDialog = new OpenFileDialog();
 
             // デフォルトのフォルダを指定する
-            ofDialog.InitialDirectory = @"C:";
+            //ofDialog.InitialDirectory = @"C:";
 
             //ダイアログのタイトルを指定する
             ofDialog.Title = "キャラクター保管所txtファイル読み込み";
@@ -84,6 +84,7 @@ namespace PalletMaster
         public Searcher toChangeTxtToData(List<string> al)
         {
             var searcher = new Searcher();
+            searcher.SetDefaultSkills(new Proccess().ReadCSV(System.AppDomain.CurrentDomain.BaseDirectory + "defaultSkill.csv"));
 
             char[] del = { '-', '-', '《', '》', '：', '/', ' ', '％', '　', '●' };
             string importFlg = "base";

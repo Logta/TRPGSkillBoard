@@ -46,8 +46,14 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.bcdiceAPITextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.comboBoxFont = new System.Windows.Forms.ComboBox();
+            this.comboBoxFontSize = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // checkBoxTopMost
@@ -63,7 +69,7 @@
             // 
             // buttonDecide
             // 
-            this.buttonDecide.Location = new System.Drawing.Point(120, 315);
+            this.buttonDecide.Location = new System.Drawing.Point(120, 379);
             this.buttonDecide.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonDecide.Name = "buttonDecide";
             this.buttonDecide.Size = new System.Drawing.Size(87, 29);
@@ -230,10 +236,70 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "BCDice-API URL";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.comboBoxFont);
+            this.groupBox3.Controls.Add(this.comboBoxFontSize);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Location = new System.Drawing.Point(15, 314);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(306, 62);
+            this.groupBox3.TabIndex = 21;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Font";
+            // 
+            // comboBoxFont
+            // 
+            this.comboBoxFont.FormattingEnabled = true;
+            this.comboBoxFont.Items.AddRange(new object[] {
+            "UD デジタル 教科書体 N-B",
+            "メイリオ",
+            "MS UI Gothic",
+            "Times New Roman",
+            "Charter"});
+            this.comboBoxFont.Location = new System.Drawing.Point(10, 32);
+            this.comboBoxFont.Name = "comboBoxFont";
+            this.comboBoxFont.Size = new System.Drawing.Size(121, 20);
+            this.comboBoxFont.TabIndex = 4;
+            // 
+            // comboBoxFontSize
+            // 
+            this.comboBoxFontSize.FormattingEnabled = true;
+            this.comboBoxFontSize.Items.AddRange(new object[] {
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.comboBoxFontSize.Location = new System.Drawing.Point(159, 32);
+            this.comboBoxFontSize.Name = "comboBoxFontSize";
+            this.comboBoxFontSize.Size = new System.Drawing.Size(121, 20);
+            this.comboBoxFontSize.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(157, 19);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 12);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "サイズ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 12);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "種類";
+            // 
             // SettingForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(331, 349);
+            this.ClientSize = new System.Drawing.Size(331, 411);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.checkBoxClipCheck);
@@ -242,14 +308,16 @@
             this.Font = new System.Drawing.Font("UD デジタル 教科書体 N-B", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MaximumSize = new System.Drawing.Size(347, 388);
-            this.MinimumSize = new System.Drawing.Size(347, 388);
+            this.MaximumSize = new System.Drawing.Size(347, 450);
+            this.MinimumSize = new System.Drawing.Size(347, 450);
             this.Name = "SettingForm";
             this.Text = "設定";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,5 +342,10 @@
         private System.Windows.Forms.TextBox bcdiceAPITextBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox charaNameToUserNameCheckBox;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBoxFontSize;
+        private System.Windows.Forms.ComboBox comboBoxFont;
     }
 }

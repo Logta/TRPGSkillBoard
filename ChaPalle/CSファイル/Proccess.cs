@@ -8,11 +8,15 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MathNet.Numerics.Random;
 
 namespace PalletMaster
 {
     class Proccess
     {
+        //MersenneTwister: Mersenne Twister 19937 generator
+        readonly System.Random random = new MersenneTwister();　
+
         public Proccess()
         {
 
@@ -23,7 +27,6 @@ namespace PalletMaster
         {
 
             var list = new Dictionary<string, string>();
-
             try
             {
                 StreamReader reader = new StreamReader(filePath, Encoding.GetEncoding("Shift_JIS"));
@@ -60,6 +63,45 @@ namespace PalletMaster
                     string name = kvp.Value;
 
                     string[] item1 = { id, name };
+                    listView.Items.Add(new ListViewItem(item1));
+                }
+            }
+        }
+
+        //listViewの要素を削除した後、指定のリストの要素を詰め込む
+        public void RefreshSkillList(ListView listView, List<Tuple<Proccess.Skill, string>> ts)
+        {
+            listView.Items.Clear();
+
+            //探索者固有(成長させた)技能をリストビューに入力
+            if (ts != null)
+            {
+                foreach (var tuple in ts)
+                {
+                    string name = tuple.Item1.Name;
+                    string value = tuple.Item1.Value.ToString();
+                    string type = tuple.Item2;
+
+                    string[] item1 = { name, value, type };
+                    listView.Items.Add(new ListViewItem(item1));
+                }
+            }
+        }
+
+        //listViewの要素を削除した後、指定のリストの要素を詰め込む
+        public void RefreshSkillList(ListView listView, List<Proccess.Skill> skills)
+        {
+            listView.Items.Clear();
+
+            //探索者固有(成長させた)技能をリストビューに入力
+            if (skills != null)
+            {
+                foreach (var item in skills)
+                {
+                    string id = item.Name;
+                    int name = item.Value;
+
+                    string[] item1 = { id, name.ToString() };
                     listView.Items.Add(new ListViewItem(item1));
                 }
             }
@@ -138,6 +180,47 @@ namespace PalletMaster
             
         }
 
+        [JsonObject]
+        public class SkillSet
+        {
+            [JsonProperty(PropertyName = "skillSetType")]
+            public string SetType { get; set; }
+
+            [JsonProperty(PropertyName = "skills")]
+            public List<Skill> Skills { get; set; }
+        }
+
+        [JsonObject]
+        public class Skill
+        {
+            [JsonProperty(PropertyName = "skillName")]
+            public string Name { get; set; }
+
+            [JsonProperty(PropertyName = "skillValue")]
+            public int Value { get; set; }
+
+            [JsonProperty(PropertyName = "skillType")]
+            public string Type { get; set; }
+        }
+
+        public static SkillSet GetSkillSet()
+        {
+            try
+            {
+                var fileName = AppDomain.CurrentDomain.BaseDirectory + "characterMakingSkills.json";
+                var json = System.IO.File.ReadAllText(fileName, Encoding.GetEncoding("Shift_JIS"));
+                return JsonConvert.DeserializeObject<SkillSet>(json);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("読み込み時エラーが発生しました。",
+                "エラー",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         internal void SendPostWebhookBCDiceAPI(string text, string webhookURL, string bcdiceURL, string userName, string skill)
         {
             var result = SendGetBCDice_API(text, bcdiceURL);
@@ -145,6 +228,42 @@ namespace PalletMaster
 
             var sendWebhookText = userName + result.result;
             SendPostWebhookAsync(sendWebhookText + " " + skill, webhookURL, userName);
+        }
+
+        public static List<int> TotalDice(string dice)
+        {
+            List<int> total = new List<int>();
+
+            string[] arr = dice.Split('+');
+            foreach (var tex in arr)
+            {
+                if (!tex.Contains("d") && !tex.Contains("D"))
+                {
+                    total.Add(int.Parse(tex));
+                }
+                else
+                {
+                    total.AddRange(DDice(tex));
+                }
+            }
+            return total;
+        }
+
+        public static List<int> DDice(string dice)
+        {
+            List<int> total = new List<int>();
+
+            string[] arr = dice.Split(new char[] { 'D', 'd' });
+            for(var i = 0; i < int.Parse(arr[0]); i++)
+            {
+                total.Add(mersenneOneDice(int.Parse(arr[1])));
+            }
+            return total;
+        }
+
+        private static int mersenneOneDice(int max)
+        {
+            return (int)((double)max * new MersenneTwister().NextDouble() + 1);
         }
     }
 }

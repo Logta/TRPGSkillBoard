@@ -41,6 +41,9 @@
       <HintPath>..\packages\HtmlAgilityPack.1.8.10\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MathNet.Numerics, Version=4.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.4.7.0\lib\net40\MathNet.Numerics.dll</HintPath>
+    </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
     </Reference>
@@ -56,6 +59,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -67,6 +72,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CharacterMakingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CharacterMakingForm.Designer.cs">
+      <DependentUpon>CharacterMakingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CSファイル\Charact.cs" />
     <Compile Include="Forms\1InputForm.cs">
       <SubType>Form</SubType>
@@ -169,6 +180,9 @@
     <Compile Include="MainFormコントロール\SANControl.Designer.cs">
       <DependentUpon>SANControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CharacterMakingForm.resx">
+      <DependentUpon>CharacterMakingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\1InputForm.resx">
       <DependentUpon>1InputForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -248,11 +262,12 @@
     <None Include="icon_129330_512.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\colorPallet.png" />
+    <None Include="colorPallet.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\-palette_90705.ico" />
     <Content Include="Resources\colorPallet.ico" />
+    <None Include="Resources\colorPallet.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

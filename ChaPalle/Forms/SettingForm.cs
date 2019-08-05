@@ -25,6 +25,10 @@ namespace PalletMaster
             checkBoxClipCheck.Checked = IOData.Setting.checkMessageFlg;
             webHookTextBox.Text = IOData.Setting.webhookURL;
             userNameTextBox.Text = IOData.Setting.userName;
+            comboBoxFont.Text = (IOData.Setting.font != "" && IOData.Setting.font != null) ? IOData.Setting.font : this.Font.Name.ToString();
+            comboBoxFontSize.Text = (IOData.Setting.fontSize.ToString() != "" && IOData.Setting.fontSize != 0)?
+                 IOData.Setting.fontSize.ToString() : this.Font.Size.ToString();
+            this.Font = new Font(comboBoxFont.Text, int.Parse(comboBoxFontSize.Text));
 
             if (IOData.Setting.webhookURL != "" && 
                 (IOData.Setting.userName != "" || IOData.Setting.charaNameToUserNameFlg))
@@ -84,6 +88,8 @@ namespace PalletMaster
                 iOData.Setting.userName = userNameTextBox.Text;
             iOData.Setting.charaNameToUserNameFlg = charaNameToUserNameCheckBox.Checked;
 
+            iOData.Setting.font = comboBoxFont.Text;
+            iOData.Setting.fontSize = int.Parse(comboBoxFontSize.Text);
 
             OK = true;
             this.Close();

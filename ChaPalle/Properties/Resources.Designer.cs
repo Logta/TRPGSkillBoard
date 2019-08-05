@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PalletMaster.Properties {
+namespace ChaPalle.Properties {
     using System;
     
     
@@ -66,6 +66,16 @@ namespace PalletMaster.Properties {
         internal static System.Drawing.Bitmap colorPallet {
             get {
                 object obj = ResourceManager.GetObject("colorPallet", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap colorPallet1 {
+            get {
+                object obj = ResourceManager.GetObject("colorPallet1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
