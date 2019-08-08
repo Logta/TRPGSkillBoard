@@ -60,6 +60,7 @@ namespace PalletMaster
 
             // オブジェクトを破棄する
             ofDialog.Dispose();
+            searcher.CheckUnique(); //技能値が初期値かそうでないか判定をする
 
             return searcher;
         }
@@ -84,14 +85,42 @@ namespace PalletMaster
         public Searcher toChangeTxtToData(List<string> al)
         {
             var searcher = new Searcher();
-            searcher.SetDefaultSkills(new Proccess().ReadCSV(System.AppDomain.CurrentDomain.BaseDirectory + "defaultSkill.csv"));
+            searcher.SetDefaultSkills(Proccess.ReadCSVToDictionary(System.AppDomain.CurrentDomain.BaseDirectory + "defaultSkill.csv"));
 
             char[] del = { '-', '-', '《', '》', '：', '/', ' ', '％', '　', '●' };
             string importFlg = "base";
             foreach (string charaLine in al)
             {
                 string[] arr = charaLine.Split(del, StringSplitOptions.RemoveEmptyEntries);
+                if (arr.Length == 0) continue;
 
+                switch (arr[0])
+                {
+                    //戦闘系技能のインポート
+                    case "■技能■":
+                        importFlg = "fightSkill";
+                        break;
+
+                    case "探索系技能":
+                        importFlg = "sarchSkill";
+                        break;
+
+                    case "行動系技能":
+                        importFlg = "actSkill";
+                        break;
+
+                    case "交渉系技能":
+                        importFlg = "negotiationSkill";
+                        break;
+
+                    case "知識系技能":
+                        importFlg = "wisdomSkill";
+                        break;
+
+                    case "■戦闘■":
+                        importFlg = "fight";
+                        break;
+                }
                 try
                 {
                     if (arr[0].IsAny("職業", "年齢", "出身", "髪の色", "身長", "体重", "STR", "作成時", "成長等", "他修正", "習得", "名称")) continue;
@@ -135,47 +164,54 @@ namespace PalletMaster
 
                     case "fightSkill":
                         //探索者情報のインポート
-                        for (int i = 0; i <= arr.Length; i += 2)
+                        try
                         {
-                            try
+                            for (int i = 0; i <= arr.Length; i += 2)
                             {
-                                if (searcher.DefaultSkillList.ContainsKey(arr[i]))
-                                {
-                                    searcher.fightSkills[arr[i]] = arr[i + 1];
-                                    if (searcher.DefaultSkillList[arr[i]] != arr[i + 1])
-                                    { searcher.uniqueSkills[arr[i]] = arr[i + 1]; }
-                                }
-                                else
-                                {
-                                    { searcher.uniqueSkills[arr[i]] = arr[i + 1]; }
-                                }
+                                var value = int.TryParse(arr[i + 1], out var x) ? x : -1;
+                                if (value != -1)
+                                    AddSkillSearcher(arr[i], value, "戦闘", searcher);
                             }
-                            catch (Exception ee) { }
                         }
+                        catch(Exception ee) { }
                         break;
 
                     case "actSkill":
+                        if (arr.Length % 2 != 0) break;
+                        for (int i = 0; i < arr.Length; i += 2) {
+                            var value = int.TryParse(arr[i + 1], out var x) ? x : -1;
+                            if (value != -1)
+                                AddSkillSearcher(arr[i], value, "行動", searcher);
+                        }   
+                        break;
                     case "sarchSkill":
-                    case "negotiationSkill":
-                    case "wisdomSkill":
+                        if (arr.Length % 2 != 0) break;
                         //探索者情報のインポート
-
-                        for (int i = 0; i <= arr.Length; i += 2)
+                        for (int i = 0; i < arr.Length; i += 2)
                         {
-                            try
-                            {
-                                if (searcher.DefaultSkillList.ContainsKey(arr[i]))
-                                {
-                                    if (searcher.DefaultSkillList[arr[i]] != arr[i + 1])
-                                    { searcher.uniqueSkills[arr[i]] = arr[i + 1]; }
-                                }
-                                else
-                                {
-                                    { searcher.uniqueSkills[arr[i]] = arr[i + 1]; }
-
-                                }
-                            }
-                            catch (Exception ee) { }
+                            var value = int.TryParse(arr[i + 1], out var x) ? x : -1;
+                            if (value != -1)
+                                AddSkillSearcher(arr[i], value, "探索", searcher);
+                        }
+                        break;
+                    case "negotiationSkill":
+                        if (arr.Length % 2 != 0) break;
+                        //探索者情報のインポート
+                        for (int i = 0; i < arr.Length; i += 2)
+                        {
+                            var value = int.TryParse(arr[i + 1], out var x) ? x : -1;
+                            if (value != -1)
+                                AddSkillSearcher(arr[i], value, "交渉", searcher);
+                        }
+                        break;
+                    case "wisdomSkill":
+                        if (arr.Length % 2 != 0) break;
+                        //探索者情報のインポート
+                        for (int i = 0; i < arr.Length; i += 2)
+                        {
+                            var value = int.TryParse(arr[i + 1], out var x) ? x : -1;
+                            if (value != -1)
+                                AddSkillSearcher(arr[i], value, "知識", searcher);
                         }
                         break;
 
@@ -186,39 +222,18 @@ namespace PalletMaster
                         }
                         break;
                 }
-
-                switch (arr[0])
-                {
-                    //戦闘系技能のインポート
-                    case "■技能■":
-                        importFlg = "fightSkill";
-                        break;
-
-                    case "探索系技能":
-                        importFlg = "sarchSkill";
-                        break;
-
-                    case "行動系技能":
-                        importFlg = "actSkill";
-                        break;
-
-                    case "交渉系技能":
-                        importFlg = "negotiationSkill";
-                        break;
-
-                    case "知識系技能":
-                        importFlg = "wisdomSkill";
-                        break;
-
-                    case "■戦闘■":
-                        importFlg = "fight";
-                        break;
-                }
             }
 
             return searcher;
         }
-        
+
+        //スキルをキャラクターにセットする
+        private Searcher AddSkillSearcher(string name, int value, string type, Searcher searcher)
+        {
+            searcher.SetSkill(new Skill(name, value, type));
+            return searcher;
+        }
+
         //キャラクターアーカイブスからキャラクターデータを読込
         public Searcher charaArchiveHTMLRead(string m_URL)
         {
@@ -226,7 +241,7 @@ namespace PalletMaster
             var Proccesser = new Proccess();
             var wc = new WebClient();
 
-            var defaultSkillList = Proccesser.ReadCSV(System.AppDomain.CurrentDomain.BaseDirectory + "defaultSkill.csv");
+            var defaultSkillList = Proccess.ReadCSVToDictionary(System.AppDomain.CurrentDomain.BaseDirectory + "defaultSkill.csv");
             searcher.SetDefaultSkills(defaultSkillList);
 
             try
@@ -287,16 +302,10 @@ namespace PalletMaster
                     {
                         if (dt[0] == "種別" || dt[1] == "技能名" || dt[2] == "値") continue;
 
-                        if (searcher.DefaultSkillList.ContainsKey(dt[1]))
+                        var buf = 0;
+                        if (int.TryParse(dt[2], out buf))
                         {
-                            if (dt[0] == "戦闘")
-                                searcher.fightSkills[dt[1]] = dt[2];
-                            if (searcher.DefaultSkillList[dt[1]] != dt[2])
-                                searcher.uniqueSkills[dt[1]] = dt[2];
-                        }
-                        else
-                        {
-                            searcher.uniqueSkills[dt[1]] = dt[2];
+                            searcher.SetSkill(new Skill(dt[1], buf, dt[0]));
                         }
                     }
                     catch (Exception ee) { }
@@ -306,7 +315,7 @@ namespace PalletMaster
             catch (WebException exc)
             {
             }
-
+            searcher.CheckUnique(); //技能値が初期値かそうでないか判定をする
             return searcher;
         }
 

@@ -49,17 +49,14 @@ namespace PalletMaster
             int buff_2;
 
             if (int.TryParse(Searcher.abilityValues["INT"], out buff_1)) //能力値が入力されていなければ無視する
-                Searcher.uniqueSkills["アイデア"] = Convert.ToString(buff_1 * 5);
+                Searcher.SetSkill(new Skill("アイデア", buff_1 * 5, "探索"));
             if (int.TryParse(Searcher.abilityValues["POW"], out buff_1))
-                Searcher.uniqueSkills["幸運"] = Convert.ToString(buff_1 * 5);
+                Searcher.SetSkill(new Skill("幸運", buff_1 * 5, "探索"));
             if (int.TryParse(Searcher.abilityValues["EDU"], out buff_1))
-                Searcher.uniqueSkills["知識"] = Convert.ToString(buff_1 * 5);
+                Searcher.SetSkill(new Skill("知識", buff_1 * 5, "探索"));
             if (int.TryParse(Searcher.abilityValues["DEX"], out buff_1)
-                && !Searcher.fightSkills.ContainsKey("回避"))
-            {
-                Searcher.fightSkills["回避"] = Convert.ToString(buff_1 * 2);
-                Searcher.uniqueSkills["回避"] = Convert.ToString(buff_1 * 2);
-            }
+                && Searcher.skills.FindAll(s => s.name == "回避").Count == 0)
+                Searcher.SetSkill(new Skill("回避", buff_1 * 2, "戦闘"));
 
             if (int.TryParse(Searcher.abilityValues["STR"], out buff_1) &&
                int.TryParse(Searcher.abilityValues["SIZ"], out buff_2))
@@ -73,17 +70,14 @@ namespace PalletMaster
             int buff_2;
 
             if (int.TryParse(searcher.abilityValues["INT"], out buff_1)) //能力値が入力されていなければ無視する
-                searcher.uniqueSkills["アイデア"] = Convert.ToString(buff_1 * 5);
+                searcher.SetSkill(new Skill("アイデア", buff_1 * 5, "探索"));
             if (int.TryParse(searcher.abilityValues["POW"], out buff_1))
-                searcher.uniqueSkills["幸運"] = Convert.ToString(buff_1 * 5);
+                searcher.SetSkill(new Skill("幸運", buff_1 * 5, "探索"));
             if (int.TryParse(searcher.abilityValues["EDU"], out buff_1))
-                searcher.uniqueSkills["知識"] = Convert.ToString(buff_1 * 5);
+                searcher.SetSkill(new Skill("知識", buff_1 * 5, "探索"));
             if (int.TryParse(searcher.abilityValues["DEX"], out buff_1)
-                && !searcher.fightSkills.ContainsKey("回避"))
-            {
-                searcher.fightSkills["回避"] = Convert.ToString(buff_1 * 2);
-                searcher.uniqueSkills["回避"] = Convert.ToString(buff_1 * 2);
-            }
+                && searcher.skills.FindAll(s => s.name == "回避").Count == 0)
+                searcher.SetSkill(new Skill("回避", buff_1 * 2, "戦闘"));
 
             if (int.TryParse(searcher.abilityValues["STR"], out buff_1) &&
                int.TryParse(searcher.abilityValues["SIZ"], out buff_2))
@@ -160,21 +154,15 @@ namespace PalletMaster
         public string toSearchSkillValue(string skillName)
         {
 
-            ////LINQ文とラムダ式を活用した処理
-            var skillDict = Searcher.uniqueSkills.Where(s => s.Key == skillName).ToDictionary(s => s.Key, s => s.Value);
+            //LINQ文とラムダ式を活用した処理
+            var skill = Searcher.skills.FindAll(s => s.name == skillName);
 
-            if (skillDict.Count != 0) return skillDict[skillName];
-            else
-            {
-                skillDict = Searcher.DefaultSkillList.Where(s => s.Key == skillName).ToDictionary(s => s.Key, s => s.Value);
-
-                if (skillDict.Count != 0) return skillDict[skillName];
-                else
-                {
-                    MessageBox.Show("正しい技能名を入力してください。", "エラー", MessageBoxButtons.OK,
-                      MessageBoxIcon.Error);
-                    return null;
-                }
+            if (skill.Count != 0) return skill[0].value.ToString();
+            else { 
+                MessageBox.Show("正しい技能名を入力してください。", "エラー", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+                
             }
         }
 

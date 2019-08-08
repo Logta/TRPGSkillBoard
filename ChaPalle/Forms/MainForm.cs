@@ -18,7 +18,6 @@ namespace PalletMaster
     public partial class MainForm : MetroForm
     {       
         PalletMaster PalletMaster { get; set; }
-        Proccess Proccesser = new Proccess();
         IOHelper IOHelper = new IOHelper();
 
         // データセット作成
@@ -46,7 +45,7 @@ namespace PalletMaster
             else
                 toChageSidekick();
 
-            var defaultSkillList = Proccesser.ReadCSV(System.AppDomain.CurrentDomain.BaseDirectory + "defaultSkill.csv");
+            var defaultSkillList = Proccess.ReadCSVToDictionary(System.AppDomain.CurrentDomain.BaseDirectory + "defaultSkill.csv");
             PalletMaster.Searcher.SetDefaultSkills(defaultSkillList);
 
             historyAbilityControl.SelectedIndexListBoxAbility(0);
@@ -108,23 +107,6 @@ namespace PalletMaster
         //保存→CSVを押したときの制御
         private void CSVImportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var al = new List<string>();
-            OpenFileDialog ofDialog = new OpenFileDialog();
-
-            // デフォルトのフォルダを指定する
-            ofDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
-
-            //ダイアログのタイトルを指定する
-            ofDialog.Title = "CSVファイル読み込み";
-            ofDialog.Filter = "csvファイル(*.csv)|*.csv|すべてのファイル(*.*)|*.*";
-
-            //ダイアログを表示する
-            if (ofDialog.ShowDialog() == DialogResult.OK)
-            {
-                PalletMaster.Searcher.uniqueSkills = Proccesser.ReadCSV(ofDialog.FileName);
-            }
-
-            PalletMaster.RefreshListView();
         }
 
         //設定を押したときの制御
@@ -175,12 +157,12 @@ namespace PalletMaster
             JSONSave(m_cData);
         }
 
-        //チャッパレ形式保存関数
+        //パレマス形式保存関数
         void JSONSave(Character tom)
         {
             //SaveFileDialogクラスのインスタンスを作成
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "チャッパレファイル(*.chp)|*.chp|すべてのファイル(*.*)|*.*";
+            sfd.Filter = "パレマスファイル(*.pmj)|*.pmj|すべてのファイル(*.*)|*.*";
             //ダイアログを表示する
             if (sfd.ShowDialog() == DialogResult.OK)
             {
@@ -194,7 +176,7 @@ namespace PalletMaster
                 {
                     //ファイルに書き込む
                     System.IO.StreamWriter sw = new System.IO.StreamWriter(stream, Encoding.GetEncoding("Shift_JIS"));
-                    string json = JsonConvert.SerializeObject(tom);//, Formatting.Indented);
+                    string json = JsonConvert.SerializeObject(tom, Formatting.Indented);//, Formatting.Indented);
                     sw.Write(json);
                     //閉じる
                     sw.Close();
@@ -203,15 +185,14 @@ namespace PalletMaster
             }
         }
 
-        //チャッパレ形式をロードする再利用する構造体の定義
+        //パレマス形式をロードする再利用する構造体の定義
         struct chpLoad
         {
             internal Character d;
             internal bool f;
         }
 
-        //ロード→チャッパレ形式を押した時の制御
-        private void チャッパレ形式ToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void パレマス形式ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             chpLoad m_d;
             m_d = JSONLoad();
@@ -226,17 +207,29 @@ namespace PalletMaster
                 fightControl.SetFightText(PalletMaster.Searcher.searcherInfos["HP"]); //HP情報の入力
                 fightControl.SetFightDamageBonusText(PalletMaster.Searcher.searcherInfos["ダメージボーナス"]); //HP情報の入力
 
+                PalletMaster.Searcher.CheckUnique();
                 PalletMaster.RefreshListView();
             }
 
-            var defaultSkillList = Proccesser.ReadCSV(System.AppDomain.CurrentDomain.BaseDirectory + "defaultSkill.csv");
+            var defaultSkillList = Proccess.ReadCSVToDictionary(System.AppDomain.CurrentDomain.BaseDirectory + "defaultSkill.csv");
             PalletMaster.Searcher.SetDefaultSkills(defaultSkillList);
 
             if (PalletMaster.Setting.charaNameToUserNameFlg)
                 PalletMaster.Setting.userName = PalletMaster.Searcher.searcherInfos["キャラクター名"];
         }
 
-        //チャッパレ形式読み取り関数
+        //ロード→チャッパレ形式を押した時の制御
+        private void チャッパレ形式ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ChpFileImport chpFileImport = new ChpFileImport();
+            PalletMaster.Searcher = chpFileImport.ChpDataImport().ConversionToSearcher();
+            if (PalletMaster.Setting.charaNameToUserNameFlg)
+                PalletMaster.Setting.userName = PalletMaster.Searcher.searcherInfos["キャラクター名"];
+
+            PalletMaster.RefreshListView();
+        }
+
+        //パレマス形式読み取り関数
         chpLoad JSONLoad()
         {
             chpLoad m_d;
@@ -246,8 +239,8 @@ namespace PalletMaster
             ofDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
             //ダイアログのタイトルを指定する
-            ofDialog.Title = "チャッパレ形式ファイル読み込み";
-            ofDialog.Filter = "チャッパレファイル(*.chp)|*.chp|すべてのファイル(*.*)|*.*";
+            ofDialog.Title = "パレマス形式ファイル読み込み";
+            ofDialog.Filter = "パレマスファイル(*.pmj)|*.pmj|すべてのファイル(*.*)|*.*";
 
             //ダイアログを表示する
             if (ofDialog.ShowDialog() == DialogResult.OK)
@@ -288,21 +281,6 @@ namespace PalletMaster
         //「CSV」を読込したときの制御
         private void toCreateCSV()
         {
-            try
-            {
-                // ファイルを書き込み型式（上書き）で開く
-                StreamWriter file = new StreamWriter(PalletMaster.Searcher.searcherInfos["キャラクター名"] + ".csv", false, Encoding.UTF8);
-                foreach (KeyValuePair<string, string> kvp in PalletMaster.Searcher.uniqueSkills)
-                {
-                    file.WriteLine(string.Format("{0},{1}", kvp.Key, kvp.Value));
-                }
-                file.Close();
-                Console.WriteLine("ファイルに書き込みました");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);       // エラーメッセージを表示
-            }
         }
 
         //「保存→CSV」をクリックしたときの制御
@@ -322,8 +300,7 @@ namespace PalletMaster
 
             if (u_form.m_txtDataImportFlg == 2)
             {
-                PalletMaster.Searcher.fightSkills = new Dictionary<string, string>();
-                PalletMaster.Searcher.uniqueSkills = new Dictionary<string, string>();
+                PalletMaster.Searcher.skills = new List<Skill>();
                 PalletMaster.Searcher = IOHelper.charaBankTxtFileRead();
                 PalletMaster.AbilityDataSet();
 
@@ -335,14 +312,14 @@ namespace PalletMaster
             }
             else if (u_form.m_txtDataImportFlg == 1)
             {
-                PalletMaster.Searcher.fightSkills = new Dictionary<string, string>();
-                PalletMaster.Searcher.uniqueSkills = new Dictionary<string, string>();
+                PalletMaster.Searcher.skills = new List<Skill>();
                 PalletMaster.Searcher = IOHelper.charaBankTxtDataRead(u_form.m_txtData);
                 PalletMaster.AbilityDataSet();
 
                 sanControl.SetSanText(PalletMaster.Searcher.searcherInfos["SAN"]); //SAN情報の入力
                 fightControl.SetFightText(PalletMaster.Searcher.searcherInfos["HP"]); //HP情報の入力
                 fightControl.SetFightDamageBonusText(PalletMaster.Searcher.searcherInfos["ダメージボーナス"]); //HP情報の入力
+                PalletMaster.Searcher.CheckUnique(); //技能値が初期値かそうでないか判定をする
 
                 PalletMaster.RefreshListView();
             }

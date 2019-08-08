@@ -23,7 +23,7 @@ namespace PalletMaster
         }
 
         //csvファイルを読み込む
-        public Dictionary<string, string> ReadCSV(string filePath)
+        public static Dictionary<string, string> ReadCSVToDictionary(string filePath)
         {
 
             var list = new Dictionary<string, string>();
@@ -49,66 +49,93 @@ namespace PalletMaster
             return list;
         }
 
+        //csvファイルを読み込む
+        public static List<List<string>> ReadCSVToList(string filePath)
+        {
+
+            var list = new List<List<string>>();
+            try
+            {
+                StreamReader reader = new StreamReader(filePath, Encoding.GetEncoding("Shift_JIS"));
+                //StreamReader reader = new StreamReader(filePath);
+                while (reader.Peek() >= 0)
+                {
+                    string[] cols = reader.ReadLine().Split(',');
+                    list.Add(cols.ToList());
+                }
+                return list;
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("正しいファイル名を入力してください。",
+                "エラー",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            }
+
+            return list;
+        }
+
         //listViewの要素を削除した後、指定のリストの要素を詰め込む
-        public void RefreshSkillList(ListView listView, Dictionary<string, string> ts)
+        public static void RefreshSkillList(ListView listView, Dictionary<string, string> ts)
         {
             listView.Items.Clear();
 
-            //探索者固有(成長させた)技能をリストビューに入力
-            if (ts != null)
-            {
-                foreach (KeyValuePair<string, string> kvp in ts)
-                {
-                    string id = kvp.Key;
-                    string name = kvp.Value;
+            if (ts == null) return;
 
-                    string[] item1 = { id, name };
-                    listView.Items.Add(new ListViewItem(item1));
-                }
+            //探索者固有(成長させた)技能をリストビューに入力
+            foreach (KeyValuePair<string, string> kvp in ts)
+            {
+                string id = kvp.Key;
+                string name = kvp.Value;
+
+                string[] item1 = { id, name };
+                listView.Items.Add(new ListViewItem(item1));
             }
         }
 
         //listViewの要素を削除した後、指定のリストの要素を詰め込む
-        public void RefreshSkillList(ListView listView, List<Tuple<Proccess.Skill, string>> ts)
+        public static void RefreshSkillListNewChara(ListView listView, List<Skill> skills)
         {
             listView.Items.Clear();
 
-            //探索者固有(成長させた)技能をリストビューに入力
-            if (ts != null)
-            {
-                foreach (var tuple in ts)
-                {
-                    string name = tuple.Item1.Name;
-                    string value = tuple.Item1.Value.ToString();
-                    string type = tuple.Item2;
+            if (skills == null) return;
 
-                    string[] item1 = { name, value, type };
-                    listView.Items.Add(new ListViewItem(item1));
-                }
+            //探索者固有(成長させた)技能をリストビューに入力
+            foreach (var skill in skills)
+            {
+                string name = skill.name;
+                string value = skill.value.ToString();
+                string type = skill.workValue > 0 ? "職業":
+                                skill.intererstValue > 0 ? "興味":
+                                "";
+
+                string[] item1 = { name, value, type };
+                listView.Items.Add(new ListViewItem(item1));
             }
         }
 
         //listViewの要素を削除した後、指定のリストの要素を詰め込む
-        public void RefreshSkillList(ListView listView, List<Proccess.Skill> skills)
+        public static void RefreshSkillList(ListView listView, List<Skill> skills)
         {
             listView.Items.Clear();
 
-            //探索者固有(成長させた)技能をリストビューに入力
-            if (skills != null)
-            {
-                foreach (var item in skills)
-                {
-                    string id = item.Name;
-                    int name = item.Value;
+            if (skills == null) return;
 
-                    string[] item1 = { id, name.ToString() };
-                    listView.Items.Add(new ListViewItem(item1));
-                }
+            //探索者固有(成長させた)技能をリストビューに入力
+            foreach (var item in skills)
+            {
+                string id = item.name;
+                int name = item.value;
+
+                string[] item1 = { id, name.ToString() };
+                listView.Items.Add(new ListViewItem(item1));
             }
+            
         }
 
         //bcdice_apiにGET通信でアクセスする
-        public GetBCDice_API SendGetBCDice_API(string text, string url)
+        public static GetBCDice_API SendGetBCDice_API(string text, string url)
         {
             if (text == "") return null;
 
@@ -119,7 +146,7 @@ namespace PalletMaster
             return result;
         }
 
-        private string getWebAPI(string text)
+        private static string getWebAPI(string text)
         {
             WebRequest req = WebRequest.Create(text);
             WebResponse rsp = req.GetResponse();
@@ -190,26 +217,14 @@ namespace PalletMaster
             public List<Skill> Skills { get; set; }
         }
 
-        [JsonObject]
-        public class Skill
-        {
-            [JsonProperty(PropertyName = "skillName")]
-            public string Name { get; set; }
-
-            [JsonProperty(PropertyName = "skillValue")]
-            public int Value { get; set; }
-
-            [JsonProperty(PropertyName = "skillType")]
-            public string Type { get; set; }
-        }
-
-        public static SkillSet GetSkillSet()
+        public static List<Skill> GetSkillSet()
         {
             try
             {
                 var fileName = AppDomain.CurrentDomain.BaseDirectory + "characterMakingSkills.json";
                 var json = System.IO.File.ReadAllText(fileName, Encoding.GetEncoding("Shift_JIS"));
-                return JsonConvert.DeserializeObject<SkillSet>(json);
+                SkillSet sSet = JsonConvert.DeserializeObject<SkillSet>(json);
+                return sSet.Skills;
             }
             catch (Exception e)
             {

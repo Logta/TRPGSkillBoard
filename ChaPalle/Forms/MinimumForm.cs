@@ -20,7 +20,7 @@ namespace PalletMaster
             InitializeComponent();
 
             TopMost = true;
-            new Proccess().RefreshSkillList(listViewSkill, PalletMaster.Searcher.uniqueSkills);
+            Proccess.RefreshSkillList(listViewSkill, PalletMaster.Searcher.skills.FindAll(s => s.unique));
         }
 
         private void backButton_Click(object sender, EventArgs e)

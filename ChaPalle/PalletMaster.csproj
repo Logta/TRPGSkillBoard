@@ -79,6 +79,7 @@
       <DependentUpon>CharacterMakingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CSファイル\Charact.cs" />
+    <Compile Include="CSファイル\ChpFileImport.cs" />
     <Compile Include="Forms\1InputForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -267,6 +268,8 @@
   <ItemGroup>
     <Content Include="Resources\-palette_90705.ico" />
     <Content Include="Resources\colorPallet.ico" />
+    <None Include="Resources\PM_Desine.png" />
+    <Content Include="Resources\pm_icon4.ico" />
     <None Include="Resources\colorPallet.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

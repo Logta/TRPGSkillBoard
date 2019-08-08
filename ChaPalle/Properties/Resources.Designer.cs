@@ -93,6 +93,26 @@ namespace ChaPalle.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap PM_Desine {
+            get {
+                object obj = ResourceManager.GetObject("PM_Desine", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap pm_icon4 {
+            get {
+                object obj = ResourceManager.GetObject("pm_icon4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap 壁紙 {
             get {
                 object obj = ResourceManager.GetObject("壁紙", resourceCulture);

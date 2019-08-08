@@ -16,7 +16,6 @@ namespace PalletMaster
     public partial class SkillControl : UserControl
     {
         PalletMaster PalletMaster = new PalletMaster();
-        Proccess Proccesser = new Proccess();
 
         bool correctionFlg = false;
 
@@ -46,7 +45,7 @@ namespace PalletMaster
         private async Task bcDiceAccess(string url)
         {
             //BCDice-APIにGET通信してダイスを振る
-            var result = new Proccess().SendGetBCDice_API(textResult.Text,
+            var result = Proccess.SendGetBCDice_API(textResult.Text,
                 PalletMaster.Setting.bcdiceAPIURL);
 
             using(var hc = new HttpClient()) { 
@@ -72,8 +71,8 @@ namespace PalletMaster
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             string tSkill = textSkill.Text;
-            string tValue = textValue.Text;
-            if (tSkill == "" || tValue == "")
+            int tValue = int.TryParse(textValue.Text, out var s) ? s : -1;
+            if (tSkill == "" || textValue.Text == "")
             {
                 MessageBox.Show("各値を入力してください。",
                 "エラー",
@@ -81,7 +80,17 @@ namespace PalletMaster
                 MessageBoxIcon.Error);
                 return;
             }
-            PalletMaster.Searcher.uniqueSkills[tSkill] = tValue;
+
+            if(tValue == -1)
+            {
+                MessageBox.Show("技能値に数字を入力してください。",
+                "エラー",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+                return;
+            }
+            PalletMaster.Searcher.SetSkill(new Skill(tSkill, tValue));
+            PalletMaster.Searcher.CheckUnique();
 
             PalletMaster.RefreshListView();
         }
@@ -97,7 +106,7 @@ namespace PalletMaster
             itemx = listViewSkill.SelectedItems[0];
 
             //選択されているアイテムを取得、削除
-            PalletMaster.Searcher.uniqueSkills.Remove(itemx.Text);
+            PalletMaster.Searcher.RemoveSkills(itemx.Text);
             PalletMaster.RefreshListView();
         }
 
@@ -125,18 +134,19 @@ namespace PalletMaster
         //「読込」を押したときの制御
         private void buttonRead_Click(object sender, EventArgs e)
         {
+            var al = new List<string>();
+            OpenFileDialog ofDialog = new OpenFileDialog();
+
+            //ダイアログのタイトルを指定する
+            ofDialog.Title = "CSVファイル読み込み";
+
+            //ダイアログを表示する
+            if (ofDialog.ShowDialog() == DialogResult.OK)
             {
-                var al = new List<string>();
-                OpenFileDialog ofDialog = new OpenFileDialog();
-
-                //ダイアログのタイトルを指定する
-                ofDialog.Title = "CSVファイル読み込み";
-
-                //ダイアログを表示する
-                if (ofDialog.ShowDialog() == DialogResult.OK)
-                {
-                    PalletMaster.Searcher.uniqueSkills = Proccesser.ReadCSV(ofDialog.FileName);
-                }
+                var skills = Proccess.ReadCSVToDictionary(ofDialog.FileName);
+                foreach (var kvp in skills)
+                    PalletMaster.Searcher.SetSkill(new Skill(kvp.Key, int.Parse(kvp.Value)));
+                
             }
             PalletMaster.RefreshListView();
         }
@@ -159,21 +169,12 @@ namespace PalletMaster
         private string toSearchSkillValue(string skillName)
         {
             ////LINQ文とラムダ式を活用した処理
-            var skillDict = PalletMaster.Searcher.uniqueSkills.Where(s => s.Key == skillName).ToDictionary(s => s.Key, s => s.Value);
+            var skillDict = PalletMaster.Searcher.skills.Where(s => s.name == skillName).ToList();
 
-            if (skillDict.Count != 0) return skillDict[skillName];
-            else
-            {
-                skillDict = PalletMaster.Searcher.DefaultSkillList.Where(s => s.Key == skillName).ToDictionary(s => s.Key, s => s.Value);
-
-                if (skillDict.Count != 0) return skillDict[skillName];
-                else
-                {
-                    MessageBox.Show("正しい技能名を入力してください。", "エラー", MessageBoxButtons.OK,
-                      MessageBoxIcon.Error);
-                    return null;
-                }
-            }
+            if (skillDict.Count != 0) return skillDict[0].value.ToString();
+            MessageBox.Show("正しい技能名を入力してください。", "エラー", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            return null;
         }
 
         //「検索」のテキストボードで[Enter]を押したときの制御
@@ -265,7 +266,7 @@ namespace PalletMaster
         }
 
         public void RefreshSkillList(){
-            Proccesser.RefreshSkillList(listViewSkill, PalletMaster.Searcher.uniqueSkills);
+            Proccess.RefreshSkillList(listViewSkill, PalletMaster.Searcher.skills.FindAll(s => s.unique));
         }
 
         //「listview1」がダブルクリックされた時の動作

@@ -13,7 +13,6 @@ namespace PalletMaster
     public partial class FightControl : UserControl
     {
         PalletMaster PalletMaster = new PalletMaster();
-        Proccess Proccesser = new Proccess();
         FightDamage FightDamage = new FightDamage();
 
         string attackSkill = "";
@@ -84,7 +83,7 @@ namespace PalletMaster
             try
             {
                 PalletMaster.SetSkillHistory(skillName, ロール.技能);
-                return (PalletMaster.GetDiceText(PalletMaster.Searcher.fightSkills[skillName], skillName));
+                return (PalletMaster.GetDiceText(PalletMaster.Searcher.getSkillValue(skillName), skillName));
             }
             catch (KeyNotFoundException)
             {
@@ -165,8 +164,9 @@ namespace PalletMaster
         private void buttonAddFight_Click(object sender, EventArgs e)
         {
             string tSkill = textSkillFight.Text;
-            string tValue = textValueFight.Text;
-            if (tSkill == "" || tValue == "")
+            int tValue = int.TryParse(textValueFight.Text, out var v) ? v : -1;
+
+            if (tSkill == "" || textValueFight.Text == "")
             {
                 MessageBox.Show("各値を入力してください。",
                 "エラー",
@@ -174,8 +174,18 @@ namespace PalletMaster
                 MessageBoxIcon.Error);
                 return;
             }
-            PalletMaster.Searcher.fightSkills[tSkill] = tValue;
+            if (tValue == -1)
+            {
+                MessageBox.Show("数字を入力してください。",
+                "エラー",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+                return;
+            }
 
+            PalletMaster.Searcher.SetSkill(new Skill(tSkill, tValue, "戦闘"));
+
+            PalletMaster.Searcher.CheckUnique();
             PalletMaster.RefreshListView();
         }
 
@@ -193,13 +203,14 @@ namespace PalletMaster
             itemx = listViewFight.SelectedItems[0];
 
             //選択されているアイテムを取得、削除
-            PalletMaster.Searcher.fightSkills.Remove(itemx.Text);
+            PalletMaster.Searcher.RemoveSkills(itemx.Text);
+            PalletMaster.Searcher.CheckUnique();
             PalletMaster.RefreshListView();
         }
 
         public void RefreshSkillList()
         {
-            Proccesser.RefreshSkillList(listViewFight, PalletMaster.Searcher.fightSkills);
+            Proccess.RefreshSkillList(listViewFight, PalletMaster.Searcher.skills.FindAll(s => s.type == "戦闘"));
         }
 
         private void attack_Click(object sender, EventArgs e)

@@ -20,27 +20,74 @@ namespace PalletMaster
             DefaultSkillList = new Dictionary<string, string>();
 
             abilityValues = new Dictionary<string, string>()//探索者の能力値のリスト
-            { { "STR", ""}, { "CON", ""}, { "POW", ""}, { "DEX", ""}, { "APP", ""}, { "SIZ", ""}, { "INT", ""}, { "EDU", ""}, { "HP", ""}, { "MP", ""} };
+            { { "STR", ""}, { "CON", ""}, { "POW", ""}, { "DEX", ""}, { "APP", ""}, { "SIZ", ""}, { "INT", ""}, { "EDU", ""}};
             searcherInfos = new Dictionary<string, string>()      //探索者情報のリスト
             { { "キャラクター名", ""}, { "HP", ""}, { "MP", ""}, { "SAN", ""},{ "ダメージボーナス", ""}};
-            uniqueSkills = new Dictionary<string, string>();
-            fightSkills = new Dictionary<string, string>();
+            skills = new List<Skill>();
         }
 
         public void SetDefaultSkills(Dictionary<string, string> defaultSkills)
         {
             DefaultSkillList = defaultSkills;
+
+            foreach (KeyValuePair<string, string> kvp in defaultSkills)
+            {
+                var buf = 0;
+                if (int.TryParse(kvp.Value, out buf)){
+                    SetSkill(new Skill(kvp.Key, buf, "", buf));
+                }
+            }
         }
 
         public void SetSearcher(Character chara)
         {
             abilityValues = chara.abilityValues;
             searcherInfos = chara.searcherInfos;
-            uniqueSkills = chara.uniqueSkills;
-            fightSkills = chara.fightSkills;
+            skills = chara.skills;
             backgroundString = chara.backgroundString;
         }
 
+        //0=>新規追加 1=>更新 -1=>失敗
+        public int SetSkill(Skill skill)
+        {
+            if(skills == null)
+            {
+                skills = new List<Skill>();
+            }
+
+            if (skills.Count(item => item.name == skill.name) == 0)
+            {
+                skills.Add(skill);
+                return 0;
+            }
+            else if (this.skills.Count(item => item.name == skill.name) == 1)
+            {
+                Skill charaSkill = skills.Find(item => item.name == skill.name);
+                charaSkill.value = skill.value;
+                charaSkill.type = skill.type;
+                return 1;
+            }
+
+            return -1;
+        }
+
+        internal void RemoveSkills(string text)
+        {
+            skills = skills.FindAll(s => s.name != text);
+        }
+
+        internal string getSkillValue(string skillName)
+        {
+            return skills.Find(s => s.name == skillName).value.ToString();
+        }
+
+        internal void CheckUnique()
+        {
+            foreach (var skill in skills)
+            {
+                skill.unique = skill.value == skill.defaultValue ? false : true;
+            }
+        }
     }
 
     //履歴保存のためのクラスの定義
@@ -63,16 +110,65 @@ namespace PalletMaster
     [JsonObject("character")]
     public class Character
     {
-        [JsonProperty("uniqueSkillList")]
-        public Dictionary<string, string> uniqueSkills { get; set; }//探索者固有（技能ポイントを割り振った）の技能のリスト
-        [JsonProperty("fightSkillList")]
-        public Dictionary<string, string> fightSkills { get; set; }//戦闘系技能のリスト
+        [JsonProperty("skills")]
+        public List<Skill> skills { get; set; }//探索者固有（技能ポイントを割り振った）の技能のリスト
         [JsonProperty("abilityValue")]
         public Dictionary<string, string> abilityValues { get; set; }
         [JsonProperty("characterInfo")]
         public Dictionary<string, string> searcherInfos { get; set; }
         [JsonProperty("characterBackground")]
         public string backgroundString { get; set; }
+    }
+
+    [JsonObject("skill")]
+    public class Skill
+    {
+        [JsonProperty("skillName")]
+        public string name { get; set; }
+        [JsonProperty("skillValue")]
+        public int value { get; set; }
+        [JsonProperty("skillType")]
+        public string type { get; set; }
+        [JsonProperty("skillUnique")]
+        public bool unique { get; set; }
+        [JsonProperty("skillWorkValue")]
+        public int workValue { get; set; }
+        [JsonProperty("skillInterestValue")]
+        public int intererstValue { get; set; }
+        [JsonProperty("defaultValue")]
+        public int defaultValue { get; set; }
+
+        public Skill() {
+            name = "";
+            value = 0;
+            type = "";
+            unique = false;
+            workValue = 0;
+            intererstValue = 0;
+            defaultValue = 0;
+        }
+
+        public Skill(string n, int v) : this()
+        {
+            name = n;
+            value = v;
+        }
+
+        public Skill(string n, int v, string t) : this(n, v)
+        {
+            type = t;
+        }
+
+        public Skill(string n, int v, string t, int d) : this(n, v, t)
+        {
+            defaultValue = d;
+        }
+
+        public Skill(string n, int v, string t, int d, bool u) : this(n, v, t, d)
+        {
+            unique = u;
+        }
+
     }
 
     [JsonObject("setting")]

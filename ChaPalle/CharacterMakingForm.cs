@@ -18,13 +18,13 @@ namespace PalletMaster
         NewCharacter newCharacter = new NewCharacter();
         private List<NewCharacter> historyNewCharacters = new List<NewCharacter>();
 
-        public Boolean setSkillSet = true;
+        public bool setSkillSet = true;
 
         public CharacterMakingForm(PalletMaster palletMaster)
         {
             InitializeComponent();
             PalletMaster = palletMaster;
-            if (newCharacter.SkillSet == null) setSkillSet = false;
+            if (newCharacter.Searcher.skills == null) setSkillSet = false;
             refreshSkillListView();
         }
 
@@ -33,8 +33,10 @@ namespace PalletMaster
             this.Close();
         }
 
+        //能力値を決めるダイスロール
         private void diceButton_Click(object sender, EventArgs e)
         {
+            //ダイスロール
             textSTR.Text = newCharacter.Searcher.abilityValues["STR"] = Proccess.DDice("3d6").Sum().ToString();
             textAPP.Text = newCharacter.Searcher.abilityValues["APP"] = Proccess.DDice("3d6").Sum().ToString();
             textCON.Text = newCharacter.Searcher.abilityValues["CON"] = Proccess.DDice("3d6").Sum().ToString();
@@ -44,12 +46,14 @@ namespace PalletMaster
             textPOW.Text = newCharacter.Searcher.abilityValues["POW"] = Proccess.DDice("3d6").Sum().ToString();
             textSIZ.Text = newCharacter.Searcher.abilityValues["SIZ"] = Proccess.TotalDice("2d6+6").Sum().ToString();
 
-            newCharacter.SkillSet.Skills.Where(item => item.Name == "回避").ToList().ForEach(item => item.Value = int.Parse(textDEX.Text) * 2);
-            newCharacter.SkillSet.Skills.Where(item => item.Name == "言語").ToList().ForEach(item => item.Value = int.Parse(textEDU.Text) * 1);
-            newCharacter.SkillSet.Skills.Where(item => item.Name == "母国語").ToList().ForEach(item => item.Value = int.Parse(textEDU.Text) * 5);
+            //検索して能力値に基づいた値に更新
+            newCharacter.Searcher.skills.Where(item => item.name == "回避").ToList().ForEach(item => item.value = int.Parse(textDEX.Text) * 2);
+            newCharacter.Searcher.skills.Where(item => item.name == "言語").ToList().ForEach(item => item.value = int.Parse(textEDU.Text) * 1);
+            newCharacter.Searcher.skills.Where(item => item.name == "母国語").ToList().ForEach(item => item.value = int.Parse(textEDU.Text) * 5);
 
-            workMaxPoint.Text = (int.Parse(textEDU.Text) * 20).ToString();
-            interestMaxPoint.Text = (int.Parse(textINT.Text) * 10).ToString();
+            //能力値によって決まる各値を代入
+            workMaxPoint.Text = (int.Parse(textEDU.Text) * 20).ToString(); //職業ポイントの割り当て最大値
+            interestMaxPoint.Text = (int.Parse(textINT.Text) * 10).ToString(); //興味ポイントの割り当て最大値
 
             labelHP.Text = ((int.Parse(textCON.Text) + int.Parse(textSIZ.Text)) / 2).ToString();
             labelMP.Text = textPOW.Text;
@@ -61,21 +65,16 @@ namespace PalletMaster
 
         private void refreshSkillListView()
         {
-            proccess.RefreshSkillList(listViewFightSkill, 
-                newCharacter.SkillSet.Skills.Zip(newCharacter.skillPointTypes,(e, o) => Tuple.Create(e,o)).Where(item => item.Item1.Type == "戦闘")
-                .ToList<Tuple<Proccess.Skill, string>>());
-            proccess.RefreshSkillList(listViewSearchSkill,
-                newCharacter.SkillSet.Skills.Zip(newCharacter.skillPointTypes, (e, o) => Tuple.Create(e, o)).Where(item => item.Item1.Type == "探索")
-                .ToList<Tuple<Proccess.Skill, string>>());
-            proccess.RefreshSkillList(listViewActSkill,
-                newCharacter.SkillSet.Skills.Zip(newCharacter.skillPointTypes, (e, o) => Tuple.Create(e, o)).Where(item => item.Item1.Type == "行動")
-                .ToList<Tuple<Proccess.Skill, string>>());
-            proccess.RefreshSkillList(listViewNegosiateSkill,
-                newCharacter.SkillSet.Skills.Zip(newCharacter.skillPointTypes, (e, o) => Tuple.Create(e, o)).Where(item => item.Item1.Type == "交渉")
-                .ToList<Tuple<Proccess.Skill, string>>());
-            proccess.RefreshSkillList(listViewWisdomSkill,
-                newCharacter.SkillSet.Skills.Zip(newCharacter.skillPointTypes, (e, o) => Tuple.Create(e, o)).Where(item => item.Item1.Type == "知識")
-                .ToList<Tuple<Proccess.Skill, string>>());
+            Proccess.RefreshSkillListNewChara(listViewFightSkill, 
+                newCharacter.Searcher.skills.Where(item => item.type == "戦闘").ToList<Skill>());
+            Proccess.RefreshSkillListNewChara(listViewSearchSkill,
+                newCharacter.Searcher.skills.Where(item => item.type == "探索").ToList<Skill>());
+            Proccess.RefreshSkillListNewChara(listViewActSkill,
+                newCharacter.Searcher.skills.Where(item => item.type == "行動").ToList<Skill>());
+            Proccess.RefreshSkillListNewChara(listViewNegosiateSkill,
+                newCharacter.Searcher.skills.Where(item => item.type == "交渉").ToList<Skill>());
+            Proccess.RefreshSkillListNewChara(listViewWisdomSkill,
+                newCharacter.Searcher.skills.Where(item => item.type == "知識").ToList<Skill>());
         }
 
         //listView1の選択が変化したときの制御
@@ -126,7 +125,7 @@ namespace PalletMaster
             int dex;
             if (int.TryParse(textPOW.Text, out dex))
             {
-                newCharacter.SkillSet.Skills.Where(item => item.Name == "回避").ToList().ForEach(item => item.Value = dex * 2);
+                newCharacter.Searcher.skills.Where(item => item.name == "回避").ToList().ForEach(item => item.value = dex * 2);
                 refreshSkillListView();
             }
         }
@@ -136,8 +135,8 @@ namespace PalletMaster
             int edu;
             if (int.TryParse(textPOW.Text, out edu))
             {
-                newCharacter.SkillSet.Skills.Where(item => item.Name == "言語").ToList().ForEach(item => item.Value = edu * 1);
-                newCharacter.SkillSet.Skills.Where(item => item.Name == "母国語").ToList().ForEach(item => item.Value = edu * 5);
+                newCharacter.Searcher.skills.Where(item => item.name == "言語").ToList().ForEach(item => item.value = edu * 1);
+                newCharacter.Searcher.skills.Where(item => item.name == "母国語").ToList().ForEach(item => item.value = edu * 5);
 
                 workMaxPoint.Text = (edu * 20).ToString();
                 refreshSkillListView();
@@ -181,130 +180,111 @@ namespace PalletMaster
 
         }
 
-        private Boolean addSkill(ref int sumValue, int addValue, int maxPoint, Label currentPoint)
+        //セットできる値か判定をする
+        private bool checkCanSetSkill(int sum, int add, Skill skill, int _max)
         {
+            if (sum + add - skill.value >= _max)
+            {
+                MessageBox.Show("職業ポイントが超過しました。",
+                "エラー",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+                return false;
+            }
+            else if (add - skill.defaultValue < 0)
+            {
+                MessageBox.Show("初期値より低い技能値は設定できません。",
+                "エラー",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+                return false;
+            }
+            else if (add - skill.value == 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        //技能値を編集した値をキャラクタークラスに格納する、成功の場合は初期値からの増加分を、失敗の場合は-1を返す
+        private int addSkill(ref int sumValue, int addValue, int maxPoint, Label currentPoint)
+        {
+            //スキルの、キャラクターの技能値とデフォルト値を取得
             var skillDefault = newCharacter.Searcher.DefaultSkillList.Where(s => s.Key == textSkill.Text).ToDictionary(s => s.Key, s => s.Value);
-            var skillSet = newCharacter.SkillSet.Skills.Where(item => item.Name == textSkill.Text).ToList<Proccess.Skill>();
+            var charSkill = newCharacter.Searcher.skills.Where(item => item.name == textSkill.Text).ToList();
             var defaultValue = 0;
             if (skillDefault.Count != 0) defaultValue = int.Parse(skillDefault[textSkill.Text]);
 
-            if (skillSet.Count != 0)
+            //キャラの技能があるかどうか判定
+            if (charSkill.Count != 0)
             {
-                if (sumValue + addValue - skillSet[0].Value >= maxPoint)
-                {
-                    MessageBox.Show("職業ポイントが超過しました。",
-                    "エラー",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                    return false;
-                }
-                else if (skillDefault.Count != 0 ? addValue - defaultValue < 0 : addValue < 0)
-                {
-                    MessageBox.Show("初期値より低い技能値は設定できません。",
-                    "エラー",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                    return false;
-                }
-                else if (addValue - skillSet[0].Value == 0)
-                {
-                    return false;
-                }
+                if (!checkCanSetSkill(sumValue, addValue, charSkill[0], maxPoint)) return -1;
 
-                sumValue += addValue - skillSet[0].Value;
+                sumValue += addValue - charSkill[0].value;
                 currentPoint.Text = sumValue.ToString();
-                newCharacter.SkillSet.Skills.Where(item => item.Name == textSkill.Text).ToList().ForEach(item => item.Value = addValue);
+                newCharacter.Searcher.skills.Where(item => item.name == textSkill.Text).ToList().ForEach(item => item.value = addValue);
 
-                if (addValue == defaultValue)
-                {
-                    var foundItems = newCharacter.SkillSet.Skills.Select((item, index) => new { Index = index, Value = item })
-                       .Where(item => item.Value.Name == textSkill.Text)
-                       .Select(item => item.Index);
-                    newCharacter.skillPointTypes[foundItems.First()] = "";
-                    
-                    return false;
-                }
+                newCharacter.Searcher.CheckUnique();
 
-                return true;
+                return addValue - defaultValue;
             }
             else
             {
-                if (sumValue + addValue >= maxPoint)
-                {
-                    MessageBox.Show("職業ポイントが超過しました。",
-                    "エラー",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                    return false;
-                }
-                else if (addValue < 0)
-                {
-                    MessageBox.Show("初期値より低い技能値は設定できません。",
-                    "エラー",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                    return false;
-                }
-                else if (skillSet.Count != 0 && addValue - skillSet[0].Value == 0)
-                {
-                    return false;
-                }
+                if (!checkCanSetSkill(sumValue, addValue, new Skill(textSkill.Text, 0), maxPoint)) return -1;
 
                 sumValue += addValue;
                 currentPoint.Text = sumValue.ToString();
 
-                Proccess.Skill skill = new Proccess.Skill();
-                skill.Name = textSkill.Text;
-                skill.Value = addValue;
-                skill.Type = tabControlSkill.SelectedTab.Text;
+                Skill skill = new Skill();
+                skill.name = textSkill.Text;
+                skill.value = addValue;
+                skill.type = tabControlSkill.SelectedTab.Text;
 
-                newCharacter.SkillSet.Skills.Add(skill);
-                newCharacter.skillPointTypes.Add("");
+                newCharacter.Searcher.skills.Add(skill);
+                newCharacter.Searcher.DefaultSkillList[textSkill.Text] = "0";
 
-                return true;
+                newCharacter.Searcher.CheckUnique();
+
+                return addValue;
             }
-            return false;
         }
-
+        
+        //職業技能の追加編集ボタンを押下
         private void buttonWorkAdd_Click(object sender, EventArgs e)
         {
-            int value;
-            if(int.TryParse(textValue.Text, out value))
+            var value = int.TryParse(textValue.Text, out var v) ? v: -1;
+            if (value == -1) return;
+
+            var deffValue = addSkill(ref newCharacter.workSkillsAddValue, value, int.Parse(workMaxPoint.Text), workPoint);//技能値とデフォ値の差分を返してくれる
+            if(deffValue != -1)
             {
-                if(addSkill(ref newCharacter.workSkillsAddValue, value, int.Parse(workMaxPoint.Text), workPoint))
-                {
-                    var foundItems = newCharacter.SkillSet.Skills.Select((item, index) => new { Index = index, Value = item })
-                       .Where(item => item.Value.Name == textSkill.Text)
-                       .Select(item => item.Index);
-                    newCharacter.skillPointTypes[foundItems.First()] = "職業";
-                }
-                refreshSkillListView();
-                checkPointButton();
+                var setskill = newCharacter.Searcher.skills.Find(item => item.name == textSkill.Text);
+                setskill.workValue = deffValue;
             }
+            refreshSkillListView();
+            checkPointButton();
+            
         }
 
+        //興味技能の追加編集ボタンを押下
         private void buttonInterestAdd_Click(object sender, EventArgs e)
         {
-            int value;
-            if (int.TryParse(textValue.Text, out value))
+            var value = int.TryParse(textValue.Text, out var v) ? v : -1;
+            if (value == -1) return;
+
+            var deffValue = addSkill(ref newCharacter.interestSkillsAddValue, value, int.Parse(interestMaxPoint.Text), interestPoint);//技能値とデフォ値の差分を返してくれる
+            if (deffValue != -1)
             {
-                if(addSkill(ref newCharacter.interestSkillsAddValue, value, int.Parse(interestMaxPoint.Text), interestPoint))
-                {
-                    {
-                        var foundItems = newCharacter.SkillSet.Skills.Select((item, index) => new { Index = index, Value = item })
-                           .Where(item => item.Value.Name == textSkill.Text)
-                           .Select(item => item.Index);
-                        newCharacter.skillPointTypes[foundItems.First()] = "興味";
-                    }
-                }
-                refreshSkillListView();
-                checkPointButton();
+                var setskill = newCharacter.Searcher.skills.Find(item => item.name == textSkill.Text);
+                setskill.intererstValue = deffValue;
             }
+            refreshSkillListView();
+            checkPointButton();
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
-            seacherSkillSet();
 
             newCharacter.Searcher.backgroundString = richTextBoxBackgroung.Text;
             newCharacter.Searcher.searcherInfos["職業"] = textBoxOccupation.Text;
@@ -316,31 +296,6 @@ namespace PalletMaster
 
             PalletMaster.Searcher = newCharacter.Searcher;
             this.Close();
-        }
-
-        private void seacherSkillSet()
-        {
-            foreach (var item in newCharacter.SkillSet.Skills) {
-                try
-                {
-                    if (newCharacter.Searcher.DefaultSkillList.ContainsKey(item.Name))
-                    {
-                        if (newCharacter.Searcher.DefaultSkillList[item.Name] != item.Value.ToString())
-                        { newCharacter.Searcher.uniqueSkills[item.Name] = item.Value.ToString(); }
-                    }
-                    else
-                    {
-                        newCharacter.Searcher.uniqueSkills[item.Name] = item.Value.ToString(); 
-                    }
-                }
-                catch (Exception ee) { }
-            }
-
-
-            foreach (var item in newCharacter.SkillSet.Skills.Where(item => item.Type == "戦闘").ToList<Proccess.Skill>())
-            {
-                newCharacter.Searcher.fightSkills[item.Name] = item.Value.ToString();
-            }
         }
 
         private void CanselToolStripMenuItem_Click(object sender, EventArgs e)
@@ -355,19 +310,19 @@ namespace PalletMaster
 
         private void checkPointButton(){
             
-            var tuple = newCharacter.SkillSet.Skills.Zip(newCharacter.skillPointTypes, (skill, point) => Tuple.Create(skill, point)).Where(item => item.Item1.Name == textSkill.Text)
-                .ToList<Tuple<Proccess.Skill, string>>();
+            var skill = newCharacter.Searcher.skills.Where(item => item.name == textSkill.Text)
+                .ToList<Skill>();
 
-            if (tuple.Count == 0) return;
+            if (skill.Count == 0) return;
 
-            if (tuple[0].Item2 == "職業")
+            if (skill[0].workValue != 0)
             {
                 buttonWorkAdd.Enabled = true;
                 buttonInterestAdd.Enabled = false;
                 buttonWorkAdd.Text = "職業技能編集";
                 buttonInterestAdd.Text = "興味技能編集";
             }
-            else if (tuple[0].Item2 == "興味")
+            else if (skill[0].intererstValue != 0)
             {
                 buttonWorkAdd.Enabled = false;
                 buttonInterestAdd.Enabled = true;
@@ -386,10 +341,7 @@ namespace PalletMaster
 
     public class NewCharacter
     {
-        private Proccess.SkillSet skillSet = new Proccess.SkillSet();
-        public List<string> skillPointTypes = new List<string>();
         public Searcher Searcher { get; set; }
-        internal Proccess.SkillSet SkillSet { get => skillSet; set => skillSet = value; }
 
         public int workSkillsAddValue = 0;
         public int interestSkillsAddValue = 0;
@@ -397,10 +349,10 @@ namespace PalletMaster
         public NewCharacter()
         {
             Searcher = new Searcher();
-            Searcher.SetDefaultSkills(new Proccess().ReadCSV(System.AppDomain.CurrentDomain.BaseDirectory + "defaultSkill.csv"));
+            Searcher.SetDefaultSkills(Proccess.ReadCSVToDictionary(System.AppDomain.CurrentDomain.BaseDirectory + "defaultSkill.csv"));
 
-            SkillSet = Proccess.GetSkillSet();
-            SkillSet.Skills.ForEach(_ => skillPointTypes.Add(""));
+            Searcher.skills = Proccess.GetSkillSet();
+            Searcher.skills.ForEach(_ => _.defaultValue = _.value);
         }
     }
 }
