@@ -69,3 +69,14 @@ E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\ChaPal
 E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\MathNet.Numerics.dll
 E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\MathNet.Numerics.xml
 E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.CharacterMakingForm.resources
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\log4net.dll
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\xunit.abstractions.dll
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\xunit.assert.dll
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\xunit.core.dll
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\xunit.execution.dotnet.dll
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\log4net.xml
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\xunit.abstractions.xml
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\xunit.assert.xml
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\xunit.core.xml
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\xunit.execution.dotnet.xml

@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PalletMaster.CharacterMakingForm" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>/wGwbJUIgCHAQBiEKAzhUBX+H2BLEKBIEvCkBMCBNHI=</HashCode>
+      <FileName>CharacterMakingForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.NewCharacter" Collapsed="true">
+    <Position X="6.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>CharacterMakingForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.Searcher">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAARAAAAAAAAAAAAABABAAAEAAE=</HashCode>
+      <FileName>CSファイル\Charact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.ActionHistory" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAQAAAAAAAQA=</HashCode>
+      <FileName>CSファイル\Charact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.Character" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAABAAAAAAQAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>CSファイル\Charact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.Skill" Collapsed="true">
+    <Position X="11.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAABAAAAAAAAAAAAFAKAAQAAAAAAAAAA=</HashCode>
+      <FileName>CSファイル\Charact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.Setting" Collapsed="true">
+    <Position X="6.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAKAAAmAEIAAAAAAAAAAAAAAAAAAAEAAQg=</HashCode>
+      <FileName>CSファイル\Charact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.FightDamage" Collapsed="true">
+    <Position X="6.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CSファイル\Charact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.Memo" Collapsed="true">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>CSファイル\Charact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.ListViewItemComparer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="PalletMaster.ListViewItemComparer.ComparerMode" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>CSファイル\Charact.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAEAIAACAIAEAIAAAgBAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>CSファイル\Charact.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PalletMaster.ChpFileImport" Collapsed="true">
+    <Position X="3" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAIAAAAAAAAAAAAAAAAAAQAAAAAAAAAEAAA=</HashCode>
+      <FileName>CSファイル\ChpFileImport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.IOHelper" Collapsed="true">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAEAAAAAAAUAAAAAAwAAAACAAAAAAAAAQAAAABAAAAA=</HashCode>
+      <FileName>CSファイル\IOHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.PalletMaster" Collapsed="true">
+    <Position X="8.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AJAQAAAgASACBAAAgAAAAAAgAAAAA4AAIAIAAABAAAA=</HashCode>
+      <FileName>CSファイル\PalletMaster.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.Proccess" Collapsed="true">
+    <Position X="10" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCCAAAAAAACAAAAAAAABAAAAAIAAQAFAAARAACAAACA=</HashCode>
+      <FileName>CSファイル\Proccess.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.Program" Collapsed="true">
+    <Position X="11.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>CSファイル\Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster._1InputForm">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAKQAAAACAACAAAACAAgBAAAAAAABAAQAAAA=</HashCode>
+      <FileName>Forms\1InputForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.CharaArchiveImportForm" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAABAAAACAAAACAAAIAAAAEEAAAQAAAAA=</HashCode>
+      <FileName>Forms\CharaArchiveImportForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.CharaBankImportForm" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAACAAABAAAACAAAQCAAAYAAAAEGAAAAAAAAA=</HashCode>
+      <FileName>Forms\CharaBankImportForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.CharaInfoForm" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>cACAAQAAACAABBAEAACAQAQGQgAAAADAAEAIBEAAAEA=</HashCode>
+      <FileName>Forms\InfoForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.InfoMemoForm" Collapsed="true">
+    <Position X="11.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>9gCAAAAAACDAAAAAAACAAAACAAACAgAIAAABBQABBBA=</HashCode>
+      <FileName>Forms\InfoMemoForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.MadnessTableForm" Collapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAEAACAAAAAAAACAAAACAAAIAAIAAEAAAAABBAA=</HashCode>
+      <FileName>Forms\MadnessTableForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.MainForm" Collapsed="true">
+    <Position X="8.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gQYBBIA0ASAAAhxApnjAgiACAokCAQACAIJGEABSTFg=</HashCode>
+      <FileName>Forms\MainForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.MinimumForm" Collapsed="true">
+    <Position X="4.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAJAAACAAIAAgAACAAAACAQAAEDAABCAAAAAAAAg=</HashCode>
+      <FileName>Forms\MinimumForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.SettingForm" Collapsed="true">
+    <Position X="8.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAABECAgCIAABAgiACAAAACQAAAAAAgADIBACAAAEI=</HashCode>
+      <FileName>Forms\SettingForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.FormSplash" Collapsed="true">
+    <Position X="8.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAACAAAAAAAACAAAACAAAAAAAAQAAAAABAAAA=</HashCode>
+      <FileName>Forms\SplashForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.FightControl" Collapsed="true">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAAAIoAAAKSCABAhAQCZAEgySwBAAACAACIJkKAAAAg=</HashCode>
+      <FileName>MainFormコントロール\FightControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.HistoryAbilityControl" Collapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAgAIAEACBIAAAAAACAAEBCAABAEACAACgIQCAAQAQ=</HashCode>
+      <FileName>MainFormコントロール\HistoryAbilityControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.MemoControl" Collapsed="true">
+    <Position X="11.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAACCgAABAgACACACCAAIAAAAAIIBAAABAAEE=</HashCode>
+      <FileName>MainFormコントロール\MemoControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.memoTabControl" Collapsed="true">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAEAABAQAAAAA=</HashCode>
+      <FileName>MainFormコントロール\memoTabControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.SANControl" Collapsed="true">
+    <Position X="4.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAIAAACwAAJBQAACAAEACgAAAAAEAgCAIgCQAgQA=</HashCode>
+      <FileName>MainFormコントロール\SANControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.SkillControl" Collapsed="true">
+    <Position X="3" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>hIGQALABACIAIFAgAIqBAoAChAFAYLgIACAJASgBAAI=</HashCode>
+      <FileName>MainFormコントロール\SkillControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StringExtensions" Collapsed="true">
+    <Position X="4.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CSファイル\Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChaPalle.Properties.Resources" Collapsed="true">
+    <Position X="3" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAACAAAAAAAAAAAAAABEAAACQAAAAAAACAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PalletMaster.Properties.Settings" Collapsed="true">
+    <Position X="10" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="PalletMaster.ロール" Collapsed="true">
+    <Position X="3" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CSファイル\Charact.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Yu Gothic UI" Size="9" />
+</ClassDiagram>

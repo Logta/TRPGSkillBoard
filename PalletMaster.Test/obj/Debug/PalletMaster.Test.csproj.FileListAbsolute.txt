@@ -1,0 +1,2 @@
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\PalletMaster.Test\obj\Debug\PalletMaster.Test.csprojAssemblyReference.cache
+E:\Google Drive\プログラム\ChatPalle\PalletMaster\PalletMaster.Test\obj\Debug\PalletMaster.Test.csproj.CoreCompileInputs.cache

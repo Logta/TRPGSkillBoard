@@ -211,10 +211,10 @@ namespace PalletMaster
         private int addSkill(ref int sumValue, int addValue, int maxPoint, Label currentPoint)
         {
             //スキルの、キャラクターの技能値とデフォルト値を取得
-            var skillDefault = newCharacter.Searcher.DefaultSkillList.Where(s => s.Key == textSkill.Text).ToDictionary(s => s.Key, s => s.Value);
+            var skillDefault = newCharacter.Searcher.skills.Where(s => s.name == textSkill.Text).ToList();
             var charSkill = newCharacter.Searcher.skills.Where(item => item.name == textSkill.Text).ToList();
             var defaultValue = 0;
-            if (skillDefault.Count != 0) defaultValue = int.Parse(skillDefault[textSkill.Text]);
+            if (skillDefault.Count != 0) defaultValue = skillDefault[0].defaultValue;
 
             //キャラの技能があるかどうか判定
             if (charSkill.Count != 0)
@@ -242,7 +242,6 @@ namespace PalletMaster
                 skill.type = tabControlSkill.SelectedTab.Text;
 
                 newCharacter.Searcher.skills.Add(skill);
-                newCharacter.Searcher.DefaultSkillList[textSkill.Text] = "0";
 
                 newCharacter.Searcher.CheckUnique();
 

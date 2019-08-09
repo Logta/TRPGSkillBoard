@@ -13,11 +13,9 @@ namespace PalletMaster
 
     public class Searcher : Character
     {
-        public Dictionary<string, string> DefaultSkillList { get; set; }    //初期値技能のリスト
 
         public Searcher()
         {
-            DefaultSkillList = new Dictionary<string, string>();
 
             abilityValues = new Dictionary<string, string>()//探索者の能力値のリスト
             { { "STR", ""}, { "CON", ""}, { "POW", ""}, { "DEX", ""}, { "APP", ""}, { "SIZ", ""}, { "INT", ""}, { "EDU", ""}};
@@ -28,7 +26,6 @@ namespace PalletMaster
 
         public void SetDefaultSkills(Dictionary<string, string> defaultSkills)
         {
-            DefaultSkillList = defaultSkills;
 
             foreach (KeyValuePair<string, string> kvp in defaultSkills)
             {
