@@ -45,9 +45,8 @@ namespace PalletMaster
         //能力値を設定する
         public void AbilityDataSet()
         {
-            int buff_1;
-            int buff_2;
 
+            int buff_1;
             if (int.TryParse(Searcher.abilityValues["INT"], out buff_1)) //能力値が入力されていなければ無視する
                 Searcher.SetSkill(new Skill("アイデア", buff_1 * 5, "探索"));
             if (int.TryParse(Searcher.abilityValues["POW"], out buff_1))
@@ -59,7 +58,7 @@ namespace PalletMaster
                 Searcher.SetSkill(new Skill("回避", buff_1 * 2, "戦闘"));
 
             if (int.TryParse(Searcher.abilityValues["STR"], out buff_1) &&
-               int.TryParse(Searcher.abilityValues["SIZ"], out buff_2))
+               int.TryParse(Searcher.abilityValues["SIZ"], out int buff_2))
                 Searcher.searcherInfos["ダメージボーナス"] = GetBonusDamege(buff_1 + buff_2);
         }
 

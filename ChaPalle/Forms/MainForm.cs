@@ -34,10 +34,12 @@ namespace PalletMaster
         public MainForm(Searcher d)
         {
             InitializeComponent(); //フォームの初期化
-            PalletMaster = new PalletMaster();
+            PalletMaster = new PalletMaster
+            {
+                //設定の読込と初期設定
+                Setting = IOHelper.toLoadSetting()
+            };
 
-            //設定の読込と初期設定
-            PalletMaster.Setting = IOHelper.toLoadSetting();
             var templeteTextSelected = PalletMaster.Setting.useBCDiceAPIFlg ||
                 PalletMaster.Setting.offlineMode;
             skillControl.SetButtonTempleteUserCopyName
@@ -142,8 +144,10 @@ namespace PalletMaster
         private void userToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PalletMaster.Searcher.searcherInfos["SAN"] = sanControl.GetSanText();
-            CharaInfoForm u_form = new CharaInfoForm(PalletMaster.Searcher);
-            u_form.Font = new Font(PalletMaster.Setting.font, PalletMaster.Setting.fontSize);
+            CharaInfoForm u_form = new CharaInfoForm(PalletMaster.Searcher)
+            {
+                Font = new Font(PalletMaster.Setting.font, PalletMaster.Setting.fontSize)
+            };
             TopMost = false;
             u_form.ShowDialog();
 
@@ -171,8 +175,10 @@ namespace PalletMaster
         void JSONSave(Character tom)
         {
             //SaveFileDialogクラスのインスタンスを作成
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "パレマスファイル(*.pmj)|*.pmj|すべてのファイル(*.*)|*.*";
+            SaveFileDialog sfd = new SaveFileDialog
+            {
+                Filter = "パレマスファイル(*.pmj)|*.pmj|すべてのファイル(*.*)|*.*"
+            };
             //ダイアログを表示する
             if (sfd.ShowDialog() == DialogResult.OK)
             {
@@ -243,14 +249,15 @@ namespace PalletMaster
         chpLoad JSONLoad()
         {
             chpLoad m_d;
-            OpenFileDialog ofDialog = new OpenFileDialog();
+            OpenFileDialog ofDialog = new OpenFileDialog
+            {
+                // デフォルトのフォルダを指定する
+                InitialDirectory = AppDomain.CurrentDomain.BaseDirectory,
 
-            // デフォルトのフォルダを指定する
-            ofDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
-
-            //ダイアログのタイトルを指定する
-            ofDialog.Title = "パレマス形式ファイル読み込み";
-            ofDialog.Filter = "パレマスファイル(*.pmj)|*.pmj|すべてのファイル(*.*)|*.*";
+                //ダイアログのタイトルを指定する
+                Title = "パレマス形式ファイル読み込み",
+                Filter = "パレマスファイル(*.pmj)|*.pmj|すべてのファイル(*.*)|*.*"
+            };
 
             //ダイアログを表示する
             if (ofDialog.ShowDialog() == DialogResult.OK)
@@ -432,8 +439,10 @@ namespace PalletMaster
 
         private void 縮小版ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MinimumForm u_form = new MinimumForm(PalletMaster);
-            u_form.Font = new Font(PalletMaster.Setting.font, PalletMaster.Setting.fontSize);
+            MinimumForm u_form = new MinimumForm(PalletMaster)
+            {
+                Font = new Font(PalletMaster.Setting.font, PalletMaster.Setting.fontSize)
+            };
             TopMost = false;
             Visible = false;
             u_form.ShowDialog();
@@ -444,8 +453,10 @@ namespace PalletMaster
 
         private void キャラクター作成ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CharacterMakingForm u_form = new CharacterMakingForm(PalletMaster);
-            u_form.Font = new Font(PalletMaster.Setting.font, PalletMaster.Setting.fontSize);
+            CharacterMakingForm u_form = new CharacterMakingForm(PalletMaster)
+            {
+                Font = new Font(PalletMaster.Setting.font, PalletMaster.Setting.fontSize)
+            };
             TopMost = false;
             Visible = false;
             if (u_form.setSkillSet) u_form.ShowDialog();

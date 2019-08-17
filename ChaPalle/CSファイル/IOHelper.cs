@@ -20,14 +20,16 @@ namespace PalletMaster
 
             string line = "";
             var al = new List<string>();
-            var ofDialog = new OpenFileDialog();
+            var ofDialog = new OpenFileDialog
+            {
 
-            // デフォルトのフォルダを指定する
-            //ofDialog.InitialDirectory = @"C:";
+                // デフォルトのフォルダを指定する
+                //ofDialog.InitialDirectory = @"C:";
 
-            //ダイアログのタイトルを指定する
-            ofDialog.Title = "キャラクター保管所txtファイル読み込み";
-            ofDialog.Filter = "txtファイル(*.txt)|*.txt|すべてのファイル(*.*)|*.*";
+                //ダイアログのタイトルを指定する
+                Title = "キャラクター保管所txtファイル読み込み",
+                Filter = "txtファイル(*.txt)|*.txt|すべてのファイル(*.*)|*.*"
+            };
 
             //ダイアログを表示する
             if (ofDialog.ShowDialog() == DialogResult.OK)
@@ -257,10 +259,12 @@ namespace PalletMaster
                 string html = wc.DownloadString(m_URL); //指定URLのHTMLデータを取得
 
                 //HtmlAgilityPackを用いてHTMLデータを抽出
-                HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
-                doc.OptionAutoCloseOnEnd = false;  //最後に自動で閉じる（？）
-                doc.OptionCheckSyntax = false;     //文法チェック。
-                doc.OptionFixNestedTags = true;    //閉じタグが欠如している場合の処理
+                HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument
+                {
+                    OptionAutoCloseOnEnd = false,  //最後に自動で閉じる（？）
+                    OptionCheckSyntax = false,     //文法チェック。
+                    OptionFixNestedTags = true    //閉じタグが欠如している場合の処理
+                };
                 doc.LoadHtml(html);
 
                 string[] dt;
@@ -276,11 +280,10 @@ namespace PalletMaster
                 foreach (var row in doc.DocumentNode.SelectNodes("//tr[@id='status_total']"))
                 {
                     var nodes = row.InnerText;
-                    if (nodes != null)
-                    {
-                        m_buff = removeChars.Aggregate(nodes, (s, c) => s.Replace(c.ToString(), ""));
-                        dt = m_buff.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-                    }
+                    if (nodes == null) continue;
+
+                    m_buff = removeChars.Aggregate(nodes, (s, c) => s.Replace(c.ToString(), ""));
+                    dt = m_buff.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
                 }
 
                 searcher.searcherInfos["HP"] = dt[8];
@@ -299,21 +302,19 @@ namespace PalletMaster
                 foreach (var row in doc.DocumentNode.SelectNodes("//div [@id='skill']//tr"))
                 {
                     var nodes = row.InnerText;
-                    if (nodes != null)
-                    {
-                        m_buff = removeChars.Aggregate(nodes, (s, c) => s.Replace(c.ToString(), ""));
-                        dt = m_buff.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-                    }
+                    if (nodes == null) continue;
+
+                    m_buff = removeChars.Aggregate(nodes, (s, c) => s.Replace(c.ToString(), ""));
+                    dt = m_buff.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                    
 
                     try
                     {
                         if (dt[0] == "種別" || dt[1] == "技能名" || dt[2] == "値") continue;
 
-                        var buf = 0;
-                        if (int.TryParse(dt[2], out buf))
-                        {
-                            searcher.SetSkill(new Skill(dt[1], buf, dt[0]));
-                        }
+                        var value = int.TryParse(dt[2], out var m) ? m : -1;
+                        if (value == -1) continue;
+                        searcher.SetSkill(new Skill(dt[1], value, dt[0]));
                     }
                     catch (Exception exc)
                     {
@@ -352,11 +353,12 @@ namespace PalletMaster
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                Setting m_sData = new Setting();
-
-                m_sData.checkMessageFlg = true;
-                m_sData.checkTopMostFlg = true;
-                m_sData.useDiceBotFlg = 0;
+                Setting m_sData = new Setting
+                {
+                    checkMessageFlg = true,
+                    checkTopMostFlg = true,
+                    useDiceBotFlg = 0
+                };
 
                 return m_sData;
             }
@@ -372,8 +374,10 @@ namespace PalletMaster
         public void SaveMemo(Memo memo)
         {
             //SaveFileDialogクラスのインスタンスを作成
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "pmmファイル(*.pmm)|*.pmm|すべてのファイル(*.*)|*.*";
+            SaveFileDialog sfd = new SaveFileDialog
+            {
+                Filter = "pmmファイル(*.pmm)|*.pmm|すべてのファイル(*.*)|*.*"
+            };
             //ダイアログを表示する
             if (sfd.ShowDialog() == DialogResult.OK)
             {
@@ -396,14 +400,16 @@ namespace PalletMaster
         public Memo LoadMemo()
         {
             var al = new List<string>();
-            OpenFileDialog ofDialog = new OpenFileDialog();
+            OpenFileDialog ofDialog = new OpenFileDialog
+            {
 
-            // デフォルトのフォルダを指定する
-            ofDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                // デフォルトのフォルダを指定する
+                InitialDirectory = AppDomain.CurrentDomain.BaseDirectory,
 
-            //ダイアログのタイトルを指定する
-            ofDialog.Title = "PMMファイル読み込み";
-            ofDialog.Filter = "pmmファイル(*.pmm)|*.pmm|すべてのファイル(*.*)|*.*";
+                //ダイアログのタイトルを指定する
+                Title = "PMMファイル読み込み",
+                Filter = "pmmファイル(*.pmm)|*.pmm|すべてのファイル(*.*)|*.*"
+            };
 
             //ダイアログを表示する
             if (ofDialog.ShowDialog() == DialogResult.OK)

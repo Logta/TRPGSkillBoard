@@ -139,9 +139,8 @@ namespace PalletMaster
         {
             if (text == "") return null;
 
-            var result = new GetBCDice_API();
             var json = getWebAPI(url + "/v1/diceroll?system=Cthulhu&command=" + text);
-            result = JsonConvert.DeserializeObject <GetBCDice_API> (json);
+            var result = JsonConvert.DeserializeObject <GetBCDice_API> (json);
 
             return result;
         }
@@ -155,7 +154,7 @@ namespace PalletMaster
 
             if (stm != null)
             {
-                StreamReader reader = new StreamReader(stm, System.Text.Encoding.GetEncoding("UTF-8"));
+                StreamReader reader = new StreamReader(stm, Encoding.GetEncoding("UTF-8"));
                 json = reader.ReadToEnd();
                 stm.Close();
             }
