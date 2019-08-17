@@ -13,3 +13,18 @@ C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\PalletM
 C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\PalletMaster.Test\obj\Release\PalletMaster.Test.csproj.CopyComplete
 C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\PalletMaster.Test\obj\Release\PalletMaster.Test.dll
 C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\PalletMaster.Test\obj\Release\PalletMaster.Test.pdb
+C:\Users\logti\source\repos\TRPGSkillBoard\PalletMaster.Test\bin\Release\PalletMaster.Test.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\PalletMaster.Test\bin\Release\PalletMaster.Test.pdb
+C:\Users\logti\source\repos\TRPGSkillBoard\PalletMaster.Test\bin\Release\xunit.abstractions.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\PalletMaster.Test\bin\Release\xunit.assert.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\PalletMaster.Test\bin\Release\xunit.core.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\PalletMaster.Test\bin\Release\xunit.execution.desktop.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\PalletMaster.Test\bin\Release\xunit.abstractions.xml
+C:\Users\logti\source\repos\TRPGSkillBoard\PalletMaster.Test\bin\Release\xunit.assert.xml
+C:\Users\logti\source\repos\TRPGSkillBoard\PalletMaster.Test\bin\Release\xunit.core.xml
+C:\Users\logti\source\repos\TRPGSkillBoard\PalletMaster.Test\bin\Release\xunit.execution.desktop.xml
+C:\Users\logti\source\repos\TRPGSkillBoard\PalletMaster.Test\obj\Release\PalletMaster.Test.csprojAssemblyReference.cache
+C:\Users\logti\source\repos\TRPGSkillBoard\PalletMaster.Test\obj\Release\PalletMaster.Test.csproj.CoreCompileInputs.cache
+C:\Users\logti\source\repos\TRPGSkillBoard\PalletMaster.Test\obj\Release\PalletMaster.Test.csproj.CopyComplete
+C:\Users\logti\source\repos\TRPGSkillBoard\PalletMaster.Test\obj\Release\PalletMaster.Test.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\PalletMaster.Test\obj\Release\PalletMaster.Test.pdb

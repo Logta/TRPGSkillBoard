@@ -43,13 +43,14 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.buttonSANCheck = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.buttonIdea = new System.Windows.Forms.Button();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonMadnessTable
             // 
-            this.buttonMadnessTable.Location = new System.Drawing.Point(29, 256);
+            this.buttonMadnessTable.Location = new System.Drawing.Point(40, 289);
             this.buttonMadnessTable.Name = "buttonMadnessTable";
             this.buttonMadnessTable.Size = new System.Drawing.Size(75, 23);
             this.buttonMadnessTable.TabIndex = 34;
@@ -233,9 +234,20 @@
             this.label7.TabIndex = 4;
             this.label7.Text = "SANチェック文：";
             // 
+            // buttonIdea
+            // 
+            this.buttonIdea.Location = new System.Drawing.Point(40, 253);
+            this.buttonIdea.Name = "buttonIdea";
+            this.buttonIdea.Size = new System.Drawing.Size(75, 23);
+            this.buttonIdea.TabIndex = 35;
+            this.buttonIdea.Text = "アイデア";
+            this.buttonIdea.UseVisualStyleBackColor = true;
+            this.buttonIdea.Click += new System.EventHandler(this.ButtonIdea_Click);
+            // 
             // SANControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.buttonIdea);
             this.Controls.Add(this.buttonMadnessTable);
             this.Controls.Add(this.comboBoxSANValue);
             this.Controls.Add(this.buttonSANDown);
@@ -272,5 +284,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button buttonSANCheck;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button buttonIdea;
     }
 }

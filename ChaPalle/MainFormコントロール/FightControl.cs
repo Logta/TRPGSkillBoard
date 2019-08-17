@@ -131,28 +131,18 @@ namespace PalletMaster
             float hp; //現在HP
             int hpDiff; //HP変動値
 
-            if (float.TryParse(labelHPValue.Text, out hp) &&
-                int.TryParse(comboBoxHPValue.Text, out hpDiff))
-            {
-                labelHPValue.Text = Convert.ToString(hp - hpDiff);
+            if (!float.TryParse(labelHPValue.Text, out hp) ||
+                !int.TryParse(comboBoxHPValue.Text, out hpDiff)) return;
 
-                if (hp - hpDiff <= 2)
-                    MessageBox.Show("気絶しました。", "気絶", MessageBoxButtons.OK);
-                else if (hp / 2 <= hpDiff)
-                {
-                    int m_con;
-                    if (int.TryParse(PalletMaster.Searcher.abilityValues["CON"], out m_con))
-                    {
-                        Clipboard.SetText(PalletMaster.GetDiceText(Convert.ToString(m_con * 5), "気絶ロール"));
-                        MessageBox.Show("気絶ロールが発生しました。CON×5をクリップボードにコピーしました",
-                        "気絶ロール",
-                        MessageBoxButtons.OK);
-                    }
-                    else
-                        MessageBox.Show("気絶ロールが発生しました。",
-                            "気絶ロール",
-                        MessageBoxButtons.OK);
-                }
+            labelHPValue.Text = Convert.ToString(hp - hpDiff);
+
+            if (hp - hpDiff <= 2)
+                MessageBox.Show("気絶しました。", "気絶", MessageBoxButtons.OK);
+            else if (hp / 2 <= hpDiff)
+            {
+                MessageBox.Show("気絶ロールが発生しました。",
+                    "気絶ロール",
+                MessageBoxButtons.OK);
             }
         }
 
@@ -218,13 +208,23 @@ namespace PalletMaster
             try
             {
                 var damageText = FightDamage.fightSkillDamage[attackSkill] + damageBonusTextBox.Text;
-                //PalletMaster.SetTextRole(damageText, "攻撃 : " + attackSkill);
-                PalletMaster.SetClipBoard(damageText);
+
                 MessageBox.Show("攻撃値：" + Proccess.TotalDice(damageText).Sum(), "攻撃値",
                 MessageBoxButtons.OK);
                 
             }
-            catch(Exception ee) { }
+            catch(Exception exc) { }
+        }
+
+        private void ButtonShockRole_Click(object sender, EventArgs e)
+        {
+            var con = int.TryParse(PalletMaster.Searcher.abilityValues["CON"], out var m) ? m : -1;
+            if (con == -1) return;
+
+            PalletMaster.SetTextRole(PalletMaster.GetDiceText(
+                Convert.ToString(con * 5), "気絶ロール"),
+                "気絶ロール"
+                );
         }
     }
 }

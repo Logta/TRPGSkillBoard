@@ -50,6 +50,7 @@
             this.attackLabel = new MetroFramework.Drawing.Html.HtmlLabel();
             this.damageBonusTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonShockRole = new System.Windows.Forms.Button();
             this.groupBox7.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -89,6 +90,7 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.buttonShockRole);
             this.groupBox7.Controls.Add(this.comboBoxHPValue);
             this.groupBox7.Controls.Add(this.buttonHPMinus);
             this.groupBox7.Controls.Add(this.buttonHPPlus);
@@ -119,16 +121,16 @@
             this.comboBoxHPValue.Location = new System.Drawing.Point(81, 34);
             this.comboBoxHPValue.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxHPValue.Name = "comboBoxHPValue";
-            this.comboBoxHPValue.Size = new System.Drawing.Size(56, 20);
+            this.comboBoxHPValue.Size = new System.Drawing.Size(56, 22);
             this.comboBoxHPValue.TabIndex = 24;
             this.comboBoxHPValue.Text = "1";
             // 
             // buttonHPMinus
             // 
-            this.buttonHPMinus.Location = new System.Drawing.Point(162, 56);
+            this.buttonHPMinus.Location = new System.Drawing.Point(188, 34);
             this.buttonHPMinus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonHPMinus.Name = "buttonHPMinus";
-            this.buttonHPMinus.Size = new System.Drawing.Size(51, 22);
+            this.buttonHPMinus.Size = new System.Drawing.Size(20, 22);
             this.buttonHPMinus.TabIndex = 23;
             this.buttonHPMinus.Text = "-";
             this.buttonHPMinus.UseVisualStyleBackColor = true;
@@ -136,10 +138,10 @@
             // 
             // buttonHPPlus
             // 
-            this.buttonHPPlus.Location = new System.Drawing.Point(162, 26);
+            this.buttonHPPlus.Location = new System.Drawing.Point(162, 34);
             this.buttonHPPlus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonHPPlus.Name = "buttonHPPlus";
-            this.buttonHPPlus.Size = new System.Drawing.Size(51, 22);
+            this.buttonHPPlus.Size = new System.Drawing.Size(20, 22);
             this.buttonHPPlus.TabIndex = 22;
             this.buttonHPPlus.Text = "+";
             this.buttonHPPlus.UseVisualStyleBackColor = true;
@@ -151,7 +153,7 @@
             this.labelHPValue.Font = new System.Drawing.Font("UD デジタル 教科書体 N-B", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelHPValue.Location = new System.Drawing.Point(36, 34);
             this.labelHPValue.Name = "labelHPValue";
-            this.labelHPValue.Size = new System.Drawing.Size(11, 12);
+            this.labelHPValue.Size = new System.Drawing.Size(13, 14);
             this.labelHPValue.TabIndex = 0;
             this.labelHPValue.Text = "0";
             // 
@@ -160,6 +162,7 @@
             this.listViewFight.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
+            this.listViewFight.HideSelection = false;
             this.listViewFight.Location = new System.Drawing.Point(9, 45);
             this.listViewFight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listViewFight.Name = "listViewFight";
@@ -195,7 +198,7 @@
             this.textSkillFight.Location = new System.Drawing.Point(65, 12);
             this.textSkillFight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textSkillFight.Name = "textSkillFight";
-            this.textSkillFight.Size = new System.Drawing.Size(116, 19);
+            this.textSkillFight.Size = new System.Drawing.Size(116, 21);
             this.textSkillFight.TabIndex = 25;
             // 
             // buttonAddFight
@@ -214,7 +217,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(24, 16);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(29, 12);
+            this.label10.Size = new System.Drawing.Size(31, 14);
             this.label10.TabIndex = 27;
             this.label10.Text = "技能";
             // 
@@ -223,7 +226,7 @@
             this.textValueFight.Location = new System.Drawing.Point(225, 12);
             this.textValueFight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textValueFight.Name = "textValueFight";
-            this.textValueFight.Size = new System.Drawing.Size(116, 19);
+            this.textValueFight.Size = new System.Drawing.Size(116, 21);
             this.textValueFight.TabIndex = 28;
             // 
             // label11
@@ -231,7 +234,7 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(198, 16);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(17, 12);
+            this.label11.Size = new System.Drawing.Size(19, 14);
             this.label11.TabIndex = 29;
             this.label11.Text = "値";
             // 
@@ -279,7 +282,7 @@
             this.damageBonusTextBox.Location = new System.Drawing.Point(117, 100);
             this.damageBonusTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.damageBonusTextBox.Name = "damageBonusTextBox";
-            this.damageBonusTextBox.Size = new System.Drawing.Size(116, 19);
+            this.damageBonusTextBox.Size = new System.Drawing.Size(116, 21);
             this.damageBonusTextBox.TabIndex = 39;
             // 
             // label1
@@ -287,9 +290,20 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(8, 103);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 12);
+            this.label1.Size = new System.Drawing.Size(103, 14);
             this.label1.TabIndex = 38;
             this.label1.Text = "ダメージボーナス";
+            // 
+            // buttonShockRole
+            // 
+            this.buttonShockRole.Location = new System.Drawing.Point(136, 61);
+            this.buttonShockRole.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonShockRole.Name = "buttonShockRole";
+            this.buttonShockRole.Size = new System.Drawing.Size(101, 25);
+            this.buttonShockRole.TabIndex = 39;
+            this.buttonShockRole.Text = "ショックロール";
+            this.buttonShockRole.UseVisualStyleBackColor = true;
+            this.buttonShockRole.Click += new System.EventHandler(this.ButtonShockRole_Click);
             // 
             // FightControl
             // 
@@ -343,5 +357,6 @@
         private System.Windows.Forms.TextBox damageBonusTextBox;
         private System.Windows.Forms.Label label1;
         private MetroFramework.Drawing.Html.HtmlLabel attackLabel;
+        private System.Windows.Forms.Button buttonShockRole;
     }
 }
