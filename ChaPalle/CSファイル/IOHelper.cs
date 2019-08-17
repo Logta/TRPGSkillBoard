@@ -125,8 +125,9 @@ namespace PalletMaster
                 {
                     if (arr[0].IsAny("職業", "年齢", "出身", "髪の色", "身長", "体重", "STR", "作成時", "成長等", "他修正", "習得", "名称")) continue;
                 }
-                catch (Exception ee)
+                catch (Exception e)
                 {
+                    Console.WriteLine(e.Message);
                     continue;
                 }
 
@@ -156,7 +157,10 @@ namespace PalletMaster
                             {
                                 searcher.searcherInfos[arr[0]] = arr[1];
                             }
-                            catch (Exception ee) { }
+                            catch (Exception exc)
+                            {
+                                Console.WriteLine(exc.Message);
+                            }
                         }
 
                         break;
@@ -173,7 +177,10 @@ namespace PalletMaster
                                     AddSkillSearcher(arr[i], value, "戦闘", searcher);
                             }
                         }
-                        catch(Exception ee) { }
+                        catch(Exception exc)
+                        {
+                            Console.WriteLine(exc.Message);
+                        }
                         break;
 
                     case "actSkill":
@@ -308,12 +315,16 @@ namespace PalletMaster
                             searcher.SetSkill(new Skill(dt[1], buf, dt[0]));
                         }
                     }
-                    catch (Exception ee) { }
+                    catch (Exception exc)
+                    {
+                        Console.WriteLine(exc.Message);
+                    }
                 }
 
             }
             catch (WebException exc)
             {
+                Console.WriteLine(exc.Message);
             }
             searcher.CheckUnique(); //技能値が初期値かそうでないか判定をする
             return searcher;
@@ -340,6 +351,7 @@ namespace PalletMaster
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 Setting m_sData = new Setting();
 
                 m_sData.checkMessageFlg = true;

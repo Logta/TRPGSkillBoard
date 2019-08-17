@@ -174,7 +174,7 @@ namespace PalletMaster
                 new Proccess().SendPostWebhookBCDiceAPI(text,
                     Setting.webhookURL, Setting.bcdiceAPIURL, Setting.userName, skill);
             else if (Setting.useWebhookFlg)
-                new Proccess().SendPostWebhookAsync(text + " " + Setting.userName,
+                _ = new Proccess().SendPostWebhookAsync(text + " " + Setting.userName,
                     Setting.webhookURL, Setting.userName);
             else
                 SetClipBoard(text);

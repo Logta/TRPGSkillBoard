@@ -272,7 +272,7 @@ namespace PalletMaster
                     }
                     catch (Exception e)
                     {
-                        MessageBox.Show("読み込み時エラーが発生しました。",
+                        MessageBox.Show("読み込み時エラーが発生しました。\n" + e.Message,
                         "エラー",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);

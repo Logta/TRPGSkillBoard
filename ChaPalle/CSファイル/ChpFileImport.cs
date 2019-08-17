@@ -63,12 +63,14 @@ namespace PalletMaster
 
         public ChpSearcher SetSearcher(ChpCharacter chara)
         {
-            ChpSearcher chpSearcher = new ChpSearcher();
-            chpSearcher.abilityValues = chara.abilityValues;
-            chpSearcher.searcherInfos = chara.searcherInfos;
-            chpSearcher.uniqueSkills = chara.uniqueSkills;
-            chpSearcher.fightSkills = chara.fightSkills;
-            chpSearcher.backgroundString = chara.backgroundString;
+            ChpSearcher chpSearcher = new ChpSearcher
+            {
+                abilityValues = chara.abilityValues,
+                searcherInfos = chara.searcherInfos,
+                uniqueSkills = chara.uniqueSkills,
+                fightSkills = chara.fightSkills,
+                backgroundString = chara.backgroundString
+            };
 
             return chpSearcher;
         }
@@ -109,14 +111,16 @@ namespace PalletMaster
         private chpLoad ImportChpFromJSON()
         {
             chpLoad m_d;
-            OpenFileDialog ofDialog = new OpenFileDialog();
+            OpenFileDialog ofDialog = new OpenFileDialog
+            {
 
-            // デフォルトのフォルダを指定する
-            ofDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                // デフォルトのフォルダを指定する
+                InitialDirectory = AppDomain.CurrentDomain.BaseDirectory,
 
-            //ダイアログのタイトルを指定する
-            ofDialog.Title = "チャッパレ形式ファイル読み込み";
-            ofDialog.Filter = "チャッパレファイル(*.chp)|*.chp|すべてのファイル(*.*)|*.*";
+                //ダイアログのタイトルを指定する
+                Title = "チャッパレ形式ファイル読み込み",
+                Filter = "チャッパレファイル(*.chp)|*.chp|すべてのファイル(*.*)|*.*"
+            };
 
             //ダイアログを表示する
             if (ofDialog.ShowDialog() == DialogResult.OK)
@@ -152,7 +156,7 @@ namespace PalletMaster
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("読み込み時エラーが発生しました。",
+                    MessageBox.Show("読み込み時エラーが発生しました。\n" + e.Message,
                     "エラー",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);

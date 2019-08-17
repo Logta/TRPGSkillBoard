@@ -248,7 +248,7 @@ namespace PalletMaster
             }
             catch (Exception e)
             {
-                MessageBox.Show("読み込み時エラーが発生しました。",
+                MessageBox.Show("読み込み時エラーが発生しました。\n" + e.Message,
                 "エラー",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
@@ -262,7 +262,7 @@ namespace PalletMaster
             if (!result.ok) return;
 
             var sendWebhookText = userName + result.result;
-            SendPostWebhookAsync(sendWebhookText + " " + skill, webhookURL, userName);
+            _ = SendPostWebhookAsync(sendWebhookText + " " + skill, webhookURL, userName);
         }
 
         //diceで書かれたダイスロールを行った結果

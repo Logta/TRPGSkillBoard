@@ -39,7 +39,7 @@ namespace PalletMaster
         //「クリップボードにコピー」を押したときの制御
         private void buttonClipboardCopy_ClickAsync(object sender, EventArgs e)
         {
-            bcDiceAccess(PalletMaster.Setting.webhookURL);
+            _ = bcDiceAccess(PalletMaster.Setting.webhookURL);
         }
 
         private async Task bcDiceAccess(string url)
@@ -259,9 +259,9 @@ namespace PalletMaster
                     value = correctValue(value);
                     PalletMaster.SetTextRole(PalletMaster.GetDiceText(Convert.ToString(value), "対抗ロール"), "対抗ロール");
                 }
-                catch (Exception ee)
+                catch (Exception exc)
                 {
-                    MessageBox.Show("正しい入力をしてください。",
+                    MessageBox.Show("正しい入力をしてください。\n" + exc.Message,
                     "エラー",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);

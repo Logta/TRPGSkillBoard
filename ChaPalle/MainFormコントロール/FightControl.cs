@@ -213,7 +213,10 @@ namespace PalletMaster
                 MessageBoxButtons.OK);
                 
             }
-            catch(Exception exc) { }
+            catch(Exception exc)
+            {
+                Console.WriteLine(exc.Message);
+            }
         }
 
         private void ButtonShockRole_Click(object sender, EventArgs e)
