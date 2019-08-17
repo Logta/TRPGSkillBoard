@@ -80,3 +80,104 @@ E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\xunit.
 E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\xunit.assert.xml
 E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\xunit.core.xml
 E:\Google Drive\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\xunit.execution.dotnet.xml
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.csprojAssemblyReference.cache
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.CharacterMakingForm.resources
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster._1InputForm.resources
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.InfoMemoForm.resources
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.HistoryAbilityControl.resources
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.FormSplash.resources
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.CharaArchiveImportForm.resources
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.CharaBankImportForm.resources
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.FightControl.resources
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.MadnessTableForm.resources
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.MainForm.resources
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.MemoControl.resources
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.memoTabControl.resources
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.MinimumForm.resources
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.SkillControl.resources
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.SettingForm.resources
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.CharaInfoForm.resources
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.SANControl.resources
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.csproj.GenerateResource.cache
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.csproj.CoreCompileInputs.cache
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\ChaPalle.exe.config
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\ChaPalle.exe
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\ChaPalle.pdb
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\HtmlAgilityPack.dll
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\log4net.dll
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\MathNet.Numerics.dll
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\MetroFramework.Design.dll
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\MetroFramework.dll
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\Newtonsoft.Json.dll
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\xunit.abstractions.dll
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\xunit.assert.dll
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\xunit.core.dll
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\xunit.execution.dotnet.dll
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\HtmlAgilityPack.xml
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\log4net.xml
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\MathNet.Numerics.xml
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\Newtonsoft.Json.xml
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\xunit.abstractions.xml
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\xunit.assert.xml
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\xunit.core.xml
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\bin\Debug\xunit.execution.dotnet.xml
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.csproj.CopyComplete
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\ChaPalle.exe
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\ChaPalle.pdb
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\PalletMaster.DiceResult.resources
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\ChaPalle\obj\Debug\ChaPalle.Properties.Resources.resources
+C:\Git\PalletMaster\ChaPalle\obj\Debug\PalletMaster.csprojAssemblyReference.cache
+C:\Git\PalletMaster\ChaPalle\obj\Debug\ChaPalle.exe
+C:\Git\PalletMaster\ChaPalle\obj\Debug\ChaPalle.pdb
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.csprojAssemblyReference.cache
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\ChaPalle.exe
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\ChaPalle.pdb
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\ChaPalle.exe.config
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\ChaPalle.exe
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\ChaPalle.pdb
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\HtmlAgilityPack.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\log4net.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\MathNet.Numerics.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\MetroFramework.Design.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\MetroFramework.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\Newtonsoft.Json.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\xunit.abstractions.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\xunit.assert.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\xunit.core.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\xunit.execution.dotnet.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\HtmlAgilityPack.xml
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\log4net.xml
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\MathNet.Numerics.xml
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\Newtonsoft.Json.xml
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\xunit.abstractions.xml
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\xunit.assert.xml
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\xunit.core.xml
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\xunit.execution.dotnet.xml
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.CharacterMakingForm.resources
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.DiceResult.resources
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster._1InputForm.resources
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.InfoMemoForm.resources
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.HistoryAbilityControl.resources
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.FormSplash.resources
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.CharaArchiveImportForm.resources
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.CharaBankImportForm.resources
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.FightControl.resources
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.MadnessTableForm.resources
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.MainForm.resources
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.MemoControl.resources
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.memoTabControl.resources
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.MinimumForm.resources
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.SkillControl.resources
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.SettingForm.resources
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.CharaInfoForm.resources
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.SANControl.resources
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\ChaPalle.Properties.Resources.resources
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.csproj.GenerateResource.cache
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.csproj.CoreCompileInputs.cache
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.csproj.CopyComplete

@@ -42,6 +42,7 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.diceNumberComboBox = new System.Windows.Forms.ComboBox();
             this.buttonTemplete3Copy = new System.Windows.Forms.Button();
             this.buttonTemplete2Copy = new System.Windows.Forms.Button();
             this.buttonTemplete1Copy = new System.Windows.Forms.Button();
@@ -61,7 +62,7 @@
             this.correctionComboBox = new System.Windows.Forms.ComboBox();
             this.correctionValueComboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.diceNumberComboBox = new System.Windows.Forms.ComboBox();
+            this.comboBoxSelectSkillMode = new System.Windows.Forms.ComboBox();
             this.groupBox6.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -151,6 +152,7 @@
             this.listViewSkill.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.skill,
             this.value});
+            this.listViewSkill.HideSelection = false;
             this.listViewSkill.Location = new System.Drawing.Point(3, 39);
             this.listViewSkill.Name = "listViewSkill";
             this.listViewSkill.Size = new System.Drawing.Size(241, 299);
@@ -220,6 +222,33 @@
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "定型文";
+            // 
+            // diceNumberComboBox
+            // 
+            this.diceNumberComboBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "STR",
+            "CON",
+            "POW",
+            "DEX",
+            "APP",
+            "SIZ",
+            "INT",
+            "EDU"});
+            this.diceNumberComboBox.FormattingEnabled = true;
+            this.diceNumberComboBox.Items.AddRange(new object[] {
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "15",
+            "20"});
+            this.diceNumberComboBox.Location = new System.Drawing.Point(128, 46);
+            this.diceNumberComboBox.Name = "diceNumberComboBox";
+            this.diceNumberComboBox.Size = new System.Drawing.Size(56, 20);
+            this.diceNumberComboBox.TabIndex = 22;
+            this.diceNumberComboBox.Text = "5";
             // 
             // buttonTemplete3Copy
             // 
@@ -433,36 +462,28 @@
             this.label6.TabIndex = 18;
             this.label6.Text = "補正値";
             // 
-            // diceNumberComboBox
+            // comboBoxSelectSkillMode
             // 
-            this.diceNumberComboBox.AutoCompleteCustomSource.AddRange(new string[] {
-            "STR",
-            "CON",
-            "POW",
-            "DEX",
-            "APP",
-            "SIZ",
-            "INT",
-            "EDU"});
-            this.diceNumberComboBox.FormattingEnabled = true;
-            this.diceNumberComboBox.Items.AddRange(new object[] {
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "15",
-            "20"});
-            this.diceNumberComboBox.Location = new System.Drawing.Point(128, 46);
-            this.diceNumberComboBox.Name = "diceNumberComboBox";
-            this.diceNumberComboBox.Size = new System.Drawing.Size(56, 20);
-            this.diceNumberComboBox.TabIndex = 22;
-            this.diceNumberComboBox.Text = "5";
+            this.comboBoxSelectSkillMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSelectSkillMode.FormattingEnabled = true;
+            this.comboBoxSelectSkillMode.Items.AddRange(new object[] {
+            "ユニーク",
+            "戦闘",
+            "探索",
+            "知識",
+            "交渉",
+            "行動",
+            "全て"});
+            this.comboBoxSelectSkillMode.Location = new System.Drawing.Point(24, 342);
+            this.comboBoxSelectSkillMode.Name = "comboBoxSelectSkillMode";
+            this.comboBoxSelectSkillMode.Size = new System.Drawing.Size(121, 20);
+            this.comboBoxSelectSkillMode.TabIndex = 31;
+            this.comboBoxSelectSkillMode.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectSkillMode_SelectedIndexChanged);
             // 
             // SkillControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.comboBoxSelectSkillMode);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
@@ -529,5 +550,6 @@
         private System.Windows.Forms.ComboBox correctionComboBox;
         private System.Windows.Forms.CheckBox correctionSetButton;
         private System.Windows.Forms.ComboBox diceNumberComboBox;
+        private System.Windows.Forms.ComboBox comboBoxSelectSkillMode;
     }
 }

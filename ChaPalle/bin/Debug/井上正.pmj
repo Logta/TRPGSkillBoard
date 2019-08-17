@@ -1,0 +1,620 @@
+{
+  "skills": [
+    {
+      "skillName": "キック",
+      "skillValue": 25,
+      "skillType": "戦闘",
+      "skillUnique": true,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 25
+    },
+    {
+      "skillName": "回避",
+      "skillValue": 0,
+      "skillType": "戦闘",
+      "skillUnique": true,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 0
+    },
+    {
+      "skillName": "組み付き",
+      "skillValue": 25,
+      "skillType": "戦闘",
+      "skillUnique": true,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 25
+    },
+    {
+      "skillName": "こぶし（パンチ）",
+      "skillValue": 50,
+      "skillType": "戦闘",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 50
+    },
+    {
+      "skillName": "頭突き",
+      "skillValue": 10,
+      "skillType": "戦闘",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 10
+    },
+    {
+      "skillName": "投擲",
+      "skillValue": 25,
+      "skillType": "戦闘",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 25
+    },
+    {
+      "skillName": "マーシャルアーツ",
+      "skillValue": 1,
+      "skillType": "戦闘",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 1
+    },
+    {
+      "skillName": "拳銃",
+      "skillValue": 20,
+      "skillType": "戦闘",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 20
+    },
+    {
+      "skillName": "サブマシンガン",
+      "skillValue": 15,
+      "skillType": "戦闘",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 15
+    },
+    {
+      "skillName": "ショットガン",
+      "skillValue": 30,
+      "skillType": "戦闘",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 30
+    },
+    {
+      "skillName": "マシンガン",
+      "skillValue": 15,
+      "skillType": "戦闘",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 15
+    },
+    {
+      "skillName": "ライフル",
+      "skillValue": 25,
+      "skillType": "戦闘",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 25
+    },
+    {
+      "skillName": "弓",
+      "skillValue": 10,
+      "skillType": "戦闘",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 10
+    },
+    {
+      "skillName": "棍棒",
+      "skillValue": 25,
+      "skillType": "戦闘",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 25
+    },
+    {
+      "skillName": "ナイフ",
+      "skillValue": 25,
+      "skillType": "戦闘",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 25
+    },
+    {
+      "skillName": "応急手当",
+      "skillValue": 30,
+      "skillType": "探索",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 30
+    },
+    {
+      "skillName": "鍵開け",
+      "skillValue": 1,
+      "skillType": "探索",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 1
+    },
+    {
+      "skillName": "隠す",
+      "skillValue": 15,
+      "skillType": "探索",
+      "skillUnique": true,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 15
+    },
+    {
+      "skillName": "隠れる",
+      "skillValue": 10,
+      "skillType": "探索",
+      "skillUnique": true,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 10
+    },
+    {
+      "skillName": "写真術",
+      "skillValue": 10,
+      "skillType": "探索",
+      "skillUnique": true,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 10
+    },
+    {
+      "skillName": "聞き耳",
+      "skillValue": 25,
+      "skillType": "探索",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 25
+    },
+    {
+      "skillName": "忍び歩き",
+      "skillValue": 10,
+      "skillType": "探索",
+      "skillUnique": true,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 10
+    },
+    {
+      "skillName": "精神分析",
+      "skillValue": 1,
+      "skillType": "知識",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 1
+    },
+    {
+      "skillName": "追跡",
+      "skillValue": 10,
+      "skillType": "探索",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 10
+    },
+    {
+      "skillName": "登攀",
+      "skillValue": 40,
+      "skillType": "探索",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 40
+    },
+    {
+      "skillName": "図書館",
+      "skillValue": 25,
+      "skillType": "知識",
+      "skillUnique": true,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 25
+    },
+    {
+      "skillName": "目星",
+      "skillValue": 25,
+      "skillType": "探索",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 25
+    },
+    {
+      "skillName": "運転（）",
+      "skillValue": 20,
+      "skillType": "行動",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 20
+    },
+    {
+      "skillName": "機械修理",
+      "skillValue": 20,
+      "skillType": "行動",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 20
+    },
+    {
+      "skillName": "重機械操作",
+      "skillValue": 1,
+      "skillType": "行動",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 1
+    },
+    {
+      "skillName": "乗馬",
+      "skillValue": 5,
+      "skillType": "行動",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 5
+    },
+    {
+      "skillName": "水泳",
+      "skillValue": 25,
+      "skillType": "行動",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 25
+    },
+    {
+      "skillName": "製作（）",
+      "skillValue": 5,
+      "skillType": "行動",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 5
+    },
+    {
+      "skillName": "操縦（）",
+      "skillValue": 1,
+      "skillType": "行動",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 1
+    },
+    {
+      "skillName": "跳躍",
+      "skillValue": 25,
+      "skillType": "行動",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 25
+    },
+    {
+      "skillName": "電気修理",
+      "skillValue": 10,
+      "skillType": "行動",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 10
+    },
+    {
+      "skillName": "ナビゲート",
+      "skillValue": 10,
+      "skillType": "行動",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 10
+    },
+    {
+      "skillName": "変装",
+      "skillValue": 1,
+      "skillType": "行動",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 1
+    },
+    {
+      "skillName": "経理",
+      "skillValue": 10,
+      "skillType": "行動",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 10
+    },
+    {
+      "skillName": "言いくるめ",
+      "skillValue": 5,
+      "skillType": "交渉",
+      "skillUnique": true,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 5
+    },
+    {
+      "skillName": "信用",
+      "skillValue": 15,
+      "skillType": "交渉",
+      "skillUnique": true,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 15
+    },
+    {
+      "skillName": "説得",
+      "skillValue": 15,
+      "skillType": "交渉",
+      "skillUnique": true,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 15
+    },
+    {
+      "skillName": "値切り",
+      "skillValue": 5,
+      "skillType": "交渉",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 5
+    },
+    {
+      "skillName": "オカルト",
+      "skillValue": 5,
+      "skillType": "知識",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 5
+    },
+    {
+      "skillName": "医学",
+      "skillValue": 5,
+      "skillType": "知識",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 5
+    },
+    {
+      "skillName": "化学",
+      "skillValue": 1,
+      "skillType": "知識",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 1
+    },
+    {
+      "skillName": "考古学",
+      "skillValue": 1,
+      "skillType": "知識",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 1
+    },
+    {
+      "skillName": "人類学",
+      "skillValue": 1,
+      "skillType": "知識",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 1
+    },
+    {
+      "skillName": "生物学",
+      "skillValue": 1,
+      "skillType": "知識",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 1
+    },
+    {
+      "skillName": "地質学",
+      "skillValue": 1,
+      "skillType": "知識",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 1
+    },
+    {
+      "skillName": "電子工学",
+      "skillValue": 1,
+      "skillType": "知識",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 1
+    },
+    {
+      "skillName": "天文学",
+      "skillValue": 1,
+      "skillType": "知識",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 1
+    },
+    {
+      "skillName": "博物学",
+      "skillValue": 10,
+      "skillType": "知識",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 10
+    },
+    {
+      "skillName": "物理学",
+      "skillValue": 1,
+      "skillType": "知識",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 1
+    },
+    {
+      "skillName": "薬学",
+      "skillValue": 1,
+      "skillType": "知識",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 1
+    },
+    {
+      "skillName": "心理学",
+      "skillValue": 5,
+      "skillType": "知識",
+      "skillUnique": true,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 5
+    },
+    {
+      "skillName": "法律",
+      "skillValue": 5,
+      "skillType": "知識",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 5
+    },
+    {
+      "skillName": "歴史",
+      "skillValue": 20,
+      "skillType": "知識",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 20
+    },
+    {
+      "skillName": "芸術（）",
+      "skillValue": 5,
+      "skillType": "知識",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 5
+    },
+    {
+      "skillName": "言語",
+      "skillValue": 0,
+      "skillType": "知識",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 0
+    },
+    {
+      "skillName": "母国語",
+      "skillValue": 0,
+      "skillType": "知識",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 0
+    },
+    {
+      "skillName": "母国語()",
+      "skillValue": 95,
+      "skillType": "",
+      "skillUnique": true,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 0
+    },
+    {
+      "skillName": "芸術(文学)",
+      "skillValue": 30,
+      "skillType": "",
+      "skillUnique": true,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 0
+    },
+    {
+      "skillName": "アイデア",
+      "skillValue": 80,
+      "skillType": "探索",
+      "skillUnique": true,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 0
+    },
+    {
+      "skillName": "幸運",
+      "skillValue": 65,
+      "skillType": "探索",
+      "skillUnique": true,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 0
+    },
+    {
+      "skillName": "知識",
+      "skillValue": 95,
+      "skillType": "探索",
+      "skillUnique": true,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 0
+    }
+  ],
+  "abilityValue": {
+    "STR": "11",
+    "CON": "12",
+    "POW": "13",
+    "DEX": "9",
+    "APP": "10",
+    "SIZ": "13",
+    "INT": "16",
+    "EDU": "19",
+    "HP": "13",
+    "MP": "13",
+    "ダメージボーナス": "0"
+  },
+  "characterInfo": {
+    "キャラクター名": "井上正",
+    "HP": "13",
+    "MP": "13",
+    "SAN": "70",
+    "ダメージボーナス": "+1D4",
+    "タイトル": "井上"
+  },
+  "characterBackground": "売れてる小説家\n"
+}

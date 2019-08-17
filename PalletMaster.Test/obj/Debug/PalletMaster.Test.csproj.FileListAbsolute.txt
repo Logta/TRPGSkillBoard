@@ -1,2 +1,17 @@
 E:\Google Drive\プログラム\ChatPalle\PalletMaster\PalletMaster.Test\obj\Debug\PalletMaster.Test.csprojAssemblyReference.cache
 E:\Google Drive\プログラム\ChatPalle\PalletMaster\PalletMaster.Test\obj\Debug\PalletMaster.Test.csproj.CoreCompileInputs.cache
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\PalletMaster.Test\bin\Debug\PalletMaster.Test.dll
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\PalletMaster.Test\bin\Debug\PalletMaster.Test.pdb
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\PalletMaster.Test\bin\Debug\xunit.abstractions.dll
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\PalletMaster.Test\bin\Debug\xunit.assert.dll
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\PalletMaster.Test\bin\Debug\xunit.core.dll
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\PalletMaster.Test\bin\Debug\xunit.execution.desktop.dll
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\PalletMaster.Test\bin\Debug\xunit.abstractions.xml
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\PalletMaster.Test\bin\Debug\xunit.assert.xml
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\PalletMaster.Test\bin\Debug\xunit.core.xml
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\PalletMaster.Test\bin\Debug\xunit.execution.desktop.xml
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\PalletMaster.Test\obj\Debug\PalletMaster.Test.csproj.CoreCompileInputs.cache
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\PalletMaster.Test\obj\Debug\PalletMaster.Test.csproj.CopyComplete
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\PalletMaster.Test\obj\Debug\PalletMaster.Test.dll
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\PalletMaster.Test\obj\Debug\PalletMaster.Test.pdb
+C:\Users\user\Google ドライブ\プログラム\ChatPalle\PalletMaster\PalletMaster.Test\obj\Debug\PalletMaster.Test.csprojAssemblyReference.cache

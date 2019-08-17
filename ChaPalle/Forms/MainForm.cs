@@ -38,15 +38,21 @@ namespace PalletMaster
 
             //設定の読込と初期設定
             PalletMaster.Setting = IOHelper.toLoadSetting();
-            skillControl.SetButtonTempleteUserCopyName(PalletMaster.Setting.useBCDiceAPIFlg ?
-                "ダイス" : "コピー");
+            var templeteTextSelected = PalletMaster.Setting.useBCDiceAPIFlg ||
+                PalletMaster.Setting.offlineMode;
+            skillControl.SetButtonTempleteUserCopyName
+                (
+                templeteTextSelected ?
+                "ダイス" : 
+                "コピー"
+                );
             if (PalletMaster.Setting.useDiceBotFlg == 0)
                 toChangeBCDice();
             else
                 toChageSidekick();
 
-            var defaultSkillList = Proccess.ReadCSVToDictionary(System.AppDomain.CurrentDomain.BaseDirectory + "defaultSkill.csv");
-            PalletMaster.Searcher.SetDefaultSkills(defaultSkillList);
+            var defaultSkills = Proccess.GetSkillSet();
+            PalletMaster.Searcher.SetDefaultSkills(defaultSkills);
 
             historyAbilityControl.SelectedIndexListBoxAbility(0);
             historyAbilityControl.SelectedIndexListBoxValue(4);
@@ -121,8 +127,12 @@ namespace PalletMaster
                 TopMost = PalletMaster.Setting.checkTopMostFlg;
                 IOHelper.toSaveSetting(PalletMaster.Setting);
 
-                skillControl.SetButtonTempleteUserCopyName(u_form.iOData.Setting.useBCDiceAPIFlg ?
-                    "ダイス" : "コピー");
+                skillControl.SetButtonTempleteUserCopyName
+                    (
+                    u_form.iOData.Setting.useBCDiceAPIFlg ?
+                    "ダイス" :
+                    "コピー"
+                    );
                 formFontChange(PalletMaster.Setting.font, PalletMaster.Setting.fontSize);
 
             }
@@ -211,7 +221,7 @@ namespace PalletMaster
                 PalletMaster.RefreshListView();
             }
 
-            var defaultSkillList = Proccess.ReadCSVToDictionary(System.AppDomain.CurrentDomain.BaseDirectory + "defaultSkill.csv");
+            var defaultSkillList = Proccess.GetSkillSet();
             PalletMaster.Searcher.SetDefaultSkills(defaultSkillList);
 
             if (PalletMaster.Setting.charaNameToUserNameFlg)

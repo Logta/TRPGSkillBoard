@@ -168,7 +168,9 @@ namespace PalletMaster
 
         internal void SetTextRole(string text, string skill)
         {
-            if (Setting.useBCDiceAPIFlg)
+            if (Setting.offlineMode)
+                new Proccess().ShowResultDialog(text, skill);
+            else if (Setting.useBCDiceAPIFlg)
                 new Proccess().SendPostWebhookBCDiceAPI(text,
                     Setting.webhookURL, Setting.bcdiceAPIURL, Setting.userName, skill);
             else if (Setting.useWebhookFlg)

@@ -348,7 +348,7 @@ namespace PalletMaster
         public NewCharacter()
         {
             Searcher = new Searcher();
-            Searcher.SetDefaultSkills(Proccess.ReadCSVToDictionary(System.AppDomain.CurrentDomain.BaseDirectory + "defaultSkill.csv"));
+            Searcher.SetDefaultSkills(Proccess.GetSkillSet());
 
             Searcher.skills = Proccess.GetSkillSet();
             Searcher.skills.ForEach(_ => _.defaultValue = _.value);

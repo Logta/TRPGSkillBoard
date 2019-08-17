@@ -37,7 +37,7 @@ namespace PalletMaster
                 if (this == null) return new Searcher();
 
                 Searcher searcher = new Searcher();
-                searcher.SetDefaultSkills(DefaultSkillList);
+                searcher.SetDefaultSkills(Proccess.GetSkillSet());
                 searcher = ReplacementSkills(uniqueSkills, searcher, "");
                 searcher = ReplacementSkills(fightSkills, searcher, "戦闘");
 
@@ -100,12 +100,10 @@ namespace PalletMaster
         {
             chpLoad m_d;
             m_d = ImportChpFromJSON();
-            if (!m_d.f) return null;
+            if (!m_d.f) return new ChpSearcher();
             
             var defaultSkillList = Proccess.ReadCSVToDictionary(System.AppDomain.CurrentDomain.BaseDirectory + "defaultSkill.csv");
             return SetSearcher(m_d.d).SetDefaultSkills(defaultSkillList);
-            
-
         }
 
         private chpLoad ImportChpFromJSON()

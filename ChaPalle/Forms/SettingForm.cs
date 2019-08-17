@@ -64,12 +64,20 @@ namespace PalletMaster
             else
                 userNameTextBox.Enabled = true;
             charaNameToUserNameCheckBox.Checked = IOData.Setting.charaNameToUserNameFlg;
+
+            if (IOData.Setting.offlineMode)
+                offlineModeChecked(true);
+            else
+                offlineModeChecked(false);
+
         }
 
         private void buttonDecide_Click(object sender, EventArgs e)
         {
             iOData.Setting.checkTopMostFlg = checkBoxTopMost.Checked;
             iOData.Setting.checkMessageFlg = checkBoxClipCheck.Checked;
+            iOData.Setting.offlineMode = offlineModeCheckBox.Checked;
+
             iOData.Setting.webhookURL = webHookTextBox.Text;
             iOData.Setting.useWebhookFlg = webhookYesRadioButton.Checked;
 
@@ -160,6 +168,28 @@ namespace PalletMaster
                 webhookYesRadioButton.Enabled = true;
                 webhookNoRadioButton.Enabled = true;
             }
+        }
+
+        private void offlineModeChecked(bool check)
+        {
+            offlineModeCheckBox.Checked = check;
+            webHookTextBox.Enabled = !check;
+            userNameTextBox.Enabled = !check;
+            
+            webhookYesRadioButton.Enabled = !check;
+            webhookNoRadioButton.Enabled = !check;
+
+            bcdiceAPITextBox.Enabled = !check;
+            radioButton2.Enabled = !check;
+            radioButton1.Enabled = !check;
+            
+            userNameTextBox.Enabled = !check;
+            charaNameToUserNameCheckBox.Enabled = !check;
+        }
+
+        private void offlineModeCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            offlineModeChecked(offlineModeCheckBox.Checked);
         }
     }
 }

@@ -199,7 +199,11 @@ namespace PalletMaster
         //ユーザー指定の文をクリップボードにコピー
         private void buttonTempleteUserCopy_Click(object sender, EventArgs e)
         {
-            if (PalletMaster.Setting.useBCDiceAPIFlg)
+            if (PalletMaster.Setting.offlineMode)
+            {
+                PalletMaster.SetTextRole(textTempleteUser.Text, "定型文");
+            }
+            else if (PalletMaster.Setting.useBCDiceAPIFlg)
             {
                 new Proccess().SendPostWebhookBCDiceAPI(textTempleteUser.Text,
                      PalletMaster.Setting.webhookURL, PalletMaster.Setting.bcdiceAPIURL,
@@ -265,8 +269,13 @@ namespace PalletMaster
             }
         }
 
-        public void RefreshSkillList(){
-            Proccess.RefreshSkillList(listViewSkill, PalletMaster.Searcher.skills.FindAll(s => s.unique));
+        public void RefreshSkillList(string mode = "ユニーク"){
+            if(mode == "ユニーク")
+                Proccess.RefreshSkillList(listViewSkill, PalletMaster.Searcher.skills.FindAll(s => s.unique));
+            else if (mode == "全て")
+                Proccess.RefreshSkillList(listViewSkill, PalletMaster.Searcher.skills);
+            else
+                Proccess.RefreshSkillList(listViewSkill, PalletMaster.Searcher.skills.FindAll(s => s.type==mode));
         }
 
         //「listview1」がダブルクリックされた時の動作
@@ -352,6 +361,11 @@ namespace PalletMaster
             if (tempValue <= 0) return 0;
             else if (tempValue >= 100) return 100;
             else return tempValue;
+        }
+
+        private void comboBoxSelectSkillMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshSkillList(comboBoxSelectSkillMode.Text);
         }
     }
 }

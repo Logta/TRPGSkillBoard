@@ -85,7 +85,7 @@ namespace PalletMaster
         public Searcher toChangeTxtToData(List<string> al)
         {
             var searcher = new Searcher();
-            searcher.SetDefaultSkills(Proccess.ReadCSVToDictionary(System.AppDomain.CurrentDomain.BaseDirectory + "defaultSkill.csv"));
+            searcher.SetDefaultSkills(Proccess.GetSkillSet());
 
             char[] del = { '-', '-', '《', '》', '：', '/', ' ', '％', '　', '●' };
             string importFlg = "base";
@@ -241,7 +241,7 @@ namespace PalletMaster
             var Proccesser = new Proccess();
             var wc = new WebClient();
 
-            var defaultSkillList = Proccess.ReadCSVToDictionary(System.AppDomain.CurrentDomain.BaseDirectory + "defaultSkill.csv");
+            var defaultSkillList = Proccess.GetSkillSet();
             searcher.SetDefaultSkills(defaultSkillList);
 
             try

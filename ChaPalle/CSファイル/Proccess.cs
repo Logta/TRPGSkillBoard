@@ -207,6 +207,26 @@ namespace PalletMaster
             
         }
 
+        internal void ShowResultDialog(string text, string skill)
+        {
+            string[] separatingStrings = { "<=" };
+            var list = text.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
+
+            string result = "";
+            if (list.Count() == 1)
+                result = TotalDice(text).Sum().ToString();
+            else if (list[0] == "CCB")
+                result = TotalDice("1D100")[0] > int.Parse(list[1]) ?
+                    "失敗" :
+                    "成功" ;
+
+
+            DiceResult u_form = new DiceResult();
+            u_form.set(result, skill);
+            u_form.ShowDialog();
+
+        }
+
         [JsonObject]
         public class SkillSet
         {
@@ -245,6 +265,7 @@ namespace PalletMaster
             SendPostWebhookAsync(sendWebhookText + " " + skill, webhookURL, userName);
         }
 
+        //diceで書かれたダイスロールを行った結果
         public static List<int> TotalDice(string dice)
         {
             List<int> total = new List<int>();
@@ -264,6 +285,7 @@ namespace PalletMaster
             return total;
         }
 
+        // dice = "nDm" n面ダイスをm回振った時の結果
         public static List<int> DDice(string dice)
         {
             List<int> total = new List<int>();
@@ -276,6 +298,7 @@ namespace PalletMaster
             return total;
         }
 
+        //max面ダイスを振った時の結果
         private static int mersenneOneDice(int max)
         {
             return (int)((double)max * new MersenneTwister().NextDouble() + 1);

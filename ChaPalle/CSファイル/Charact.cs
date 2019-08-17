@@ -24,14 +24,21 @@ namespace PalletMaster
             skills = new List<Skill>();
         }
 
-        public void SetDefaultSkills(Dictionary<string, string> defaultSkills)
+        public void SetDefaultSkills(List<Skill> defaultSkills)
         {
-
-            foreach (KeyValuePair<string, string> kvp in defaultSkills)
+            if (skills.Count() == 0)
             {
-                var buf = 0;
-                if (int.TryParse(kvp.Value, out buf)){
-                    SetSkill(new Skill(kvp.Key, buf, "", buf));
+                foreach (var skill in defaultSkills)
+                {
+                    skill.defaultValue = skill.value;
+                    SetSkill(skill);
+                }
+            }
+            else
+            {
+                foreach (var skill in defaultSkills)
+                {
+                    skills.Find(e => e.name == skill.name).defaultValue = skill.value;
                 }
             }
         }
@@ -193,6 +200,8 @@ namespace PalletMaster
         public string font { get; set; }
         [JsonProperty("fontSize")]
         public int fontSize { get; set; }
+        [JsonProperty("offlineMode")]
+        public bool offlineMode { get; set; }
     }
 
     [JsonObject("fightDamage")]
