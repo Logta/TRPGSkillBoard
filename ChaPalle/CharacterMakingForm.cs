@@ -33,18 +33,22 @@ namespace PalletMaster
             this.Close();
         }
 
+        private string ConvertStringFromInt(int i){
+            return i.ToString();
+        }
+
         //能力値を決めるダイスロール
         private void diceButton_Click(object sender, EventArgs e)
         {
             //ダイスロール
-            textSTR.Text = newCharacter.Searcher.abilityValues["STR"] = Proccess.DDice("3d6").Sum().ToString();
-            textAPP.Text = newCharacter.Searcher.abilityValues["APP"] = Proccess.DDice("3d6").Sum().ToString();
-            textCON.Text = newCharacter.Searcher.abilityValues["CON"] = Proccess.DDice("3d6").Sum().ToString();
-            textDEX.Text = newCharacter.Searcher.abilityValues["DEX"] = Proccess.DDice("3d6").Sum().ToString();
-            textEDU.Text = newCharacter.Searcher.abilityValues["EDU"] = Proccess.TotalDice("3d6+3").Sum().ToString();
-            textINT.Text = newCharacter.Searcher.abilityValues["INT"] = Proccess.TotalDice("2d6+6").Sum().ToString();
-            textPOW.Text = newCharacter.Searcher.abilityValues["POW"] = Proccess.DDice("3d6").Sum().ToString();
-            textSIZ.Text = newCharacter.Searcher.abilityValues["SIZ"] = Proccess.TotalDice("2d6+6").Sum().ToString();
+            textSTR.Text = ConvertStringFromInt(newCharacter.Searcher.abilityValues.STR = Proccess.DDice("3d6").Sum());
+            textAPP.Text = ConvertStringFromInt(newCharacter.Searcher.abilityValues.APP = Proccess.DDice("3d6").Sum());
+            textCON.Text = ConvertStringFromInt(newCharacter.Searcher.abilityValues.CON = Proccess.DDice("3d6").Sum());
+            textDEX.Text = ConvertStringFromInt(newCharacter.Searcher.abilityValues.DEX = Proccess.DDice("3d6").Sum());
+            textEDU.Text = ConvertStringFromInt(newCharacter.Searcher.abilityValues.EDU = Proccess.TotalDice("3d6+3").Sum());
+            textINT.Text = ConvertStringFromInt(newCharacter.Searcher.abilityValues.INT = Proccess.TotalDice("2d6+6").Sum());
+            textPOW.Text = ConvertStringFromInt(newCharacter.Searcher.abilityValues.POW = Proccess.DDice("3d6").Sum());
+            textSIZ.Text = ConvertStringFromInt(newCharacter.Searcher.abilityValues.SIZ = Proccess.TotalDice("2d6+6").Sum());
 
             //検索して能力値に基づいた値に更新
             newCharacter.Searcher.skills.Where(item => item.name == "回避").ToList().ForEach(item => item.value = int.Parse(textDEX.Text) * 2);
@@ -155,24 +159,30 @@ namespace PalletMaster
         private void textPOW_TextChanged(object sender, EventArgs e)
         {
             int pow;
-            if (int.TryParse(textPOW.Text, out pow)){
-                labelMP.Text = newCharacter.Searcher.searcherInfos["MP"] = textPOW.Text;
-                labelSAN.Text = newCharacter.Searcher.searcherInfos["SAN"] = (pow * 5).ToString();
-            }
+            if (!int.TryParse(textPOW.Text, out pow)) return;
+
+            newCharacter.Searcher.characterInfos.SAN = (pow * 5);
+            newCharacter.Searcher.characterInfos.MP = pow;
+            labelMP.Text = pow.ToString();
+            labelSAN.Text = (pow * 5).ToString();
         }
 
         private void textCON_TextChanged(object sender, EventArgs e)
         {
             int con, siz;
-            if (int.TryParse(textCON.Text, out con) && int.TryParse(textSIZ.Text, out siz))
-                labelHP.Text = newCharacter.Searcher.searcherInfos["HP"] = (con + siz / 2).ToString();
+            if (!int.TryParse(textCON.Text, out con) || !int.TryParse(textSIZ.Text, out siz)) return;
+            
+            newCharacter.Searcher.characterInfos.HP = con + siz*2;
+            labelHP.Text = (con + siz*2).ToString();
         }
 
         private void textSIZ_TextChanged(object sender, EventArgs e)
         {
             int con, siz;
-            if (int.TryParse(textCON.Text, out con) && int.TryParse(textSIZ.Text, out siz))
-                labelHP.Text = newCharacter.Searcher.searcherInfos["HP"] = (con + siz / 2).ToString();
+            if (!int.TryParse(textCON.Text, out con) || !int.TryParse(textSIZ.Text, out siz)) return;
+            
+            newCharacter.Searcher.characterInfos.HP = con + siz*2;
+            labelHP.Text = (con + siz*2).ToString();
         }
 
         private void textSTR_TextChanged(object sender, EventArgs e)
@@ -284,14 +294,14 @@ namespace PalletMaster
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
-
+            double num;
             newCharacter.Searcher.backgroundString = richTextBoxBackgroung.Text;
-            newCharacter.Searcher.searcherInfos["職業"] = textBoxOccupation.Text;
-            newCharacter.Searcher.searcherInfos["年齢"] = textBoxAge.Text;
-            newCharacter.Searcher.searcherInfos["性別"] = textBoxGender.Text;
-            newCharacter.Searcher.searcherInfos["身長"] = textBoxHeight.Text;
-            newCharacter.Searcher.searcherInfos["体重"] = textBoxWeight.Text;
-            newCharacter.Searcher.searcherInfos["出身"] = textBoxFrom.Text;
+            newCharacter.Searcher.characterInfos.job = textBoxOccupation.Text;
+            newCharacter.Searcher.characterInfos.age = double.TryParse(textBoxAge.Text, out num) ? (int)num : 0;
+            newCharacter.Searcher.characterInfos.sex = textBoxGender.Text;
+            newCharacter.Searcher.characterInfos.height = double.TryParse(textBoxHeight.Text, out num) ? num : 0;
+            newCharacter.Searcher.characterInfos.weight = double.TryParse(textBoxWeight.Text, out num) ? num : 0;
+            newCharacter.Searcher.characterInfos.origin = textBoxFrom.Text;
 
             PalletMaster.Searcher = newCharacter.Searcher;
             this.Close();

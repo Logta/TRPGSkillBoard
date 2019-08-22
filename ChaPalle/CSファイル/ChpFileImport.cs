@@ -41,8 +41,8 @@ namespace PalletMaster
                 searcher = ReplacementSkills(uniqueSkills, searcher, "");
                 searcher = ReplacementSkills(fightSkills, searcher, "戦闘");
 
-                searcher.abilityValues = abilityValues;
-                searcher.searcherInfos = searcherInfos;
+                searcher.abilityValues.setCHP(abilityValues);
+                searcher.characterInfos.setCHP(searcherInfos);
                 searcher.backgroundString = backgroundString;
                 searcher.CheckUnique();
 

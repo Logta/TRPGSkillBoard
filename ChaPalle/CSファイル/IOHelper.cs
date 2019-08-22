@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -140,16 +141,17 @@ namespace PalletMaster
 
                         if (arr[0] == "=合計=")
                         {
-                            searcher.abilityValues["STR"] = arr[1];
-                            searcher.abilityValues["CON"] = arr[2];
-                            searcher.abilityValues["POW"] = arr[3];
-                            searcher.abilityValues["DEX"] = arr[4];
-                            searcher.abilityValues["APP"] = arr[5];
-                            searcher.abilityValues["SIZ"] = arr[6];
-                            searcher.abilityValues["INT"] = arr[7];
-                            searcher.abilityValues["EDU"] = arr[8];
-                            searcher.abilityValues["HP"] = arr[9];
-                            searcher.abilityValues["MP"] = arr[10];
+                            int num;
+                            searcher.abilityValues.STR = int.TryParse(arr[1], out num) ? num : 0;
+                            searcher.abilityValues.CON = int.TryParse(arr[2], out num) ? num : 0;
+                            searcher.abilityValues.POW = int.TryParse(arr[3], out num) ? num : 0;
+                            searcher.abilityValues.DEX = int.TryParse(arr[4], out num) ? num : 0;
+                            searcher.abilityValues.APP = int.TryParse(arr[5], out num) ? num : 0;
+                            searcher.abilityValues.SIZ = int.TryParse(arr[6], out num) ? num : 0;
+                            searcher.abilityValues.INT = int.TryParse(arr[7], out num) ? num : 0;
+                            searcher.abilityValues.EDU = int.TryParse(arr[8], out num) ? num : 0;
+                            searcher.characterInfos.HP = int.TryParse(arr[9], out num) ? num : 0;
+                            searcher.characterInfos.MP = int.TryParse(arr[10], out num) ? num : 0;
                         }
 
                         else
@@ -157,7 +159,7 @@ namespace PalletMaster
                             //探索者情報のインポート
                             try
                             {
-                                searcher.searcherInfos[arr[0]] = arr[1];
+                                searcher.characterInfos.setParameter(arr[0], arr[1]);
                             }
                             catch (Exception exc)
                             {
@@ -227,7 +229,7 @@ namespace PalletMaster
                     case "fight":
                         if (arr[0] == "ダメージボーナス")
                         {
-                            searcher.abilityValues[arr[0]] = arr[1];
+                            searcher.characterInfos.setParameter(arr[0], arr[1]);
                         }
                         break;
                 }
@@ -259,12 +261,10 @@ namespace PalletMaster
                 string html = wc.DownloadString(m_URL); //指定URLのHTMLデータを取得
 
                 //HtmlAgilityPackを用いてHTMLデータを抽出
-                HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument
-                {
-                    OptionAutoCloseOnEnd = false,  //最後に自動で閉じる（？）
-                    OptionCheckSyntax = false,     //文法チェック。
-                    OptionFixNestedTags = true    //閉じタグが欠如している場合の処理
-                };
+                HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+                doc.OptionAutoCloseOnEnd = false;  //最後に自動で閉じる（？）
+                doc.OptionCheckSyntax = false;     //文法チェック。
+                doc.OptionFixNestedTags = true;    //閉じタグが欠如している場合の処理
                 doc.LoadHtml(html);
 
                 string[] dt;
@@ -274,7 +274,7 @@ namespace PalletMaster
                 string m_buff = removeChars.Aggregate(name, (s, c) => s.Replace(c.ToString(), ""));
                 dt = m_buff.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 
-                searcher.searcherInfos["キャラクター名"] = dt[0];
+                searcher.characterInfos.characterName = dt[0];
 
                 //キャラ能力値の取得
                 foreach (var row in doc.DocumentNode.SelectNodes("//tr[@id='status_total']"))
@@ -286,17 +286,18 @@ namespace PalletMaster
                     dt = m_buff.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
                 }
 
-                searcher.searcherInfos["HP"] = dt[8];
-                searcher.searcherInfos["MP"] = dt[9];
-                searcher.searcherInfos["SAN"] = dt[10];
-                searcher.abilityValues["STR"] = dt[0];
-                searcher.abilityValues["CON"] = dt[1];
-                searcher.abilityValues["POW"] = dt[2];
-                searcher.abilityValues["DEX"] = dt[3];
-                searcher.abilityValues["APP"] = dt[4];
-                searcher.abilityValues["SIZ"] = dt[5];
-                searcher.abilityValues["INT"] = dt[6];
-                searcher.abilityValues["EDU"] = dt[7];
+                int num;
+                searcher.characterInfos.HP = int.TryParse(dt[8], out num) ? num : 0;
+                searcher.characterInfos.MP = int.TryParse(dt[9], out num) ? num : 0;
+                searcher.characterInfos.SAN = int.TryParse(dt[10], out num) ? num : 0;
+                searcher.abilityValues.STR = int.TryParse(dt[0], out num) ? num : 0;
+                searcher.abilityValues.CON = int.TryParse(dt[1], out num) ? num : 0;
+                searcher.abilityValues.POW = int.TryParse(dt[2], out num) ? num : 0;
+                searcher.abilityValues.DEX = int.TryParse(dt[3], out num) ? num : 0;
+                searcher.abilityValues.APP = int.TryParse(dt[4], out num) ? num : 0;
+                searcher.abilityValues.SIZ = int.TryParse(dt[5], out num) ? num : 0;
+                searcher.abilityValues.INT = int.TryParse(dt[6], out num) ? num : 0;
+                searcher.abilityValues.EDU = int.TryParse(dt[7], out num) ? num : 0;
 
                 //技能の取得
                 foreach (var row in doc.DocumentNode.SelectNodes("//div [@id='skill']//tr"))
@@ -327,6 +328,10 @@ namespace PalletMaster
             {
                 Console.WriteLine(exc.Message);
             }
+            catch(NullReferenceException exc)
+            {
+                Console.WriteLine(exc.Message);
+            }               
             searcher.CheckUnique(); //技能値が初期値かそうでないか判定をする
             return searcher;
         }

@@ -613,26 +613,28 @@
       "defaultValue": 0
     }
   ],
-  "abilityValue": {
-    "STR": "15",
-    "CON": "11",
-    "POW": "15",
-    "DEX": "10",
-    "APP": "6",
-    "SIZ": "10",
-    "INT": "9",
-    "EDU": "11",
-    "HP": "17",
-    "MP": "15",
-    "ダメージボーナス": "1d4"
+  "characterBackground": null,
+  "abilityValues": {
+    "STR": 15,
+    "CON": 11,
+    "POW": 15,
+    "DEX": 10,
+    "APP": 6,
+    "SIZ": 10,
+    "INT": 9,
+    "EDU": 11
   },
-  "characterInfo": {
-    "キャラクター名": "マハーラ・スブニドゥル",
-    "HP": "17",
-    "MP": "15",
-    "SAN": "75",
-    "ダメージボーナス": "+1D4",
-    "タイトル": "マハーラ・スブニドゥル"
-  },
-  "characterBackground": null
+  "characterInfos": {
+    "characterName": "マハーラ・スブニドゥル",
+    "HP": 17,
+    "MP": 15,
+    "SAN": 75,
+    "damageBonus": "+1D4",
+    "job": "",
+    "age": 0,
+    "sex": "",
+    "height": 0.0,
+    "weight": 0.0,
+    "origin": ""
+  }
 }

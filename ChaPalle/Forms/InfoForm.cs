@@ -18,36 +18,38 @@ namespace PalletMaster
         {
             InitializeComponent();
 
-            textCharaName.Text = d.searcherInfos["キャラクター名"];
-            textHP.Text = d.searcherInfos["HP"];
-            textMP.Text = d.searcherInfos["MP"];
-            textSAN.Text = d.searcherInfos["SAN"];
-            textSTR.Text = d.abilityValues["STR"];
-            textCON.Text = d.abilityValues["CON"];
-            textPOW.Text = d.abilityValues["POW"];
-            textDEX.Text = d.abilityValues["DEX"];
-            textAPP.Text = d.abilityValues["APP"];
-            textSIZ.Text = d.abilityValues["SIZ"];
-            textINT.Text = d.abilityValues["INT"];
-            textEDU.Text = d.abilityValues["EDU"];
+            textCharaName.Text = d.characterInfos.characterName.ToString();
+            textHP.Text = d.characterInfos.HP.ToString();
+            textMP.Text = d.characterInfos.MP.ToString();
+            textSAN.Text = d.characterInfos.SAN.ToString();
+            textSTR.Text = d.abilityValues.STR.ToString();
+            textCON.Text = d.abilityValues.CON.ToString();
+            textPOW.Text = d.abilityValues.POW.ToString();
+            textDEX.Text = d.abilityValues.DEX.ToString();
+            textAPP.Text = d.abilityValues.APP.ToString();
+            textSIZ.Text = d.abilityValues.SIZ.ToString();
+            textINT.Text = d.abilityValues.INT.ToString();
+            textEDU.Text = d.abilityValues.EDU.ToString();
 
             Searcher = d;
         }
 
         private void buttonDecide_Click(object sender, EventArgs e)
         {
-            Searcher.searcherInfos["キャラクター名"] = textCharaName.Text;
-            Searcher.searcherInfos["HP"] = textHP.Text;
-            Searcher.searcherInfos["MP"] = textMP.Text;
-            Searcher.searcherInfos["SAN"] = textSAN.Text;
-            Searcher.abilityValues["STR"] = textSTR.Text;
-            Searcher.abilityValues["CON"] = textCON.Text;
-            Searcher.abilityValues["POW"] = textPOW.Text;
-            Searcher.abilityValues["DEX"] = textDEX.Text;
-            Searcher.abilityValues["APP"] = textAPP.Text;
-            Searcher.abilityValues["SIZ"] = textSIZ.Text;
-            Searcher.abilityValues["INT"] = textINT.Text;
-            Searcher.abilityValues["EDU"] = textEDU.Text;
+            int r = 0;
+
+            Searcher.characterInfos.characterName = textCharaName.Text;
+            Searcher.characterInfos.HP = int.TryParse(textHP.Text, out r) ? r : 0;
+            Searcher.characterInfos.MP = int.TryParse(textMP.Text, out r) ? r : 0;
+            Searcher.characterInfos.SAN = int.TryParse(textSAN.Text, out r) ? r : 0;
+            Searcher.abilityValues.STR = int.TryParse(textSTR.Text, out r) ? r : 0;
+            Searcher.abilityValues.CON = int.TryParse(textCON.Text, out r) ? r : 0;
+            Searcher.abilityValues.POW = int.TryParse(textPOW.Text, out r) ? r : 0;
+            Searcher.abilityValues.DEX = int.TryParse(textDEX.Text, out r) ? r : 0;
+            Searcher.abilityValues.APP = int.TryParse(textAPP.Text, out r) ? r : 0;
+            Searcher.abilityValues.SIZ = int.TryParse(textSIZ.Text, out r) ? r : 0;
+            Searcher.abilityValues.INT = int.TryParse(textINT.Text, out r) ? r : 0;
+            Searcher.abilityValues.EDU = int.TryParse(textEDU.Text, out r) ? r : 0;
 
             this.Close();
         }

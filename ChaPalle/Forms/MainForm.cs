@@ -143,7 +143,8 @@ namespace PalletMaster
         //キャラを押したときの制御
         private void userToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PalletMaster.Searcher.searcherInfos["SAN"] = sanControl.GetSanText();
+            PalletMaster.Searcher.characterInfos.SAN = (int.TryParse(sanControl.GetSanText(), out var num)) ? num : 0;
+
             CharaInfoForm u_form = new CharaInfoForm(PalletMaster.Searcher)
             {
                 Font = new Font(PalletMaster.Setting.font, PalletMaster.Setting.fontSize)
@@ -154,9 +155,9 @@ namespace PalletMaster
             PalletMaster.Searcher = u_form.Searcher;
             PalletMaster.AbilityDataSet();
 
-            sanControl.SetSanText(PalletMaster.Searcher.searcherInfos["SAN"]); //SAN情報の入力
-            fightControl.SetFightText(PalletMaster.Searcher.searcherInfos["HP"]); //HP情報の入力
-            fightControl.SetFightDamageBonusText(PalletMaster.Searcher.searcherInfos["ダメージボーナス"]); //HP情報の入力
+            sanControl.SetSanText(PalletMaster.Searcher.characterInfos.SAN.ToString()); //SAN情報の入力
+            fightControl.SetFightText(PalletMaster.Searcher.characterInfos.HP.ToString()); //HP情報の入力
+            fightControl.SetFightDamageBonusText(PalletMaster.Searcher.characterInfos.damageBonus); //HP情報の入力
 
             PalletMaster.RefreshListView();
             TopMost = PalletMaster.Setting.checkTopMostFlg;
@@ -184,7 +185,8 @@ namespace PalletMaster
             {
 
                 if (sanControl.GetSanText() == "")
-                    PalletMaster.Searcher.searcherInfos["SAN"] = sanControl.GetSanText();
+                    PalletMaster.Searcher.characterInfos.SAN = 
+                        int.TryParse(sanControl.GetSanText(), out var num) ? num : 0;
 
                 System.IO.Stream stream;
                 stream = sfd.OpenFile();
@@ -219,9 +221,9 @@ namespace PalletMaster
 
                 PalletMaster.AbilityDataSet();
 
-                sanControl.SetSanText(PalletMaster.Searcher.searcherInfos["SAN"]); //SAN情報の入力
-                fightControl.SetFightText(PalletMaster.Searcher.searcherInfos["HP"]); //HP情報の入力
-                fightControl.SetFightDamageBonusText(PalletMaster.Searcher.searcherInfos["ダメージボーナス"]); //HP情報の入力
+                sanControl.SetSanText(PalletMaster.Searcher.characterInfos.SAN.ToString()); //SAN情報の入力
+                fightControl.SetFightText(PalletMaster.Searcher.characterInfos.HP.ToString()); //HP情報の入力
+                fightControl.SetFightDamageBonusText(PalletMaster.Searcher.characterInfos.damageBonus); //HP情報の入力
 
                 PalletMaster.Searcher.CheckUnique();
                 PalletMaster.RefreshListView();
@@ -231,7 +233,7 @@ namespace PalletMaster
             PalletMaster.Searcher.SetDefaultSkills(defaultSkillList);
 
             if (PalletMaster.Setting.charaNameToUserNameFlg)
-                PalletMaster.Setting.userName = PalletMaster.Searcher.searcherInfos["キャラクター名"];
+                PalletMaster.Setting.userName = PalletMaster.Searcher.characterInfos.characterName;
         }
 
         //ロード→チャッパレ形式を押した時の制御
@@ -240,7 +242,7 @@ namespace PalletMaster
             ChpFileImport chpFileImport = new ChpFileImport();
             PalletMaster.Searcher = chpFileImport.ChpDataImport().ConversionToSearcher();
             if (PalletMaster.Setting.charaNameToUserNameFlg)
-                PalletMaster.Setting.userName = PalletMaster.Searcher.searcherInfos["キャラクター名"];
+                PalletMaster.Setting.userName = PalletMaster.Searcher.characterInfos.characterName;
 
             PalletMaster.RefreshListView();
         }
@@ -321,9 +323,9 @@ namespace PalletMaster
                 PalletMaster.Searcher = IOHelper.charaBankTxtFileRead();
                 PalletMaster.AbilityDataSet();
 
-                sanControl.SetSanText(PalletMaster.Searcher.searcherInfos["SAN"]); //SAN情報の入力
-                fightControl.SetFightText(PalletMaster.Searcher.searcherInfos["HP"]); //HP情報の入力
-                fightControl.SetFightDamageBonusText(PalletMaster.Searcher.searcherInfos["ダメージボーナス"]); //HP情報の入力
+                sanControl.SetSanText(PalletMaster.Searcher.characterInfos.SAN.ToString()); //SAN情報の入力
+                fightControl.SetFightText(PalletMaster.Searcher.characterInfos.HP.ToString()); //HP情報の入力
+                fightControl.SetFightDamageBonusText(PalletMaster.Searcher.characterInfos.damageBonus); //HP情報の入力
 
                 PalletMaster.RefreshListView();
             }
@@ -333,9 +335,9 @@ namespace PalletMaster
                 PalletMaster.Searcher = IOHelper.charaBankTxtDataRead(u_form.m_txtData);
                 PalletMaster.AbilityDataSet();
 
-                sanControl.SetSanText(PalletMaster.Searcher.searcherInfos["SAN"]); //SAN情報の入力
-                fightControl.SetFightText(PalletMaster.Searcher.searcherInfos["HP"]); //HP情報の入力
-                fightControl.SetFightDamageBonusText(PalletMaster.Searcher.searcherInfos["ダメージボーナス"]); //HP情報の入力
+                sanControl.SetSanText(PalletMaster.Searcher.characterInfos.SAN.ToString()); //SAN情報の入力
+                fightControl.SetFightText(PalletMaster.Searcher.characterInfos.HP.ToString()); //HP情報の入力
+                fightControl.SetFightDamageBonusText(PalletMaster.Searcher.characterInfos.damageBonus); //HP情報の入力
                 PalletMaster.Searcher.CheckUnique(); //技能値が初期値かそうでないか判定をする
 
                 PalletMaster.RefreshListView();
@@ -356,9 +358,9 @@ namespace PalletMaster
 
             PalletMaster.AbilityDataSet();
 
-            sanControl.SetSanText(PalletMaster.Searcher.searcherInfos["SAN"]); //SAN情報の入力
-            fightControl.SetFightText(PalletMaster.Searcher.searcherInfos["HP"]); //HP情報の入力
-            fightControl.SetFightDamageBonusText(PalletMaster.Searcher.searcherInfos["ダメージボーナス"]); //HP情報の入力
+            sanControl.SetSanText(PalletMaster.Searcher.characterInfos.SAN.ToString()); //SAN情報の入力
+            fightControl.SetFightText(PalletMaster.Searcher.characterInfos.HP.ToString()); //HP情報の入力
+            fightControl.SetFightDamageBonusText(PalletMaster.Searcher.characterInfos.damageBonus); //HP情報の入力
 
             PalletMaster.RefreshListView();
         }
@@ -424,12 +426,10 @@ namespace PalletMaster
 
             if (sanControl.GetSanText() == "")
             {
-                var tempSAN = 0;
-                if (int.TryParse(PalletMaster.Searcher.searcherInfos["SAN"], out tempSAN))
-                    sanControl.SetSanText(Convert.ToString(tempSAN));
+                sanControl.SetSanText(PalletMaster.Searcher.characterInfos.SAN.ToString());
             }
 
-            labelCharaName.Text = "キャラ名：" + PalletMaster.Searcher.searcherInfos["キャラクター名"];
+            labelCharaName.Text = "キャラ名：" + PalletMaster.Searcher.characterInfos.characterName;
         }
 
         private void tabCthu_Click(object sender, EventArgs e)

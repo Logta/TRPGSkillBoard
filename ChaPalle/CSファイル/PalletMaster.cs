@@ -45,42 +45,27 @@ namespace PalletMaster
         //能力値を設定する
         public void AbilityDataSet()
         {
+            Searcher.SetSkill(new Skill("アイデア", Searcher.abilityValues.INT * 5, "探索"));
+            Searcher.SetSkill(new Skill("幸運", Searcher.abilityValues.POW * 5, "探索"));
+            Searcher.SetSkill(new Skill("知識", Searcher.abilityValues.EDU * 5, "探索"));
+            if (Searcher.skills.FindAll(s => s.name == "回避").Count == 0)
+                Searcher.SetSkill(new Skill("回避", Searcher.abilityValues.DEX * 2, "戦闘"));
 
-            int buff_1;
-            if (int.TryParse(Searcher.abilityValues["INT"], out buff_1)) //能力値が入力されていなければ無視する
-                Searcher.SetSkill(new Skill("アイデア", buff_1 * 5, "探索"));
-            if (int.TryParse(Searcher.abilityValues["POW"], out buff_1))
-                Searcher.SetSkill(new Skill("幸運", buff_1 * 5, "探索"));
-            if (int.TryParse(Searcher.abilityValues["EDU"], out buff_1))
-                Searcher.SetSkill(new Skill("知識", buff_1 * 5, "探索"));
-            if (int.TryParse(Searcher.abilityValues["DEX"], out buff_1)
-                && Searcher.skills.FindAll(s => s.name == "回避").Count == 0)
-                Searcher.SetSkill(new Skill("回避", buff_1 * 2, "戦闘"));
-
-            if (int.TryParse(Searcher.abilityValues["STR"], out buff_1) &&
-               int.TryParse(Searcher.abilityValues["SIZ"], out int buff_2))
-                Searcher.searcherInfos["ダメージボーナス"] = GetBonusDamege(buff_1 + buff_2);
+            Searcher.characterInfos.damageBonus = 
+                    GetBonusDamege(Searcher.abilityValues.STR + Searcher.abilityValues.SIZ);
         }
 
         //能力値を設定する
         public static Searcher AbilityDataSet(Searcher searcher)
         {
-            int buff_1;
-            int buff_2;
+            searcher.SetSkill(new Skill("アイデア", searcher.abilityValues.INT * 5, "探索"));
+            searcher.SetSkill(new Skill("幸運", searcher.abilityValues.POW * 5, "探索"));
+            searcher.SetSkill(new Skill("知識", searcher.abilityValues.EDU * 5, "探索"));
+            if(searcher.skills.FindAll(s => s.name == "回避").Count == 0)
+                searcher.SetSkill(new Skill("回避", searcher.abilityValues.DEX * 2, "戦闘"));
 
-            if (int.TryParse(searcher.abilityValues["INT"], out buff_1)) //能力値が入力されていなければ無視する
-                searcher.SetSkill(new Skill("アイデア", buff_1 * 5, "探索"));
-            if (int.TryParse(searcher.abilityValues["POW"], out buff_1))
-                searcher.SetSkill(new Skill("幸運", buff_1 * 5, "探索"));
-            if (int.TryParse(searcher.abilityValues["EDU"], out buff_1))
-                searcher.SetSkill(new Skill("知識", buff_1 * 5, "探索"));
-            if (int.TryParse(searcher.abilityValues["DEX"], out buff_1)
-                && searcher.skills.FindAll(s => s.name == "回避").Count == 0)
-                searcher.SetSkill(new Skill("回避", buff_1 * 2, "戦闘"));
-
-            if (int.TryParse(searcher.abilityValues["STR"], out buff_1) &&
-               int.TryParse(searcher.abilityValues["SIZ"], out buff_2))
-                searcher.searcherInfos["ダメージボーナス"] = GetBonusDamege(buff_1 + buff_2);
+            searcher.characterInfos.damageBonus = 
+                GetBonusDamege(searcher.abilityValues.STR + searcher.abilityValues.SIZ);
 
             return searcher;
         }

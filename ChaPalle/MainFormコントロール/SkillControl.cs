@@ -254,7 +254,7 @@ namespace PalletMaster
             {
                 try
                 {
-                    var value = 50 + (int.Parse(PalletMaster.Searcher.abilityValues[comboBoxOppChara.Text]) -
+                    var value = 50 + (PalletMaster.Searcher.GetAbilityValue(comboBoxOppChara.Text) -
                         int.Parse(textOppEnemy.Text)) * 5;
                     value = correctValue(value);
                     PalletMaster.SetTextRole(PalletMaster.GetDiceText(Convert.ToString(value), "対抗ロール"), "対抗ロール");

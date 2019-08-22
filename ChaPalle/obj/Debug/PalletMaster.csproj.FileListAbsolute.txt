@@ -145,7 +145,6 @@ C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\MetroFramework.Des
 C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\MetroFramework.dll
 C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\MetroFramework.Fonts.dll
 C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\Newtonsoft.Json.dll
-C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
 C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\xunit.abstractions.dll
 C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\xunit.assert.dll
 C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\xunit.core.dll

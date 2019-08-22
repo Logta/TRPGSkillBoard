@@ -17,10 +17,29 @@ namespace PalletMaster
         public Searcher()
         {
 
-            abilityValues = new Dictionary<string, string>()//探索者の能力値のリスト
-            { { "STR", ""}, { "CON", ""}, { "POW", ""}, { "DEX", ""}, { "APP", ""}, { "SIZ", ""}, { "INT", ""}, { "EDU", ""}};
-            searcherInfos = new Dictionary<string, string>()      //探索者情報のリスト
-            { { "キャラクター名", ""}, { "HP", ""}, { "MP", ""}, { "SAN", ""},{ "ダメージボーナス", ""}};
+            abilityValues = new abilityValue{
+                STR = 0,
+                CON = 0,
+                POW = 0,
+                DEX = 0,
+                APP = 0,
+                SIZ = 0,
+                INT = 0,
+                EDU = 0,
+                };
+            characterInfos = new characterInfo{      //探索者情報のリスト
+                characterName = "",
+                HP = 0,
+                MP = 0, 
+                SAN = 0,
+                damageBonus = "",
+                job = "",
+                age = 0,
+                sex = "",
+                height = 0,
+                weight = 0,
+                origin = "",
+                };
             skills = new List<Skill>();
         }
 
@@ -46,7 +65,7 @@ namespace PalletMaster
         public void SetSearcher(Character chara)
         {
             abilityValues = chara.abilityValues;
-            searcherInfos = chara.searcherInfos;
+            characterInfos = chara.characterInfos;
             skills = chara.skills;
             backgroundString = chara.backgroundString;
         }
@@ -92,6 +111,29 @@ namespace PalletMaster
                 skill.unique = skill.value == skill.defaultValue ? false : true;
             }
         }
+
+        public int GetAbilityValue(string ability){
+            switch(ability)
+            {
+                case "STR":
+                    return abilityValues.STR;
+                case "CON":
+                    return abilityValues.CON;
+                case "POW":
+                    return abilityValues.POW;
+                case "DEX":
+                    return abilityValues.DEX;
+                case "APP":
+                    return abilityValues.APP;
+                case "SIZ":
+                    return abilityValues.SIZ;
+                case "INT":
+                    return abilityValues.INT;
+                case "EDU":
+                    return abilityValues.EDU;
+            }
+            return -1;
+        }
     }
 
     //履歴保存のためのクラスの定義
@@ -116,12 +158,12 @@ namespace PalletMaster
     {
         [JsonProperty("skills")]
         public List<Skill> skills { get; set; }//探索者固有（技能ポイントを割り振った）の技能のリスト
-        [JsonProperty("abilityValue")]
-        public Dictionary<string, string> abilityValues { get; set; }
-        [JsonProperty("characterInfo")]
-        public Dictionary<string, string> searcherInfos { get; set; }
         [JsonProperty("characterBackground")]
         public string backgroundString { get; set; }
+        [JsonProperty("abilityValues")]
+        public abilityValue abilityValues { get; set; }
+        [JsonProperty("characterInfos")]
+        public characterInfo characterInfos { get; set; } 
     }
 
     [JsonObject("skill")]
@@ -173,6 +215,116 @@ namespace PalletMaster
             unique = u;
         }
 
+    }
+    
+    [JsonObject("abilityValue")]
+    public class abilityValue { 
+        [JsonProperty("STR")]
+            public int STR { get; set; }
+        [JsonProperty("CON")]
+            public int CON { get; set; }
+        [JsonProperty("POW")]
+            public int POW { get; set; }
+        [JsonProperty("DEX")]
+            public int DEX { get; set; }
+        [JsonProperty("APP")]
+            public int APP { get; set; }
+        [JsonProperty("SIZ")]
+            public int SIZ { get; set; }
+        [JsonProperty("INT")]
+            public int INT { get; set; }
+        [JsonProperty("EDU")]
+            public int EDU { get; set; }
+
+        public void setCHP(Dictionary<string, string> abilityValue)
+        {
+            var r = 0;
+            STR = int.TryParse(abilityValue["STR"], out r) ? r : 0;
+            CON = int.TryParse(abilityValue["CON"], out r) ? r : 0;
+            POW = int.TryParse(abilityValue["POW"], out r) ? r : 0;
+            DEX = int.TryParse(abilityValue["DEX"], out r) ? r : 0;
+            APP = int.TryParse(abilityValue["APP"], out r) ? r : 0;
+            SIZ = int.TryParse(abilityValue["SIZ"], out r) ? r : 0;
+            INT = int.TryParse(abilityValue["INT"], out r) ? r : 0;
+            EDU = int.TryParse(abilityValue["EDU"], out r) ? r : 0;
+        }
+    }
+
+    [JsonObject("characterInfo")]
+    public class characterInfo { 
+        [JsonProperty("characterName")]
+            public string characterName { get; set; } 
+        [JsonProperty("HP")]
+            public int HP { get; set; } 
+        [JsonProperty("MP")]
+            public int MP { get; set; } 
+        [JsonProperty("SAN")]
+            public int SAN { get; set; }
+        [JsonProperty("damageBonus")]
+            public string damageBonus { get; set; }
+        [JsonProperty("job")]
+            public string job { get; set; }
+        [JsonProperty("age")]
+            public int age { get; set; }
+        [JsonProperty("sex")]
+            public string sex { get; set; }
+        [JsonProperty("height")]
+            public double height { get; set; }
+        [JsonProperty("weight")]
+            public double weight { get; set; }
+        [JsonProperty("origin")]
+            public string origin { get; set; }
+
+
+        public void setCHP(Dictionary<string, string> searcherInfos)
+        {
+            var r = 0;
+            characterName = searcherInfos["キャラクター名"];
+            HP = int.TryParse(searcherInfos["HP"], out r) ? r : 0;
+            MP = int.TryParse(searcherInfos["MP"], out r) ? r : 0;
+            SAN = int.TryParse(searcherInfos["SAN"], out r) ? r : 0;
+            damageBonus = searcherInfos["ダメージボーナス"];
+        }
+
+        public void setParameter(string key, string value){
+            int num;
+
+            switch(key){
+                case "キャラクター名":
+                    characterName = value;
+                        return;
+                case "HP":
+                    HP = int.TryParse(value, out num) ? num : 0;
+                    return;
+                case "MP":
+                    MP = int.TryParse(value, out num) ? num : 0;
+                    return;
+                case "SAN":
+                    SAN = int.TryParse(value, out num) ? num : 0;
+                    return;
+                case "ダメージボーナス":
+                    damageBonus = value;
+                    return;
+                case "職業":
+                    job = value;
+                    return;
+                case "年齢":
+                    age = int.TryParse(value, out num) ? num : 0;
+                    return;
+                case "性別":
+                    sex = value;
+                    return;
+                case "身長":
+                    height = int.TryParse(value, out num) ? num : 0;
+                    return;
+                case "体重":
+                    weight = int.TryParse(value, out num) ? num : 0;
+                    return;
+                case "出身":
+                    origin = value;
+                    return;
+            }   
+        }
     }
 
     [JsonObject("setting")]

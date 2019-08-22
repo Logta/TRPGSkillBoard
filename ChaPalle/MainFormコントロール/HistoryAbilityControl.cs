@@ -46,15 +46,14 @@ namespace PalletMaster
 
         private void buttonAbilityRole_Click(object sender, EventArgs e)
         {
-            int m_ability;
+            int m_ability = PalletMaster.Searcher.GetAbilityValue(listBoxAbility.Text);
             int m_magni;
-
-            if (int.TryParse(PalletMaster.Searcher.abilityValues[listBoxAbility.Text], out m_ability) && int.TryParse(listBoxValue.Text, out m_magni))
-            {
-                PalletMaster.SetSkillHistory(listBoxAbility.Text + "×" + listBoxValue.Text, ロール.能力);
-                PalletMaster.SetTextRole(PalletMaster.GetDiceText(Convert.ToString(m_ability * m_magni)), listBoxAbility.Text + "×" + listBoxValue.Text);
-            }
-
+        
+            if (m_ability == -1 || !int.TryParse(listBoxValue.Text, out m_magni)) return;
+            
+            PalletMaster.SetSkillHistory(listBoxAbility.Text + "×" + listBoxValue.Text, ロール.能力);
+            PalletMaster.SetTextRole(PalletMaster.GetDiceText(Convert.ToString(m_ability * m_magni)), listBoxAbility.Text + "×" + listBoxValue.Text);
+            
             PalletMaster.RefreshListView();
         }
 
@@ -78,14 +77,15 @@ namespace PalletMaster
             }
             else
             {
-                int m_ability;
                 char[] del = { '×' };
                 string[] arr = itemx.SubItems[0].Text.Split(del, StringSplitOptions.RemoveEmptyEntries);
-                if (int.TryParse(PalletMaster.Searcher.abilityValues[arr[0]], out m_ability))
-                {
-                    Clipboard.SetText(PalletMaster.GetDiceText(Convert.ToString(m_ability * int.Parse(arr[1]))));
-                    PalletMaster.SetSkillHistory(arr[0] + " × " + arr[1], ロール.能力);
-                }
+
+                int m_ability = PalletMaster.Searcher.GetAbilityValue(arr[0]);
+                if (m_ability == -1) return;
+                
+                Clipboard.SetText(PalletMaster.GetDiceText(Convert.ToString(m_ability * int.Parse(arr[1]))));
+                PalletMaster.SetSkillHistory(arr[0] + " × " + arr[1], ロール.能力);
+                
             }
 
             PalletMaster.RefreshListView();

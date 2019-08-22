@@ -89,9 +89,9 @@ namespace PalletMaster
             iOData.Setting.bcdiceAPIURL = bcdiceAPITextBox.Text;
             iOData.Setting.useBCDiceAPIFlg = radioButton2.Checked;
 
-            if (userNameTextBox.Text != iOData.Searcher.searcherInfos["キャラクター名"]
+            if (userNameTextBox.Text != iOData.Searcher.characterInfos.characterName
                 && charaNameToUserNameCheckBox.Checked)
-                iOData.Setting.userName = iOData.Searcher.searcherInfos["キャラクター名"];
+                iOData.Setting.userName = iOData.Searcher.characterInfos.characterName;
             else
                 iOData.Setting.userName = userNameTextBox.Text;
             iOData.Setting.charaNameToUserNameFlg = charaNameToUserNameCheckBox.Checked;

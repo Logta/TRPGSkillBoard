@@ -31,7 +31,7 @@ namespace PalletMaster
 
         internal void SetFightText(string v)
         {
-            labelHPValue.Text = PalletMaster.Searcher.searcherInfos["HP"];
+            labelHPValue.Text = PalletMaster.Searcher.characterInfos.HP.ToString();
         }
 
         //
@@ -221,11 +221,8 @@ namespace PalletMaster
 
         private void ButtonShockRole_Click(object sender, EventArgs e)
         {
-            var con = int.TryParse(PalletMaster.Searcher.abilityValues["CON"], out var m) ? m : -1;
-            if (con == -1) return;
-
             PalletMaster.SetTextRole(PalletMaster.GetDiceText(
-                Convert.ToString(con * 5), "気絶ロール"),
+                Convert.ToString(PalletMaster.Searcher.abilityValues.CON * 5), "気絶ロール"),
                 "気絶ロール"
                 );
         }
