@@ -8,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AngleSharp.Html.Parser;
 
 namespace PalletMaster
 {
@@ -259,69 +260,69 @@ namespace PalletMaster
             {
                 wc.Encoding = System.Text.Encoding.UTF8;
                 string html = wc.DownloadString(m_URL); //指定URLのHTMLデータを取得
+                                                        // HtmlParserクラスをインスタンス化
+                var parser = new HtmlParser();
 
-                //HtmlAgilityPackを用いてHTMLデータを抽出
-                HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
-                doc.OptionAutoCloseOnEnd = false;  //最後に自動で閉じる（？）
-                doc.OptionCheckSyntax = false;     //文法チェック。
-                doc.OptionFixNestedTags = true;    //閉じタグが欠如している場合の処理
-                doc.LoadHtml(html);
+                // HtmlParserクラスのParserメソッドを使用してパースする。
+                // Parserメソッドの戻り値の型はIHtmlDocument
+                var doc = parser.ParseDocument(html);
 
                 string[] dt;
                 //キャラネームの取得
-                var name = doc.DocumentNode.SelectNodes("//h1")[0].InnerText;
+                var name = doc.QuerySelector("h1").TextContent.Trim();
                 char[] removeChars = new char[] { ' ', '　' };
                 string m_buff = removeChars.Aggregate(name, (s, c) => s.Replace(c.ToString(), ""));
-                dt = m_buff.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                dt = m_buff.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
                 searcher.characterInfos.characterName = dt[0];
 
                 //キャラ能力値の取得
-                foreach (var row in doc.DocumentNode.SelectNodes("//tr[@id='status_total']"))
-                {
-                    var nodes = row.InnerText;
-                    if (nodes == null) continue;
+                var tes = doc.GetElementById("status_total");
+                tes.;
+                //{
+                //    var nodes = row.InnerText;
+                //    if (nodes == null) continue;
 
-                    m_buff = removeChars.Aggregate(nodes, (s, c) => s.Replace(c.ToString(), ""));
-                    dt = m_buff.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-                }
+                //    m_buff = removeChars.Aggregate(nodes, (s, c) => s.Replace(c.ToString(), ""));
+                //    dt = m_buff.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                //}
 
-                int num;
-                searcher.characterInfos.HP = int.TryParse(dt[8], out num) ? num : 0;
-                searcher.characterInfos.MP = int.TryParse(dt[9], out num) ? num : 0;
-                searcher.characterInfos.SAN = int.TryParse(dt[10], out num) ? num : 0;
-                searcher.abilityValues.STR = int.TryParse(dt[0], out num) ? num : 0;
-                searcher.abilityValues.CON = int.TryParse(dt[1], out num) ? num : 0;
-                searcher.abilityValues.POW = int.TryParse(dt[2], out num) ? num : 0;
-                searcher.abilityValues.DEX = int.TryParse(dt[3], out num) ? num : 0;
-                searcher.abilityValues.APP = int.TryParse(dt[4], out num) ? num : 0;
-                searcher.abilityValues.SIZ = int.TryParse(dt[5], out num) ? num : 0;
-                searcher.abilityValues.INT = int.TryParse(dt[6], out num) ? num : 0;
-                searcher.abilityValues.EDU = int.TryParse(dt[7], out num) ? num : 0;
+                //int num;
+                //searcher.characterInfos.HP = int.TryParse(dt[8], out num) ? num : 0;
+                //searcher.characterInfos.MP = int.TryParse(dt[9], out num) ? num : 0;
+                //searcher.characterInfos.SAN = int.TryParse(dt[10], out num) ? num : 0;
+                //searcher.abilityValues.STR = int.TryParse(dt[0], out num) ? num : 0;
+                //searcher.abilityValues.CON = int.TryParse(dt[1], out num) ? num : 0;
+                //searcher.abilityValues.POW = int.TryParse(dt[2], out num) ? num : 0;
+                //searcher.abilityValues.DEX = int.TryParse(dt[3], out num) ? num : 0;
+                //searcher.abilityValues.APP = int.TryParse(dt[4], out num) ? num : 0;
+                //searcher.abilityValues.SIZ = int.TryParse(dt[5], out num) ? num : 0;
+                //searcher.abilityValues.INT = int.TryParse(dt[6], out num) ? num : 0;
+                //searcher.abilityValues.EDU = int.TryParse(dt[7], out num) ? num : 0;
 
-                //技能の取得
-                foreach (var row in doc.DocumentNode.SelectNodes("//div [@id='skill']//tr"))
-                {
-                    var nodes = row.InnerText;
-                    if (nodes == null) continue;
+                ////技能の取得
+                //foreach (var row in doc.DocumentNode.SelectNodes("//div [@id='skill']//tr"))
+                //{
+                //    var nodes = row.InnerText;
+                //    if (nodes == null) continue;
 
-                    m_buff = removeChars.Aggregate(nodes, (s, c) => s.Replace(c.ToString(), ""));
-                    dt = m_buff.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-                    
+                //    m_buff = removeChars.Aggregate(nodes, (s, c) => s.Replace(c.ToString(), ""));
+                //    dt = m_buff.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 
-                    try
-                    {
-                        if (dt[0] == "種別" || dt[1] == "技能名" || dt[2] == "値") continue;
 
-                        var value = int.TryParse(dt[2], out var m) ? m : -1;
-                        if (value == -1) continue;
-                        searcher.SetSkill(new Skill(dt[1], value, dt[0]));
-                    }
-                    catch (Exception exc)
-                    {
-                        Console.WriteLine(exc.Message);
-                    }
-                }
+                //    try
+                //    {
+                //        if (dt[0] == "種別" || dt[1] == "技能名" || dt[2] == "値") continue;
+
+                //        var value = int.TryParse(dt[2], out var m) ? m : -1;
+                //        if (value == -1) continue;
+                //        searcher.SetSkill(new Skill(dt[1], value, dt[0]));
+                //    }
+                //    catch (Exception exc)
+                //    {
+                //        Console.WriteLine(exc.Message);
+                //    }
+                //}
 
             }
             catch (WebException exc)

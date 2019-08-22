@@ -180,3 +180,8 @@ C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\ChaPalle.Propertie
 C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.csproj.GenerateResource.cache
 C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.csproj.CoreCompileInputs.cache
 C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Debug\PalletMaster.csproj.CopyComplete
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\AngleSharp.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\AngleSharp.xml
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
