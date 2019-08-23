@@ -1,0 +1,344 @@
+{
+  "skillSetType": "キャラ作成初期技能リスト",
+  "skills": [
+    {
+      "skillName": "キック",
+      "skillValue": 25,
+      "skillType": "戦闘"
+    },
+    {
+      "skillName": "回避",
+      "skillValue": 0,
+      "skillType": "戦闘"
+    },
+    {
+      "skillName": "組み付き",
+      "skillValue": 25,
+      "skillType": "戦闘"
+    },
+    {
+      "skillName": "こぶし（パンチ）",
+      "skillValue": 50,
+      "skillType": "戦闘"
+    },
+    {
+      "skillName": "頭突き",
+      "skillValue": 10,
+      "skillType": "戦闘"
+    },
+    {
+      "skillName": "投擲",
+      "skillValue": 25,
+      "skillType": "戦闘"
+    },
+    {
+      "skillName": "マーシャルアーツ",
+      "skillValue": 1,
+      "skillType": "戦闘"
+    },
+    {
+      "skillName": "拳銃",
+      "skillValue": 20,
+      "skillType": "戦闘"
+    },
+    {
+      "skillName": "サブマシンガン",
+      "skillValue": 15,
+      "skillType": "戦闘"
+    },
+    {
+      "skillName": "ショットガン",
+      "skillValue": 30,
+      "skillType": "戦闘"
+    },
+    {
+      "skillName": "マシンガン",
+      "skillValue": 15,
+      "skillType": "戦闘"
+    },
+    {
+      "skillName": "ライフル",
+      "skillValue": 25,
+      "skillType": "戦闘"
+    },
+    {
+      "skillName": "弓",
+      "skillValue": 10,
+      "skillType": "戦闘"
+    },
+    {
+      "skillName": "棍棒",
+      "skillValue": 25,
+      "skillType": "戦闘"
+    },
+    {
+      "skillName": "ナイフ",
+      "skillValue": 25,
+      "skillType": "戦闘"
+    },
+    {
+      "skillName": "応急手当",
+      "skillValue": 30,
+      "skillType": "探索"
+    },
+    {
+      "skillName": "鍵開け",
+      "skillValue": 1,
+      "skillType": "探索"
+    },
+    {
+      "skillName": "隠す",
+      "skillValue": 15,
+      "skillType": "探索"
+    },
+    {
+      "skillName": "隠れる",
+      "skillValue": 10,
+      "skillType": "探索"
+    },
+    {
+      "skillName": "写真術",
+      "skillValue": 10,
+      "skillType": "探索"
+    },
+    {
+      "skillName": "聞き耳",
+      "skillValue": 25,
+      "skillType": "探索"
+    },
+    {
+      "skillName": "忍び歩き",
+      "skillValue": 10,
+      "skillType": "探索"
+    },
+    {
+      "skillName": "写真術",
+      "skillValue": 10,
+      "skillType": "探索"
+    },
+    {
+      "skillName": "精神分析",
+      "skillValue": 1,
+      "skillType": "探索"
+    },
+    {
+      "skillName": "追跡",
+      "skillValue": 10,
+      "skillType": "探索"
+    },
+    {
+      "skillName": "登攀",
+      "skillValue": 40,
+      "skillType": "探索"
+    },
+    {
+      "skillName": "図書館",
+      "skillValue": 25,
+      "skillType": "探索"
+    },
+    {
+      "skillName": "目星",
+      "skillValue": 25,
+      "skillType": "探索"
+    },
+    {
+      "skillName": "運転（）",
+      "skillValue": 20,
+      "skillType": "行動"
+    },
+    {
+      "skillName": "機械修理",
+      "skillValue": 20,
+      "skillType": "行動"
+    },
+    {
+      "skillName": "重機械操作",
+      "skillValue": 1,
+      "skillType": "行動"
+    },
+    {
+      "skillName": "乗馬",
+      "skillValue": 5,
+      "skillType": "行動"
+    },
+    {
+      "skillName": "水泳",
+      "skillValue": 25,
+      "skillType": "行動"
+    },
+    {
+      "skillName": "製作（）",
+      "skillValue": 5,
+      "skillType": "行動"
+    },
+    {
+      "skillName": "操縦（）",
+      "skillValue": 1,
+      "skillType": "行動"
+    },
+    {
+      "skillName": "跳躍",
+      "skillValue": 25,
+      "skillType": "行動"
+    },
+    {
+      "skillName": "電気修理",
+      "skillValue": 10,
+      "skillType": "行動"
+    },
+    {
+      "skillName": "ナビゲート",
+      "skillValue": 10,
+      "skillType": "行動"
+    },
+    {
+      "skillName": "変装",
+      "skillValue": 1,
+      "skillType": "行動"
+    },
+    {
+      "skillName": "経理",
+      "skillValue": 10,
+      "skillType": "行動"
+    },
+    {
+      "skillName": "言いくるめ",
+      "skillValue": 5,
+      "skillType": "交渉"
+    },
+    {
+      "skillName": "信用",
+      "skillValue": 15,
+      "skillType": "交渉"
+    },
+    {
+      "skillName": "説得",
+      "skillValue": 15,
+      "skillType": "交渉"
+    },
+    {
+      "skillName": "値切り",
+      "skillValue": 5,
+      "skillType": "交渉"
+    },
+    {
+      "skillName": "オカルト",
+      "skillValue": 5,
+      "skillType": "知識"
+    },
+    {
+      "skillName": "精神分析",
+      "skillValue": 1,
+      "skillType": "知識"
+    },
+
+    {
+      "skillName": "図書館",
+      "skillValue": 25,
+      "skillType": "知識"
+    },
+
+    {
+      "skillName": "医学",
+      "skillValue": 5,
+      "skillType": "知識"
+    },
+
+    {
+      "skillName": "化学",
+      "skillValue": 1,
+      "skillType": "知識"
+    },
+
+    {
+      "skillName": "考古学",
+      "skillValue": 1,
+      "skillType": "知識"
+    },
+
+    {
+      "skillName": "人類学",
+      "skillValue": 1,
+      "skillType": "知識"
+    },
+
+    {
+      "skillName": "生物学",
+      "skillValue": 1,
+      "skillType": "知識"
+    },
+
+    {
+      "skillName": "地質学",
+      "skillValue": 1,
+      "skillType": "知識"
+    },
+
+    {
+      "skillName": "電子工学",
+      "skillValue": 1,
+      "skillType": "知識"
+    },
+
+    {
+      "skillName": "天文学",
+      "skillValue": 1,
+      "skillType": "知識"
+    },
+
+    {
+      "skillName": "博物学",
+      "skillValue": 10,
+      "skillType": "知識"
+    },
+
+    {
+      "skillName": "物理学",
+      "skillValue": 1,
+      "skillType": "知識"
+    },
+
+    {
+      "skillName": "薬学",
+      "skillValue": 1,
+      "skillType": "知識"
+    },
+
+    {
+      "skillName": "心理学",
+      "skillValue": 5,
+      "skillType": "知識"
+    },
+
+    {
+      "skillName": "法律",
+      "skillValue": 5,
+      "skillType": "知識"
+    },
+
+    {
+      "skillName": "歴史",
+      "skillValue": 20,
+      "skillType": "知識"
+    },
+
+    {
+      "skillName": "芸術（）",
+      "skillValue": 5,
+      "skillType": "知識"
+    },
+    {
+      "skillName": "言語",
+      "skillValue": 0,
+      "skillType": "知識"
+    },
+
+    {
+      "skillName": "母国語",
+      "skillValue": 0,
+      "skillType": "知識"
+    }
+
+
+  ]
+}

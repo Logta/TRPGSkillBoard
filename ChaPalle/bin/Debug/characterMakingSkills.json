@@ -337,6 +337,12 @@
       "skillName": "母国語",
       "skillValue": 0,
       "skillType": "知識"
+    },
+
+    {
+      "skillName": "コンピュータ",
+      "skillValue": 1,
+      "skillType": "知識"
     }
 
 

@@ -150,7 +150,6 @@ C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Release\MetroFramework.D
 C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Release\MetroFramework.dll
 C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Release\MetroFramework.Fonts.dll
 C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Release\Newtonsoft.Json.dll
-C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Release\System.Runtime.InteropServices.RuntimeInformation.dll
 C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Release\xunit.abstractions.dll
 C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Release\xunit.assert.dll
 C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Release\xunit.core.dll
@@ -189,3 +188,8 @@ C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Release\PalletMaster.csp
 C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Release\PalletMaster.csproj.CopyComplete
 C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Release\ChaPalle.exe
 C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\obj\Release\ChaPalle.pdb
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Release\AngleSharp.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Release\System.Text.Encoding.CodePages.dll
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Release\AngleSharp.xml
+C:\Users\logti\source\repos\TRPGSkillBoard\ChaPalle\bin\Release\System.Runtime.CompilerServices.Unsafe.xml

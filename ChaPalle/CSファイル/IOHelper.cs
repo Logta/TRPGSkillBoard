@@ -250,7 +250,6 @@ namespace PalletMaster
         public Searcher charaArchiveHTMLRead(string m_URL)
         {
             var searcher = new Searcher();
-            var Proccesser = new Proccess();
             var wc = new WebClient();
 
             var defaultSkillList = Proccess.GetSkillSet();
@@ -261,68 +260,7 @@ namespace PalletMaster
                 wc.Encoding = System.Text.Encoding.UTF8;
                 string html = wc.DownloadString(m_URL); //指定URLのHTMLデータを取得
                                                         // HtmlParserクラスをインスタンス化
-                var parser = new HtmlParser();
-
-                // HtmlParserクラスのParserメソッドを使用してパースする。
-                // Parserメソッドの戻り値の型はIHtmlDocument
-                var doc = parser.ParseDocument(html);
-
-                string[] dt;
-                //キャラネームの取得
-                var name = doc.QuerySelector("h1").TextContent.Trim();
-                char[] removeChars = new char[] { ' ', '　' };
-                string m_buff = removeChars.Aggregate(name, (s, c) => s.Replace(c.ToString(), ""));
-                dt = m_buff.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
-
-                searcher.characterInfos.characterName = dt[0];
-
-                //キャラ能力値の取得
-                var tes = doc.GetElementById("status_total");
-                tes.;
-                //{
-                //    var nodes = row.InnerText;
-                //    if (nodes == null) continue;
-
-                //    m_buff = removeChars.Aggregate(nodes, (s, c) => s.Replace(c.ToString(), ""));
-                //    dt = m_buff.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-                //}
-
-                //int num;
-                //searcher.characterInfos.HP = int.TryParse(dt[8], out num) ? num : 0;
-                //searcher.characterInfos.MP = int.TryParse(dt[9], out num) ? num : 0;
-                //searcher.characterInfos.SAN = int.TryParse(dt[10], out num) ? num : 0;
-                //searcher.abilityValues.STR = int.TryParse(dt[0], out num) ? num : 0;
-                //searcher.abilityValues.CON = int.TryParse(dt[1], out num) ? num : 0;
-                //searcher.abilityValues.POW = int.TryParse(dt[2], out num) ? num : 0;
-                //searcher.abilityValues.DEX = int.TryParse(dt[3], out num) ? num : 0;
-                //searcher.abilityValues.APP = int.TryParse(dt[4], out num) ? num : 0;
-                //searcher.abilityValues.SIZ = int.TryParse(dt[5], out num) ? num : 0;
-                //searcher.abilityValues.INT = int.TryParse(dt[6], out num) ? num : 0;
-                //searcher.abilityValues.EDU = int.TryParse(dt[7], out num) ? num : 0;
-
-                ////技能の取得
-                //foreach (var row in doc.DocumentNode.SelectNodes("//div [@id='skill']//tr"))
-                //{
-                //    var nodes = row.InnerText;
-                //    if (nodes == null) continue;
-
-                //    m_buff = removeChars.Aggregate(nodes, (s, c) => s.Replace(c.ToString(), ""));
-                //    dt = m_buff.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-
-
-                //    try
-                //    {
-                //        if (dt[0] == "種別" || dt[1] == "技能名" || dt[2] == "値") continue;
-
-                //        var value = int.TryParse(dt[2], out var m) ? m : -1;
-                //        if (value == -1) continue;
-                //        searcher.SetSkill(new Skill(dt[1], value, dt[0]));
-                //    }
-                //    catch (Exception exc)
-                //    {
-                //        Console.WriteLine(exc.Message);
-                //    }
-                //}
+                searcher = ImportCharacterByAngleSharp(html, searcher);
 
             }
             catch (WebException exc)
@@ -334,6 +272,77 @@ namespace PalletMaster
                 Console.WriteLine(exc.Message);
             }               
             searcher.CheckUnique(); //技能値が初期値かそうでないか判定をする
+            return searcher;
+        }
+
+        private Searcher ImportCharacterByAngleSharp(string html, Searcher searcher)
+        {
+            var parser = new HtmlParser();
+
+            // HtmlParserクラスのParserメソッドを使用してパースする。
+            // Parserメソッドの戻り値の型はIHtmlDocument
+            var doc = parser.ParseDocument(html);
+
+            string[] dt;
+            //キャラネームの取得
+            var name = doc.QuerySelector("h1").TextContent.Trim();
+            char[] removeChars = new char[] { ' ', '　' };
+            string m_buff = removeChars.Aggregate(name, (s, c) => s.Replace(c.ToString(), ""));
+            dt = m_buff.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+            searcher.characterInfos.characterName = dt[0];
+
+            //キャラ能力値の取得
+            var status = doc.QuerySelectorAll("tr[id = status_total] td");
+
+            var charaStatus = new List<String>();
+            foreach (var row in status)
+            {
+                var nodes = row.TextContent;
+                if (nodes == null) continue;
+
+                m_buff = removeChars.Aggregate(nodes, (s, c) => s.Replace(c.ToString(), ""));
+                charaStatus.Add(m_buff.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries)[0]);
+            }
+
+            int num;
+            searcher.characterInfos.HP = int.TryParse(charaStatus[8], out num) ? num : 0;
+            searcher.characterInfos.MP = int.TryParse(charaStatus[9], out num) ? num : 0;
+            searcher.characterInfos.SAN = int.TryParse(charaStatus[10], out num) ? num : 0;
+
+            searcher.abilityValues.STR = int.TryParse(charaStatus[0], out num) ? num : 0;
+            searcher.abilityValues.CON = int.TryParse(charaStatus[1], out num) ? num : 0;
+            searcher.abilityValues.POW = int.TryParse(charaStatus[2], out num) ? num : 0;
+            searcher.abilityValues.DEX = int.TryParse(charaStatus[3], out num) ? num : 0;
+            searcher.abilityValues.APP = int.TryParse(charaStatus[4], out num) ? num : 0;
+            searcher.abilityValues.SIZ = int.TryParse(charaStatus[5], out num) ? num : 0;
+            searcher.abilityValues.INT = int.TryParse(charaStatus[6], out num) ? num : 0;
+            searcher.abilityValues.EDU = int.TryParse(charaStatus[7], out num) ? num : 0;
+
+            //技能の取得
+            foreach (var row in doc.QuerySelectorAll("div [id = skill] tr"))
+            {
+                var nodes = row.TextContent;
+                if (nodes == null) continue;
+
+                m_buff = removeChars.Aggregate(nodes, (s, c) => s.Replace(c.ToString(), ""));
+                dt = m_buff.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+
+                try
+                {
+                    if (dt[0] == "種別" || dt[1] == "技能名" || dt[2] == "値") continue;
+
+                    var value = int.TryParse(dt[2], out var m) ? m : -1;
+                    if (value == -1) continue;
+                    searcher.SetSkill(new Skill(dt[1], value, dt[0]));
+                }
+                catch (Exception exc)
+                {
+                    Console.WriteLine(exc.Message);
+                }
+            }
+
             return searcher;
         }
 

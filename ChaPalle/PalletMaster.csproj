@@ -303,6 +303,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\characterMakingSkills.json" />
+    <None Include="Resources\defaultSkills.json" />
     <None Include="Resources\壁紙.jpg" />
   </ItemGroup>
   <ItemGroup>
