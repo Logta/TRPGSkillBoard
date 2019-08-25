@@ -57,7 +57,8 @@ namespace PalletMaster
             {
                 foreach (var skill in defaultSkills)
                 {
-                    skills.Find(e => e.name == skill.name).defaultValue = skill.value;
+                    if(skills.Count(e => e.name == skill.name) != 0)
+                        skills.Find(e => e.name == skill.name).defaultValue = skill.value;
                 }
             }
         }

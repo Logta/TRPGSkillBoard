@@ -215,9 +215,12 @@ namespace PalletMaster
             if (list.Count() == 1)
                 result = TotalDice(text).Sum().ToString();
             else if (list[0] == "CCB")
-                result = TotalDice("1D100")[0] > int.Parse(list[1]) ?
-                    "失敗" :
-                    "成功" ;
+            {
+                var diceValue = TotalDice("1D100")[0];
+                result = diceValue > int.Parse(list[1]) ?
+                    "失敗 ： 結果" + diceValue + " 技能値" + list[1] :
+                    "成功 ： 結果" + diceValue + " 技能値" + list[1];
+            }
 
 
             DiceResult u_form = new DiceResult();
