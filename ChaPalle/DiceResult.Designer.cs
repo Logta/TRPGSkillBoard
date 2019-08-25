@@ -49,7 +49,7 @@
             // 
             this.result_label.AutoSize = true;
             this.result_label.Font = new System.Drawing.Font("UD デジタル 教科書体 NK-R", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.result_label.Location = new System.Drawing.Point(57, 40);
+            this.result_label.Location = new System.Drawing.Point(49, 40);
             this.result_label.Name = "result_label";
             this.result_label.Size = new System.Drawing.Size(40, 18);
             this.result_label.TabIndex = 1;

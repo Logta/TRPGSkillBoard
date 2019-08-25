@@ -217,9 +217,10 @@ namespace PalletMaster
             else if (list[0] == "CCB")
             {
                 var diceValue = TotalDice("1D100")[0];
-                result = diceValue > int.Parse(list[1]) ?
-                    "失敗 ： 結果" + diceValue + " 技能値" + list[1] :
-                    "成功 ： 結果" + diceValue + " 技能値" + list[1];
+                result = diceValue <= 5 ?
+                    "クリティカル ： Dice" + diceValue : diceValue > int.Parse(list[1]) ?
+                    "失敗 ： Dice" + diceValue + "> Skill" + list[1] :
+                    "成功 ： Dice" + diceValue + "<= Skill" + list[1];
             }
 
 
