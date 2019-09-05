@@ -193,7 +193,7 @@ namespace PalletMaster
                 if (stream != null)
                 {
                     //ファイルに書き込む
-                    System.IO.StreamWriter sw = new System.IO.StreamWriter(stream, Encoding.GetEncoding("Shift_JIS"));
+                    System.IO.StreamWriter sw = new System.IO.StreamWriter(stream, Encoding.GetEncoding("UTF-8"));
                     string json = JsonConvert.SerializeObject(tom, Formatting.Indented);//, Formatting.Indented);
                     sw.Write(json);
                     //閉じる
@@ -266,7 +266,7 @@ namespace PalletMaster
             {
                 try
                 {
-                    string json = System.IO.File.ReadAllText(ofDialog.FileName, Encoding.GetEncoding("Shift_JIS"));
+                    string json = System.IO.File.ReadAllText(ofDialog.FileName, Encoding.GetEncoding("UTF-8"));
                     m_d.d = JsonConvert.DeserializeObject<Character>(json);
                     m_d.f = true;
                     return m_d;
@@ -274,7 +274,7 @@ namespace PalletMaster
                 catch { 
                     try
                     {
-                        string json = System.IO.File.ReadAllText(ofDialog.FileName, Encoding.GetEncoding("UTF-8"));
+                        string json = System.IO.File.ReadAllText(ofDialog.FileName, Encoding.GetEncoding("Shift_JIS"));
                         m_d.d = JsonConvert.DeserializeObject<Character>(json);
                         m_d.f = true;
                         return m_d;

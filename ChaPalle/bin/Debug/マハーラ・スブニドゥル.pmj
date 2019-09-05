@@ -1,160 +1,160 @@
-{
+ï»¿{
   "skills": [
     {
-      "skillName": "ƒLƒbƒN",
+      "skillName": "ã‚­ãƒƒã‚¯",
       "skillValue": 25,
-      "skillType": "í“¬",
+      "skillType": "æˆ¦é—˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 25
     },
     {
-      "skillName": "‰ñ”ğ",
+      "skillName": "å›é¿",
       "skillValue": 20,
-      "skillType": "í“¬",
+      "skillType": "æˆ¦é—˜",
       "skillUnique": true,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 0
     },
     {
-      "skillName": "‘g‚İ•t‚«",
+      "skillName": "çµ„ã¿ä»˜ã",
       "skillValue": 25,
-      "skillType": "í“¬",
+      "skillType": "æˆ¦é—˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 25
     },
     {
-      "skillName": "‚±‚Ô‚µiƒpƒ“ƒ`j",
+      "skillName": "ã“ã¶ã—ï¼ˆãƒ‘ãƒ³ãƒï¼‰",
       "skillValue": 50,
-      "skillType": "í“¬",
+      "skillType": "æˆ¦é—˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 50
     },
     {
-      "skillName": "“ª“Ë‚«",
+      "skillName": "é ­çªã",
       "skillValue": 10,
-      "skillType": "í“¬",
+      "skillType": "æˆ¦é—˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 10
     },
     {
-      "skillName": "“Š±",
+      "skillName": "æŠ•æ“²",
       "skillValue": 25,
-      "skillType": "í“¬",
+      "skillType": "æˆ¦é—˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 25
     },
     {
-      "skillName": "ƒ}[ƒVƒƒƒ‹ƒA[ƒc",
+      "skillName": "ãƒãƒ¼ã‚·ãƒ£ãƒ«ã‚¢ãƒ¼ãƒ„",
       "skillValue": 1,
-      "skillType": "í“¬",
+      "skillType": "æˆ¦é—˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 1
     },
     {
-      "skillName": "Œe",
+      "skillName": "æ‹³éŠƒ",
       "skillValue": 20,
-      "skillType": "í“¬",
+      "skillType": "æˆ¦é—˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 20
     },
     {
-      "skillName": "ƒTƒuƒ}ƒVƒ“ƒKƒ“",
+      "skillName": "ã‚µãƒ–ãƒã‚·ãƒ³ã‚¬ãƒ³",
       "skillValue": 15,
-      "skillType": "í“¬",
+      "skillType": "æˆ¦é—˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 15
     },
     {
-      "skillName": "ƒVƒ‡ƒbƒgƒKƒ“",
+      "skillName": "ã‚·ãƒ§ãƒƒãƒˆã‚¬ãƒ³",
       "skillValue": 30,
-      "skillType": "í“¬",
+      "skillType": "æˆ¦é—˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 30
     },
     {
-      "skillName": "ƒ}ƒVƒ“ƒKƒ“",
+      "skillName": "ãƒã‚·ãƒ³ã‚¬ãƒ³",
       "skillValue": 15,
-      "skillType": "í“¬",
+      "skillType": "æˆ¦é—˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 15
     },
     {
-      "skillName": "ƒ‰ƒCƒtƒ‹",
+      "skillName": "ãƒ©ã‚¤ãƒ•ãƒ«",
       "skillValue": 25,
-      "skillType": "í“¬",
+      "skillType": "æˆ¦é—˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 25
     },
     {
-      "skillName": "‹|",
+      "skillName": "å¼“",
       "skillValue": 10,
-      "skillType": "í“¬",
+      "skillType": "æˆ¦é—˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 10
     },
     {
-      "skillName": "–_",
+      "skillName": "æ£æ£’",
       "skillValue": 25,
-      "skillType": "í“¬",
+      "skillType": "æˆ¦é—˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 25
     },
     {
-      "skillName": "ƒiƒCƒt",
+      "skillName": "ãƒŠã‚¤ãƒ•",
       "skillValue": 25,
-      "skillType": "í“¬",
+      "skillType": "æˆ¦é—˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 25
     },
     {
-      "skillName": "‰‹}è“–",
+      "skillName": "å¿œæ€¥æ‰‹å½“",
       "skillValue": 30,
-      "skillType": "’Tõ",
+      "skillType": "æ¢ç´¢",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 30
     },
     {
-      "skillName": "Œ®ŠJ‚¯",
+      "skillName": "éµé–‹ã‘",
       "skillValue": 1,
-      "skillType": "’Tõ",
+      "skillType": "æ¢ç´¢",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 1
     },
     {
-      "skillName": "‰B‚·",
+      "skillName": "éš ã™",
       "skillValue": 60,
       "skillType": "",
       "skillUnique": true,
@@ -163,7 +163,7 @@
       "defaultValue": 15
     },
     {
-      "skillName": "‰B‚ê‚é",
+      "skillName": "éš ã‚Œã‚‹",
       "skillValue": 60,
       "skillType": "",
       "skillUnique": true,
@@ -172,25 +172,25 @@
       "defaultValue": 10
     },
     {
-      "skillName": "Ê^p",
+      "skillName": "å†™çœŸè¡“",
       "skillValue": 10,
-      "skillType": "’Tõ",
+      "skillType": "æ¢ç´¢",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 10
     },
     {
-      "skillName": "•·‚«¨",
+      "skillName": "èãè€³",
       "skillValue": 25,
-      "skillType": "’Tõ",
+      "skillType": "æ¢ç´¢",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 25
     },
     {
-      "skillName": "”E‚Ñ•à‚«",
+      "skillName": "å¿ã³æ­©ã",
       "skillValue": 60,
       "skillType": "",
       "skillUnique": true,
@@ -199,16 +199,16 @@
       "defaultValue": 10
     },
     {
-      "skillName": "¸_•ªÍ",
+      "skillName": "ç²¾ç¥åˆ†æ",
       "skillValue": 1,
-      "skillType": "’m¯",
+      "skillType": "çŸ¥è­˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 1
     },
     {
-      "skillName": "’ÇÕ",
+      "skillName": "è¿½è·¡",
       "skillValue": 50,
       "skillType": "",
       "skillUnique": true,
@@ -217,25 +217,25 @@
       "defaultValue": 10
     },
     {
-      "skillName": "“o³",
+      "skillName": "ç™»æ”€",
       "skillValue": 40,
-      "skillType": "’Tõ",
+      "skillType": "æ¢ç´¢",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 40
     },
     {
-      "skillName": "}‘ŠÙ",
+      "skillName": "å›³æ›¸é¤¨",
       "skillValue": 25,
-      "skillType": "’m¯",
+      "skillType": "çŸ¥è­˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 25
     },
     {
-      "skillName": "–Ú¯",
+      "skillName": "ç›®æ˜Ÿ",
       "skillValue": 70,
       "skillType": "",
       "skillUnique": true,
@@ -244,88 +244,88 @@
       "defaultValue": 25
     },
     {
-      "skillName": "‰^“]ij",
+      "skillName": "é‹è»¢ï¼ˆï¼‰",
       "skillValue": 20,
-      "skillType": "s“®",
+      "skillType": "è¡Œå‹•",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 20
     },
     {
-      "skillName": "‹@ŠBC—",
+      "skillName": "æ©Ÿæ¢°ä¿®ç†",
       "skillValue": 20,
-      "skillType": "s“®",
+      "skillType": "è¡Œå‹•",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 20
     },
     {
-      "skillName": "d‹@ŠB‘€ì",
+      "skillName": "é‡æ©Ÿæ¢°æ“ä½œ",
       "skillValue": 1,
-      "skillType": "s“®",
+      "skillType": "è¡Œå‹•",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 1
     },
     {
-      "skillName": "æ”n",
+      "skillName": "ä¹—é¦¬",
       "skillValue": 5,
-      "skillType": "s“®",
+      "skillType": "è¡Œå‹•",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 5
     },
     {
-      "skillName": "…‰j",
+      "skillName": "æ°´æ³³",
       "skillValue": 25,
-      "skillType": "s“®",
+      "skillType": "è¡Œå‹•",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 25
     },
     {
-      "skillName": "»ìij",
+      "skillName": "è£½ä½œï¼ˆï¼‰",
       "skillValue": 5,
-      "skillType": "s“®",
+      "skillType": "è¡Œå‹•",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 5
     },
     {
-      "skillName": "‘€cij",
+      "skillName": "æ“ç¸¦ï¼ˆï¼‰",
       "skillValue": 1,
-      "skillType": "s“®",
+      "skillType": "è¡Œå‹•",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 1
     },
     {
-      "skillName": "’µ–ô",
+      "skillName": "è·³èº",
       "skillValue": 25,
-      "skillType": "s“®",
+      "skillType": "è¡Œå‹•",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 25
     },
     {
-      "skillName": "“d‹CC—",
+      "skillName": "é›»æ°—ä¿®ç†",
       "skillValue": 10,
-      "skillType": "s“®",
+      "skillType": "è¡Œå‹•",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 10
     },
     {
-      "skillName": "ƒiƒrƒQ[ƒg",
+      "skillName": "ãƒŠãƒ“ã‚²ãƒ¼ãƒˆ",
       "skillValue": 80,
       "skillType": "",
       "skillUnique": true,
@@ -334,223 +334,232 @@
       "defaultValue": 10
     },
     {
-      "skillName": "•Ï‘•",
+      "skillName": "å¤‰è£…",
       "skillValue": 1,
-      "skillType": "s“®",
+      "skillType": "è¡Œå‹•",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 1
     },
     {
-      "skillName": "Œo—",
+      "skillName": "çµŒç†",
       "skillValue": 10,
-      "skillType": "s“®",
+      "skillType": "è¡Œå‹•",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 10
     },
     {
-      "skillName": "Œ¾‚¢‚­‚é‚ß",
+      "skillName": "è¨€ã„ãã‚‹ã‚",
       "skillValue": 5,
-      "skillType": "ŒğÂ",
+      "skillType": "äº¤æ¸‰",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 5
     },
     {
-      "skillName": "M—p",
+      "skillName": "ä¿¡ç”¨",
       "skillValue": 15,
-      "skillType": "ŒğÂ",
+      "skillType": "äº¤æ¸‰",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 15
     },
     {
-      "skillName": "à“¾",
+      "skillName": "èª¬å¾—",
       "skillValue": 15,
-      "skillType": "ŒğÂ",
+      "skillType": "äº¤æ¸‰",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 15
     },
     {
-      "skillName": "’lØ‚è",
+      "skillName": "å€¤åˆ‡ã‚Š",
       "skillValue": 5,
-      "skillType": "ŒğÂ",
+      "skillType": "äº¤æ¸‰",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 5
     },
     {
-      "skillName": "ƒIƒJƒ‹ƒg",
+      "skillName": "ã‚ªã‚«ãƒ«ãƒˆ",
       "skillValue": 5,
-      "skillType": "’m¯",
+      "skillType": "çŸ¥è­˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 5
     },
     {
-      "skillName": "ˆãŠw",
+      "skillName": "åŒ»å­¦",
       "skillValue": 5,
-      "skillType": "’m¯",
+      "skillType": "çŸ¥è­˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 5
     },
     {
-      "skillName": "‰»Šw",
+      "skillName": "åŒ–å­¦",
       "skillValue": 1,
-      "skillType": "’m¯",
+      "skillType": "çŸ¥è­˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 1
     },
     {
-      "skillName": "lŒÃŠw",
+      "skillName": "è€ƒå¤å­¦",
       "skillValue": 1,
-      "skillType": "’m¯",
+      "skillType": "çŸ¥è­˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 1
     },
     {
-      "skillName": "l—ŞŠw",
+      "skillName": "äººé¡å­¦",
       "skillValue": 1,
-      "skillType": "’m¯",
+      "skillType": "çŸ¥è­˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 1
     },
     {
-      "skillName": "¶•¨Šw",
+      "skillName": "ç”Ÿç‰©å­¦",
       "skillValue": 1,
-      "skillType": "’m¯",
+      "skillType": "çŸ¥è­˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 1
     },
     {
-      "skillName": "’n¿Šw",
+      "skillName": "åœ°è³ªå­¦",
       "skillValue": 1,
-      "skillType": "’m¯",
+      "skillType": "çŸ¥è­˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 1
     },
     {
-      "skillName": "“dqHŠw",
+      "skillName": "é›»å­å·¥å­¦",
       "skillValue": 1,
-      "skillType": "’m¯",
+      "skillType": "çŸ¥è­˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 1
     },
     {
-      "skillName": "“V•¶Šw",
+      "skillName": "å¤©æ–‡å­¦",
       "skillValue": 1,
-      "skillType": "’m¯",
+      "skillType": "çŸ¥è­˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 1
     },
     {
-      "skillName": "”•¨Šw",
+      "skillName": "åšç‰©å­¦",
       "skillValue": 10,
-      "skillType": "’m¯",
+      "skillType": "çŸ¥è­˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 10
     },
     {
-      "skillName": "•¨—Šw",
+      "skillName": "ç‰©ç†å­¦",
       "skillValue": 1,
-      "skillType": "’m¯",
+      "skillType": "çŸ¥è­˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 1
     },
     {
-      "skillName": "–òŠw",
+      "skillName": "è–¬å­¦",
       "skillValue": 1,
-      "skillType": "’m¯",
+      "skillType": "çŸ¥è­˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 1
     },
     {
-      "skillName": "S—Šw",
+      "skillName": "å¿ƒç†å­¦",
       "skillValue": 5,
-      "skillType": "’m¯",
+      "skillType": "çŸ¥è­˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 5
     },
     {
-      "skillName": "–@—¥",
+      "skillName": "æ³•å¾‹",
       "skillValue": 5,
-      "skillType": "’m¯",
+      "skillType": "çŸ¥è­˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 5
     },
     {
-      "skillName": "—ğj",
+      "skillName": "æ­´å²",
       "skillValue": 20,
-      "skillType": "’m¯",
+      "skillType": "çŸ¥è­˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 20
     },
     {
-      "skillName": "Œ|pij",
+      "skillName": "èŠ¸è¡“ï¼ˆï¼‰",
       "skillValue": 5,
-      "skillType": "’m¯",
+      "skillType": "çŸ¥è­˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 5
     },
     {
-      "skillName": "Œ¾Œê",
+      "skillName": "è¨€èª",
       "skillValue": 0,
-      "skillType": "’m¯",
+      "skillType": "çŸ¥è­˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 0
     },
     {
-      "skillName": "•ê‘Œê",
+      "skillName": "æ¯å›½èª",
       "skillValue": 0,
-      "skillType": "’m¯",
+      "skillType": "çŸ¥è­˜",
       "skillUnique": false,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 0
     },
     {
-      "skillName": "•ê‘Œê(ƒAƒ‰ƒrƒAŒê)",
+      "skillName": "ã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ã‚¿",
+      "skillValue": 1,
+      "skillType": "çŸ¥è­˜",
+      "skillUnique": false,
+      "skillWorkValue": 0,
+      "skillInterestValue": 0,
+      "defaultValue": 1
+    },
+    {
+      "skillName": "æ¯å›½èª(ã‚¢ãƒ©ãƒ“ã‚¢èª)",
       "skillValue": 55,
       "skillType": "",
       "skillUnique": true,
@@ -559,7 +568,7 @@
       "defaultValue": 0
     },
     {
-      "skillName": "“ú–{Œê",
+      "skillName": "æ—¥æœ¬èª",
       "skillValue": 11,
       "skillType": "",
       "skillUnique": true,
@@ -568,7 +577,7 @@
       "defaultValue": 0
     },
     {
-      "skillName": "‰pŒê",
+      "skillName": "è‹±èª",
       "skillValue": 22,
       "skillType": "",
       "skillUnique": true,
@@ -577,7 +586,7 @@
       "defaultValue": 0
     },
     {
-      "skillName": "ƒNƒgƒDƒ‹ƒt_˜b",
+      "skillName": "ã‚¯ãƒˆã‚¥ãƒ«ãƒ•ç¥è©±",
       "skillValue": 15,
       "skillType": "",
       "skillUnique": true,
@@ -586,27 +595,27 @@
       "defaultValue": 0
     },
     {
-      "skillName": "ƒAƒCƒfƒA",
+      "skillName": "ã‚¢ã‚¤ãƒ‡ã‚¢",
       "skillValue": 45,
-      "skillType": "’Tõ",
+      "skillType": "æ¢ç´¢",
       "skillUnique": true,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 0
     },
     {
-      "skillName": "K‰^",
+      "skillName": "å¹¸é‹",
       "skillValue": 75,
-      "skillType": "’Tõ",
+      "skillType": "æ¢ç´¢",
       "skillUnique": true,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
       "defaultValue": 0
     },
     {
-      "skillName": "’m¯",
+      "skillName": "çŸ¥è­˜",
       "skillValue": 55,
-      "skillType": "’Tõ",
+      "skillType": "æ¢ç´¢",
       "skillUnique": true,
       "skillWorkValue": 0,
       "skillInterestValue": 0,
@@ -625,7 +634,7 @@
     "EDU": 11
   },
   "characterInfos": {
-    "characterName": "ƒ}ƒn[ƒ‰EƒXƒuƒjƒhƒDƒ‹",
+    "characterName": "ãƒãƒãƒ¼ãƒ©ãƒ»ã‚¹ãƒ–ãƒ‹ãƒ‰ã‚¥ãƒ«",
     "HP": 17,
     "MP": 15,
     "SAN": 75,
